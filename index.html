@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Complete Java SDK for MetaTrader 4 trading automation">
+        <meta name="description" content="Complete Java SDK for MetaTrader 4 trading automation via gRPC">
       
       
       
@@ -14,7 +14,7 @@
       
       
       
-        <link rel="next" href="getting-started/">
+        <link rel="next" href="All_Guides/GETTING_STARTED/">
       
       
         
@@ -51,6 +51,8 @@
       
     
     
+      <link rel="stylesheet" href="styles/custom.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#javamt4-sdk" class="md-skip">
+        <a href="#javamt4-sdk-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +97,7 @@
     <a href="." title="JavaMT4 SDK Documentation" class="md-header__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.5 18.5 6-6 4 4L22 6.92 20.59 5.5l-7.09 8-4-4L2 17z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -231,7 +233,7 @@
     <a href="." title="JavaMT4 SDK Documentation" class="md-nav__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3.5 18.5 6-6 4 4L22 6.92 20.59 5.5l-7.09 8-4-4L2 17z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
 
     </a>
     JavaMT4 SDK Documentation
@@ -267,24 +269,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Home
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -302,86 +286,6 @@
 
       </a>
       
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Features
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gradle
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -392,8 +296,57 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="getting-started/" class="md-nav__link">
+      <a href="All_Guides/GETTING_STARTED/" class="md-nav__link">
         
   
   
@@ -412,22 +365,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="connection/" class="md-nav__link">
+      <a href="All_Guides/Your_First_Project/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Connection & Authentication
+    Your First Project
   
 
     
@@ -439,22 +393,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="quotes/" class="md-nav__link">
+      <a href="All_Guides/PROJECT_MAP/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Quotes & Market Data
+    Project Map
   
 
     
@@ -466,22 +421,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="trading/" class="md-nav__link">
+      <a href="All_Guides/GLOSSARY/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Trading & Orders
+    Glossary
   
 
     
@@ -493,22 +449,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="account/" class="md-nav__link">
+      <a href="All_Guides/MT4_For_Beginners/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Account Information
+    MT4 for Beginners
   
 
     
@@ -520,6 +477,182 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/GRPC_STREAM_MANAGEMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    gRPC Streaming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/RETURN_CODES_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Return Codes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/ENUMS_USAGE_REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ENUMs Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/PROTOBUF_INSPECTOR_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protobuf Inspector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/USERCODE_SANDBOX_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UserCode Sandbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="All_Guides/SYNC_VS_ASYNC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync vs Async
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -527,9 +660,22 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="api/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -543,7 +689,219 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API_Reference/MT4Account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MT4Account API
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API_Reference/MT4Service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MT4Service API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="API_Reference/MT4Sugar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MT4Sugar API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Strategies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Strategies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Strategies/Strategies.Master.Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Strategies/Presets/AdaptiveMarketModePreset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -568,75 +926,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Features
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Quick Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gradle" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Gradle
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#maven" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Maven
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -655,43 +944,57 @@
   
 
 
-<h1 id="javamt4-sdk">JavaMT4 SDK<a class="headerlink" href="#javamt4-sdk" title="Permanent link">¶</a></h1>
-<p>Welcome to the <strong>JavaMT4 SDK</strong> documentation. This high-performance, non-blocking Java client connects directly to MetaTrader 4 servers via standard TCP sockets using Java NIO without requiring any local MetaTrader 4 terminal application or Wine installation.</p>
-<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Direct TCP Connection</strong>: Connects straight to MetaTrader 4 servers with low latency.</li>
-<li><strong>Java NIO Architecture</strong>: Non-blocking asynchronous event-driven I/O.</li>
-<li><strong>Zero External Terminal Dependencies</strong>: Pure Java solution running natively on Linux, macOS, and Windows.</li>
-<li><strong>Full Trading Automation</strong>: Market orders, pending orders (buy limit, buy stop, sell limit, sell stop), stop loss &amp; take profit management, and position closing.</li>
-<li><strong>Real-Time Market Data</strong>: Live quote subscriptions, tick data, order book, and historical bar queries.</li>
-<li><strong>Account Management</strong>: Real-time margin, equity, balance, and leverage tracking.</li>
-</ul>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[Java Application] --&gt;|Java NIO TCP| B[MT4Client]
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt;|Encrypted Protocol| C[MetaTrader 4 Server]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    C --&gt;|Market Ticks| B
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    C --&gt;|Order Execution Confirmations| B
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    B --&gt;|Async Callbacks| A
-</code></pre></div>
-<h2 id="quick-installation">Quick Installation<a class="headerlink" href="#quick-installation" title="Permanent link">¶</a></h2>
-<h3 id="gradle">Gradle<a class="headerlink" href="#gradle" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">mavenCentral</span><span class="o">()</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">'io.metarpc:javamt4:1.0.0'</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">}</span>
-</code></pre></div>
-<h3 id="maven">Maven<a class="headerlink" href="#maven" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;dependency&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>io.metarpc<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>javamt4<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">&lt;/dependency&gt;</span>
-</code></pre></div>
-<p>Next, see the <a href="getting-started/">Getting Started</a> guide to connect and make your first trade.</p>
+<h1 id="javamt4-sdk-documentation">JavaMT4 SDK Documentation<a class="headerlink" href="#javamt4-sdk-documentation" title="Permanent link">¶</a></h1>
+<p><strong>Complete Java SDK for MetaTrader 4 trading automation via gRPC</strong></p>
+<div class="home-grid">
+
+<!-- Top Card (0) - Quick Start - Red-Orange -->
+<a href="All_Guides/Your_First_Project/" class="card card-0">
+  <span class="material-symbols-rounded">rocket_launch</span>
+  <h3>Quick Start</h3>
+  <p>Your first project from scratch in 10 minutes</p>
+</a>
+
+<!-- Wide Card (1) - Getting Started - Yellow-Orange-Pink -->
+<a href="All_Guides/GETTING_STARTED/" class="card card-1 card-wide">
+  <span class="material-symbols-rounded">bolt</span>
+  <h3>Getting Started</h3>
+  <p>New here? Start with setup and overview</p>
+</a>
+
+<!-- Middle Row (2-3) - Yellow-Blue & Purple -->
+<a href="All_Guides/PROJECT_MAP/" class="card card-2">
+  <span class="material-symbols-rounded">map</span>
+  <h3>Project Map</h3>
+  <p>Architecture overview</p>
+</a>
+
+<a href="All_Guides/GLOSSARY/" class="card card-3">
+  <span class="material-symbols-rounded">menu_book</span>
+  <h3>Glossary</h3>
+  <p>MT4 terms and concepts</p>
+</a>
+
+<!-- Bottom Row (4-5-6) - Teal, Mint, Green -->
+<a href="API_Reference/MT4Service/" class="card card-4">
+  <span class="material-symbols-rounded">build</span>
+  <h3>MT4Service</h3>
+  <p>Wrapper methods layer</p>
+</a>
+
+<a href="API_Reference/MT4Account/" class="card card-5">
+  <span class="material-symbols-rounded">settings</span>
+  <h3>MT4Account</h3>
+  <p>Low-level gRPC protocol layer</p>
+</a>
+
+<a href="API_Reference/MT4Sugar/" class="card card-6">
+  <span class="material-symbols-rounded">auto_awesome</span>
+  <h3>MT4Sugar</h3>
+  <p>High-level convenience API</p>
+</a>
+
+</div>
 
 
 
@@ -728,7 +1031,7 @@
         
         
           
-          <a href="getting-started/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started">
+          <a href="All_Guides/GETTING_STARTED/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
@@ -751,7 +1054,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright © 2024–2026 MetaRPC. MT4 is a trademark of MetaQuotes Software Corp. This documentation is community-maintained and not affiliated with MetaQuotes.
+      Copyright © 2024–2025 MetaRPC. MT4 is a trademark of MetaQuotes Software Corp. This documentation is community-maintained and not affiliated with MetaQuotes.
 
     </div>
   
@@ -789,10 +1092,12 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "toc.follow"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/ux.js"></script>
       
     
   </body>
