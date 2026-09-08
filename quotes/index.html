@@ -1023,10 +1023,10 @@
 </code></pre></div>
 <h2 id="requesting-historical-bars">Requesting Historical Bars<a class="headerlink" href="#requesting-historical-bars" title="Permanent link">¶</a></h2>
 <p>You can query historical OHLCV candlestick data across any timeframe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">io.mtapi.mt4.network.enums.Timeframe</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">io.mtapi.mt4.network.messages.req.HistoricalBarsReq</span><span class="p">;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">io.mtapi.mt4.network.messages.res.HistoricalBarsRes</span><span class="p">;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">io.mtapi.mt4.network.parts.BarRecord</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.enums.Timeframe</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.req.HistoricalBarsReq</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.res.HistoricalBarsRes</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.parts.BarRecord</span><span class="p">;</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">HistoricalBarsReq</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HistoricalBarsReq</span><span class="p">();</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">req</span><span class="p">.</span><span class="na">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"EURUSD"</span><span class="p">;</span>

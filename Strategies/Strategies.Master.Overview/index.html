@@ -2220,7 +2220,7 @@
 <hr />
 <h2 id="important-disclaimer">⚠️ IMPORTANT DISCLAIMER<a class="headerlink" href="#important-disclaimer" title="Permanent link">¶</a></h2>
 <p><strong>🎓 EDUCATIONAL &amp; DEMONSTRATION PURPOSE ONLY</strong></p>
-<p>All orchestrators and presets in this documentation are <strong>DEMONSTRATION EXAMPLES</strong> designed to showcase the CSharpMT5 API capabilities and serve as templates for building your own trading strategies.</p>
+<p>All orchestrators and presets in this documentation are <strong>DEMONSTRATION EXAMPLES</strong> designed to showcase the JavaMT4 API capabilities and serve as templates for building your own trading strategies.</p>
 <p><strong>These are NOT production-ready trading systems.</strong></p>
 <h3 id="critical-limitations">Critical Limitations:<a class="headerlink" href="#critical-limitations" title="Permanent link">¶</a></h3>
 <ol>
@@ -2568,11 +2568,11 @@
 <a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  • GridTrading  • Scalping  • Hedge
 <a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  • NewsStraddle • PendingBreakout
 <a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    ↓
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>LAYER 1: MT5 SERVICE
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>LAYER 1: MT4 SERVICE
 <a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>  Core trading API (Account, Service, Sugar)
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  • MT5Account (low-level gRPC)
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>  • MT5Service (simplified wrappers)
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  • MT5Sugar (high-level helpers)
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  • MT4Account (low-level gRPC)
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>  • MT4Service (simplified wrappers)
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  • MT4Sugar (high-level helpers)
 </code></pre></div>
 <hr />
 <h3 id="common-features-all-orchestrators">Common Features (All Orchestrators)<a class="headerlink" href="#common-features-all-orchestrators" title="Permanent link">¶</a></h3>
@@ -2607,10 +2607,10 @@
 <hr />
 <h2 id="usage-patterns">🔌 Usage Patterns<a class="headerlink" href="#usage-patterns" title="Permanent link">¶</a></h2>
 <h3 id="running-an-orchestrator">Running an Orchestrator<a class="headerlink" href="#running-an-orchestrator" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// 1. Create MT5 connection</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// 1. Create MT4 connection</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kt">var</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ConnectionHelper</span><span class="p">.</span><span class="n">BuildConfiguration</span><span class="p">();</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kt">var</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">ConnectionHelper</span><span class="p">.</span><span class="n">CreateAndConnectAccountAsync</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MT5Service</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MT4Service</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
 <a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1">// 2. Configure orchestrator</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="kt">var</span><span class="w"> </span><span class="n">orchestrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GridTradingOrchestrator</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
@@ -2629,10 +2629,10 @@
 </code></pre></div>
 <hr />
 <h3 id="running-a-preset">Running a Preset<a class="headerlink" href="#running-a-preset" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// 1. Create MT5 connection (same as above)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// 1. Create MT4 connection (same as above)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kt">var</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ConnectionHelper</span><span class="p">.</span><span class="n">BuildConfiguration</span><span class="p">();</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kt">var</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">ConnectionHelper</span><span class="p">.</span><span class="n">CreateAndConnectAccountAsync</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MT5Service</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kt">var</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MT4Service</span><span class="p">(</span><span class="n">account</span><span class="p">);</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1">// 2. Configure preset</span>
 <a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="kt">var</span><span class="w"> </span><span class="n">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AdaptiveMarketModePreset</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
@@ -2901,7 +2901,7 @@
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
 <a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>3. Read: GridTradingOrchestrator.HOW_IT_WORKS.md
 <a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>   • Understand algorithm step-by-step
-<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>   • Learn MT5Sugar methods used
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>   • Learn MT4Sugar methods used
 <a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
 <a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a>4. Experiment: Modify grid parameters
 <a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>   • Change GridLevels
@@ -2911,7 +2911,7 @@
 <hr />
 <h3 id="intermediate-path">Intermediate Path<a class="headerlink" href="#intermediate-path" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>1. Compare: All 5 orchestrators side-by-side
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>   • Identify common patterns (MT5Service usage)
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>   • Identify common patterns (MT4Service usage)
 <a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>   • See differences in algorithms
 <a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>   • Understand when to use each
 <a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
@@ -2955,13 +2955,13 @@
 <h2 id="related-documentation">📖 Related Documentation<a class="headerlink" href="#related-documentation" title="Permanent link">¶</a></h2>
 <ul>
 <li>
-<p><strong><a href="../API_Reference/MT5Account.md">MT5Account - Master Overview</a></strong> - Low-level gRPC API reference.</p>
+<p><strong><a href="../../API_Reference/MT4Account/">MT4Account - Master Overview</a></strong> - Low-level gRPC API reference.</p>
 </li>
 <li>
-<p><strong><a href="../API_Reference/MT5Service.md">MT5Service Documentation</a></strong> - Simplified wrapper methods.</p>
+<p><strong><a href="../../API_Reference/MT4Service/">MT4Service Documentation</a></strong> - Simplified wrapper methods.</p>
 </li>
 <li>
-<p><strong><a href="../API_Reference/MT5Sugar.md">MT5Sugar Documentation</a></strong> - High-level convenience API.</p>
+<p><strong><a href="../../API_Reference/MT4Sugar/">MT4Sugar Documentation</a></strong> - High-level convenience API.</p>
 </li>
 <li>
 <p><strong><a href="../../All_Guides/GRPC_STREAM_MANAGEMENT/">GRPC_STREAM_MANAGEMENT.md</a></strong> - Streaming subscriptions guide.</p>

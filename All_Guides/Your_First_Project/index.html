@@ -1090,13 +1090,13 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>my_javamt4_bot
 </code></pre></div>
 <p>Install the package:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>implementation<span class="w"> </span><span class="s1">'io.mtapi:mt4:1.0.0'</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>implementation<span class="w"> </span><span class="s1">'pro.mrpc:mt4:1.0.0'</span>
 </code></pre></div>
 <hr />
 <h2 id="step-2-write-your-trading-code">Step 2: Write Your Trading Code<a class="headerlink" href="#step-2-write-your-trading-code" title="Permanent link">¶</a></h2>
 <p>Create your main application file and paste the following snippet:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>import io.mtapi.mt4.MT4Account;
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>import io.mtapi.mt4.models.AccountSummary;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>import pro.mrpc.mt4.MT4Account;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>import pro.mrpc.mt4.models.AccountSummary;
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>MT4Account account = new MT4Account(user, password, grpcServer);
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>account.connectByServerNameAsync(serverName, "EURUSD", 30).get();
