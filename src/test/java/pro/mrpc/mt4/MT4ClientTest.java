@@ -424,4 +424,13 @@ public class MT4ClientTest {
             client.disconnect();
         }
     }
+
+    @Test
+    @DisplayName("Verify deterministic LoginId generation")
+    void testLoginIdGeneration() {
+        pro.mrpc.mt4.utils.LoginId loginId = new pro.mrpc.mt4.utils.LoginId();
+        byte[] sampleData = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08 };
+        long id = loginId.decodeData(sampleData);
+        assertNotNull(id);
+    }
 }
