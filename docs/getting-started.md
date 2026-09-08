@@ -27,7 +27,7 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        String host = "demo-mt4.broker.com";
+        String host = "demo-mt4.mrpc.pro";
         int port = 443;
         int login = 12345678;
         String password = "your_password";
@@ -104,3 +104,7 @@ mvn compile exec:java -Dexec.mainClass="com.example.App"
 - Explore [Connection & Authentication](connection.md) for reconnect strategies and SSL options.
 - Learn about [Quotes & Market Data](quotes.md) for historic candle and tick streaming.
 - Learn about [Trading & Orders](trading.md) for placing and managing orders.
+
+
+> **Authentication Note**: Connecting to `mt4.mrpc.pro:443` requires a valid MetaRPC API key. Register for free at [https://mrpc.pro/signup](https://mrpc.pro/signup) and generate your token in [https://mrpc.pro/my](https://mrpc.pro/my).
+

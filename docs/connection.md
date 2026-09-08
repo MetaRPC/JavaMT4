@@ -24,7 +24,7 @@ sequenceDiagram
 To establish a connection, instantiate `MT4Client` with the server hostname, port, and a `MessageHandler` implementation:
 
 ```java
-MT4Client client = new MT4Client("mt4demo.broker.com", 443, new MessageHandler() {
+MT4Client client = new MT4Client("mt4mt4.mrpc.pro", 443, new MessageHandler() {
     @Override
     public void onConnected(MT4Client client) {
         System.out.println("Session connected and authenticated.");
@@ -77,3 +77,7 @@ Always close client connections cleanly when terminating:
 ```java
 client.disconnect();
 ```
+
+
+> **Authentication Note**: Connecting to `mt4.mrpc.pro:443` requires a valid MetaRPC API key. Register for free at [https://mrpc.pro/signup](https://mrpc.pro/signup) and generate your token in [https://mrpc.pro/my](https://mrpc.pro/my).
+

@@ -46,3 +46,5 @@ bin/
 ### Heap dumps ###
 *.hprof
 site/
+
+.cache/

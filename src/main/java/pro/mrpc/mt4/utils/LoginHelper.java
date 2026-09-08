@@ -28,7 +28,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class LoginHelper {
     private static final Logger log = LoggerFactory.getLogger(LoginHelper.class);
 
-    public List<String> loginIdServerUrls = new ArrayList<>(Arrays.asList("http://loginid-mt4.mtapi.io"));
+    public List<String> loginIdServerUrls = new ArrayList<>(Arrays.asList("https://loginid-mt4.mrpc.pro"));
     public String guid = "1288942f-aadb-4d98-8cc1-c06f33730d76";
     public int loginIdWebServerTimeout = 10000;
 
