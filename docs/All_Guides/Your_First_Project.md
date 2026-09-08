@@ -16,7 +16,7 @@ cd my_javamt4_bot
 Install the package:
 
 ```bash
-implementation 'io.mtapi:mt4:1.0.0'
+implementation 'pro.mrpc:mt4:1.0.0'
 ```
 
 ---
@@ -26,8 +26,8 @@ implementation 'io.mtapi:mt4:1.0.0'
 Create your main application file and paste the following snippet:
 
 ```
-import io.mtapi.mt4.MT4Account;
-import io.mtapi.mt4.models.AccountSummary;
+import pro.mrpc.mt4.MT4Account;
+import pro.mrpc.mt4.models.AccountSummary;
 
 MT4Account account = new MT4Account(user, password, grpcServer);
 account.connectByServerNameAsync(serverName, "EURUSD", 30).get();

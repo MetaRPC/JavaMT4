@@ -15,13 +15,13 @@ Create a new Java class `App.java`:
 ```java
 package com.example;
 
-import io.mtapi.mt4.MT4Client;
-import io.mtapi.mt4.MessageHandler;
-import io.mtapi.mt4.exception.DecoderException;
-import io.mtapi.mt4.network.MetaTraderMessage;
-import io.mtapi.mt4.network.messages.req.SubscribeQuotesReq;
-import io.mtapi.mt4.network.messages.res.QuoteEvent;
-import io.mtapi.mt4.network.parts.AccountInfo;
+import pro.mrpc.mt4.MT4Client;
+import pro.mrpc.mt4.MessageHandler;
+import pro.mrpc.mt4.exception.DecoderException;
+import pro.mrpc.mt4.network.MetaTraderMessage;
+import pro.mrpc.mt4.network.messages.req.SubscribeQuotesReq;
+import pro.mrpc.mt4.network.messages.res.QuoteEvent;
+import pro.mrpc.mt4.network.parts.AccountInfo;
 
 import java.io.IOException;
 

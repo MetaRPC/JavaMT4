@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-group = 'io.mtapi.mt4'
-version = '1.0'
+group = 'pro.mrpc'
+version = '1.0.0'
 
 repositories {
     mavenCentral()

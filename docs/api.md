@@ -1,6 +1,6 @@
 # API Reference
 
-Complete reference of the primary classes, interfaces, and data models in the `io.mtapi.mt4` package.
+Complete reference of the primary classes, interfaces, and data models in the `pro.mrpc.mt4` package.
 
 ## Classes & Interfaces
 

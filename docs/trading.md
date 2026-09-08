@@ -7,12 +7,12 @@ JavaMT4 supports execution of market orders, pending limit/stop orders, position
 MetaTrader 4 brokers use either **Market Execution** or **Instant Execution**. You can check the execution mode using `SymbolInfo`:
 
 ```java
-import io.mtapi.mt4.network.enums.Execution;
-import io.mtapi.mt4.network.enums.Op;
-import io.mtapi.mt4.network.enums.TradeCommand;
-import io.mtapi.mt4.network.messages.req.OrderTransactionReq;
-import io.mtapi.mt4.network.messages.res.TradeEvent;
-import io.mtapi.mt4.network.parts.SymbolInfo;
+import pro.mrpc.mt4.network.enums.Execution;
+import pro.mrpc.mt4.network.enums.Op;
+import pro.mrpc.mt4.network.enums.TradeCommand;
+import pro.mrpc.mt4.network.messages.req.OrderTransactionReq;
+import pro.mrpc.mt4.network.messages.res.TradeEvent;
+import pro.mrpc.mt4.network.parts.SymbolInfo;
 
 SymbolInfo symbolInfo = client.getSymbolTable().getInfo("EURUSD");
 boolean isMarket = symbolInfo.execution == Execution.Market;

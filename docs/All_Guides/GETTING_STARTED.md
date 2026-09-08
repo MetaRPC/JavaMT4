@@ -21,7 +21,7 @@
 Install JavaMT4 via your standard Java package manager:
 
 ```bash
-implementation 'io.mtapi:mt4:1.0.0'
+implementation 'pro.mrpc:mt4:1.0.0'
 ```
 
 ---

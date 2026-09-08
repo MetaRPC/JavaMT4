@@ -45,3 +45,4 @@ bin/
 
 ### Heap dumps ###
 *.hprof
+site/

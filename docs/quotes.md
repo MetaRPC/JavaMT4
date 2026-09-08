@@ -48,10 +48,10 @@ client.sendRequestAsync(unsubReq);
 You can query historical OHLCV candlestick data across any timeframe:
 
 ```java
-import io.mtapi.mt4.network.enums.Timeframe;
-import io.mtapi.mt4.network.messages.req.HistoricalBarsReq;
-import io.mtapi.mt4.network.messages.res.HistoricalBarsRes;
-import io.mtapi.mt4.network.parts.BarRecord;
+import pro.mrpc.mt4.network.enums.Timeframe;
+import pro.mrpc.mt4.network.messages.req.HistoricalBarsReq;
+import pro.mrpc.mt4.network.messages.res.HistoricalBarsRes;
+import pro.mrpc.mt4.network.parts.BarRecord;
 
 HistoricalBarsReq req = new HistoricalBarsReq();
 req.symbol = "EURUSD";

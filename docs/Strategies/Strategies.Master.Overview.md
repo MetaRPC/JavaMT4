@@ -8,7 +8,7 @@
 
 **🎓 EDUCATIONAL & DEMONSTRATION PURPOSE ONLY**
 
-All orchestrators and presets in this documentation are **DEMONSTRATION EXAMPLES** designed to showcase the CSharpMT5 API capabilities and serve as templates for building your own trading strategies.
+All orchestrators and presets in this documentation are **DEMONSTRATION EXAMPLES** designed to showcase the JavaMT4 API capabilities and serve as templates for building your own trading strategies.
 
 **These are NOT production-ready trading systems.**
 
@@ -377,11 +377,11 @@ LAYER 2: ORCHESTRATORS
   • GridTrading  • Scalping  • Hedge
   • NewsStraddle • PendingBreakout
     ↓
-LAYER 1: MT5 SERVICE
+LAYER 1: MT4 SERVICE
   Core trading API (Account, Service, Sugar)
-  • MT5Account (low-level gRPC)
-  • MT5Service (simplified wrappers)
-  • MT5Sugar (high-level helpers)
+  • MT4Account (low-level gRPC)
+  • MT4Service (simplified wrappers)
+  • MT4Sugar (high-level helpers)
 ```
 
 ---
@@ -423,10 +423,10 @@ LAYER 1: MT5 SERVICE
 ### Running an Orchestrator
 
 ```csharp
-// 1. Create MT5 connection
+// 1. Create MT4 connection
 var config = ConnectionHelper.BuildConfiguration();
 var account = await ConnectionHelper.CreateAndConnectAccountAsync(config);
-var service = new MT5Service(account);
+var service = new MT4Service(account);
 
 // 2. Configure orchestrator
 var orchestrator = new GridTradingOrchestrator(service)
@@ -449,10 +449,10 @@ await orchestrator.RunAsync();
 ### Running a Preset
 
 ```csharp
-// 1. Create MT5 connection (same as above)
+// 1. Create MT4 connection (same as above)
 var config = ConnectionHelper.BuildConfiguration();
 var account = await ConnectionHelper.CreateAndConnectAccountAsync(config);
-var service = new MT5Service(account);
+var service = new MT4Service(account);
 
 // 2. Configure preset
 var preset = new AdaptiveMarketModePreset(service)
@@ -765,7 +765,7 @@ catch (Exception ex)
 
 3. Read: GridTradingOrchestrator.HOW_IT_WORKS.md
    • Understand algorithm step-by-step
-   • Learn MT5Sugar methods used
+   • Learn MT4Sugar methods used
 
 4. Experiment: Modify grid parameters
    • Change GridLevels
@@ -779,7 +779,7 @@ catch (Exception ex)
 
 ```
 1. Compare: All 5 orchestrators side-by-side
-   • Identify common patterns (MT5Service usage)
+   • Identify common patterns (MT4Service usage)
    • See differences in algorithms
    • Understand when to use each
 
@@ -828,11 +828,11 @@ catch (Exception ex)
 
 ## 📖 Related Documentation
 
-* **[MT5Account - Master Overview](../API_Reference/MT5Account.md)** - Low-level gRPC API reference.
+* **[MT4Account - Master Overview](../API_Reference/MT4Account.md)** - Low-level gRPC API reference.
 
-* **[MT5Service Documentation](../API_Reference/MT5Service.md)** - Simplified wrapper methods.
+* **[MT4Service Documentation](../API_Reference/MT4Service.md)** - Simplified wrapper methods.
 
-* **[MT5Sugar Documentation](../API_Reference/MT5Sugar.md)** - High-level convenience API.
+* **[MT4Sugar Documentation](../API_Reference/MT4Sugar.md)** - High-level convenience API.
 
 * **[GRPC_STREAM_MANAGEMENT.md](../All_Guides/GRPC_STREAM_MANAGEMENT.md)** - Streaming subscriptions guide.
 

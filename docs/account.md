@@ -5,7 +5,7 @@ The `MT4Client` provides continuous access to account balance, equity, margin re
 ## Reading Account Summary
 
 ```java
-import io.mtapi.mt4.network.parts.AccountInfo;
+import pro.mrpc.mt4.network.parts.AccountInfo;
 
 AccountInfo info = client.getAccountInfo();
 
@@ -34,7 +34,7 @@ The client keeps an in-memory concurrent map of open positions and orders:
 
 ```java
 import java.util.concurrent.ConcurrentHashMap;
-import io.mtapi.mt4.network.messages.res.OrderUpdateEvent;
+import pro.mrpc.mt4.network.messages.res.OrderUpdateEvent;
 
 ConcurrentHashMap<Integer, OrderUpdateEvent> openOrders = client.getOpenOrders();
 
@@ -56,8 +56,8 @@ You can download closed trades over a specific time window:
 ```java
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import io.mtapi.mt4.network.messages.res.OrderHistoryRes;
-import io.mtapi.mt4.network.parts.TradeRecord;
+import pro.mrpc.mt4.network.messages.res.OrderHistoryRes;
+import pro.mrpc.mt4.network.parts.TradeRecord;
 
 int oneYearAgo = (int) Instant.now().minus(365, ChronoUnit.DAYS).getEpochSecond();
 int oneMonthAhead = (int) Instant.now().plus(30, ChronoUnit.DAYS).getEpochSecond();
