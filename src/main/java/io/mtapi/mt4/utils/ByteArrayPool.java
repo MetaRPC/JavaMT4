@@ -8,7 +8,7 @@ public class ByteArrayPool {
     private final ConcurrentHashMap<Integer, ConcurrentLinkedQueue<byte[]>> pool = new ConcurrentHashMap<>();
 
     public byte[] get(int size) {
-        var queue = pool.computeIfAbsent(size, _ -> new ConcurrentLinkedQueue<>());
+        var queue = pool.computeIfAbsent(size, k -> new ConcurrentLinkedQueue<>());
         byte[] array = queue.poll();
         if (array == null) {
             return new byte[size];
@@ -19,6 +19,6 @@ public class ByteArrayPool {
 
     public void release(byte[] array) {
         if (array == null) return;
-        pool.computeIfAbsent(array.length, _ -> new ConcurrentLinkedQueue<>()).offer(array);
+        pool.computeIfAbsent(array.length, k -> new ConcurrentLinkedQueue<>()).offer(array);
     }
 }

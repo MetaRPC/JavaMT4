@@ -430,7 +430,7 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
             queue = new SynchronousQueue<>();
         }
 
-        responseMap.computeIfAbsent(request.getExpectedResponseClass(), _ -> new ConcurrentLinkedQueue<>()).add(queue);
+        responseMap.computeIfAbsent(request.getExpectedResponseClass(), k -> new ConcurrentLinkedQueue<>()).add(queue);
         sendRequestAsync(request);
 
         MetaTraderMessage response;
