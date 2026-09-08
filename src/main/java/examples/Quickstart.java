@@ -33,7 +33,7 @@ public class Quickstart {
             AccountInfo info = client.getAccountInfo();
             if (info != null) {
                 System.out.printf("Account: %d, Balance: %.2f %s, Leverage: 1:%d%n",
-                        info.login, info.balance, info.currency, info.leverage);
+                        login, info.balance, info.currency, info.leverage);
             }
 
             // Place demo order
