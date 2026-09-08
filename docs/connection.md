@@ -1,3 +1,18 @@
+
+## 🆔 Generate Account ID (`GetId`)
+
+> ⚠️ **Important**: You must generate your deterministic account ID with `GetId` **firstly** before connecting or streaming.
+
+Before establishing a connection, call `GetId` with your trading account number and password to obtain your deterministic terminal GUID:
+
+```bash
+curl -X GET "https://mt4.mrpc.pro/GetId?user=YOUR_LOGIN&password=YOUR_PASSWORD" \
+     -H "APIKey: YOUR_API_KEY"
+```
+
+The resulting `id` must be provided as the `id` header alongside `APIKey` for all subsequent operations.
+
+
 # Connection & Authentication
 
 The `MT4Client` class manages the lifecycle of the TCP socket connection, encrypted handshake, and authentication with the MetaTrader 4 server.
@@ -24,7 +39,7 @@ sequenceDiagram
 To establish a connection, instantiate `MT4Client` with the server hostname, port, and a `MessageHandler` implementation:
 
 ```java
-MT4Client client = new MT4Client("mt4mt4.mrpc.pro", 443, new MessageHandler() {
+MT4Client client = new MT4Client("mt4.mrpc.pro", 443, new MessageHandler() {
     @Override
     public void onConnected(MT4Client client) {
         System.out.println("Session connected and authenticated.");
