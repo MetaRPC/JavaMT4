@@ -25,7 +25,7 @@ public class Quickstart {
         String apiKey = System.getenv("MRPC_API_KEY");
 
         System.out.println("Connecting to MetaRPC MT4 (" + host + ":" + port + ")...");
-        MT4Client client = new MT4Client(host, port, new DefaultMessageHandler());
+        MT4Client client = new MT4Client(host, port, new DefaultMessageHandler(), apiKey);
         try {
             client.connect(login, password);
             System.out.println("Successfully connected!");

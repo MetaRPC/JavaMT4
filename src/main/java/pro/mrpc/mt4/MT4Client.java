@@ -57,12 +57,39 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
     // Stored credentials for side connections (order history, etc.)
     private int storedUsername;
     private String storedPassword;
+    private String apiKey;
 
     private final AtomicInteger requestIdCounter = new AtomicInteger(1);
 
     // Sync message response infrastructure (mirrors MT5Client)
     private final ConcurrentHashMap<Class<? extends MetaTraderMessage>, ConcurrentLinkedQueue<SynchronousQueue<MetaTraderMessage>>> responseMap = new ConcurrentHashMap<>();
     private final BlockingQueue<SynchronousQueue<MetaTraderMessage>> queuePool = new LinkedBlockingQueue<>();
+
+    /**
+     * Computes deterministic terminal instance UUID matching .NET Guid byte layout.
+     */
+    public static String computeDeterministicId(long user, String password) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest((user + ":" + password).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            byte[] le = new byte[16];
+            le[0] = hash[3];
+            le[1] = hash[2];
+            le[2] = hash[1];
+            le[3] = hash[0];
+            le[4] = hash[5];
+            le[5] = hash[4];
+            le[6] = hash[7];
+            le[7] = hash[6];
+            System.arraycopy(hash, 8, le, 8, 8);
+            java.nio.ByteBuffer bb = java.nio.ByteBuffer.wrap(le);
+            long high = bb.getLong();
+            long low = bb.getLong();
+            return new java.util.UUID(high, low).toString();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to compute deterministic account ID", e);
+        }
+    }
 
     /**
      * Constructs an MT4Client.
@@ -72,12 +99,43 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
      * @param messageHandler the handler for receiving messages and connection events
      */
     public MT4Client(String host, int port, MessageHandler messageHandler) {
+        this(host, port, messageHandler, null);
+    }
+
+    /**
+     * Constructs an MT4Client with an API key.
+     *
+     * @param host           the hostname or IP of the MT4 server
+     * @param port           the server port
+     * @param messageHandler the handler for receiving messages and connection events
+     * @param apiKey         MetaRPC API key
+     */
+    public MT4Client(String host, int port, MessageHandler messageHandler, String apiKey) {
         super(host, port);
         if (messageHandler == null) throw new IllegalArgumentException("messageHandler cannot be null");
 
         this.messageHandler = messageHandler;
+        this.apiKey = apiKey != null ? apiKey : System.getenv("MRPC_API_KEY");
         this.loginHelper = new LoginHelper(this);
         this.messageDecoder = new MessageDecoder(this, this);
+    }
+
+    /**
+     * Gets the deterministic terminal instance ID for the account.
+     */
+    public String getId() {
+        if (storedUsername != 0 && storedPassword != null) {
+            return computeDeterministicId(storedUsername, storedPassword);
+        }
+        return null;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 
     /**
