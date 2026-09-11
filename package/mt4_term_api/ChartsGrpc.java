@@ -77,6 +77,130 @@ public final class ChartsGrpc {
     return getOpenTerminalChartWithEaMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.AttachEaRequest,
+      mt4_term_api.Mt4TermApiCharts.AttachEaReply> getAttachEaMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AttachEa",
+      requestType = mt4_term_api.Mt4TermApiCharts.AttachEaRequest.class,
+      responseType = mt4_term_api.Mt4TermApiCharts.AttachEaReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.AttachEaRequest,
+      mt4_term_api.Mt4TermApiCharts.AttachEaReply> getAttachEaMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.AttachEaRequest, mt4_term_api.Mt4TermApiCharts.AttachEaReply> getAttachEaMethod;
+    if ((getAttachEaMethod = ChartsGrpc.getAttachEaMethod) == null) {
+      synchronized (ChartsGrpc.class) {
+        if ((getAttachEaMethod = ChartsGrpc.getAttachEaMethod) == null) {
+          ChartsGrpc.getAttachEaMethod = getAttachEaMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiCharts.AttachEaRequest, mt4_term_api.Mt4TermApiCharts.AttachEaReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AttachEa"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.AttachEaRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.AttachEaReply.getDefaultInstance()))
+              .setSchemaDescriptor(new ChartsMethodDescriptorSupplier("AttachEa"))
+              .build();
+        }
+      }
+    }
+    return getAttachEaMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest,
+      mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> getGetRunningEasMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetRunningEas",
+      requestType = mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest.class,
+      responseType = mt4_term_api.Mt4TermApiCharts.GetRunningEasReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest,
+      mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> getGetRunningEasMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest, mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> getGetRunningEasMethod;
+    if ((getGetRunningEasMethod = ChartsGrpc.getGetRunningEasMethod) == null) {
+      synchronized (ChartsGrpc.class) {
+        if ((getGetRunningEasMethod = ChartsGrpc.getGetRunningEasMethod) == null) {
+          ChartsGrpc.getGetRunningEasMethod = getGetRunningEasMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest, mt4_term_api.Mt4TermApiCharts.GetRunningEasReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetRunningEas"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.GetRunningEasReply.getDefaultInstance()))
+              .setSchemaDescriptor(new ChartsMethodDescriptorSupplier("GetRunningEas"))
+              .build();
+        }
+      }
+    }
+    return getGetRunningEasMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest,
+      mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> getGetEaLogsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetEaLogs",
+      requestType = mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest.class,
+      responseType = mt4_term_api.Mt4TermApiCharts.GetEaLogsReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest,
+      mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> getGetEaLogsMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest, mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> getGetEaLogsMethod;
+    if ((getGetEaLogsMethod = ChartsGrpc.getGetEaLogsMethod) == null) {
+      synchronized (ChartsGrpc.class) {
+        if ((getGetEaLogsMethod = ChartsGrpc.getGetEaLogsMethod) == null) {
+          ChartsGrpc.getGetEaLogsMethod = getGetEaLogsMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest, mt4_term_api.Mt4TermApiCharts.GetEaLogsReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetEaLogs"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.GetEaLogsReply.getDefaultInstance()))
+              .setSchemaDescriptor(new ChartsMethodDescriptorSupplier("GetEaLogs"))
+              .build();
+        }
+      }
+    }
+    return getGetEaLogsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StopEaRequest,
+      mt4_term_api.Mt4TermApiCharts.StopEaReply> getStopEaMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "StopEa",
+      requestType = mt4_term_api.Mt4TermApiCharts.StopEaRequest.class,
+      responseType = mt4_term_api.Mt4TermApiCharts.StopEaReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StopEaRequest,
+      mt4_term_api.Mt4TermApiCharts.StopEaReply> getStopEaMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StopEaRequest, mt4_term_api.Mt4TermApiCharts.StopEaReply> getStopEaMethod;
+    if ((getStopEaMethod = ChartsGrpc.getStopEaMethod) == null) {
+      synchronized (ChartsGrpc.class) {
+        if ((getStopEaMethod = ChartsGrpc.getStopEaMethod) == null) {
+          ChartsGrpc.getStopEaMethod = getStopEaMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiCharts.StopEaRequest, mt4_term_api.Mt4TermApiCharts.StopEaReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StopEa"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.StopEaRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.StopEaReply.getDefaultInstance()))
+              .setSchemaDescriptor(new ChartsMethodDescriptorSupplier("StopEa"))
+              .build();
+        }
+      }
+    }
+    return getStopEaMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -139,6 +263,34 @@ public final class ChartsGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOpenTerminalChartWithEaMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.AttachEaReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAttachEaMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRunningEasMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetEaLogsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StopEaReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStopEaMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -155,6 +307,34 @@ public final class ChartsGrpc {
                 mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest,
                 mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply>(
                   this, METHODID_OPEN_TERMINAL_CHART_WITH_EA)))
+          .addMethod(
+            getAttachEaMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiCharts.AttachEaRequest,
+                mt4_term_api.Mt4TermApiCharts.AttachEaReply>(
+                  this, METHODID_ATTACH_EA)))
+          .addMethod(
+            getGetRunningEasMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest,
+                mt4_term_api.Mt4TermApiCharts.GetRunningEasReply>(
+                  this, METHODID_GET_RUNNING_EAS)))
+          .addMethod(
+            getGetEaLogsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest,
+                mt4_term_api.Mt4TermApiCharts.GetEaLogsReply>(
+                  this, METHODID_GET_EA_LOGS)))
+          .addMethod(
+            getStopEaMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiCharts.StopEaRequest,
+                mt4_term_api.Mt4TermApiCharts.StopEaReply>(
+                  this, METHODID_STOP_EA)))
           .build();
     }
   }
@@ -188,6 +368,38 @@ public final class ChartsGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getOpenTerminalChartWithEaMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.AttachEaReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getAttachEaMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetRunningEasMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetEaLogsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StopEaReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getStopEaMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -216,6 +428,34 @@ public final class ChartsGrpc {
     public mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply openTerminalChartWithEa(mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getOpenTerminalChartWithEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.AttachEaReply attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAttachEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.GetRunningEasReply getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetRunningEasMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.GetEaLogsReply getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetEaLogsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.StopEaReply stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getStopEaMethod(), getCallOptions(), request);
     }
   }
 
@@ -248,10 +488,46 @@ public final class ChartsGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getOpenTerminalChartWithEaMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiCharts.AttachEaReply> attachEa(
+        mt4_term_api.Mt4TermApiCharts.AttachEaRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getAttachEaMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> getRunningEas(
+        mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetRunningEasMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> getEaLogs(
+        mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetEaLogsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiCharts.StopEaReply> stopEa(
+        mt4_term_api.Mt4TermApiCharts.StopEaRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getStopEaMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_EA_PARAMS = 0;
   private static final int METHODID_OPEN_TERMINAL_CHART_WITH_EA = 1;
+  private static final int METHODID_ATTACH_EA = 2;
+  private static final int METHODID_GET_RUNNING_EAS = 3;
+  private static final int METHODID_GET_EA_LOGS = 4;
+  private static final int METHODID_STOP_EA = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -277,6 +553,22 @@ public final class ChartsGrpc {
         case METHODID_OPEN_TERMINAL_CHART_WITH_EA:
           serviceImpl.openTerminalChartWithEa((mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest) request,
               (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply>) responseObserver);
+          break;
+        case METHODID_ATTACH_EA:
+          serviceImpl.attachEa((mt4_term_api.Mt4TermApiCharts.AttachEaRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.AttachEaReply>) responseObserver);
+          break;
+        case METHODID_GET_RUNNING_EAS:
+          serviceImpl.getRunningEas((mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetRunningEasReply>) responseObserver);
+          break;
+        case METHODID_GET_EA_LOGS:
+          serviceImpl.getEaLogs((mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetEaLogsReply>) responseObserver);
+          break;
+        case METHODID_STOP_EA:
+          serviceImpl.stopEa((mt4_term_api.Mt4TermApiCharts.StopEaRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StopEaReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -341,6 +633,10 @@ public final class ChartsGrpc {
               .setSchemaDescriptor(new ChartsFileDescriptorSupplier())
               .addMethod(getGetEaParamsMethod())
               .addMethod(getOpenTerminalChartWithEaMethod())
+              .addMethod(getAttachEaMethod())
+              .addMethod(getGetRunningEasMethod())
+              .addMethod(getGetEaLogsMethod())
+              .addMethod(getStopEaMethod())
               .build();
         }
       }

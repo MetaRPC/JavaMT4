@@ -13657,35 +13657,6 @@ public final class Mt4TermApiConnection {
 
     /**
      * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return Whether the baseChartSymbol field is set.
-     */
-    boolean hasBaseChartSymbol();
-    /**
-     * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return The baseChartSymbol.
-     */
-    java.lang.String getBaseChartSymbol();
-    /**
-     * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return The bytes for baseChartSymbol.
-     */
-    com.google.protobuf.ByteString
-        getBaseChartSymbolBytes();
-
-    /**
-     * <pre>
      * EA files to add to terminal instance [Optional]
      * </pre>
      *
@@ -13810,7 +13781,6 @@ public final class Mt4TermApiConnection {
     private ConnectExRequest() {
       password_ = "";
       mtClusterName_ = "";
-      baseChartSymbol_ = "";
       expertsToAdd_ = java.util.Collections.emptyList();
       name_ = "";
     }
@@ -13863,34 +13833,28 @@ public final class Mt4TermApiConnection {
               mtClusterName_ = s;
               break;
             }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              baseChartSymbol_ = s;
-              break;
-            }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
                 expertsToAdd_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiConnection.ExpertAdviser>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               expertsToAdd_.add(
                   input.readMessage(mt4_term_api.Mt4TermApiConnection.ExpertAdviser.parser(), extensionRegistry));
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               timeoutSeconds_ = input.readUInt32();
               break;
             }
             case 58: {
               java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               name_ = s;
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               expiration_ = input.readUInt32();
               break;
             }
@@ -13911,7 +13875,7 @@ public final class Mt4TermApiConnection {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
           expertsToAdd_ = java.util.Collections.unmodifiableList(expertsToAdd_);
         }
         this.unknownFields = unknownFields.build();
@@ -14039,64 +14003,6 @@ public final class Mt4TermApiConnection {
       }
     }
 
-    public static final int BASE_CHART_SYMBOL_FIELD_NUMBER = 4;
-    private volatile java.lang.Object baseChartSymbol_;
-    /**
-     * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return Whether the baseChartSymbol field is set.
-     */
-    @java.lang.Override
-    public boolean hasBaseChartSymbol() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return The baseChartSymbol.
-     */
-    @java.lang.Override
-    public java.lang.String getBaseChartSymbol() {
-      java.lang.Object ref = baseChartSymbol_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        baseChartSymbol_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * Base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 4;</code>
-     * @return The bytes for baseChartSymbol.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getBaseChartSymbolBytes() {
-      java.lang.Object ref = baseChartSymbol_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        baseChartSymbol_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int EXPERTS_TO_ADD_FIELD_NUMBER = 5;
     private java.util.List<mt4_term_api.Mt4TermApiConnection.ExpertAdviser> expertsToAdd_;
     /**
@@ -14169,7 +14075,7 @@ public final class Mt4TermApiConnection {
      */
     @java.lang.Override
     public boolean hasTimeoutSeconds() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
@@ -14196,7 +14102,7 @@ public final class Mt4TermApiConnection {
      */
     @java.lang.Override
     public boolean hasName() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <pre>
@@ -14254,7 +14160,7 @@ public final class Mt4TermApiConnection {
      */
     @java.lang.Override
     public boolean hasExpiration() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <pre>
@@ -14292,19 +14198,16 @@ public final class Mt4TermApiConnection {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mtClusterName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, mtClusterName_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, baseChartSymbol_);
-      }
       for (int i = 0; i < expertsToAdd_.size(); i++) {
         output.writeMessage(5, expertsToAdd_.get(i));
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         output.writeUInt32(6, timeoutSeconds_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, name_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000004) != 0)) {
         output.writeUInt32(8, expiration_);
       }
       unknownFields.writeTo(output);
@@ -14326,21 +14229,18 @@ public final class Mt4TermApiConnection {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mtClusterName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, mtClusterName_);
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, baseChartSymbol_);
-      }
       for (int i = 0; i < expertsToAdd_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, expertsToAdd_.get(i));
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, timeoutSeconds_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, name_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(8, expiration_);
       }
@@ -14365,11 +14265,6 @@ public final class Mt4TermApiConnection {
           .equals(other.getPassword())) return false;
       if (!getMtClusterName()
           .equals(other.getMtClusterName())) return false;
-      if (hasBaseChartSymbol() != other.hasBaseChartSymbol()) return false;
-      if (hasBaseChartSymbol()) {
-        if (!getBaseChartSymbol()
-            .equals(other.getBaseChartSymbol())) return false;
-      }
       if (!getExpertsToAddList()
           .equals(other.getExpertsToAddList())) return false;
       if (hasTimeoutSeconds() != other.hasTimeoutSeconds()) return false;
@@ -14405,10 +14300,6 @@ public final class Mt4TermApiConnection {
       hash = (53 * hash) + getPassword().hashCode();
       hash = (37 * hash) + MT_CLUSTER_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getMtClusterName().hashCode();
-      if (hasBaseChartSymbol()) {
-        hash = (37 * hash) + BASE_CHART_SYMBOL_FIELD_NUMBER;
-        hash = (53 * hash) + getBaseChartSymbol().hashCode();
-      }
       if (getExpertsToAddCount() > 0) {
         hash = (37 * hash) + EXPERTS_TO_ADD_FIELD_NUMBER;
         hash = (53 * hash) + getExpertsToAddList().hashCode();
@@ -14565,20 +14456,18 @@ public final class Mt4TermApiConnection {
 
         mtClusterName_ = "";
 
-        baseChartSymbol_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         if (expertsToAddBuilder_ == null) {
           expertsToAdd_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           expertsToAddBuilder_.clear();
         }
         timeoutSeconds_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         expiration_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -14610,30 +14499,26 @@ public final class Mt4TermApiConnection {
         result.user_ = user_;
         result.password_ = password_;
         result.mtClusterName_ = mtClusterName_;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.baseChartSymbol_ = baseChartSymbol_;
         if (expertsToAddBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0)) {
+          if (((bitField0_ & 0x00000001) != 0)) {
             expertsToAdd_ = java.util.Collections.unmodifiableList(expertsToAdd_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.expertsToAdd_ = expertsToAdd_;
         } else {
           result.expertsToAdd_ = expertsToAddBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
+        if (((from_bitField0_ & 0x00000002) != 0)) {
           result.timeoutSeconds_ = timeoutSeconds_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           to_bitField0_ |= 0x00000002;
         }
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000010) != 0)) {
+        if (((from_bitField0_ & 0x00000008) != 0)) {
           result.expiration_ = expiration_;
-          to_bitField0_ |= 0x00000008;
+          to_bitField0_ |= 0x00000004;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -14695,16 +14580,11 @@ public final class Mt4TermApiConnection {
           mtClusterName_ = other.mtClusterName_;
           onChanged();
         }
-        if (other.hasBaseChartSymbol()) {
-          bitField0_ |= 0x00000001;
-          baseChartSymbol_ = other.baseChartSymbol_;
-          onChanged();
-        }
         if (expertsToAddBuilder_ == null) {
           if (!other.expertsToAdd_.isEmpty()) {
             if (expertsToAdd_.isEmpty()) {
               expertsToAdd_ = other.expertsToAdd_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureExpertsToAddIsMutable();
               expertsToAdd_.addAll(other.expertsToAdd_);
@@ -14717,7 +14597,7 @@ public final class Mt4TermApiConnection {
               expertsToAddBuilder_.dispose();
               expertsToAddBuilder_ = null;
               expertsToAdd_ = other.expertsToAdd_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               expertsToAddBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getExpertsToAddFieldBuilder() : null;
@@ -14730,7 +14610,7 @@ public final class Mt4TermApiConnection {
           setTimeoutSeconds(other.getTimeoutSeconds());
         }
         if (other.hasName()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
           name_ = other.name_;
           onChanged();
         }
@@ -15002,119 +14882,12 @@ public final class Mt4TermApiConnection {
         return this;
       }
 
-      private java.lang.Object baseChartSymbol_ = "";
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @return Whether the baseChartSymbol field is set.
-       */
-      public boolean hasBaseChartSymbol() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @return The baseChartSymbol.
-       */
-      public java.lang.String getBaseChartSymbol() {
-        java.lang.Object ref = baseChartSymbol_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          baseChartSymbol_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @return The bytes for baseChartSymbol.
-       */
-      public com.google.protobuf.ByteString
-          getBaseChartSymbolBytes() {
-        java.lang.Object ref = baseChartSymbol_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          baseChartSymbol_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @param value The baseChartSymbol to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBaseChartSymbol(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        baseChartSymbol_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearBaseChartSymbol() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        baseChartSymbol_ = getDefaultInstance().getBaseChartSymbol();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * Base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 4;</code>
-       * @param value The bytes for baseChartSymbol to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBaseChartSymbolBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000001;
-        baseChartSymbol_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.util.List<mt4_term_api.Mt4TermApiConnection.ExpertAdviser> expertsToAdd_ =
         java.util.Collections.emptyList();
       private void ensureExpertsToAddIsMutable() {
-        if (!((bitField0_ & 0x00000002) != 0)) {
+        if (!((bitField0_ & 0x00000001) != 0)) {
           expertsToAdd_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiConnection.ExpertAdviser>(expertsToAdd_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -15308,7 +15081,7 @@ public final class Mt4TermApiConnection {
       public Builder clearExpertsToAdd() {
         if (expertsToAddBuilder_ == null) {
           expertsToAdd_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           expertsToAddBuilder_.clear();
@@ -15413,7 +15186,7 @@ public final class Mt4TermApiConnection {
           expertsToAddBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               mt4_term_api.Mt4TermApiConnection.ExpertAdviser, mt4_term_api.Mt4TermApiConnection.ExpertAdviser.Builder, mt4_term_api.Mt4TermApiConnection.ExpertAdviserOrBuilder>(
                   expertsToAdd_,
-                  ((bitField0_ & 0x00000002) != 0),
+                  ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
           expertsToAdd_ = null;
@@ -15432,7 +15205,7 @@ public final class Mt4TermApiConnection {
        */
       @java.lang.Override
       public boolean hasTimeoutSeconds() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -15456,7 +15229,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder setTimeoutSeconds(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         timeoutSeconds_ = value;
         onChanged();
         return this;
@@ -15470,7 +15243,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder clearTimeoutSeconds() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         timeoutSeconds_ = 0;
         onChanged();
         return this;
@@ -15486,7 +15259,7 @@ public final class Mt4TermApiConnection {
        * @return Whether the name field is set.
        */
       public boolean hasName() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
        * <pre>
@@ -15543,7 +15316,7 @@ public final class Mt4TermApiConnection {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
@@ -15557,7 +15330,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -15577,7 +15350,7 @@ public final class Mt4TermApiConnection {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         name_ = value;
         onChanged();
         return this;
@@ -15594,7 +15367,7 @@ public final class Mt4TermApiConnection {
        */
       @java.lang.Override
       public boolean hasExpiration() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -15618,7 +15391,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder setExpiration(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         expiration_ = value;
         onChanged();
         return this;
@@ -15632,7 +15405,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder clearExpiration() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         expiration_ = 0;
         onChanged();
         return this;
@@ -15696,35 +15469,6 @@ public final class Mt4TermApiConnection {
 
     /**
      * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return Whether the baseChartSymbol field is set.
-     */
-    boolean hasBaseChartSymbol();
-    /**
-     * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return The baseChartSymbol.
-     */
-    java.lang.String getBaseChartSymbol();
-    /**
-     * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return The bytes for baseChartSymbol.
-     */
-    com.google.protobuf.ByteString
-        getBaseChartSymbolBytes();
-
-    /**
-     * <pre>
      * override how long to wait for the terminal (default 60) [Optional]
      * </pre>
      *
@@ -15765,7 +15509,7 @@ public final class Mt4TermApiConnection {
    * <pre>
    * Rebuild a terminal from token_details_mt4. All the credentials (User/Password/Server or
    * Host+Port, proxy, servers.dat, PFX, HardwareId, Build) come from the DB row; the request
-   * carries only optional wait/base-chart overrides. The terminal id MUST be supplied in the
+   * carries only optional wait overrides. The terminal id MUST be supplied in the
    * grpc 'id' header (same as every other Connect*&#47;query call).
    * </pre>
    *
@@ -15781,7 +15525,6 @@ public final class Mt4TermApiConnection {
       super(builder);
     }
     private ConnectByTokenRequest() {
-      baseChartSymbol_ = "";
     }
 
     @java.lang.Override
@@ -15815,19 +15558,13 @@ public final class Mt4TermApiConnection {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              baseChartSymbol_ = s;
-              break;
-            }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               timeoutSeconds_ = input.readUInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               expiration_ = input.readUInt32();
               break;
             }
@@ -15866,64 +15603,6 @@ public final class Mt4TermApiConnection {
     }
 
     private int bitField0_;
-    public static final int BASE_CHART_SYMBOL_FIELD_NUMBER = 1;
-    private volatile java.lang.Object baseChartSymbol_;
-    /**
-     * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return Whether the baseChartSymbol field is set.
-     */
-    @java.lang.Override
-    public boolean hasBaseChartSymbol() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return The baseChartSymbol.
-     */
-    @java.lang.Override
-    public java.lang.String getBaseChartSymbol() {
-      java.lang.Object ref = baseChartSymbol_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        baseChartSymbol_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * override the base chart symbol [Optional]
-     * </pre>
-     *
-     * <code>optional string base_chart_symbol = 1;</code>
-     * @return The bytes for baseChartSymbol.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getBaseChartSymbolBytes() {
-      java.lang.Object ref = baseChartSymbol_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        baseChartSymbol_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     public static final int TIMEOUT_SECONDS_FIELD_NUMBER = 2;
     private int timeoutSeconds_;
     /**
@@ -15936,7 +15615,7 @@ public final class Mt4TermApiConnection {
      */
     @java.lang.Override
     public boolean hasTimeoutSeconds() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <pre>
@@ -15963,7 +15642,7 @@ public final class Mt4TermApiConnection {
      */
     @java.lang.Override
     public boolean hasExpiration() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <pre>
@@ -15993,12 +15672,9 @@ public final class Mt4TermApiConnection {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, baseChartSymbol_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
         output.writeUInt32(2, timeoutSeconds_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         output.writeUInt32(3, expiration_);
       }
       unknownFields.writeTo(output);
@@ -16011,13 +15687,10 @@ public final class Mt4TermApiConnection {
 
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, baseChartSymbol_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, timeoutSeconds_);
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, expiration_);
       }
@@ -16036,11 +15709,6 @@ public final class Mt4TermApiConnection {
       }
       mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest other = (mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest) obj;
 
-      if (hasBaseChartSymbol() != other.hasBaseChartSymbol()) return false;
-      if (hasBaseChartSymbol()) {
-        if (!getBaseChartSymbol()
-            .equals(other.getBaseChartSymbol())) return false;
-      }
       if (hasTimeoutSeconds() != other.hasTimeoutSeconds()) return false;
       if (hasTimeoutSeconds()) {
         if (getTimeoutSeconds()
@@ -16062,10 +15730,6 @@ public final class Mt4TermApiConnection {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasBaseChartSymbol()) {
-        hash = (37 * hash) + BASE_CHART_SYMBOL_FIELD_NUMBER;
-        hash = (53 * hash) + getBaseChartSymbol().hashCode();
-      }
       if (hasTimeoutSeconds()) {
         hash = (37 * hash) + TIMEOUT_SECONDS_FIELD_NUMBER;
         hash = (53 * hash) + getTimeoutSeconds();
@@ -16173,7 +15837,7 @@ public final class Mt4TermApiConnection {
      * <pre>
      * Rebuild a terminal from token_details_mt4. All the credentials (User/Password/Server or
      * Host+Port, proxy, servers.dat, PFX, HardwareId, Build) come from the DB row; the request
-     * carries only optional wait/base-chart overrides. The terminal id MUST be supplied in the
+     * carries only optional wait overrides. The terminal id MUST be supplied in the
      * grpc 'id' header (same as every other Connect*&#47;query call).
      * </pre>
      *
@@ -16214,12 +15878,10 @@ public final class Mt4TermApiConnection {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        baseChartSymbol_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         timeoutSeconds_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         expiration_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -16249,16 +15911,12 @@ public final class Mt4TermApiConnection {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.timeoutSeconds_ = timeoutSeconds_;
           to_bitField0_ |= 0x00000001;
         }
-        result.baseChartSymbol_ = baseChartSymbol_;
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.timeoutSeconds_ = timeoutSeconds_;
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
           result.expiration_ = expiration_;
-          to_bitField0_ |= 0x00000004;
+          to_bitField0_ |= 0x00000002;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -16309,11 +15967,6 @@ public final class Mt4TermApiConnection {
 
       public Builder mergeFrom(mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest other) {
         if (other == mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest.getDefaultInstance()) return this;
-        if (other.hasBaseChartSymbol()) {
-          bitField0_ |= 0x00000001;
-          baseChartSymbol_ = other.baseChartSymbol_;
-          onChanged();
-        }
         if (other.hasTimeoutSeconds()) {
           setTimeoutSeconds(other.getTimeoutSeconds());
         }
@@ -16350,113 +16003,6 @@ public final class Mt4TermApiConnection {
       }
       private int bitField0_;
 
-      private java.lang.Object baseChartSymbol_ = "";
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @return Whether the baseChartSymbol field is set.
-       */
-      public boolean hasBaseChartSymbol() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @return The baseChartSymbol.
-       */
-      public java.lang.String getBaseChartSymbol() {
-        java.lang.Object ref = baseChartSymbol_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          baseChartSymbol_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @return The bytes for baseChartSymbol.
-       */
-      public com.google.protobuf.ByteString
-          getBaseChartSymbolBytes() {
-        java.lang.Object ref = baseChartSymbol_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          baseChartSymbol_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @param value The baseChartSymbol to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBaseChartSymbol(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        baseChartSymbol_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearBaseChartSymbol() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        baseChartSymbol_ = getDefaultInstance().getBaseChartSymbol();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * override the base chart symbol [Optional]
-       * </pre>
-       *
-       * <code>optional string base_chart_symbol = 1;</code>
-       * @param value The bytes for baseChartSymbol to set.
-       * @return This builder for chaining.
-       */
-      public Builder setBaseChartSymbolBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000001;
-        baseChartSymbol_ = value;
-        onChanged();
-        return this;
-      }
-
       private int timeoutSeconds_ ;
       /**
        * <pre>
@@ -16468,7 +16014,7 @@ public final class Mt4TermApiConnection {
        */
       @java.lang.Override
       public boolean hasTimeoutSeconds() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
        * <pre>
@@ -16492,7 +16038,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder setTimeoutSeconds(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         timeoutSeconds_ = value;
         onChanged();
         return this;
@@ -16506,7 +16052,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder clearTimeoutSeconds() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         timeoutSeconds_ = 0;
         onChanged();
         return this;
@@ -16523,7 +16069,7 @@ public final class Mt4TermApiConnection {
        */
       @java.lang.Override
       public boolean hasExpiration() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000002) != 0);
       }
       /**
        * <pre>
@@ -16547,7 +16093,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder setExpiration(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         expiration_ = value;
         onChanged();
         return this;
@@ -16561,7 +16107,7 @@ public final class Mt4TermApiConnection {
        * @return This builder for chaining.
        */
       public Builder clearExpiration() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         expiration_ = 0;
         onChanged();
         return this;
@@ -43788,155 +43334,154 @@ public final class Mt4TermApiConnection {
       "rNameData.BrokerServer\032l\n\014BrokerServer\022\014" +
       "\n\004name\030\001 \001(\t\022\025\n\010logo_url\030\002 \001(\tH\000\210\001\001\022\021\n\004s" +
       "ite\030\003 \001(\tH\001\210\001\001\022\016\n\006access\030\004 \003(\tB\013\n\t_logo_" +
-      "urlB\007\n\005_site\"\254\002\n\020ConnectExRequest\022\014\n\004use" +
+      "urlB\007\n\005_site\"\217\002\n\020ConnectExRequest\022\014\n\004use" +
       "r\030\001 \001(\004\022\020\n\010password\030\002 \001(\t\022\027\n\017mt_cluster_" +
-      "name\030\003 \001(\t\022\036\n\021base_chart_symbol\030\004 \001(\tH\000\210" +
-      "\001\001\0223\n\016experts_to_add\030\005 \003(\0132\033.mt4_term_ap" +
-      "i.ExpertAdviser\022\034\n\017timeout_seconds\030\006 \001(\r" +
-      "H\001\210\001\001\022\021\n\004name\030\007 \001(\tH\002\210\001\001\022\027\n\nexpiration\030\010" +
-      " \001(\rH\003\210\001\001B\024\n\022_base_chart_symbolB\022\n\020_time" +
-      "out_secondsB\007\n\005_nameB\r\n\013_expiration\"\247\001\n\025" +
-      "ConnectByTokenRequest\022\036\n\021base_chart_symb" +
-      "ol\030\001 \001(\tH\000\210\001\001\022\034\n\017timeout_seconds\030\002 \001(\rH\001" +
-      "\210\001\001\022\027\n\nexpiration\030\003 \001(\rH\002\210\001\001B\024\n\022_base_ch" +
-      "art_symbolB\022\n\020_timeout_secondsB\r\n\013_expir" +
-      "ation\"m\n\016ConnectExReply\022)\n\004data\030\001 \001(\0132\031." +
-      "mt4_term_api.ConnectDataH\000\022$\n\005error\030\002 \001(" +
-      "\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"J\n\020" +
-      "ReconnectRequest\022\037\n\022force_reconnection\030\001" +
-      " \001(\010H\000\210\001\001B\025\n\023_force_reconnection\"o\n\016Reco" +
-      "nnectReply\022+\n\004data\030\001 \001(\0132\033.mt4_term_api." +
-      "ReconnectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
-      "m_api.ErrorH\000B\n\n\010response\"\341\001\n\rReconnectD" +
-      "ata\022\036\n\026terminal_was_recreated\030\001 \001(\010\0221\n\rt" +
-      "erminal_type\030\002 \001(\0162\032.mt4_term_api.Termin" +
-      "alType\022\036\n\026terminal_instance_guid\030\003 \001(\t\022+" +
-      "\n#old_terminal_full_live_time_seconds\030\004 " +
-      "\001(\003\0220\n\rold_log_files\030\005 \003(\0132\031.mt4_term_ap" +
-      "i.LogFileInfo\"\367\001\n\016ConnectRequest\022\014\n\004user" +
-      "\030\001 \001(\004\022\020\n\010password\030\002 \001(\t\022\014\n\004host\030\003 \001(\t\022\014" +
-      "\n\004port\030\004 \001(\005\0223\n\016experts_to_add\030\005 \003(\0132\033.m" +
-      "t4_term_api.ExpertAdviser\022\034\n\017timeout_sec" +
-      "onds\030\006 \001(\rH\000\210\001\001\022\021\n\004name\030\007 \001(\tH\001\210\001\001\022\027\n\nex" +
-      "piration\030\010 \001(\rH\002\210\001\001B\022\n\020_timeout_secondsB" +
-      "\007\n\005_nameB\r\n\013_expiration\"8\n\rExpertAdviser" +
-      "\022\021\n\tfile_name\030\001 \001(\t\022\024\n\014file_content\030\002 \001(" +
-      "\014\"k\n\014ConnectReply\022)\n\004data\030\001 \001(\0132\031.mt4_te" +
-      "rm_api.ConnectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt" +
-      "4_term_api.ErrorH\000B\n\n\010response\"`\n\013Connec" +
-      "tData\022\036\n\026terminal_instance_guid\030\001 \001(\t\0221\n" +
-      "\rterminal_type\030\003 \001(\0162\032.mt4_term_api.Term" +
-      "inalType\"\371\002\n\023ConnectProxyRequest\022\014\n\004user" +
-      "\030\001 \001(\004\022\020\n\010password\030\002 \001(\t\022\014\n\004host\030\003 \001(\t\022\014" +
-      "\n\004port\030\004 \001(\005\022\021\n\tproxyUser\030\005 \001(\t\022\025\n\rproxy" +
-      "Password\030\006 \001(\t\022\021\n\tproxyHost\030\007 \001(\t\022\021\n\tpro" +
-      "xyPort\030\010 \001(\r\022+\n\tproxyType\030\t \001(\0162\030.mt4_te" +
-      "rm_api.ProxyTypes\0223\n\016experts_to_add\030\n \003(" +
-      "\0132\033.mt4_term_api.ExpertAdviser\022\034\n\017timeou" +
-      "t_seconds\030\013 \001(\rH\000\210\001\001\022\021\n\004name\030\014 \001(\tH\001\210\001\001\022" +
-      "\027\n\nexpiration\030\r \001(\rH\002\210\001\001B\022\n\020_timeout_sec" +
-      "ondsB\007\n\005_nameB\r\n\013_expiration\"u\n\021ConnectP" +
-      "roxyReply\022.\n\004data\030\001 \001(\0132\036.mt4_term_api.C" +
-      "onnectProxyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_t" +
-      "erm_api.ErrorH\000B\n\n\010response\"`\n\020ConnectPr" +
-      "oxyData\022\031\n\021unique_identifier\030\001 \001(\t\0221\n\rte" +
-      "rminal_type\030\002 \001(\0162\032.mt4_term_api.Termina" +
-      "lType\"\025\n\023CheckConnectRequest\"u\n\021CheckCon" +
-      "nectReply\022.\n\004data\030\001 \001(\0132\036.mt4_term_api.C" +
-      "heckConnectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_t" +
-      "erm_api.ErrorH\000B\n\n\010response\"f\n\020CheckConn" +
-      "ectData\022\031\n\021unique_identifier\030\001 \001(\t\0227\n\014he" +
-      "alth_check\030\002 \001(\0132!.mt4_term_api.Terminal" +
-      "HealthCheck\"i\n\023TerminalHealthCheck\022\020\n\010is" +
-      "_alive\030\001 \001(\010\022\024\n\014api_is_alive\030\002 \001(\010\022*\n\"te" +
-      "rminal_is_connected_to_mt_server\030\003 \001(\010\"3" +
-      "\n\021DisconnectRequest\022\023\n\006reason\030\001 \001(\tH\000\210\001\001" +
-      "B\t\n\007_reason\"q\n\017DisconnectReply\022,\n\004data\030\001" +
-      " \001(\0132\034.mt4_term_api.DisconnectDataH\000\022$\n\005" +
-      "error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010re" +
-      "sponse\"K\n\016DisconnectData\022\031\n\021unique_ident" +
-      "ifier\030\001 \001(\t\022\036\n\026full_life_time_seconds\030\002 " +
-      "\001(\003\".\n\014GetIdRequest\022\014\n\004user\030\001 \001(\t\022\020\n\010pas" +
-      "sword\030\002 \001(\t\"g\n\nGetIdReply\022\'\n\004data\030\001 \001(\0132" +
-      "\027.mt4_term_api.GetIdDataH\000\022$\n\005error\030\002 \001(" +
-      "\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"\027\n\t" +
-      "GetIdData\022\n\n\002id\030\001 \001(\t\"\025\n\023ConnectStateReq" +
-      "uest\"u\n\021ConnectStateReply\022.\n\004data\030\001 \001(\0132" +
-      "\036.mt4_term_api.ConnectStateDataH\000\022$\n\005err" +
-      "or\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respo" +
-      "nse\"-\n\025OnConnectStateRequest\022\024\n\014terminal" +
-      "_ids\030\001 \003(\t\"w\n\023OnConnectStateReply\022.\n\004dat" +
-      "a\030\001 \001(\0132\036.mt4_term_api.ConnectStateDataH" +
-      "\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B" +
-      "\n\n\010response\"\322\001\n\020ConnectStateData\022\n\n\002id\030\001" +
-      " \001(\t\022\r\n\005state\030\002 \001(\t\022\024\n\014is_connected\030\003 \001(" +
-      "\010\022\020\n\010is_alive\030\004 \001(\010\022\024\n\014api_is_alive\030\005 \001(" +
-      "\010\022\016\n\006server\030\006 \001(\t\022\017\n\007account\030\007 \001(\004\022\025\n\rer" +
-      "ror_message\030\010 \001(\t\022-\n\ttimestamp\030\t \001(\0132\032.g" +
-      "oogle.protobuf.Timestamp\"\031\n\027ConnectionSt" +
-      "atusRequest\"}\n\025ConnectionStatusReply\0222\n\004" +
-      "data\030\001 \001(\0132\".mt4_term_api.ConnectionStat" +
-      "usDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.E" +
-      "rrorH\000B\n\n\010response\"\247\001\n\024ConnectionStatusD" +
-      "ata\022\n\n\002id\030\001 \001(\t\022\024\n\014is_connected\030\002 \001(\010\022\020\n" +
-      "\010is_alive\030\003 \001(\010\022\024\n\014api_is_alive\030\004 \001(\010\022\016\n" +
-      "\006server\030\005 \001(\t\022\017\n\007account\030\006 \001(\004\022\025\n\rerror_" +
-      "message\030\007 \001(\t\022\r\n\005state\030\010 \001(\t*9\n\nProxyTyp" +
-      "es\022\010\n\004None\020\000\022\t\n\005Https\020\001\022\n\n\006Socks4\020\002\022\n\n\006S" +
-      "ocks5\020\003* \n\014TerminalType\022\007\n\003MT4\020\000\022\007\n\003MT5\020" +
-      "\0012\335\014\n\nConnection\022]\n\tConnectEx\022\036.mt4_term" +
-      "_api.ConnectExRequest\032\034.mt4_term_api.Con" +
-      "nectExReply\"\022\202\323\344\223\002\014\022\n/ConnectEx\022U\n\007Conne" +
-      "ct\022\034.mt4_term_api.ConnectRequest\032\032.mt4_t" +
-      "erm_api.ConnectReply\"\020\202\323\344\223\002\n\022\010/Connect\022i" +
-      "\n\014ConnectProxy\022!.mt4_term_api.ConnectPro" +
-      "xyRequest\032\037.mt4_term_api.ConnectProxyRep" +
-      "ly\"\025\202\323\344\223\002\017\022\r/ConnectProxy\022i\n\014CheckConnec" +
-      "t\022!.mt4_term_api.CheckConnectRequest\032\037.m" +
-      "t4_term_api.CheckConnectReply\"\025\202\323\344\223\002\017\022\r/" +
-      "CheckConnect\022i\n\014ConnectState\022!.mt4_term_" +
-      "api.ConnectStateRequest\032\037.mt4_term_api.C" +
-      "onnectStateReply\"\025\202\323\344\223\002\017\022\r/ConnectState\022" +
-      "s\n\016OnConnectState\022#.mt4_term_api.OnConne" +
-      "ctStateRequest\032!.mt4_term_api.OnConnectS" +
-      "tateReply\"\027\202\323\344\223\002\021\022\017/OnConnectState0\001\022y\n\020" +
-      "ConnectionStatus\022%.mt4_term_api.Connecti" +
-      "onStatusRequest\032#.mt4_term_api.Connectio" +
-      "nStatusReply\"\031\202\323\344\223\002\023\022\021/ConnectionStatus\022" +
-      "a\n\nDisconnect\022\037.mt4_term_api.DisconnectR" +
-      "equest\032\035.mt4_term_api.DisconnectReply\"\023\202" +
-      "\323\344\223\002\r\022\013/Disconnect\022]\n\tReconnect\022\036.mt4_te" +
-      "rm_api.ReconnectRequest\032\034.mt4_term_api.R" +
-      "econnectReply\"\022\202\323\344\223\002\014\022\n/Reconnect\022l\n\016Con" +
-      "nectByToken\022#.mt4_term_api.ConnectByToke" +
-      "nRequest\032\034.mt4_term_api.ConnectExReply\"\027" +
-      "\202\323\344\223\002\021\022\017/ConnectByToken\022\251\001\n\034GetBrokerSer" +
-      "versByBrokerName\0221.mt4_term_api.GetBroke" +
-      "rServersByBrokerNameRequest\032/.mt4_term_a" +
-      "pi.GetBrokerServersByBrokerNameReply\"%\202\323" +
-      "\344\223\002\037\022\035/GetBrokerServersByBrokerName\022M\n\005G" +
-      "etId\022\032.mt4_term_api.GetIdRequest\032\030.mt4_t" +
-      "erm_api.GetIdReply\"\016\202\323\344\223\002\010\022\006/GetId\022a\n\nSc" +
-      "reenshot\022\037.mt4_term_api.ScreenshotReques" +
-      "t\032\035.mt4_term_api.ScreenshotReply\"\023\202\323\344\223\002\r" +
-      "\022\013/Screenshot\022i\n\rConnectStream\022\034.mt4_ter" +
-      "m_api.ConnectRequest\032 .mt4_term_api.Conn" +
-      "ectStreamEvent\"\026\202\323\344\223\002\020\022\016/ConnectStream0\001" +
-      "\022o\n\017ConnectExStream\022\036.mt4_term_api.Conne" +
-      "ctExRequest\032 .mt4_term_api.ConnectStream" +
-      "Event\"\030\202\323\344\223\002\022\022\020/ConnectExStream0\0012\212\003\n\004Lo" +
-      "gs\022Z\n\007Journal\022\034.mt4_term_api.JournalRequ" +
-      "est\032\032.mt4_term_api.JournalReply\"\025\202\323\344\223\002\017\022" +
-      "\r/Logs/Journal\022d\n\tOnJournal\022\036.mt4_term_a" +
-      "pi.OnJournalRequest\032\034.mt4_term_api.OnJou" +
-      "rnalReply\"\027\202\323\344\223\002\021\022\017/Logs/OnJournal0\001\022Z\n\007" +
-      "Experts\022\034.mt4_term_api.JournalRequest\032\032." +
-      "mt4_term_api.JournalReply\"\025\202\323\344\223\002\017\022\r/Logs" +
-      "/Experts\022d\n\tOnExperts\022\036.mt4_term_api.OnJ" +
-      "ournalRequest\032\034.mt4_term_api.OnJournalRe" +
-      "ply\"\027\202\323\344\223\002\021\022\017/Logs/OnExperts0\001BBZ1git.mt" +
-      "api.io/root/mrpc-proto.git/mt4/libraries" +
-      "/go\252\002\014mt4_term_apib\006proto3"
+      "name\030\003 \001(\t\0223\n\016experts_to_add\030\005 \003(\0132\033.mt4" +
+      "_term_api.ExpertAdviser\022\034\n\017timeout_secon" +
+      "ds\030\006 \001(\rH\000\210\001\001\022\021\n\004name\030\007 \001(\tH\001\210\001\001\022\027\n\nexpi" +
+      "ration\030\010 \001(\rH\002\210\001\001B\022\n\020_timeout_secondsB\007\n" +
+      "\005_nameB\r\n\013_expirationJ\004\010\004\020\005R\021base_chart_" +
+      "symbol\"\212\001\n\025ConnectByTokenRequest\022\034\n\017time" +
+      "out_seconds\030\002 \001(\rH\000\210\001\001\022\027\n\nexpiration\030\003 \001" +
+      "(\rH\001\210\001\001B\022\n\020_timeout_secondsB\r\n\013_expirati" +
+      "onJ\004\010\001\020\002R\021base_chart_symbol\"m\n\016ConnectEx" +
+      "Reply\022)\n\004data\030\001 \001(\0132\031.mt4_term_api.Conne" +
+      "ctDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.E" +
+      "rrorH\000B\n\n\010response\"J\n\020ReconnectRequest\022\037" +
+      "\n\022force_reconnection\030\001 \001(\010H\000\210\001\001B\025\n\023_forc" +
+      "e_reconnection\"o\n\016ReconnectReply\022+\n\004data" +
+      "\030\001 \001(\0132\033.mt4_term_api.ReconnectDataH\000\022$\n" +
+      "\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010r" +
+      "esponse\"\341\001\n\rReconnectData\022\036\n\026terminal_wa" +
+      "s_recreated\030\001 \001(\010\0221\n\rterminal_type\030\002 \001(\016" +
+      "2\032.mt4_term_api.TerminalType\022\036\n\026terminal" +
+      "_instance_guid\030\003 \001(\t\022+\n#old_terminal_ful" +
+      "l_live_time_seconds\030\004 \001(\003\0220\n\rold_log_fil" +
+      "es\030\005 \003(\0132\031.mt4_term_api.LogFileInfo\"\367\001\n\016" +
+      "ConnectRequest\022\014\n\004user\030\001 \001(\004\022\020\n\010password" +
+      "\030\002 \001(\t\022\014\n\004host\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\0223\n\016ex" +
+      "perts_to_add\030\005 \003(\0132\033.mt4_term_api.Expert" +
+      "Adviser\022\034\n\017timeout_seconds\030\006 \001(\rH\000\210\001\001\022\021\n" +
+      "\004name\030\007 \001(\tH\001\210\001\001\022\027\n\nexpiration\030\010 \001(\rH\002\210\001" +
+      "\001B\022\n\020_timeout_secondsB\007\n\005_nameB\r\n\013_expir" +
+      "ation\"8\n\rExpertAdviser\022\021\n\tfile_name\030\001 \001(" +
+      "\t\022\024\n\014file_content\030\002 \001(\014\"k\n\014ConnectReply\022" +
+      ")\n\004data\030\001 \001(\0132\031.mt4_term_api.ConnectData" +
+      "H\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000" +
+      "B\n\n\010response\"`\n\013ConnectData\022\036\n\026terminal_" +
+      "instance_guid\030\001 \001(\t\0221\n\rterminal_type\030\003 \001" +
+      "(\0162\032.mt4_term_api.TerminalType\"\371\002\n\023Conne" +
+      "ctProxyRequest\022\014\n\004user\030\001 \001(\004\022\020\n\010password" +
+      "\030\002 \001(\t\022\014\n\004host\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\022\021\n\tpr" +
+      "oxyUser\030\005 \001(\t\022\025\n\rproxyPassword\030\006 \001(\t\022\021\n\t" +
+      "proxyHost\030\007 \001(\t\022\021\n\tproxyPort\030\010 \001(\r\022+\n\tpr" +
+      "oxyType\030\t \001(\0162\030.mt4_term_api.ProxyTypes\022" +
+      "3\n\016experts_to_add\030\n \003(\0132\033.mt4_term_api.E" +
+      "xpertAdviser\022\034\n\017timeout_seconds\030\013 \001(\rH\000\210" +
+      "\001\001\022\021\n\004name\030\014 \001(\tH\001\210\001\001\022\027\n\nexpiration\030\r \001(" +
+      "\rH\002\210\001\001B\022\n\020_timeout_secondsB\007\n\005_nameB\r\n\013_" +
+      "expiration\"u\n\021ConnectProxyReply\022.\n\004data\030" +
+      "\001 \001(\0132\036.mt4_term_api.ConnectProxyDataH\000\022" +
+      "$\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n" +
+      "\010response\"`\n\020ConnectProxyData\022\031\n\021unique_" +
+      "identifier\030\001 \001(\t\0221\n\rterminal_type\030\002 \001(\0162" +
+      "\032.mt4_term_api.TerminalType\"\025\n\023CheckConn" +
+      "ectRequest\"u\n\021CheckConnectReply\022.\n\004data\030" +
+      "\001 \001(\0132\036.mt4_term_api.CheckConnectDataH\000\022" +
+      "$\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n" +
+      "\010response\"f\n\020CheckConnectData\022\031\n\021unique_" +
+      "identifier\030\001 \001(\t\0227\n\014health_check\030\002 \001(\0132!" +
+      ".mt4_term_api.TerminalHealthCheck\"i\n\023Ter" +
+      "minalHealthCheck\022\020\n\010is_alive\030\001 \001(\010\022\024\n\014ap" +
+      "i_is_alive\030\002 \001(\010\022*\n\"terminal_is_connecte" +
+      "d_to_mt_server\030\003 \001(\010\"3\n\021DisconnectReques" +
+      "t\022\023\n\006reason\030\001 \001(\tH\000\210\001\001B\t\n\007_reason\"q\n\017Dis" +
+      "connectReply\022,\n\004data\030\001 \001(\0132\034.mt4_term_ap" +
+      "i.DisconnectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_" +
+      "term_api.ErrorH\000B\n\n\010response\"K\n\016Disconne" +
+      "ctData\022\031\n\021unique_identifier\030\001 \001(\t\022\036\n\026ful" +
+      "l_life_time_seconds\030\002 \001(\003\".\n\014GetIdReques" +
+      "t\022\014\n\004user\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"g\n\nGet" +
+      "IdReply\022\'\n\004data\030\001 \001(\0132\027.mt4_term_api.Get" +
+      "IdDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.E" +
+      "rrorH\000B\n\n\010response\"\027\n\tGetIdData\022\n\n\002id\030\001 " +
+      "\001(\t\"\025\n\023ConnectStateRequest\"u\n\021ConnectSta" +
+      "teReply\022.\n\004data\030\001 \001(\0132\036.mt4_term_api.Con" +
+      "nectStateDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
+      "m_api.ErrorH\000B\n\n\010response\"-\n\025OnConnectSt" +
+      "ateRequest\022\024\n\014terminal_ids\030\001 \003(\t\"w\n\023OnCo" +
+      "nnectStateReply\022.\n\004data\030\001 \001(\0132\036.mt4_term" +
+      "_api.ConnectStateDataH\000\022$\n\005error\030\002 \001(\0132\023" +
+      ".mt4_term_api.ErrorH\000B\n\n\010response\"\322\001\n\020Co" +
+      "nnectStateData\022\n\n\002id\030\001 \001(\t\022\r\n\005state\030\002 \001(" +
+      "\t\022\024\n\014is_connected\030\003 \001(\010\022\020\n\010is_alive\030\004 \001(" +
+      "\010\022\024\n\014api_is_alive\030\005 \001(\010\022\016\n\006server\030\006 \001(\t\022" +
+      "\017\n\007account\030\007 \001(\004\022\025\n\rerror_message\030\010 \001(\t\022" +
+      "-\n\ttimestamp\030\t \001(\0132\032.google.protobuf.Tim" +
+      "estamp\"\031\n\027ConnectionStatusRequest\"}\n\025Con" +
+      "nectionStatusReply\0222\n\004data\030\001 \001(\0132\".mt4_t" +
+      "erm_api.ConnectionStatusDataH\000\022$\n\005error\030" +
+      "\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response" +
+      "\"\247\001\n\024ConnectionStatusData\022\n\n\002id\030\001 \001(\t\022\024\n" +
+      "\014is_connected\030\002 \001(\010\022\020\n\010is_alive\030\003 \001(\010\022\024\n" +
+      "\014api_is_alive\030\004 \001(\010\022\016\n\006server\030\005 \001(\t\022\017\n\007a" +
+      "ccount\030\006 \001(\004\022\025\n\rerror_message\030\007 \001(\t\022\r\n\005s" +
+      "tate\030\010 \001(\t*9\n\nProxyTypes\022\010\n\004None\020\000\022\t\n\005Ht" +
+      "tps\020\001\022\n\n\006Socks4\020\002\022\n\n\006Socks5\020\003* \n\014Termina" +
+      "lType\022\007\n\003MT4\020\000\022\007\n\003MT5\020\0012\335\014\n\nConnection\022]" +
+      "\n\tConnectEx\022\036.mt4_term_api.ConnectExRequ" +
+      "est\032\034.mt4_term_api.ConnectExReply\"\022\202\323\344\223\002" +
+      "\014\022\n/ConnectEx\022U\n\007Connect\022\034.mt4_term_api." +
+      "ConnectRequest\032\032.mt4_term_api.ConnectRep" +
+      "ly\"\020\202\323\344\223\002\n\022\010/Connect\022i\n\014ConnectProxy\022!.m" +
+      "t4_term_api.ConnectProxyRequest\032\037.mt4_te" +
+      "rm_api.ConnectProxyReply\"\025\202\323\344\223\002\017\022\r/Conne" +
+      "ctProxy\022i\n\014CheckConnect\022!.mt4_term_api.C" +
+      "heckConnectRequest\032\037.mt4_term_api.CheckC" +
+      "onnectReply\"\025\202\323\344\223\002\017\022\r/CheckConnect\022i\n\014Co" +
+      "nnectState\022!.mt4_term_api.ConnectStateRe" +
+      "quest\032\037.mt4_term_api.ConnectStateReply\"\025" +
+      "\202\323\344\223\002\017\022\r/ConnectState\022s\n\016OnConnectState\022" +
+      "#.mt4_term_api.OnConnectStateRequest\032!.m" +
+      "t4_term_api.OnConnectStateReply\"\027\202\323\344\223\002\021\022" +
+      "\017/OnConnectState0\001\022y\n\020ConnectionStatus\022%" +
+      ".mt4_term_api.ConnectionStatusRequest\032#." +
+      "mt4_term_api.ConnectionStatusReply\"\031\202\323\344\223" +
+      "\002\023\022\021/ConnectionStatus\022a\n\nDisconnect\022\037.mt" +
+      "4_term_api.DisconnectRequest\032\035.mt4_term_" +
+      "api.DisconnectReply\"\023\202\323\344\223\002\r\022\013/Disconnect" +
+      "\022]\n\tReconnect\022\036.mt4_term_api.ReconnectRe" +
+      "quest\032\034.mt4_term_api.ReconnectReply\"\022\202\323\344" +
+      "\223\002\014\022\n/Reconnect\022l\n\016ConnectByToken\022#.mt4_" +
+      "term_api.ConnectByTokenRequest\032\034.mt4_ter" +
+      "m_api.ConnectExReply\"\027\202\323\344\223\002\021\022\017/ConnectBy" +
+      "Token\022\251\001\n\034GetBrokerServersByBrokerName\0221" +
+      ".mt4_term_api.GetBrokerServersByBrokerNa" +
+      "meRequest\032/.mt4_term_api.GetBrokerServer" +
+      "sByBrokerNameReply\"%\202\323\344\223\002\037\022\035/GetBrokerSe" +
+      "rversByBrokerName\022M\n\005GetId\022\032.mt4_term_ap" +
+      "i.GetIdRequest\032\030.mt4_term_api.GetIdReply" +
+      "\"\016\202\323\344\223\002\010\022\006/GetId\022a\n\nScreenshot\022\037.mt4_ter" +
+      "m_api.ScreenshotRequest\032\035.mt4_term_api.S" +
+      "creenshotReply\"\023\202\323\344\223\002\r\022\013/Screenshot\022i\n\rC" +
+      "onnectStream\022\034.mt4_term_api.ConnectReque" +
+      "st\032 .mt4_term_api.ConnectStreamEvent\"\026\202\323" +
+      "\344\223\002\020\022\016/ConnectStream0\001\022o\n\017ConnectExStrea" +
+      "m\022\036.mt4_term_api.ConnectExRequest\032 .mt4_" +
+      "term_api.ConnectStreamEvent\"\030\202\323\344\223\002\022\022\020/Co" +
+      "nnectExStream0\0012\212\003\n\004Logs\022Z\n\007Journal\022\034.mt" +
+      "4_term_api.JournalRequest\032\032.mt4_term_api" +
+      ".JournalReply\"\025\202\323\344\223\002\017\022\r/Logs/Journal\022d\n\t" +
+      "OnJournal\022\036.mt4_term_api.OnJournalReques" +
+      "t\032\034.mt4_term_api.OnJournalReply\"\027\202\323\344\223\002\021\022" +
+      "\017/Logs/OnJournal0\001\022Z\n\007Experts\022\034.mt4_term" +
+      "_api.JournalRequest\032\032.mt4_term_api.Journ" +
+      "alReply\"\025\202\323\344\223\002\017\022\r/Logs/Experts\022d\n\tOnExpe" +
+      "rts\022\036.mt4_term_api.OnJournalRequest\032\034.mt" +
+      "4_term_api.OnJournalReply\"\027\202\323\344\223\002\021\022\017/Logs" +
+      "/OnExperts0\001BBZ1git.mtapi.io/root/mrpc-p" +
+      "roto.git/mt4/libraries/go\252\002\014mt4_term_api" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -44040,13 +43585,13 @@ public final class Mt4TermApiConnection {
     internal_static_mt4_term_api_ConnectExRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_ConnectExRequest_descriptor,
-        new java.lang.String[] { "User", "Password", "MtClusterName", "BaseChartSymbol", "ExpertsToAdd", "TimeoutSeconds", "Name", "Expiration", "BaseChartSymbol", "TimeoutSeconds", "Name", "Expiration", });
+        new java.lang.String[] { "User", "Password", "MtClusterName", "ExpertsToAdd", "TimeoutSeconds", "Name", "Expiration", "TimeoutSeconds", "Name", "Expiration", });
     internal_static_mt4_term_api_ConnectByTokenRequest_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_mt4_term_api_ConnectByTokenRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_ConnectByTokenRequest_descriptor,
-        new java.lang.String[] { "BaseChartSymbol", "TimeoutSeconds", "Expiration", "BaseChartSymbol", "TimeoutSeconds", "Expiration", });
+        new java.lang.String[] { "TimeoutSeconds", "Expiration", "TimeoutSeconds", "Expiration", });
     internal_static_mt4_term_api_ConnectExReply_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_mt4_term_api_ConnectExReply_fieldAccessorTable = new
