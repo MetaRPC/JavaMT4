@@ -38855,7 +38855,7 @@ public final class Mt4TermApiConnection {
 
     /**
      * <pre>
-     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
      * </pre>
      *
      * <code>string state = 2;</code>
@@ -38864,7 +38864,7 @@ public final class Mt4TermApiConnection {
     java.lang.String getState();
     /**
      * <pre>
-     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
      * </pre>
      *
      * <code>string state = 2;</code>
@@ -39118,7 +39118,7 @@ public final class Mt4TermApiConnection {
     private volatile java.lang.Object state_;
     /**
      * <pre>
-     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
      * </pre>
      *
      * <code>string state = 2;</code>
@@ -39139,7 +39139,7 @@ public final class Mt4TermApiConnection {
     }
     /**
      * <pre>
-     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+     * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
      * </pre>
      *
      * <code>string state = 2;</code>
@@ -39840,7 +39840,7 @@ public final class Mt4TermApiConnection {
       private java.lang.Object state_ = "";
       /**
        * <pre>
-       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
        * </pre>
        *
        * <code>string state = 2;</code>
@@ -39860,7 +39860,7 @@ public final class Mt4TermApiConnection {
       }
       /**
        * <pre>
-       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
        * </pre>
        *
        * <code>string state = 2;</code>
@@ -39881,7 +39881,7 @@ public final class Mt4TermApiConnection {
       }
       /**
        * <pre>
-       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
        * </pre>
        *
        * <code>string state = 2;</code>
@@ -39900,7 +39900,7 @@ public final class Mt4TermApiConnection {
       }
       /**
        * <pre>
-       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
        * </pre>
        *
        * <code>string state = 2;</code>
@@ -39914,7 +39914,7 @@ public final class Mt4TermApiConnection {
       }
       /**
        * <pre>
-       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "CannotConnect", "Stopped", "Expired"
+       * "Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"
        * </pre>
        *
        * <code>string state = 2;</code>
