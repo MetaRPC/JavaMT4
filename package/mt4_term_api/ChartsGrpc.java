@@ -201,6 +201,37 @@ public final class ChartsGrpc {
     return getStopEaMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StartEaRequest,
+      mt4_term_api.Mt4TermApiCharts.StartEaReply> getStartEaMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "StartEa",
+      requestType = mt4_term_api.Mt4TermApiCharts.StartEaRequest.class,
+      responseType = mt4_term_api.Mt4TermApiCharts.StartEaReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StartEaRequest,
+      mt4_term_api.Mt4TermApiCharts.StartEaReply> getStartEaMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.StartEaRequest, mt4_term_api.Mt4TermApiCharts.StartEaReply> getStartEaMethod;
+    if ((getStartEaMethod = ChartsGrpc.getStartEaMethod) == null) {
+      synchronized (ChartsGrpc.class) {
+        if ((getStartEaMethod = ChartsGrpc.getStartEaMethod) == null) {
+          ChartsGrpc.getStartEaMethod = getStartEaMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiCharts.StartEaRequest, mt4_term_api.Mt4TermApiCharts.StartEaReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StartEa"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.StartEaRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiCharts.StartEaReply.getDefaultInstance()))
+              .setSchemaDescriptor(new ChartsMethodDescriptorSupplier("StartEa"))
+              .build();
+        }
+      }
+    }
+    return getStartEaMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -291,6 +322,13 @@ public final class ChartsGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStopEaMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StartEaReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStartEaMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -335,6 +373,13 @@ public final class ChartsGrpc {
                 mt4_term_api.Mt4TermApiCharts.StopEaRequest,
                 mt4_term_api.Mt4TermApiCharts.StopEaReply>(
                   this, METHODID_STOP_EA)))
+          .addMethod(
+            getStartEaMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiCharts.StartEaRequest,
+                mt4_term_api.Mt4TermApiCharts.StartEaReply>(
+                  this, METHODID_START_EA)))
           .build();
     }
   }
@@ -400,6 +445,14 @@ public final class ChartsGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getStopEaMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StartEaReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getStartEaMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -456,6 +509,13 @@ public final class ChartsGrpc {
     public mt4_term_api.Mt4TermApiCharts.StopEaReply stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getStopEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.StartEaReply startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getStartEaMethod(), getCallOptions(), request);
     }
   }
 
@@ -520,6 +580,14 @@ public final class ChartsGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getStopEaMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiCharts.StartEaReply> startEa(
+        mt4_term_api.Mt4TermApiCharts.StartEaRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getStartEaMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_EA_PARAMS = 0;
@@ -528,6 +596,7 @@ public final class ChartsGrpc {
   private static final int METHODID_GET_RUNNING_EAS = 3;
   private static final int METHODID_GET_EA_LOGS = 4;
   private static final int METHODID_STOP_EA = 5;
+  private static final int METHODID_START_EA = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -569,6 +638,10 @@ public final class ChartsGrpc {
         case METHODID_STOP_EA:
           serviceImpl.stopEa((mt4_term_api.Mt4TermApiCharts.StopEaRequest) request,
               (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StopEaReply>) responseObserver);
+          break;
+        case METHODID_START_EA:
+          serviceImpl.startEa((mt4_term_api.Mt4TermApiCharts.StartEaRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StartEaReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -637,6 +710,7 @@ public final class ChartsGrpc {
               .addMethod(getGetRunningEasMethod())
               .addMethod(getGetEaLogsMethod())
               .addMethod(getStopEaMethod())
+              .addMethod(getStartEaMethod())
               .build();
         }
       }

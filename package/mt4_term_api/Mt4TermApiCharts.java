@@ -22379,6 +22379,2318 @@ public final class Mt4TermApiCharts {
 
   }
 
+  public interface StartEaRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.StartEaRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string ea_id = 1;</code>
+     * @return The eaId.
+     */
+    java.lang.String getEaId();
+    /**
+     * <code>string ea_id = 1;</code>
+     * @return The bytes for eaId.
+     */
+    com.google.protobuf.ByteString
+        getEaIdBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.StartEaRequest}
+   */
+  public static final class StartEaRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.StartEaRequest)
+      StartEaRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use StartEaRequest.newBuilder() to construct.
+    private StartEaRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private StartEaRequest() {
+      eaId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StartEaRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StartEaRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eaId_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiCharts.StartEaRequest.class, mt4_term_api.Mt4TermApiCharts.StartEaRequest.Builder.class);
+    }
+
+    public static final int EA_ID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object eaId_;
+    /**
+     * <code>string ea_id = 1;</code>
+     * @return The eaId.
+     */
+    @java.lang.Override
+    public java.lang.String getEaId() {
+      java.lang.Object ref = eaId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eaId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ea_id = 1;</code>
+     * @return The bytes for eaId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEaIdBytes() {
+      java.lang.Object ref = eaId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eaId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eaId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, eaId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eaId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, eaId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiCharts.StartEaRequest)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiCharts.StartEaRequest other = (mt4_term_api.Mt4TermApiCharts.StartEaRequest) obj;
+
+      if (!getEaId()
+          .equals(other.getEaId())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + EA_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getEaId().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiCharts.StartEaRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.StartEaRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.StartEaRequest)
+        mt4_term_api.Mt4TermApiCharts.StartEaRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiCharts.StartEaRequest.class, mt4_term_api.Mt4TermApiCharts.StartEaRequest.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiCharts.StartEaRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        eaId_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaRequest getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiCharts.StartEaRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaRequest build() {
+        mt4_term_api.Mt4TermApiCharts.StartEaRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaRequest buildPartial() {
+        mt4_term_api.Mt4TermApiCharts.StartEaRequest result = new mt4_term_api.Mt4TermApiCharts.StartEaRequest(this);
+        result.eaId_ = eaId_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiCharts.StartEaRequest) {
+          return mergeFrom((mt4_term_api.Mt4TermApiCharts.StartEaRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiCharts.StartEaRequest other) {
+        if (other == mt4_term_api.Mt4TermApiCharts.StartEaRequest.getDefaultInstance()) return this;
+        if (!other.getEaId().isEmpty()) {
+          eaId_ = other.eaId_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiCharts.StartEaRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiCharts.StartEaRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object eaId_ = "";
+      /**
+       * <code>string ea_id = 1;</code>
+       * @return The eaId.
+       */
+      public java.lang.String getEaId() {
+        java.lang.Object ref = eaId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eaId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ea_id = 1;</code>
+       * @return The bytes for eaId.
+       */
+      public com.google.protobuf.ByteString
+          getEaIdBytes() {
+        java.lang.Object ref = eaId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eaId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ea_id = 1;</code>
+       * @param value The eaId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEaId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eaId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ea_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEaId() {
+        
+        eaId_ = getDefaultInstance().getEaId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ea_id = 1;</code>
+       * @param value The bytes for eaId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEaIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eaId_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.StartEaRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.StartEaRequest)
+    private static final mt4_term_api.Mt4TermApiCharts.StartEaRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiCharts.StartEaRequest();
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<StartEaRequest>
+        PARSER = new com.google.protobuf.AbstractParser<StartEaRequest>() {
+      @java.lang.Override
+      public StartEaRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StartEaRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<StartEaRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StartEaRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiCharts.StartEaRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface StartEaReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.StartEaReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     * @return Whether the data field is set.
+     */
+    boolean hasData();
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     * @return The data.
+     */
+    mt4_term_api.Mt4TermApiCharts.StartEaData getData();
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     */
+    mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder getDataOrBuilder();
+
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     * @return Whether the error field is set.
+     */
+    boolean hasError();
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     * @return The error.
+     */
+    mt4_term_api.MrpcMt4Error.Error getError();
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     */
+    mt4_term_api.MrpcMt4Error.ErrorOrBuilder getErrorOrBuilder();
+
+    public mt4_term_api.Mt4TermApiCharts.StartEaReply.ResponseCase getResponseCase();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.StartEaReply}
+   */
+  public static final class StartEaReply extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.StartEaReply)
+      StartEaReplyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use StartEaReply.newBuilder() to construct.
+    private StartEaReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private StartEaReply() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StartEaReply();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StartEaReply(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              mt4_term_api.Mt4TermApiCharts.StartEaData.Builder subBuilder = null;
+              if (responseCase_ == 1) {
+                subBuilder = ((mt4_term_api.Mt4TermApiCharts.StartEaData) response_).toBuilder();
+              }
+              response_ =
+                  input.readMessage(mt4_term_api.Mt4TermApiCharts.StartEaData.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((mt4_term_api.Mt4TermApiCharts.StartEaData) response_);
+                response_ = subBuilder.buildPartial();
+              }
+              responseCase_ = 1;
+              break;
+            }
+            case 18: {
+              mt4_term_api.MrpcMt4Error.Error.Builder subBuilder = null;
+              if (responseCase_ == 2) {
+                subBuilder = ((mt4_term_api.MrpcMt4Error.Error) response_).toBuilder();
+              }
+              response_ =
+                  input.readMessage(mt4_term_api.MrpcMt4Error.Error.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((mt4_term_api.MrpcMt4Error.Error) response_);
+                response_ = subBuilder.buildPartial();
+              }
+              responseCase_ = 2;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaReply_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaReply_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiCharts.StartEaReply.class, mt4_term_api.Mt4TermApiCharts.StartEaReply.Builder.class);
+    }
+
+    private int responseCase_ = 0;
+    private java.lang.Object response_;
+    public enum ResponseCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      DATA(1),
+      ERROR(2),
+      RESPONSE_NOT_SET(0);
+      private final int value;
+      private ResponseCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static ResponseCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ResponseCase forNumber(int value) {
+        switch (value) {
+          case 1: return DATA;
+          case 2: return ERROR;
+          case 0: return RESPONSE_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public ResponseCase
+    getResponseCase() {
+      return ResponseCase.forNumber(
+          responseCase_);
+    }
+
+    public static final int DATA_FIELD_NUMBER = 1;
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     * @return Whether the data field is set.
+     */
+    @java.lang.Override
+    public boolean hasData() {
+      return responseCase_ == 1;
+    }
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     * @return The data.
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiCharts.StartEaData getData() {
+      if (responseCase_ == 1) {
+         return (mt4_term_api.Mt4TermApiCharts.StartEaData) response_;
+      }
+      return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+    }
+    /**
+     * <code>.mt4_term_api.StartEaData data = 1;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder getDataOrBuilder() {
+      if (responseCase_ == 1) {
+         return (mt4_term_api.Mt4TermApiCharts.StartEaData) response_;
+      }
+      return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 2;
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     * @return Whether the error field is set.
+     */
+    @java.lang.Override
+    public boolean hasError() {
+      return responseCase_ == 2;
+    }
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public mt4_term_api.MrpcMt4Error.Error getError() {
+      if (responseCase_ == 2) {
+         return (mt4_term_api.MrpcMt4Error.Error) response_;
+      }
+      return mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+    }
+    /**
+     * <code>.mt4_term_api.Error error = 2;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.MrpcMt4Error.ErrorOrBuilder getErrorOrBuilder() {
+      if (responseCase_ == 2) {
+         return (mt4_term_api.MrpcMt4Error.Error) response_;
+      }
+      return mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (responseCase_ == 1) {
+        output.writeMessage(1, (mt4_term_api.Mt4TermApiCharts.StartEaData) response_);
+      }
+      if (responseCase_ == 2) {
+        output.writeMessage(2, (mt4_term_api.MrpcMt4Error.Error) response_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (responseCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, (mt4_term_api.Mt4TermApiCharts.StartEaData) response_);
+      }
+      if (responseCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, (mt4_term_api.MrpcMt4Error.Error) response_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiCharts.StartEaReply)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiCharts.StartEaReply other = (mt4_term_api.Mt4TermApiCharts.StartEaReply) obj;
+
+      if (!getResponseCase().equals(other.getResponseCase())) return false;
+      switch (responseCase_) {
+        case 1:
+          if (!getData()
+              .equals(other.getData())) return false;
+          break;
+        case 2:
+          if (!getError()
+              .equals(other.getError())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (responseCase_) {
+        case 1:
+          hash = (37 * hash) + DATA_FIELD_NUMBER;
+          hash = (53 * hash) + getData().hashCode();
+          break;
+        case 2:
+          hash = (37 * hash) + ERROR_FIELD_NUMBER;
+          hash = (53 * hash) + getError().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiCharts.StartEaReply prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.StartEaReply}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.StartEaReply)
+        mt4_term_api.Mt4TermApiCharts.StartEaReplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaReply_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaReply_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiCharts.StartEaReply.class, mt4_term_api.Mt4TermApiCharts.StartEaReply.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiCharts.StartEaReply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        responseCase_ = 0;
+        response_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaReply_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaReply getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiCharts.StartEaReply.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaReply build() {
+        mt4_term_api.Mt4TermApiCharts.StartEaReply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaReply buildPartial() {
+        mt4_term_api.Mt4TermApiCharts.StartEaReply result = new mt4_term_api.Mt4TermApiCharts.StartEaReply(this);
+        if (responseCase_ == 1) {
+          if (dataBuilder_ == null) {
+            result.response_ = response_;
+          } else {
+            result.response_ = dataBuilder_.build();
+          }
+        }
+        if (responseCase_ == 2) {
+          if (errorBuilder_ == null) {
+            result.response_ = response_;
+          } else {
+            result.response_ = errorBuilder_.build();
+          }
+        }
+        result.responseCase_ = responseCase_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiCharts.StartEaReply) {
+          return mergeFrom((mt4_term_api.Mt4TermApiCharts.StartEaReply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiCharts.StartEaReply other) {
+        if (other == mt4_term_api.Mt4TermApiCharts.StartEaReply.getDefaultInstance()) return this;
+        switch (other.getResponseCase()) {
+          case DATA: {
+            mergeData(other.getData());
+            break;
+          }
+          case ERROR: {
+            mergeError(other.getError());
+            break;
+          }
+          case RESPONSE_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiCharts.StartEaReply parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiCharts.StartEaReply) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int responseCase_ = 0;
+      private java.lang.Object response_;
+      public ResponseCase
+          getResponseCase() {
+        return ResponseCase.forNumber(
+            responseCase_);
+      }
+
+      public Builder clearResponse() {
+        responseCase_ = 0;
+        response_ = null;
+        onChanged();
+        return this;
+      }
+
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mt4_term_api.Mt4TermApiCharts.StartEaData, mt4_term_api.Mt4TermApiCharts.StartEaData.Builder, mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder> dataBuilder_;
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       * @return Whether the data field is set.
+       */
+      @java.lang.Override
+      public boolean hasData() {
+        return responseCase_ == 1;
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       * @return The data.
+       */
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaData getData() {
+        if (dataBuilder_ == null) {
+          if (responseCase_ == 1) {
+            return (mt4_term_api.Mt4TermApiCharts.StartEaData) response_;
+          }
+          return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+        } else {
+          if (responseCase_ == 1) {
+            return dataBuilder_.getMessage();
+          }
+          return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      public Builder setData(mt4_term_api.Mt4TermApiCharts.StartEaData value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          response_ = value;
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(value);
+        }
+        responseCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      public Builder setData(
+          mt4_term_api.Mt4TermApiCharts.StartEaData.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          response_ = builderForValue.build();
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(builderForValue.build());
+        }
+        responseCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      public Builder mergeData(mt4_term_api.Mt4TermApiCharts.StartEaData value) {
+        if (dataBuilder_ == null) {
+          if (responseCase_ == 1 &&
+              response_ != mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance()) {
+            response_ = mt4_term_api.Mt4TermApiCharts.StartEaData.newBuilder((mt4_term_api.Mt4TermApiCharts.StartEaData) response_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            response_ = value;
+          }
+          onChanged();
+        } else {
+          if (responseCase_ == 1) {
+            dataBuilder_.mergeFrom(value);
+          } else {
+            dataBuilder_.setMessage(value);
+          }
+        }
+        responseCase_ = 1;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          if (responseCase_ == 1) {
+            responseCase_ = 0;
+            response_ = null;
+            onChanged();
+          }
+        } else {
+          if (responseCase_ == 1) {
+            responseCase_ = 0;
+            response_ = null;
+          }
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      public mt4_term_api.Mt4TermApiCharts.StartEaData.Builder getDataBuilder() {
+        return getDataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder getDataOrBuilder() {
+        if ((responseCase_ == 1) && (dataBuilder_ != null)) {
+          return dataBuilder_.getMessageOrBuilder();
+        } else {
+          if (responseCase_ == 1) {
+            return (mt4_term_api.Mt4TermApiCharts.StartEaData) response_;
+          }
+          return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.mt4_term_api.StartEaData data = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mt4_term_api.Mt4TermApiCharts.StartEaData, mt4_term_api.Mt4TermApiCharts.StartEaData.Builder, mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          if (!(responseCase_ == 1)) {
+            response_ = mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+          }
+          dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mt4_term_api.Mt4TermApiCharts.StartEaData, mt4_term_api.Mt4TermApiCharts.StartEaData.Builder, mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder>(
+                  (mt4_term_api.Mt4TermApiCharts.StartEaData) response_,
+                  getParentForChildren(),
+                  isClean());
+          response_ = null;
+        }
+        responseCase_ = 1;
+        onChanged();;
+        return dataBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mt4_term_api.MrpcMt4Error.Error, mt4_term_api.MrpcMt4Error.Error.Builder, mt4_term_api.MrpcMt4Error.ErrorOrBuilder> errorBuilder_;
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       * @return Whether the error field is set.
+       */
+      @java.lang.Override
+      public boolean hasError() {
+        return responseCase_ == 2;
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       * @return The error.
+       */
+      @java.lang.Override
+      public mt4_term_api.MrpcMt4Error.Error getError() {
+        if (errorBuilder_ == null) {
+          if (responseCase_ == 2) {
+            return (mt4_term_api.MrpcMt4Error.Error) response_;
+          }
+          return mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+        } else {
+          if (responseCase_ == 2) {
+            return errorBuilder_.getMessage();
+          }
+          return mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      public Builder setError(mt4_term_api.MrpcMt4Error.Error value) {
+        if (errorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          response_ = value;
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(value);
+        }
+        responseCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      public Builder setError(
+          mt4_term_api.MrpcMt4Error.Error.Builder builderForValue) {
+        if (errorBuilder_ == null) {
+          response_ = builderForValue.build();
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(builderForValue.build());
+        }
+        responseCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      public Builder mergeError(mt4_term_api.MrpcMt4Error.Error value) {
+        if (errorBuilder_ == null) {
+          if (responseCase_ == 2 &&
+              response_ != mt4_term_api.MrpcMt4Error.Error.getDefaultInstance()) {
+            response_ = mt4_term_api.MrpcMt4Error.Error.newBuilder((mt4_term_api.MrpcMt4Error.Error) response_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            response_ = value;
+          }
+          onChanged();
+        } else {
+          if (responseCase_ == 2) {
+            errorBuilder_.mergeFrom(value);
+          } else {
+            errorBuilder_.setMessage(value);
+          }
+        }
+        responseCase_ = 2;
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      public Builder clearError() {
+        if (errorBuilder_ == null) {
+          if (responseCase_ == 2) {
+            responseCase_ = 0;
+            response_ = null;
+            onChanged();
+          }
+        } else {
+          if (responseCase_ == 2) {
+            responseCase_ = 0;
+            response_ = null;
+          }
+          errorBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      public mt4_term_api.MrpcMt4Error.Error.Builder getErrorBuilder() {
+        return getErrorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      @java.lang.Override
+      public mt4_term_api.MrpcMt4Error.ErrorOrBuilder getErrorOrBuilder() {
+        if ((responseCase_ == 2) && (errorBuilder_ != null)) {
+          return errorBuilder_.getMessageOrBuilder();
+        } else {
+          if (responseCase_ == 2) {
+            return (mt4_term_api.MrpcMt4Error.Error) response_;
+          }
+          return mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.mt4_term_api.Error error = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          mt4_term_api.MrpcMt4Error.Error, mt4_term_api.MrpcMt4Error.Error.Builder, mt4_term_api.MrpcMt4Error.ErrorOrBuilder> 
+          getErrorFieldBuilder() {
+        if (errorBuilder_ == null) {
+          if (!(responseCase_ == 2)) {
+            response_ = mt4_term_api.MrpcMt4Error.Error.getDefaultInstance();
+          }
+          errorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              mt4_term_api.MrpcMt4Error.Error, mt4_term_api.MrpcMt4Error.Error.Builder, mt4_term_api.MrpcMt4Error.ErrorOrBuilder>(
+                  (mt4_term_api.MrpcMt4Error.Error) response_,
+                  getParentForChildren(),
+                  isClean());
+          response_ = null;
+        }
+        responseCase_ = 2;
+        onChanged();;
+        return errorBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.StartEaReply)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.StartEaReply)
+    private static final mt4_term_api.Mt4TermApiCharts.StartEaReply DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiCharts.StartEaReply();
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaReply getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<StartEaReply>
+        PARSER = new com.google.protobuf.AbstractParser<StartEaReply>() {
+      @java.lang.Override
+      public StartEaReply parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StartEaReply(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<StartEaReply> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StartEaReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiCharts.StartEaReply getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface StartEaDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.StartEaData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool success = 1;</code>
+     * @return The success.
+     */
+    boolean getSuccess();
+
+    /**
+     * <code>string ea_id = 2;</code>
+     * @return The eaId.
+     */
+    java.lang.String getEaId();
+    /**
+     * <code>string ea_id = 2;</code>
+     * @return The bytes for eaId.
+     */
+    com.google.protobuf.ByteString
+        getEaIdBytes();
+
+    /**
+     * <code>string message = 3;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 3;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.StartEaData}
+   */
+  public static final class StartEaData extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.StartEaData)
+      StartEaDataOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use StartEaData.newBuilder() to construct.
+    private StartEaData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private StartEaData() {
+      eaId_ = "";
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new StartEaData();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private StartEaData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              success_ = input.readBool();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              eaId_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaData_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiCharts.StartEaData.class, mt4_term_api.Mt4TermApiCharts.StartEaData.Builder.class);
+    }
+
+    public static final int SUCCESS_FIELD_NUMBER = 1;
+    private boolean success_;
+    /**
+     * <code>bool success = 1;</code>
+     * @return The success.
+     */
+    @java.lang.Override
+    public boolean getSuccess() {
+      return success_;
+    }
+
+    public static final int EA_ID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object eaId_;
+    /**
+     * <code>string ea_id = 2;</code>
+     * @return The eaId.
+     */
+    @java.lang.Override
+    public java.lang.String getEaId() {
+      java.lang.Object ref = eaId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        eaId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string ea_id = 2;</code>
+     * @return The bytes for eaId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEaIdBytes() {
+      java.lang.Object ref = eaId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        eaId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 3;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 3;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (success_ != false) {
+        output.writeBool(1, success_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eaId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, eaId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (success_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, success_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(eaId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, eaId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiCharts.StartEaData)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiCharts.StartEaData other = (mt4_term_api.Mt4TermApiCharts.StartEaData) obj;
+
+      if (getSuccess()
+          != other.getSuccess()) return false;
+      if (!getEaId()
+          .equals(other.getEaId())) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSuccess());
+      hash = (37 * hash) + EA_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getEaId().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiCharts.StartEaData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.StartEaData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.StartEaData)
+        mt4_term_api.Mt4TermApiCharts.StartEaDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaData_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiCharts.StartEaData.class, mt4_term_api.Mt4TermApiCharts.StartEaData.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiCharts.StartEaData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        success_ = false;
+
+        eaId_ = "";
+
+        message_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiCharts.internal_static_mt4_term_api_StartEaData_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaData getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaData build() {
+        mt4_term_api.Mt4TermApiCharts.StartEaData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiCharts.StartEaData buildPartial() {
+        mt4_term_api.Mt4TermApiCharts.StartEaData result = new mt4_term_api.Mt4TermApiCharts.StartEaData(this);
+        result.success_ = success_;
+        result.eaId_ = eaId_;
+        result.message_ = message_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiCharts.StartEaData) {
+          return mergeFrom((mt4_term_api.Mt4TermApiCharts.StartEaData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiCharts.StartEaData other) {
+        if (other == mt4_term_api.Mt4TermApiCharts.StartEaData.getDefaultInstance()) return this;
+        if (other.getSuccess() != false) {
+          setSuccess(other.getSuccess());
+        }
+        if (!other.getEaId().isEmpty()) {
+          eaId_ = other.eaId_;
+          onChanged();
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiCharts.StartEaData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiCharts.StartEaData) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private boolean success_ ;
+      /**
+       * <code>bool success = 1;</code>
+       * @return The success.
+       */
+      @java.lang.Override
+      public boolean getSuccess() {
+        return success_;
+      }
+      /**
+       * <code>bool success = 1;</code>
+       * @param value The success to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccess(boolean value) {
+        
+        success_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool success = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccess() {
+        
+        success_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object eaId_ = "";
+      /**
+       * <code>string ea_id = 2;</code>
+       * @return The eaId.
+       */
+      public java.lang.String getEaId() {
+        java.lang.Object ref = eaId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          eaId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string ea_id = 2;</code>
+       * @return The bytes for eaId.
+       */
+      public com.google.protobuf.ByteString
+          getEaIdBytes() {
+        java.lang.Object ref = eaId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          eaId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string ea_id = 2;</code>
+       * @param value The eaId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEaId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        eaId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ea_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEaId() {
+        
+        eaId_ = getDefaultInstance().getEaId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string ea_id = 2;</code>
+       * @param value The bytes for eaId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEaIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        eaId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 3;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 3;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.StartEaData)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.StartEaData)
+    private static final mt4_term_api.Mt4TermApiCharts.StartEaData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiCharts.StartEaData();
+    }
+
+    public static mt4_term_api.Mt4TermApiCharts.StartEaData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<StartEaData>
+        PARSER = new com.google.protobuf.AbstractParser<StartEaData>() {
+      @java.lang.Override
+      public StartEaData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new StartEaData(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<StartEaData> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<StartEaData> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiCharts.StartEaData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_mt4_term_api_GetEaParamsRequest_descriptor;
   private static final 
@@ -22489,6 +24801,21 @@ public final class Mt4TermApiCharts {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_mt4_term_api_StopEaData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_StartEaRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_StartEaRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_StartEaReply_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_StartEaReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_StartEaData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_StartEaData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -22576,51 +24903,58 @@ public final class Mt4TermApiCharts {
       "pi.StopEaDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
       "m_api.ErrorH\000B\n\n\010response\"=\n\nStopEaData\022" +
       "\017\n\007success\030\001 \001(\010\022\r\n\005ea_id\030\002 \001(\t\022\017\n\007messa" +
-      "ge\030\003 \001(\t*\226\001\n\rEA_PARAM_TYPE\022\033\n\027EA_PARAM_T" +
-      "YPE_UNDEFINED\020\000\022\030\n\024EA_PARAM_TYPE_STRING\020" +
-      "\001\022\031\n\025EA_PARAM_TYPE_INTEGER\020\002\022\030\n\024EA_PARAM" +
-      "_TYPE_DOUBLE\020\003\022\031\n\025EA_PARAM_TYPE_BOOLEAN\020" +
-      "\004*\245\001\n(EnumOpenTerminalChartWithEaParamet" +
-      "erType\022\025\n\021MRPC_EA_PARAM_INT\020\000\022\026\n\022MRPC_EA" +
-      "_PARAM_LONG\020\001\022\026\n\022MRPC_EA_PARAM_BOOL\020\002\022\030\n" +
-      "\024MRPC_EA_PARAM_STRING\020\003\022\030\n\024MRPC_EA_PARAM" +
-      "_DOUBLE\020\004*\261\005\n%EnumOpenTerminalChartWithE" +
-      "aChatPeriod\022 \n\034MRPC_EA_CHART_PERIOD_CURR" +
-      "ENT\020\000\022\033\n\027MRPC_EA_CHART_PERIOD_M1\020\001\022\033\n\027MR" +
-      "PC_EA_CHART_PERIOD_M2\020\002\022\033\n\027MRPC_EA_CHART" +
-      "_PERIOD_M3\020\003\022\033\n\027MRPC_EA_CHART_PERIOD_M4\020" +
-      "\004\022\033\n\027MRPC_EA_CHART_PERIOD_M5\020\005\022\033\n\027MRPC_E" +
-      "A_CHART_PERIOD_M6\020\006\022\034\n\030MRPC_EA_CHART_PER" +
-      "IOD_M10\020\007\022\034\n\030MRPC_EA_CHART_PERIOD_M12\020\010\022" +
-      "\034\n\030MRPC_EA_CHART_PERIOD_M15\020\t\022\034\n\030MRPC_EA" +
-      "_CHART_PERIOD_M20\020\n\022\034\n\030MRPC_EA_CHART_PER" +
-      "IOD_M30\020\013\022\033\n\027MRPC_EA_CHART_PERIOD_H1\020\014\022\033" +
-      "\n\027MRPC_EA_CHART_PERIOD_H2\020\r\022\033\n\027MRPC_EA_C" +
-      "HART_PERIOD_H3\020\016\022\033\n\027MRPC_EA_CHART_PERIOD" +
-      "_H4\020\017\022\033\n\027MRPC_EA_CHART_PERIOD_H6\020\020\022\033\n\027MR" +
-      "PC_EA_CHART_PERIOD_H8\020\021\022\034\n\030MRPC_EA_CHART" +
-      "_PERIOD_H12\020\022\022\033\n\027MRPC_EA_CHART_PERIOD_D1" +
-      "\020\023\022\033\n\027MRPC_EA_CHART_PERIOD_W1\020\024\022\034\n\030MRPC_" +
-      "EA_CHART_PERIOD_MN1\020\0252\245\005\n\006Charts\022e\n\013GetE" +
-      "aParams\022 .mt4_term_api.GetEaParamsReques" +
-      "t\032\036.mt4_term_api.GetEaParamsReply\"\024\202\323\344\223\002" +
-      "\016\022\014/GetEaParams\022\225\001\n\027OpenTerminalChartWit" +
-      "hEa\022,.mt4_term_api.OpenTerminalChartWith" +
-      "EaRequest\032*.mt4_term_api.OpenTerminalCha" +
-      "rtWithEaReply\" \202\323\344\223\002\032\022\030/OpenTerminalChar" +
-      "tWithEa\022c\n\010AttachEa\022\035.mt4_term_api.Attac" +
-      "hEaRequest\032\033.mt4_term_api.AttachEaReply\"" +
-      "\033\202\323\344\223\002\025\"\020/Charts/AttachEa:\001*\022t\n\rGetRunni" +
-      "ngEas\022\".mt4_term_api.GetRunningEasReques" +
-      "t\032 .mt4_term_api.GetRunningEasReply\"\035\202\323\344" +
-      "\223\002\027\022\025/Charts/GetRunningEas\022d\n\tGetEaLogs\022" +
-      "\036.mt4_term_api.GetEaLogsRequest\032\034.mt4_te" +
-      "rm_api.GetEaLogsReply\"\031\202\323\344\223\002\023\022\021/Charts/G" +
-      "etEaLogs\022[\n\006StopEa\022\033.mt4_term_api.StopEa" +
-      "Request\032\031.mt4_term_api.StopEaReply\"\031\202\323\344\223" +
-      "\002\023\"\016/Charts/StopEa:\001*BBZ1git.mtapi.io/ro" +
-      "ot/mrpc-proto.git/mt4/libraries/go\252\002\014mt4" +
-      "_term_apib\006proto3"
+      "ge\030\003 \001(\t\"\037\n\016StartEaRequest\022\r\n\005ea_id\030\001 \001(" +
+      "\t\"k\n\014StartEaReply\022)\n\004data\030\001 \001(\0132\031.mt4_te" +
+      "rm_api.StartEaDataH\000\022$\n\005error\030\002 \001(\0132\023.mt" +
+      "4_term_api.ErrorH\000B\n\n\010response\">\n\013StartE" +
+      "aData\022\017\n\007success\030\001 \001(\010\022\r\n\005ea_id\030\002 \001(\t\022\017\n" +
+      "\007message\030\003 \001(\t*\226\001\n\rEA_PARAM_TYPE\022\033\n\027EA_P" +
+      "ARAM_TYPE_UNDEFINED\020\000\022\030\n\024EA_PARAM_TYPE_S" +
+      "TRING\020\001\022\031\n\025EA_PARAM_TYPE_INTEGER\020\002\022\030\n\024EA" +
+      "_PARAM_TYPE_DOUBLE\020\003\022\031\n\025EA_PARAM_TYPE_BO" +
+      "OLEAN\020\004*\245\001\n(EnumOpenTerminalChartWithEaP" +
+      "arameterType\022\025\n\021MRPC_EA_PARAM_INT\020\000\022\026\n\022M" +
+      "RPC_EA_PARAM_LONG\020\001\022\026\n\022MRPC_EA_PARAM_BOO" +
+      "L\020\002\022\030\n\024MRPC_EA_PARAM_STRING\020\003\022\030\n\024MRPC_EA" +
+      "_PARAM_DOUBLE\020\004*\261\005\n%EnumOpenTerminalChar" +
+      "tWithEaChatPeriod\022 \n\034MRPC_EA_CHART_PERIO" +
+      "D_CURRENT\020\000\022\033\n\027MRPC_EA_CHART_PERIOD_M1\020\001" +
+      "\022\033\n\027MRPC_EA_CHART_PERIOD_M2\020\002\022\033\n\027MRPC_EA" +
+      "_CHART_PERIOD_M3\020\003\022\033\n\027MRPC_EA_CHART_PERI" +
+      "OD_M4\020\004\022\033\n\027MRPC_EA_CHART_PERIOD_M5\020\005\022\033\n\027" +
+      "MRPC_EA_CHART_PERIOD_M6\020\006\022\034\n\030MRPC_EA_CHA" +
+      "RT_PERIOD_M10\020\007\022\034\n\030MRPC_EA_CHART_PERIOD_" +
+      "M12\020\010\022\034\n\030MRPC_EA_CHART_PERIOD_M15\020\t\022\034\n\030M" +
+      "RPC_EA_CHART_PERIOD_M20\020\n\022\034\n\030MRPC_EA_CHA" +
+      "RT_PERIOD_M30\020\013\022\033\n\027MRPC_EA_CHART_PERIOD_" +
+      "H1\020\014\022\033\n\027MRPC_EA_CHART_PERIOD_H2\020\r\022\033\n\027MRP" +
+      "C_EA_CHART_PERIOD_H3\020\016\022\033\n\027MRPC_EA_CHART_" +
+      "PERIOD_H4\020\017\022\033\n\027MRPC_EA_CHART_PERIOD_H6\020\020" +
+      "\022\033\n\027MRPC_EA_CHART_PERIOD_H8\020\021\022\034\n\030MRPC_EA" +
+      "_CHART_PERIOD_H12\020\022\022\033\n\027MRPC_EA_CHART_PER" +
+      "IOD_D1\020\023\022\033\n\027MRPC_EA_CHART_PERIOD_W1\020\024\022\034\n" +
+      "\030MRPC_EA_CHART_PERIOD_MN1\020\0252\206\006\n\006Charts\022e" +
+      "\n\013GetEaParams\022 .mt4_term_api.GetEaParams" +
+      "Request\032\036.mt4_term_api.GetEaParamsReply\"" +
+      "\024\202\323\344\223\002\016\022\014/GetEaParams\022\225\001\n\027OpenTerminalCh" +
+      "artWithEa\022,.mt4_term_api.OpenTerminalCha" +
+      "rtWithEaRequest\032*.mt4_term_api.OpenTermi" +
+      "nalChartWithEaReply\" \202\323\344\223\002\032\022\030/OpenTermin" +
+      "alChartWithEa\022c\n\010AttachEa\022\035.mt4_term_api" +
+      ".AttachEaRequest\032\033.mt4_term_api.AttachEa" +
+      "Reply\"\033\202\323\344\223\002\025\"\020/Charts/AttachEa:\001*\022t\n\rGe" +
+      "tRunningEas\022\".mt4_term_api.GetRunningEas" +
+      "Request\032 .mt4_term_api.GetRunningEasRepl" +
+      "y\"\035\202\323\344\223\002\027\022\025/Charts/GetRunningEas\022d\n\tGetE" +
+      "aLogs\022\036.mt4_term_api.GetEaLogsRequest\032\034." +
+      "mt4_term_api.GetEaLogsReply\"\031\202\323\344\223\002\023\022\021/Ch" +
+      "arts/GetEaLogs\022[\n\006StopEa\022\033.mt4_term_api." +
+      "StopEaRequest\032\031.mt4_term_api.StopEaReply" +
+      "\"\031\202\323\344\223\002\023\"\016/Charts/StopEa:\001*\022_\n\007StartEa\022\034" +
+      ".mt4_term_api.StartEaRequest\032\032.mt4_term_" +
+      "api.StartEaReply\"\032\202\323\344\223\002\024\"\017/Charts/StartE" +
+      "a:\001*BBZ1git.mtapi.io/root/mrpc-proto.git" +
+      "/mt4/libraries/go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -22760,6 +25094,24 @@ public final class Mt4TermApiCharts {
     internal_static_mt4_term_api_StopEaData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_StopEaData_descriptor,
+        new java.lang.String[] { "Success", "EaId", "Message", });
+    internal_static_mt4_term_api_StartEaRequest_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_mt4_term_api_StartEaRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_StartEaRequest_descriptor,
+        new java.lang.String[] { "EaId", });
+    internal_static_mt4_term_api_StartEaReply_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_mt4_term_api_StartEaReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_StartEaReply_descriptor,
+        new java.lang.String[] { "Data", "Error", "Response", });
+    internal_static_mt4_term_api_StartEaData_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_mt4_term_api_StartEaData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_StartEaData_descriptor,
         new java.lang.String[] { "Success", "EaId", "Message", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
