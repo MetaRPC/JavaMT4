@@ -14363,6 +14363,33 @@ public final class Mt4TermApiCharts {
      * @return The resourceMultiplier.
      */
     double getResourceMultiplier();
+
+    /**
+     * <code>double metered_hours = 17;</code>
+     * @return The meteredHours.
+     */
+    double getMeteredHours();
+
+    /**
+     * <code>double charged_amount = 18;</code>
+     * @return The chargedAmount.
+     */
+    double getChargedAmount();
+
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     * @return Whether the stoppedAt field is set.
+     */
+    boolean hasStoppedAt();
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     * @return The stoppedAt.
+     */
+    com.google.protobuf.Timestamp getStoppedAt();
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getStoppedAtOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.RunningEaInfo}
@@ -14509,6 +14536,29 @@ public final class Mt4TermApiCharts {
             case 129: {
 
               resourceMultiplier_ = input.readDouble();
+              break;
+            }
+            case 137: {
+
+              meteredHours_ = input.readDouble();
+              break;
+            }
+            case 145: {
+
+              chargedAmount_ = input.readDouble();
+              break;
+            }
+            case 154: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (stoppedAt_ != null) {
+                subBuilder = stoppedAt_.toBuilder();
+              }
+              stoppedAt_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(stoppedAt_);
+                stoppedAt_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -14925,6 +14975,54 @@ public final class Mt4TermApiCharts {
       return resourceMultiplier_;
     }
 
+    public static final int METERED_HOURS_FIELD_NUMBER = 17;
+    private double meteredHours_;
+    /**
+     * <code>double metered_hours = 17;</code>
+     * @return The meteredHours.
+     */
+    @java.lang.Override
+    public double getMeteredHours() {
+      return meteredHours_;
+    }
+
+    public static final int CHARGED_AMOUNT_FIELD_NUMBER = 18;
+    private double chargedAmount_;
+    /**
+     * <code>double charged_amount = 18;</code>
+     * @return The chargedAmount.
+     */
+    @java.lang.Override
+    public double getChargedAmount() {
+      return chargedAmount_;
+    }
+
+    public static final int STOPPED_AT_FIELD_NUMBER = 19;
+    private com.google.protobuf.Timestamp stoppedAt_;
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     * @return Whether the stoppedAt field is set.
+     */
+    @java.lang.Override
+    public boolean hasStoppedAt() {
+      return stoppedAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     * @return The stoppedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getStoppedAt() {
+      return stoppedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : stoppedAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getStoppedAtOrBuilder() {
+      return getStoppedAt();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -14986,6 +15084,15 @@ public final class Mt4TermApiCharts {
       }
       if (java.lang.Double.doubleToRawLongBits(resourceMultiplier_) != 0) {
         output.writeDouble(16, resourceMultiplier_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(meteredHours_) != 0) {
+        output.writeDouble(17, meteredHours_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(chargedAmount_) != 0) {
+        output.writeDouble(18, chargedAmount_);
+      }
+      if (stoppedAt_ != null) {
+        output.writeMessage(19, getStoppedAt());
       }
       unknownFields.writeTo(output);
     }
@@ -15053,6 +15160,18 @@ public final class Mt4TermApiCharts {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(16, resourceMultiplier_);
       }
+      if (java.lang.Double.doubleToRawLongBits(meteredHours_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(17, meteredHours_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(chargedAmount_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(18, chargedAmount_);
+      }
+      if (stoppedAt_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getStoppedAt());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -15108,6 +15227,17 @@ public final class Mt4TermApiCharts {
       if (java.lang.Double.doubleToLongBits(getResourceMultiplier())
           != java.lang.Double.doubleToLongBits(
               other.getResourceMultiplier())) return false;
+      if (java.lang.Double.doubleToLongBits(getMeteredHours())
+          != java.lang.Double.doubleToLongBits(
+              other.getMeteredHours())) return false;
+      if (java.lang.Double.doubleToLongBits(getChargedAmount())
+          != java.lang.Double.doubleToLongBits(
+              other.getChargedAmount())) return false;
+      if (hasStoppedAt() != other.hasStoppedAt()) return false;
+      if (hasStoppedAt()) {
+        if (!getStoppedAt()
+            .equals(other.getStoppedAt())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -15160,6 +15290,16 @@ public final class Mt4TermApiCharts {
       hash = (37 * hash) + RESOURCE_MULTIPLIER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getResourceMultiplier()));
+      hash = (37 * hash) + METERED_HOURS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getMeteredHours()));
+      hash = (37 * hash) + CHARGED_AMOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getChargedAmount()));
+      if (hasStoppedAt()) {
+        hash = (37 * hash) + STOPPED_AT_FIELD_NUMBER;
+        hash = (53 * hash) + getStoppedAt().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -15329,6 +15469,16 @@ public final class Mt4TermApiCharts {
 
         resourceMultiplier_ = 0D;
 
+        meteredHours_ = 0D;
+
+        chargedAmount_ = 0D;
+
+        if (stoppedAtBuilder_ == null) {
+          stoppedAt_ = null;
+        } else {
+          stoppedAt_ = null;
+          stoppedAtBuilder_ = null;
+        }
         return this;
       }
 
@@ -15375,6 +15525,13 @@ public final class Mt4TermApiCharts {
         result.refRamBytes_ = refRamBytes_;
         result.ramRatio_ = ramRatio_;
         result.resourceMultiplier_ = resourceMultiplier_;
+        result.meteredHours_ = meteredHours_;
+        result.chargedAmount_ = chargedAmount_;
+        if (stoppedAtBuilder_ == null) {
+          result.stoppedAt_ = stoppedAt_;
+        } else {
+          result.stoppedAt_ = stoppedAtBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -15477,6 +15634,15 @@ public final class Mt4TermApiCharts {
         }
         if (other.getResourceMultiplier() != 0D) {
           setResourceMultiplier(other.getResourceMultiplier());
+        }
+        if (other.getMeteredHours() != 0D) {
+          setMeteredHours(other.getMeteredHours());
+        }
+        if (other.getChargedAmount() != 0D) {
+          setChargedAmount(other.getChargedAmount());
+        }
+        if (other.hasStoppedAt()) {
+          mergeStoppedAt(other.getStoppedAt());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -16404,6 +16570,187 @@ public final class Mt4TermApiCharts {
         resourceMultiplier_ = 0D;
         onChanged();
         return this;
+      }
+
+      private double meteredHours_ ;
+      /**
+       * <code>double metered_hours = 17;</code>
+       * @return The meteredHours.
+       */
+      @java.lang.Override
+      public double getMeteredHours() {
+        return meteredHours_;
+      }
+      /**
+       * <code>double metered_hours = 17;</code>
+       * @param value The meteredHours to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMeteredHours(double value) {
+        
+        meteredHours_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double metered_hours = 17;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMeteredHours() {
+        
+        meteredHours_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double chargedAmount_ ;
+      /**
+       * <code>double charged_amount = 18;</code>
+       * @return The chargedAmount.
+       */
+      @java.lang.Override
+      public double getChargedAmount() {
+        return chargedAmount_;
+      }
+      /**
+       * <code>double charged_amount = 18;</code>
+       * @param value The chargedAmount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChargedAmount(double value) {
+        
+        chargedAmount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double charged_amount = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChargedAmount() {
+        
+        chargedAmount_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp stoppedAt_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> stoppedAtBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       * @return Whether the stoppedAt field is set.
+       */
+      public boolean hasStoppedAt() {
+        return stoppedAtBuilder_ != null || stoppedAt_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       * @return The stoppedAt.
+       */
+      public com.google.protobuf.Timestamp getStoppedAt() {
+        if (stoppedAtBuilder_ == null) {
+          return stoppedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : stoppedAt_;
+        } else {
+          return stoppedAtBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public Builder setStoppedAt(com.google.protobuf.Timestamp value) {
+        if (stoppedAtBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          stoppedAt_ = value;
+          onChanged();
+        } else {
+          stoppedAtBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public Builder setStoppedAt(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (stoppedAtBuilder_ == null) {
+          stoppedAt_ = builderForValue.build();
+          onChanged();
+        } else {
+          stoppedAtBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public Builder mergeStoppedAt(com.google.protobuf.Timestamp value) {
+        if (stoppedAtBuilder_ == null) {
+          if (stoppedAt_ != null) {
+            stoppedAt_ =
+              com.google.protobuf.Timestamp.newBuilder(stoppedAt_).mergeFrom(value).buildPartial();
+          } else {
+            stoppedAt_ = value;
+          }
+          onChanged();
+        } else {
+          stoppedAtBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public Builder clearStoppedAt() {
+        if (stoppedAtBuilder_ == null) {
+          stoppedAt_ = null;
+          onChanged();
+        } else {
+          stoppedAt_ = null;
+          stoppedAtBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getStoppedAtBuilder() {
+        
+        onChanged();
+        return getStoppedAtFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getStoppedAtOrBuilder() {
+        if (stoppedAtBuilder_ != null) {
+          return stoppedAtBuilder_.getMessageOrBuilder();
+        } else {
+          return stoppedAt_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : stoppedAt_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp stopped_at = 19;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getStoppedAtFieldBuilder() {
+        if (stoppedAtBuilder_ == null) {
+          stoppedAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getStoppedAt(),
+                  getParentForChildren(),
+                  isClean());
+          stoppedAt_ = null;
+        }
+        return stoppedAtBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -24879,7 +25226,7 @@ public final class Mt4TermApiCharts {
       "\001(\0132\037.mt4_term_api.GetRunningEasDataH\000\022$" +
       "\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010" +
       "response\"=\n\021GetRunningEasData\022(\n\003eas\030\001 \003" +
-      "(\0132\033.mt4_term_api.RunningEaInfo\"\366\002\n\rRunn" +
+      "(\0132\033.mt4_term_api.RunningEaInfo\"\325\003\n\rRunn" +
       "ingEaInfo\022\r\n\005ea_id\030\001 \001(\t\022\017\n\007ea_name\030\002 \001(" +
       "\t\022\031\n\021parent_session_id\030\003 \001(\t\022\026\n\016ea_termi" +
       "nal_id\030\004 \001(\t\022\022\n\nprocess_id\030\005 \001(\005\022\016\n\006symb" +
@@ -24889,72 +25236,75 @@ public final class Mt4TermApiCharts {
       "pu_percent\030\013 \001(\001\022\021\n\tcpu_ratio\030\014 \001(\001\022\024\n\014e" +
       "a_ram_bytes\030\r \001(\003\022\025\n\rref_ram_bytes\030\016 \001(\003" +
       "\022\021\n\tram_ratio\030\017 \001(\001\022\033\n\023resource_multipli" +
-      "er\030\020 \001(\001\"E\n\020GetEaLogsRequest\022\r\n\005ea_id\030\001 " +
-      "\001(\t\022\025\n\010log_type\030\002 \001(\tH\000\210\001\001B\013\n\t_log_type\"" +
-      "o\n\016GetEaLogsReply\022+\n\004data\030\001 \001(\0132\033.mt4_te" +
-      "rm_api.GetEaLogsDataH\000\022$\n\005error\030\002 \001(\0132\023." +
-      "mt4_term_api.ErrorH\000B\n\n\010response\"5\n\rGetE" +
-      "aLogsData\022$\n\004rows\030\001 \003(\0132\026.mt4_term_api.E" +
-      "aLogRow\"U\n\010EaLogRow\022(\n\004time\030\001 \001(\0132\032.goog" +
-      "le.protobuf.Timestamp\022\016\n\006source\030\002 \001(\t\022\017\n" +
-      "\007message\030\003 \001(\t\">\n\rStopEaRequest\022\r\n\005ea_id" +
-      "\030\001 \001(\t\022\023\n\006reason\030\002 \001(\tH\000\210\001\001B\t\n\007_reason\"i" +
-      "\n\013StopEaReply\022(\n\004data\030\001 \001(\0132\030.mt4_term_a" +
-      "pi.StopEaDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
-      "m_api.ErrorH\000B\n\n\010response\"=\n\nStopEaData\022" +
-      "\017\n\007success\030\001 \001(\010\022\r\n\005ea_id\030\002 \001(\t\022\017\n\007messa" +
-      "ge\030\003 \001(\t\"\037\n\016StartEaRequest\022\r\n\005ea_id\030\001 \001(" +
-      "\t\"k\n\014StartEaReply\022)\n\004data\030\001 \001(\0132\031.mt4_te" +
-      "rm_api.StartEaDataH\000\022$\n\005error\030\002 \001(\0132\023.mt" +
-      "4_term_api.ErrorH\000B\n\n\010response\">\n\013StartE" +
-      "aData\022\017\n\007success\030\001 \001(\010\022\r\n\005ea_id\030\002 \001(\t\022\017\n" +
-      "\007message\030\003 \001(\t*\226\001\n\rEA_PARAM_TYPE\022\033\n\027EA_P" +
-      "ARAM_TYPE_UNDEFINED\020\000\022\030\n\024EA_PARAM_TYPE_S" +
-      "TRING\020\001\022\031\n\025EA_PARAM_TYPE_INTEGER\020\002\022\030\n\024EA" +
-      "_PARAM_TYPE_DOUBLE\020\003\022\031\n\025EA_PARAM_TYPE_BO" +
-      "OLEAN\020\004*\245\001\n(EnumOpenTerminalChartWithEaP" +
-      "arameterType\022\025\n\021MRPC_EA_PARAM_INT\020\000\022\026\n\022M" +
-      "RPC_EA_PARAM_LONG\020\001\022\026\n\022MRPC_EA_PARAM_BOO" +
-      "L\020\002\022\030\n\024MRPC_EA_PARAM_STRING\020\003\022\030\n\024MRPC_EA" +
-      "_PARAM_DOUBLE\020\004*\261\005\n%EnumOpenTerminalChar" +
-      "tWithEaChatPeriod\022 \n\034MRPC_EA_CHART_PERIO" +
-      "D_CURRENT\020\000\022\033\n\027MRPC_EA_CHART_PERIOD_M1\020\001" +
-      "\022\033\n\027MRPC_EA_CHART_PERIOD_M2\020\002\022\033\n\027MRPC_EA" +
-      "_CHART_PERIOD_M3\020\003\022\033\n\027MRPC_EA_CHART_PERI" +
-      "OD_M4\020\004\022\033\n\027MRPC_EA_CHART_PERIOD_M5\020\005\022\033\n\027" +
-      "MRPC_EA_CHART_PERIOD_M6\020\006\022\034\n\030MRPC_EA_CHA" +
-      "RT_PERIOD_M10\020\007\022\034\n\030MRPC_EA_CHART_PERIOD_" +
-      "M12\020\010\022\034\n\030MRPC_EA_CHART_PERIOD_M15\020\t\022\034\n\030M" +
-      "RPC_EA_CHART_PERIOD_M20\020\n\022\034\n\030MRPC_EA_CHA" +
-      "RT_PERIOD_M30\020\013\022\033\n\027MRPC_EA_CHART_PERIOD_" +
-      "H1\020\014\022\033\n\027MRPC_EA_CHART_PERIOD_H2\020\r\022\033\n\027MRP" +
-      "C_EA_CHART_PERIOD_H3\020\016\022\033\n\027MRPC_EA_CHART_" +
-      "PERIOD_H4\020\017\022\033\n\027MRPC_EA_CHART_PERIOD_H6\020\020" +
-      "\022\033\n\027MRPC_EA_CHART_PERIOD_H8\020\021\022\034\n\030MRPC_EA" +
-      "_CHART_PERIOD_H12\020\022\022\033\n\027MRPC_EA_CHART_PER" +
-      "IOD_D1\020\023\022\033\n\027MRPC_EA_CHART_PERIOD_W1\020\024\022\034\n" +
-      "\030MRPC_EA_CHART_PERIOD_MN1\020\0252\206\006\n\006Charts\022e" +
-      "\n\013GetEaParams\022 .mt4_term_api.GetEaParams" +
-      "Request\032\036.mt4_term_api.GetEaParamsReply\"" +
-      "\024\202\323\344\223\002\016\022\014/GetEaParams\022\225\001\n\027OpenTerminalCh" +
-      "artWithEa\022,.mt4_term_api.OpenTerminalCha" +
-      "rtWithEaRequest\032*.mt4_term_api.OpenTermi" +
-      "nalChartWithEaReply\" \202\323\344\223\002\032\022\030/OpenTermin" +
-      "alChartWithEa\022c\n\010AttachEa\022\035.mt4_term_api" +
-      ".AttachEaRequest\032\033.mt4_term_api.AttachEa" +
-      "Reply\"\033\202\323\344\223\002\025\"\020/Charts/AttachEa:\001*\022t\n\rGe" +
-      "tRunningEas\022\".mt4_term_api.GetRunningEas" +
-      "Request\032 .mt4_term_api.GetRunningEasRepl" +
-      "y\"\035\202\323\344\223\002\027\022\025/Charts/GetRunningEas\022d\n\tGetE" +
-      "aLogs\022\036.mt4_term_api.GetEaLogsRequest\032\034." +
-      "mt4_term_api.GetEaLogsReply\"\031\202\323\344\223\002\023\022\021/Ch" +
-      "arts/GetEaLogs\022[\n\006StopEa\022\033.mt4_term_api." +
-      "StopEaRequest\032\031.mt4_term_api.StopEaReply" +
-      "\"\031\202\323\344\223\002\023\"\016/Charts/StopEa:\001*\022_\n\007StartEa\022\034" +
-      ".mt4_term_api.StartEaRequest\032\032.mt4_term_" +
-      "api.StartEaReply\"\032\202\323\344\223\002\024\"\017/Charts/StartE" +
-      "a:\001*BBZ1git.mtapi.io/root/mrpc-proto.git" +
-      "/mt4/libraries/go\252\002\014mt4_term_apib\006proto3"
+      "er\030\020 \001(\001\022\025\n\rmetered_hours\030\021 \001(\001\022\026\n\016charg" +
+      "ed_amount\030\022 \001(\001\022.\n\nstopped_at\030\023 \001(\0132\032.go" +
+      "ogle.protobuf.Timestamp\"E\n\020GetEaLogsRequ" +
+      "est\022\r\n\005ea_id\030\001 \001(\t\022\025\n\010log_type\030\002 \001(\tH\000\210\001" +
+      "\001B\013\n\t_log_type\"o\n\016GetEaLogsReply\022+\n\004data" +
+      "\030\001 \001(\0132\033.mt4_term_api.GetEaLogsDataH\000\022$\n" +
+      "\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010r" +
+      "esponse\"5\n\rGetEaLogsData\022$\n\004rows\030\001 \003(\0132\026" +
+      ".mt4_term_api.EaLogRow\"U\n\010EaLogRow\022(\n\004ti" +
+      "me\030\001 \001(\0132\032.google.protobuf.Timestamp\022\016\n\006" +
+      "source\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\">\n\rStopEaR" +
+      "equest\022\r\n\005ea_id\030\001 \001(\t\022\023\n\006reason\030\002 \001(\tH\000\210" +
+      "\001\001B\t\n\007_reason\"i\n\013StopEaReply\022(\n\004data\030\001 \001" +
+      "(\0132\030.mt4_term_api.StopEaDataH\000\022$\n\005error\030" +
+      "\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response" +
+      "\"=\n\nStopEaData\022\017\n\007success\030\001 \001(\010\022\r\n\005ea_id" +
+      "\030\002 \001(\t\022\017\n\007message\030\003 \001(\t\"\037\n\016StartEaReques" +
+      "t\022\r\n\005ea_id\030\001 \001(\t\"k\n\014StartEaReply\022)\n\004data" +
+      "\030\001 \001(\0132\031.mt4_term_api.StartEaDataH\000\022$\n\005e" +
+      "rror\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010res" +
+      "ponse\">\n\013StartEaData\022\017\n\007success\030\001 \001(\010\022\r\n" +
+      "\005ea_id\030\002 \001(\t\022\017\n\007message\030\003 \001(\t*\226\001\n\rEA_PAR" +
+      "AM_TYPE\022\033\n\027EA_PARAM_TYPE_UNDEFINED\020\000\022\030\n\024" +
+      "EA_PARAM_TYPE_STRING\020\001\022\031\n\025EA_PARAM_TYPE_" +
+      "INTEGER\020\002\022\030\n\024EA_PARAM_TYPE_DOUBLE\020\003\022\031\n\025E" +
+      "A_PARAM_TYPE_BOOLEAN\020\004*\245\001\n(EnumOpenTermi" +
+      "nalChartWithEaParameterType\022\025\n\021MRPC_EA_P" +
+      "ARAM_INT\020\000\022\026\n\022MRPC_EA_PARAM_LONG\020\001\022\026\n\022MR" +
+      "PC_EA_PARAM_BOOL\020\002\022\030\n\024MRPC_EA_PARAM_STRI" +
+      "NG\020\003\022\030\n\024MRPC_EA_PARAM_DOUBLE\020\004*\261\005\n%EnumO" +
+      "penTerminalChartWithEaChatPeriod\022 \n\034MRPC" +
+      "_EA_CHART_PERIOD_CURRENT\020\000\022\033\n\027MRPC_EA_CH" +
+      "ART_PERIOD_M1\020\001\022\033\n\027MRPC_EA_CHART_PERIOD_" +
+      "M2\020\002\022\033\n\027MRPC_EA_CHART_PERIOD_M3\020\003\022\033\n\027MRP" +
+      "C_EA_CHART_PERIOD_M4\020\004\022\033\n\027MRPC_EA_CHART_" +
+      "PERIOD_M5\020\005\022\033\n\027MRPC_EA_CHART_PERIOD_M6\020\006" +
+      "\022\034\n\030MRPC_EA_CHART_PERIOD_M10\020\007\022\034\n\030MRPC_E" +
+      "A_CHART_PERIOD_M12\020\010\022\034\n\030MRPC_EA_CHART_PE" +
+      "RIOD_M15\020\t\022\034\n\030MRPC_EA_CHART_PERIOD_M20\020\n" +
+      "\022\034\n\030MRPC_EA_CHART_PERIOD_M30\020\013\022\033\n\027MRPC_E" +
+      "A_CHART_PERIOD_H1\020\014\022\033\n\027MRPC_EA_CHART_PER" +
+      "IOD_H2\020\r\022\033\n\027MRPC_EA_CHART_PERIOD_H3\020\016\022\033\n" +
+      "\027MRPC_EA_CHART_PERIOD_H4\020\017\022\033\n\027MRPC_EA_CH" +
+      "ART_PERIOD_H6\020\020\022\033\n\027MRPC_EA_CHART_PERIOD_" +
+      "H8\020\021\022\034\n\030MRPC_EA_CHART_PERIOD_H12\020\022\022\033\n\027MR" +
+      "PC_EA_CHART_PERIOD_D1\020\023\022\033\n\027MRPC_EA_CHART" +
+      "_PERIOD_W1\020\024\022\034\n\030MRPC_EA_CHART_PERIOD_MN1" +
+      "\020\0252\206\006\n\006Charts\022e\n\013GetEaParams\022 .mt4_term_" +
+      "api.GetEaParamsRequest\032\036.mt4_term_api.Ge" +
+      "tEaParamsReply\"\024\202\323\344\223\002\016\022\014/GetEaParams\022\225\001\n" +
+      "\027OpenTerminalChartWithEa\022,.mt4_term_api." +
+      "OpenTerminalChartWithEaRequest\032*.mt4_ter" +
+      "m_api.OpenTerminalChartWithEaReply\" \202\323\344\223" +
+      "\002\032\022\030/OpenTerminalChartWithEa\022c\n\010AttachEa" +
+      "\022\035.mt4_term_api.AttachEaRequest\032\033.mt4_te" +
+      "rm_api.AttachEaReply\"\033\202\323\344\223\002\025\"\020/Charts/At" +
+      "tachEa:\001*\022t\n\rGetRunningEas\022\".mt4_term_ap" +
+      "i.GetRunningEasRequest\032 .mt4_term_api.Ge" +
+      "tRunningEasReply\"\035\202\323\344\223\002\027\022\025/Charts/GetRun" +
+      "ningEas\022d\n\tGetEaLogs\022\036.mt4_term_api.GetE" +
+      "aLogsRequest\032\034.mt4_term_api.GetEaLogsRep" +
+      "ly\"\031\202\323\344\223\002\023\022\021/Charts/GetEaLogs\022[\n\006StopEa\022" +
+      "\033.mt4_term_api.StopEaRequest\032\031.mt4_term_" +
+      "api.StopEaReply\"\031\202\323\344\223\002\023\"\016/Charts/StopEa:" +
+      "\001*\022_\n\007StartEa\022\034.mt4_term_api.StartEaRequ" +
+      "est\032\032.mt4_term_api.StartEaReply\"\032\202\323\344\223\002\024\"" +
+      "\017/Charts/StartEa:\001*BBZ1git.mtapi.io/root" +
+      "/mrpc-proto.git/mt4/libraries/go\252\002\014mt4_t" +
+      "erm_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -25052,7 +25402,7 @@ public final class Mt4TermApiCharts {
     internal_static_mt4_term_api_RunningEaInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_RunningEaInfo_descriptor,
-        new java.lang.String[] { "EaId", "EaName", "ParentSessionId", "EaTerminalId", "ProcessId", "Symbol", "Period", "State", "StartedAt", "EaCpuPercent", "RefCpuPercent", "CpuRatio", "EaRamBytes", "RefRamBytes", "RamRatio", "ResourceMultiplier", });
+        new java.lang.String[] { "EaId", "EaName", "ParentSessionId", "EaTerminalId", "ProcessId", "Symbol", "Period", "State", "StartedAt", "EaCpuPercent", "RefCpuPercent", "CpuRatio", "EaRamBytes", "RefRamBytes", "RamRatio", "ResourceMultiplier", "MeteredHours", "ChargedAmount", "StoppedAt", });
     internal_static_mt4_term_api_GetEaLogsRequest_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_mt4_term_api_GetEaLogsRequest_fieldAccessorTable = new
