@@ -19,68 +19,6 @@ public final class GuiGrpc {
   public static final String SERVICE_NAME = "mt4_term_api.Gui";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getDemoFindCompaniesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DemoFindCompanies",
-      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.class,
-      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getDemoFindCompaniesMethod() {
-    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getDemoFindCompaniesMethod;
-    if ((getDemoFindCompaniesMethod = GuiGrpc.getDemoFindCompaniesMethod) == null) {
-      synchronized (GuiGrpc.class) {
-        if ((getDemoFindCompaniesMethod = GuiGrpc.getDemoFindCompaniesMethod) == null) {
-          GuiGrpc.getDemoFindCompaniesMethod = getDemoFindCompaniesMethod =
-              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DemoFindCompanies"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.getDefaultInstance()))
-              .setSchemaDescriptor(new GuiMethodDescriptorSupplier("DemoFindCompanies"))
-              .build();
-        }
-      }
-    }
-    return getDemoFindCompaniesMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getDemoServersAndTypesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DemoServersAndTypes",
-      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.class,
-      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getDemoServersAndTypesMethod() {
-    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getDemoServersAndTypesMethod;
-    if ((getDemoServersAndTypesMethod = GuiGrpc.getDemoServersAndTypesMethod) == null) {
-      synchronized (GuiGrpc.class) {
-        if ((getDemoServersAndTypesMethod = GuiGrpc.getDemoServersAndTypesMethod) == null) {
-          GuiGrpc.getDemoServersAndTypesMethod = getDemoServersAndTypesMethod =
-              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DemoServersAndTypes"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.getDefaultInstance()))
-              .setSchemaDescriptor(new GuiMethodDescriptorSupplier("DemoServersAndTypes"))
-              .build();
-        }
-      }
-    }
-    return getDemoServersAndTypesMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
       mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> getDemoOpenAccountMethod;
 
@@ -112,35 +50,35 @@ public final class GuiGrpc {
     return getDemoOpenAccountMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> getDemoOpenAccountWithProgressMethod;
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
+      mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> getDemoOpenAccountInteractiveMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DemoOpenAccountWithProgress",
-      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest.class,
-      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
-      mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> getDemoOpenAccountWithProgressMethod() {
-    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest, mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> getDemoOpenAccountWithProgressMethod;
-    if ((getDemoOpenAccountWithProgressMethod = GuiGrpc.getDemoOpenAccountWithProgressMethod) == null) {
+      fullMethodName = SERVICE_NAME + '/' + "DemoOpenAccountInteractive",
+      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage.class,
+      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
+      mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> getDemoOpenAccountInteractiveMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage, mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> getDemoOpenAccountInteractiveMethod;
+    if ((getDemoOpenAccountInteractiveMethod = GuiGrpc.getDemoOpenAccountInteractiveMethod) == null) {
       synchronized (GuiGrpc.class) {
-        if ((getDemoOpenAccountWithProgressMethod = GuiGrpc.getDemoOpenAccountWithProgressMethod) == null) {
-          GuiGrpc.getDemoOpenAccountWithProgressMethod = getDemoOpenAccountWithProgressMethod =
-              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest, mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DemoOpenAccountWithProgress"))
+        if ((getDemoOpenAccountInteractiveMethod = GuiGrpc.getDemoOpenAccountInteractiveMethod) == null) {
+          GuiGrpc.getDemoOpenAccountInteractiveMethod = getDemoOpenAccountInteractiveMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage, mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DemoOpenAccountInteractive"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest.getDefaultInstance()))
+                  mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent.getDefaultInstance()))
-              .setSchemaDescriptor(new GuiMethodDescriptorSupplier("DemoOpenAccountWithProgress"))
+                  mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage.getDefaultInstance()))
+              .setSchemaDescriptor(new GuiMethodDescriptorSupplier("DemoOpenAccountInteractive"))
               .build();
         }
       }
     }
-    return getDemoOpenAccountWithProgressMethod;
+    return getDemoOpenAccountInteractiveMethod;
   }
 
   /**
@@ -197,20 +135,6 @@ public final class GuiGrpc {
 
     /**
      */
-    public void demoFindCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDemoFindCompaniesMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void demoServersAndTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDemoServersAndTypesMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDemoOpenAccountMethod(), responseObserver);
@@ -218,27 +142,13 @@ public final class GuiGrpc {
 
     /**
      */
-    public void demoOpenAccountWithProgress(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDemoOpenAccountWithProgressMethod(), responseObserver);
+    public io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getDemoOpenAccountInteractiveMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getDemoFindCompaniesMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
-                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>(
-                  this, METHODID_DEMO_FIND_COMPANIES)))
-          .addMethod(
-            getDemoServersAndTypesMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
-                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>(
-                  this, METHODID_DEMO_SERVERS_AND_TYPES)))
           .addMethod(
             getDemoOpenAccountMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -247,12 +157,12 @@ public final class GuiGrpc {
                 mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>(
                   this, METHODID_DEMO_OPEN_ACCOUNT)))
           .addMethod(
-            getDemoOpenAccountWithProgressMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            getDemoOpenAccountInteractiveMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
               new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
-                mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent>(
-                  this, METHODID_DEMO_OPEN_ACCOUNT_WITH_PROGRESS)))
+                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
+                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>(
+                  this, METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE)))
           .build();
     }
   }
@@ -277,22 +187,6 @@ public final class GuiGrpc {
 
     /**
      */
-    public void demoFindCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDemoFindCompaniesMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void demoServersAndTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDemoServersAndTypesMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -301,10 +195,10 @@ public final class GuiGrpc {
 
     /**
      */
-    public void demoOpenAccountWithProgress(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
-        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getDemoOpenAccountWithProgressMethod(), getCallOptions()), request, responseObserver);
+    public io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getDemoOpenAccountInteractiveMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -328,31 +222,9 @@ public final class GuiGrpc {
 
     /**
      */
-    public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply demoFindCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDemoFindCompaniesMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply demoServersAndTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDemoServersAndTypesMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDemoOpenAccountMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public java.util.Iterator<mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent> demoOpenAccountWithProgress(
-        mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request) {
-      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getDemoOpenAccountWithProgressMethod(), getCallOptions(), request);
     }
   }
 
@@ -376,22 +248,6 @@ public final class GuiGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> demoFindCompanies(
-        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDemoFindCompaniesMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> demoServersAndTypes(
-        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDemoServersAndTypesMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> demoOpenAccount(
         mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -399,10 +255,8 @@ public final class GuiGrpc {
     }
   }
 
-  private static final int METHODID_DEMO_FIND_COMPANIES = 0;
-  private static final int METHODID_DEMO_SERVERS_AND_TYPES = 1;
-  private static final int METHODID_DEMO_OPEN_ACCOUNT = 2;
-  private static final int METHODID_DEMO_OPEN_ACCOUNT_WITH_PROGRESS = 3;
+  private static final int METHODID_DEMO_OPEN_ACCOUNT = 0;
+  private static final int METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -421,21 +275,9 @@ public final class GuiGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_DEMO_FIND_COMPANIES:
-          serviceImpl.demoFindCompanies((mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest) request,
-              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>) responseObserver);
-          break;
-        case METHODID_DEMO_SERVERS_AND_TYPES:
-          serviceImpl.demoServersAndTypes((mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest) request,
-              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>) responseObserver);
-          break;
         case METHODID_DEMO_OPEN_ACCOUNT:
           serviceImpl.demoOpenAccount((mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest) request,
               (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>) responseObserver);
-          break;
-        case METHODID_DEMO_OPEN_ACCOUNT_WITH_PROGRESS:
-          serviceImpl.demoOpenAccountWithProgress((mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest) request,
-              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoProgressEvent>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -447,6 +289,9 @@ public final class GuiGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.demoOpenAccountInteractive(
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -498,10 +343,8 @@ public final class GuiGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new GuiFileDescriptorSupplier())
-              .addMethod(getDemoFindCompaniesMethod())
-              .addMethod(getDemoServersAndTypesMethod())
               .addMethod(getDemoOpenAccountMethod())
-              .addMethod(getDemoOpenAccountWithProgressMethod())
+              .addMethod(getDemoOpenAccountInteractiveMethod())
               .build();
         }
       }

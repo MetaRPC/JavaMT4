@@ -190,7 +190,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time order/trade events.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -202,7 +202,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the tickets of currently opened orders as they change.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -214,7 +214,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the live profit of currently opened orders.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -226,7 +226,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time ticks for the given symbols.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * [DefaultValues]
      * {
@@ -290,7 +290,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time order/trade events.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -303,7 +303,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the tickets of currently opened orders as they change.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -316,7 +316,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the live profit of currently opened orders.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -329,7 +329,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time ticks for the given symbols.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * [DefaultValues]
      * {
@@ -361,7 +361,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time order/trade events.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -374,7 +374,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the tickets of currently opened orders as they change.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -387,7 +387,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams the live profit of currently opened orders.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
@@ -400,7 +400,7 @@ public final class SubscriptionServiceGrpc {
     /**
      * <pre>
      * Streams real-time ticks for the given symbols.
-     * Requires 'id' header — use GetId to generate.
+     * Requires 'id' header returned by Connect/ConnectEx.
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * [DefaultValues]
      * {
