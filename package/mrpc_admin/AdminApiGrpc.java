@@ -430,6 +430,68 @@ public final class AdminApiGrpc {
     return getGetSessionRestoreStatusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+      mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "KillAllTrialTerminals",
+      requestType = mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest.class,
+      responseType = mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+      mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsMethod() {
+    io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest, mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsMethod;
+    if ((getKillAllTrialTerminalsMethod = AdminApiGrpc.getKillAllTrialTerminalsMethod) == null) {
+      synchronized (AdminApiGrpc.class) {
+        if ((getKillAllTrialTerminalsMethod = AdminApiGrpc.getKillAllTrialTerminalsMethod) == null) {
+          AdminApiGrpc.getKillAllTrialTerminalsMethod = getKillAllTrialTerminalsMethod =
+              io.grpc.MethodDescriptor.<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest, mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "KillAllTrialTerminals"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminApiMethodDescriptorSupplier("KillAllTrialTerminals"))
+              .build();
+        }
+      }
+    }
+    return getKillAllTrialTerminalsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+      mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsLocalMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "KillAllTrialTerminalsLocal",
+      requestType = mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest.class,
+      responseType = mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+      mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsLocalMethod() {
+    io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest, mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> getKillAllTrialTerminalsLocalMethod;
+    if ((getKillAllTrialTerminalsLocalMethod = AdminApiGrpc.getKillAllTrialTerminalsLocalMethod) == null) {
+      synchronized (AdminApiGrpc.class) {
+        if ((getKillAllTrialTerminalsLocalMethod = AdminApiGrpc.getKillAllTrialTerminalsLocalMethod) == null) {
+          AdminApiGrpc.getKillAllTrialTerminalsLocalMethod = getKillAllTrialTerminalsLocalMethod =
+              io.grpc.MethodDescriptor.<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest, mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "KillAllTrialTerminalsLocal"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminApiMethodDescriptorSupplier("KillAllTrialTerminalsLocal"))
+              .build();
+        }
+      }
+    }
+    return getKillAllTrialTerminalsLocalMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -640,6 +702,27 @@ public final class AdminApiGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetSessionRestoreStatusMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * Kills all active trial terminals across ALL pods of this StatefulSet/Deployment
+     * and marks them stopped in database.
+     * </pre>
+     */
+    public void killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getKillAllTrialTerminalsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals on THIS pod.
+     * </pre>
+     */
+    public void killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getKillAllTrialTerminalsLocalMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -733,6 +816,20 @@ public final class AdminApiGrpc {
                 mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
                 mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply>(
                   this, METHODID_GET_SESSION_RESTORE_STATUS)))
+          .addMethod(
+            getKillAllTrialTerminalsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
+                  this, METHODID_KILL_ALL_TRIAL_TERMINALS)))
+          .addMethod(
+            getKillAllTrialTerminalsLocalMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
+                  this, METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL)))
           .build();
     }
   }
@@ -925,6 +1022,29 @@ public final class AdminApiGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetSessionRestoreStatusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals across ALL pods of this StatefulSet/Deployment
+     * and marks them stopped in database.
+     * </pre>
+     */
+    public void killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getKillAllTrialTerminalsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals on THIS pod.
+     * </pre>
+     */
+    public void killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getKillAllTrialTerminalsLocalMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1101,6 +1221,27 @@ public final class AdminApiGrpc {
     public mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply getSessionRestoreStatus(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetSessionRestoreStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals across ALL pods of this StatefulSet/Deployment
+     * and marks them stopped in database.
+     * </pre>
+     */
+    public mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getKillAllTrialTerminalsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals on THIS pod.
+     * </pre>
+     */
+    public mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getKillAllTrialTerminalsLocalMethod(), getCallOptions(), request);
     }
   }
 
@@ -1292,6 +1433,29 @@ public final class AdminApiGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetSessionRestoreStatusMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals across ALL pods of this StatefulSet/Deployment
+     * and marks them stopped in database.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> killAllTrialTerminals(
+        mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getKillAllTrialTerminalsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Kills all active trial terminals on THIS pod.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> killAllTrialTerminalsLocal(
+        mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getKillAllTrialTerminalsLocalMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ACTIVE_TERMINALS = 0;
@@ -1307,6 +1471,8 @@ public final class AdminApiGrpc {
   private static final int METHODID_GET_ALL_LOGS = 10;
   private static final int METHODID_GET_SESSION_RESTORE_LOGS = 11;
   private static final int METHODID_GET_SESSION_RESTORE_STATUS = 12;
+  private static final int METHODID_KILL_ALL_TRIAL_TERMINALS = 13;
+  private static final int METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL = 14;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1376,6 +1542,14 @@ public final class AdminApiGrpc {
         case METHODID_GET_SESSION_RESTORE_STATUS:
           serviceImpl.getSessionRestoreStatus((mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest) request,
               (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply>) responseObserver);
+          break;
+        case METHODID_KILL_ALL_TRIAL_TERMINALS:
+          serviceImpl.killAllTrialTerminals((mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest) request,
+              (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>) responseObserver);
+          break;
+        case METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL:
+          serviceImpl.killAllTrialTerminalsLocal((mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest) request,
+              (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1451,6 +1625,8 @@ public final class AdminApiGrpc {
               .addMethod(getGetAllLogsMethod())
               .addMethod(getGetSessionRestoreLogsMethod())
               .addMethod(getGetSessionRestoreStatusMethod())
+              .addMethod(getKillAllTrialTerminalsMethod())
+              .addMethod(getKillAllTrialTerminalsLocalMethod())
               .build();
         }
       }
