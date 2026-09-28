@@ -175,15 +175,24 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
         // reads from postLoginInit and the command loop would corrupt decoder state.
         postLoginInit(downloadSymbols);
 
-        threadsExecutors = MT4Constants.USE_VIRTUAL_THREADS
-                ? Executors.newVirtualThreadPerTaskExecutor()
-                : Executors.newCachedThreadPool();
+        ExecutorService executor = null;
+        if (MT4Constants.USE_VIRTUAL_THREADS) {
+            try {
+                java.lang.reflect.Method m = Executors.class.getMethod("newVirtualThreadPerTaskExecutor");
+                executor = (ExecutorService) m.invoke(null);
+            } catch (Exception ignored) {
+            }
+        }
+        if (executor == null) {
+            executor = Executors.newCachedThreadPool();
+        }
+        threadsExecutors = executor;
 
         reading = true;
 
         // Start the read thread (command loop)
         threadsExecutors.execute(() -> {
-            readThreadId = Thread.currentThread().threadId();
+            readThreadId = Thread.currentThread().getId();
             log.debug("Starting read thread...");
 
             MT4Encryption encryption = loginHelper.getEncryption();
@@ -338,7 +347,7 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
      * Sends an encoded message to the server (thread-safe, excludes read thread).
      */
     public synchronized void sendEncoded(byte[] data) throws IOException {
-        if (Thread.currentThread().threadId() == readThreadId) {
+        if (Thread.currentThread().getId() == readThreadId) {
             throw new IllegalStateException("Cannot send message on the read thread. Post this action to your own thread.");
         }
         sendEncoded(data, loginHelper.getEncryption());

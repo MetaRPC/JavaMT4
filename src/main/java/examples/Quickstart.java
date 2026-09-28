@@ -20,9 +20,10 @@ public class Quickstart {
     public static void main(String[] args) {
         String host = "mt4.mrpc.pro";
         int port = 443;
-        int login = 100234;
-        String password = "demo_password";
-        String apiKey = System.getenv("MRPC_API_KEY");
+        int login = 176136103;
+        String password = "nisl4vs";
+        String envKey = System.getenv("MRPC_API_KEY");
+        String apiKey = (args.length > 0) ? args[0] : (envKey != null && !envKey.isEmpty() ? envKey : "TRIAL");
 
         System.out.println("Connecting to MetaRPC MT4 (" + host + ":" + port + ")...");
         MT4Client client = new MT4Client(host, port, new DefaultMessageHandler(), apiKey);
