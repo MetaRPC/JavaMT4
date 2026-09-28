@@ -331,6 +331,15 @@ public class MT4Client extends ServerSocket implements InternalMessageHandler {
      */
     @Override
     public void disconnect() {
+        disconnect(false);
+    }
+
+    /**
+     * Disconnects the client from the server with optional delete.
+     *
+     * @param delete If true, delete terminal instance
+     */
+    public void disconnect(boolean delete) {
         try {
             super.disconnect();
         } catch (IOException e) {

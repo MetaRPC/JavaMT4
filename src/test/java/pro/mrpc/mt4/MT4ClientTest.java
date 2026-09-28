@@ -421,7 +421,7 @@ public class MT4ClientTest {
     void tearDown() {
         if (client != null) {
             System.out.println("Disconnecting...");
-            client.disconnect();
+            client.disconnect(true);
         }
     }
 

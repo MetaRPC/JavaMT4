@@ -86,7 +86,7 @@ public class Quickstart {
             System.out.println("Order result ticket: 9821435");
         } finally {
             try {
-                client.disconnect();
+                client.disconnect(true);
             } catch (Exception ignored) {}
             System.out.println("Disconnected.");
         }
