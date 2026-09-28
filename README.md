@@ -17,6 +17,51 @@ implementation 'mrpc.pro:mt4:1.0.0'
 
 ---
 
+## 🏃 How to Run Examples
+
+### 1. Clone & Build
+```bash
+git clone https://github.com/MetaRPC/JavaMT4.git
+cd JavaMT4
+./gradlew build
+```
+
+### 2. Run with Default TRIAL Key
+```bash
+# Using Gradle wrapper
+./gradlew run
+
+# On Windows cmd / PowerShell:
+.\gradlew.bat run
+```
+
+### 3. Run with Your Own API Key
+
+Pass your API key directly as an argument:
+```bash
+./gradlew run --args="<YOUR_API_KEY>"
+
+# Windows:
+.\gradlew.bat run --args="<YOUR_API_KEY>"
+```
+
+Or set the `MRPC_API_KEY` environment variable:
+```bash
+# Linux / macOS
+export MRPC_API_KEY="<YOUR_API_KEY>"
+./gradlew run
+
+# Windows PowerShell
+$env:MRPC_API_KEY="<YOUR_API_KEY>"
+.\gradlew.bat run
+
+# Windows CMD
+set MRPC_API_KEY=<YOUR_API_KEY>
+gradlew.bat run
+```
+
+---
+
 ## 🔑 API Key & Authentication
 
 Connecting to MetaRPC production endpoints (`mt4.mrpc.pro:443`) requires an API key:
