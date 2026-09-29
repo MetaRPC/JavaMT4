@@ -11809,6 +11809,36 @@ public final class Mt4TermApiTradeStats {
      * @return The count.
      */
     int getCount();
+
+    /**
+     * <code>double lots = 3;</code>
+     * @return The lots.
+     */
+    double getLots();
+
+    /**
+     * <code>double profit = 4;</code>
+     * @return The profit.
+     */
+    double getProfit();
+
+    /**
+     * <code>double win_rate = 5;</code>
+     * @return The winRate.
+     */
+    double getWinRate();
+
+    /**
+     * <code>int32 won_count = 6;</code>
+     * @return The wonCount.
+     */
+    int getWonCount();
+
+    /**
+     * <code>int32 lost_count = 7;</code>
+     * @return The lostCount.
+     */
+    int getLostCount();
   }
   /**
    * Protobuf type {@code mt4_term_api.MarketTradeCountData}
@@ -11865,6 +11895,31 @@ public final class Mt4TermApiTradeStats {
             case 16: {
 
               count_ = input.readInt32();
+              break;
+            }
+            case 25: {
+
+              lots_ = input.readDouble();
+              break;
+            }
+            case 33: {
+
+              profit_ = input.readDouble();
+              break;
+            }
+            case 41: {
+
+              winRate_ = input.readDouble();
+              break;
+            }
+            case 48: {
+
+              wonCount_ = input.readInt32();
+              break;
+            }
+            case 56: {
+
+              lostCount_ = input.readInt32();
               break;
             }
             default: {
@@ -11950,6 +12005,61 @@ public final class Mt4TermApiTradeStats {
       return count_;
     }
 
+    public static final int LOTS_FIELD_NUMBER = 3;
+    private double lots_;
+    /**
+     * <code>double lots = 3;</code>
+     * @return The lots.
+     */
+    @java.lang.Override
+    public double getLots() {
+      return lots_;
+    }
+
+    public static final int PROFIT_FIELD_NUMBER = 4;
+    private double profit_;
+    /**
+     * <code>double profit = 4;</code>
+     * @return The profit.
+     */
+    @java.lang.Override
+    public double getProfit() {
+      return profit_;
+    }
+
+    public static final int WIN_RATE_FIELD_NUMBER = 5;
+    private double winRate_;
+    /**
+     * <code>double win_rate = 5;</code>
+     * @return The winRate.
+     */
+    @java.lang.Override
+    public double getWinRate() {
+      return winRate_;
+    }
+
+    public static final int WON_COUNT_FIELD_NUMBER = 6;
+    private int wonCount_;
+    /**
+     * <code>int32 won_count = 6;</code>
+     * @return The wonCount.
+     */
+    @java.lang.Override
+    public int getWonCount() {
+      return wonCount_;
+    }
+
+    public static final int LOST_COUNT_FIELD_NUMBER = 7;
+    private int lostCount_;
+    /**
+     * <code>int32 lost_count = 7;</code>
+     * @return The lostCount.
+     */
+    @java.lang.Override
+    public int getLostCount() {
+      return lostCount_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -11970,6 +12080,21 @@ public final class Mt4TermApiTradeStats {
       if (count_ != 0) {
         output.writeInt32(2, count_);
       }
+      if (java.lang.Double.doubleToRawLongBits(lots_) != 0) {
+        output.writeDouble(3, lots_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(profit_) != 0) {
+        output.writeDouble(4, profit_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(winRate_) != 0) {
+        output.writeDouble(5, winRate_);
+      }
+      if (wonCount_ != 0) {
+        output.writeInt32(6, wonCount_);
+      }
+      if (lostCount_ != 0) {
+        output.writeInt32(7, lostCount_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -11985,6 +12110,26 @@ public final class Mt4TermApiTradeStats {
       if (count_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, count_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(lots_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(3, lots_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(profit_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, profit_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(winRate_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, winRate_);
+      }
+      if (wonCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, wonCount_);
+      }
+      if (lostCount_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, lostCount_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12005,6 +12150,19 @@ public final class Mt4TermApiTradeStats {
           .equals(other.getMarketName())) return false;
       if (getCount()
           != other.getCount()) return false;
+      if (java.lang.Double.doubleToLongBits(getLots())
+          != java.lang.Double.doubleToLongBits(
+              other.getLots())) return false;
+      if (java.lang.Double.doubleToLongBits(getProfit())
+          != java.lang.Double.doubleToLongBits(
+              other.getProfit())) return false;
+      if (java.lang.Double.doubleToLongBits(getWinRate())
+          != java.lang.Double.doubleToLongBits(
+              other.getWinRate())) return false;
+      if (getWonCount()
+          != other.getWonCount()) return false;
+      if (getLostCount()
+          != other.getLostCount()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -12020,6 +12178,19 @@ public final class Mt4TermApiTradeStats {
       hash = (53 * hash) + getMarketName().hashCode();
       hash = (37 * hash) + COUNT_FIELD_NUMBER;
       hash = (53 * hash) + getCount();
+      hash = (37 * hash) + LOTS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLots()));
+      hash = (37 * hash) + PROFIT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getProfit()));
+      hash = (37 * hash) + WIN_RATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getWinRate()));
+      hash = (37 * hash) + WON_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getWonCount();
+      hash = (37 * hash) + LOST_COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getLostCount();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -12157,6 +12328,16 @@ public final class Mt4TermApiTradeStats {
 
         count_ = 0;
 
+        lots_ = 0D;
+
+        profit_ = 0D;
+
+        winRate_ = 0D;
+
+        wonCount_ = 0;
+
+        lostCount_ = 0;
+
         return this;
       }
 
@@ -12185,6 +12366,11 @@ public final class Mt4TermApiTradeStats {
         mt4_term_api.Mt4TermApiTradeStats.MarketTradeCountData result = new mt4_term_api.Mt4TermApiTradeStats.MarketTradeCountData(this);
         result.marketName_ = marketName_;
         result.count_ = count_;
+        result.lots_ = lots_;
+        result.profit_ = profit_;
+        result.winRate_ = winRate_;
+        result.wonCount_ = wonCount_;
+        result.lostCount_ = lostCount_;
         onBuilt();
         return result;
       }
@@ -12239,6 +12425,21 @@ public final class Mt4TermApiTradeStats {
         }
         if (other.getCount() != 0) {
           setCount(other.getCount());
+        }
+        if (other.getLots() != 0D) {
+          setLots(other.getLots());
+        }
+        if (other.getProfit() != 0D) {
+          setProfit(other.getProfit());
+        }
+        if (other.getWinRate() != 0D) {
+          setWinRate(other.getWinRate());
+        }
+        if (other.getWonCount() != 0) {
+          setWonCount(other.getWonCount());
+        }
+        if (other.getLostCount() != 0) {
+          setLostCount(other.getLostCount());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -12372,6 +12573,161 @@ public final class Mt4TermApiTradeStats {
       public Builder clearCount() {
         
         count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double lots_ ;
+      /**
+       * <code>double lots = 3;</code>
+       * @return The lots.
+       */
+      @java.lang.Override
+      public double getLots() {
+        return lots_;
+      }
+      /**
+       * <code>double lots = 3;</code>
+       * @param value The lots to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLots(double value) {
+        
+        lots_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double lots = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLots() {
+        
+        lots_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double profit_ ;
+      /**
+       * <code>double profit = 4;</code>
+       * @return The profit.
+       */
+      @java.lang.Override
+      public double getProfit() {
+        return profit_;
+      }
+      /**
+       * <code>double profit = 4;</code>
+       * @param value The profit to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfit(double value) {
+        
+        profit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double profit = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProfit() {
+        
+        profit_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double winRate_ ;
+      /**
+       * <code>double win_rate = 5;</code>
+       * @return The winRate.
+       */
+      @java.lang.Override
+      public double getWinRate() {
+        return winRate_;
+      }
+      /**
+       * <code>double win_rate = 5;</code>
+       * @param value The winRate to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWinRate(double value) {
+        
+        winRate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double win_rate = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWinRate() {
+        
+        winRate_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int wonCount_ ;
+      /**
+       * <code>int32 won_count = 6;</code>
+       * @return The wonCount.
+       */
+      @java.lang.Override
+      public int getWonCount() {
+        return wonCount_;
+      }
+      /**
+       * <code>int32 won_count = 6;</code>
+       * @param value The wonCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWonCount(int value) {
+        
+        wonCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 won_count = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWonCount() {
+        
+        wonCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int lostCount_ ;
+      /**
+       * <code>int32 lost_count = 7;</code>
+       * @return The lostCount.
+       */
+      @java.lang.Override
+      public int getLostCount() {
+        return lostCount_;
+      }
+      /**
+       * <code>int32 lost_count = 7;</code>
+       * @param value The lostCount to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLostCount(int value) {
+        
+        lostCount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lost_count = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLostCount() {
+        
+        lostCount_ = 0;
         onChanged();
         return this;
       }
@@ -16266,6 +16622,54 @@ public final class Mt4TermApiTradeStats {
      */
     mt4_term_api.Mt4TermApiTradeStats.EquityPointDataOrBuilder getChartsOrBuilder(
         int index);
+
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> 
+        getTradesList();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getTrades(int index);
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    int getTradesCount();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+        getTradesOrBuilderList();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getTradesOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> 
+        getOpenTradesList();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getOpenTrades(int index);
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    int getOpenTradesCount();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+        getOpenTradesOrBuilderList();
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getOpenTradesOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code mt4_term_api.StatsWithChartsData}
@@ -16281,6 +16685,8 @@ public final class Mt4TermApiTradeStats {
     }
     private StatsWithChartsData() {
       charts_ = java.util.Collections.emptyList();
+      trades_ = java.util.Collections.emptyList();
+      openTrades_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -16336,6 +16742,24 @@ public final class Mt4TermApiTradeStats {
                   input.readMessage(mt4_term_api.Mt4TermApiTradeStats.EquityPointData.parser(), extensionRegistry));
               break;
             }
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                trades_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              trades_.add(
+                  input.readMessage(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.parser(), extensionRegistry));
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                openTrades_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              openTrades_.add(
+                  input.readMessage(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -16355,6 +16779,12 @@ public final class Mt4TermApiTradeStats {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
           charts_ = java.util.Collections.unmodifiableList(charts_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          trades_ = java.util.Collections.unmodifiableList(trades_);
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          openTrades_ = java.util.Collections.unmodifiableList(openTrades_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -16439,6 +16869,86 @@ public final class Mt4TermApiTradeStats {
       return charts_.get(index);
     }
 
+    public static final int TRADES_FIELD_NUMBER = 3;
+    private java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> trades_;
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> getTradesList() {
+      return trades_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+        getTradesOrBuilderList() {
+      return trades_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    @java.lang.Override
+    public int getTradesCount() {
+      return trades_.size();
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getTrades(int index) {
+      return trades_.get(index);
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getTradesOrBuilder(
+        int index) {
+      return trades_.get(index);
+    }
+
+    public static final int OPEN_TRADES_FIELD_NUMBER = 4;
+    private java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> openTrades_;
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> getOpenTradesList() {
+      return openTrades_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+        getOpenTradesOrBuilderList() {
+      return openTrades_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    @java.lang.Override
+    public int getOpenTradesCount() {
+      return openTrades_.size();
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getOpenTrades(int index) {
+      return openTrades_.get(index);
+    }
+    /**
+     * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getOpenTradesOrBuilder(
+        int index) {
+      return openTrades_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -16459,6 +16969,12 @@ public final class Mt4TermApiTradeStats {
       for (int i = 0; i < charts_.size(); i++) {
         output.writeMessage(2, charts_.get(i));
       }
+      for (int i = 0; i < trades_.size(); i++) {
+        output.writeMessage(3, trades_.get(i));
+      }
+      for (int i = 0; i < openTrades_.size(); i++) {
+        output.writeMessage(4, openTrades_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -16475,6 +16991,14 @@ public final class Mt4TermApiTradeStats {
       for (int i = 0; i < charts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, charts_.get(i));
+      }
+      for (int i = 0; i < trades_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, trades_.get(i));
+      }
+      for (int i = 0; i < openTrades_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, openTrades_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -16498,6 +17022,10 @@ public final class Mt4TermApiTradeStats {
       }
       if (!getChartsList()
           .equals(other.getChartsList())) return false;
+      if (!getTradesList()
+          .equals(other.getTradesList())) return false;
+      if (!getOpenTradesList()
+          .equals(other.getOpenTradesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -16516,6 +17044,14 @@ public final class Mt4TermApiTradeStats {
       if (getChartsCount() > 0) {
         hash = (37 * hash) + CHARTS_FIELD_NUMBER;
         hash = (53 * hash) + getChartsList().hashCode();
+      }
+      if (getTradesCount() > 0) {
+        hash = (37 * hash) + TRADES_FIELD_NUMBER;
+        hash = (53 * hash) + getTradesList().hashCode();
+      }
+      if (getOpenTradesCount() > 0) {
+        hash = (37 * hash) + OPEN_TRADES_FIELD_NUMBER;
+        hash = (53 * hash) + getOpenTradesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -16646,6 +17182,8 @@ public final class Mt4TermApiTradeStats {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getChartsFieldBuilder();
+          getTradesFieldBuilder();
+          getOpenTradesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -16662,6 +17200,18 @@ public final class Mt4TermApiTradeStats {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           chartsBuilder_.clear();
+        }
+        if (tradesBuilder_ == null) {
+          trades_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          tradesBuilder_.clear();
+        }
+        if (openTradesBuilder_ == null) {
+          openTrades_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          openTradesBuilder_.clear();
         }
         return this;
       }
@@ -16703,6 +17253,24 @@ public final class Mt4TermApiTradeStats {
           result.charts_ = charts_;
         } else {
           result.charts_ = chartsBuilder_.build();
+        }
+        if (tradesBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            trades_ = java.util.Collections.unmodifiableList(trades_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.trades_ = trades_;
+        } else {
+          result.trades_ = tradesBuilder_.build();
+        }
+        if (openTradesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0)) {
+            openTrades_ = java.util.Collections.unmodifiableList(openTrades_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.openTrades_ = openTrades_;
+        } else {
+          result.openTrades_ = openTradesBuilder_.build();
         }
         onBuilt();
         return result;
@@ -16778,6 +17346,58 @@ public final class Mt4TermApiTradeStats {
                    getChartsFieldBuilder() : null;
             } else {
               chartsBuilder_.addAllMessages(other.charts_);
+            }
+          }
+        }
+        if (tradesBuilder_ == null) {
+          if (!other.trades_.isEmpty()) {
+            if (trades_.isEmpty()) {
+              trades_ = other.trades_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureTradesIsMutable();
+              trades_.addAll(other.trades_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.trades_.isEmpty()) {
+            if (tradesBuilder_.isEmpty()) {
+              tradesBuilder_.dispose();
+              tradesBuilder_ = null;
+              trades_ = other.trades_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              tradesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getTradesFieldBuilder() : null;
+            } else {
+              tradesBuilder_.addAllMessages(other.trades_);
+            }
+          }
+        }
+        if (openTradesBuilder_ == null) {
+          if (!other.openTrades_.isEmpty()) {
+            if (openTrades_.isEmpty()) {
+              openTrades_ = other.openTrades_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureOpenTradesIsMutable();
+              openTrades_.addAll(other.openTrades_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.openTrades_.isEmpty()) {
+            if (openTradesBuilder_.isEmpty()) {
+              openTradesBuilder_.dispose();
+              openTradesBuilder_ = null;
+              openTrades_ = other.openTrades_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              openTradesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getOpenTradesFieldBuilder() : null;
+            } else {
+              openTradesBuilder_.addAllMessages(other.openTrades_);
             }
           }
         }
@@ -17169,6 +17789,486 @@ public final class Mt4TermApiTradeStats {
         }
         return chartsBuilder_;
       }
+
+      private java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> trades_ =
+        java.util.Collections.emptyList();
+      private void ensureTradesIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          trades_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData>(trades_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> tradesBuilder_;
+
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> getTradesList() {
+        if (tradesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(trades_);
+        } else {
+          return tradesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public int getTradesCount() {
+        if (tradesBuilder_ == null) {
+          return trades_.size();
+        } else {
+          return tradesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getTrades(int index) {
+        if (tradesBuilder_ == null) {
+          return trades_.get(index);
+        } else {
+          return tradesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder setTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (tradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTradesIsMutable();
+          trades_.set(index, value);
+          onChanged();
+        } else {
+          tradesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder setTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (tradesBuilder_ == null) {
+          ensureTradesIsMutable();
+          trades_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tradesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder addTrades(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (tradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTradesIsMutable();
+          trades_.add(value);
+          onChanged();
+        } else {
+          tradesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder addTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (tradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTradesIsMutable();
+          trades_.add(index, value);
+          onChanged();
+        } else {
+          tradesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder addTrades(
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (tradesBuilder_ == null) {
+          ensureTradesIsMutable();
+          trades_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tradesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder addTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (tradesBuilder_ == null) {
+          ensureTradesIsMutable();
+          trades_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tradesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder addAllTrades(
+          java.lang.Iterable<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> values) {
+        if (tradesBuilder_ == null) {
+          ensureTradesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, trades_);
+          onChanged();
+        } else {
+          tradesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder clearTrades() {
+        if (tradesBuilder_ == null) {
+          trades_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          tradesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public Builder removeTrades(int index) {
+        if (tradesBuilder_ == null) {
+          ensureTradesIsMutable();
+          trades_.remove(index);
+          onChanged();
+        } else {
+          tradesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder getTradesBuilder(
+          int index) {
+        return getTradesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getTradesOrBuilder(
+          int index) {
+        if (tradesBuilder_ == null) {
+          return trades_.get(index);  } else {
+          return tradesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+           getTradesOrBuilderList() {
+        if (tradesBuilder_ != null) {
+          return tradesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(trades_);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder addTradesBuilder() {
+        return getTradesFieldBuilder().addBuilder(
+            mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder addTradesBuilder(
+          int index) {
+        return getTradesFieldBuilder().addBuilder(
+            index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData trades = 3;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder> 
+           getTradesBuilderList() {
+        return getTradesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+          getTradesFieldBuilder() {
+        if (tradesBuilder_ == null) {
+          tradesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder>(
+                  trades_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          trades_ = null;
+        }
+        return tradesBuilder_;
+      }
+
+      private java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> openTrades_ =
+        java.util.Collections.emptyList();
+      private void ensureOpenTradesIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          openTrades_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData>(openTrades_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> openTradesBuilder_;
+
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> getOpenTradesList() {
+        if (openTradesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(openTrades_);
+        } else {
+          return openTradesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public int getOpenTradesCount() {
+        if (openTradesBuilder_ == null) {
+          return openTrades_.size();
+        } else {
+          return openTradesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getOpenTrades(int index) {
+        if (openTradesBuilder_ == null) {
+          return openTrades_.get(index);
+        } else {
+          return openTradesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder setOpenTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (openTradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOpenTradesIsMutable();
+          openTrades_.set(index, value);
+          onChanged();
+        } else {
+          openTradesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder setOpenTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (openTradesBuilder_ == null) {
+          ensureOpenTradesIsMutable();
+          openTrades_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          openTradesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder addOpenTrades(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (openTradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOpenTradesIsMutable();
+          openTrades_.add(value);
+          onChanged();
+        } else {
+          openTradesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder addOpenTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData value) {
+        if (openTradesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOpenTradesIsMutable();
+          openTrades_.add(index, value);
+          onChanged();
+        } else {
+          openTradesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder addOpenTrades(
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (openTradesBuilder_ == null) {
+          ensureOpenTradesIsMutable();
+          openTrades_.add(builderForValue.build());
+          onChanged();
+        } else {
+          openTradesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder addOpenTrades(
+          int index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder builderForValue) {
+        if (openTradesBuilder_ == null) {
+          ensureOpenTradesIsMutable();
+          openTrades_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          openTradesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder addAllOpenTrades(
+          java.lang.Iterable<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData> values) {
+        if (openTradesBuilder_ == null) {
+          ensureOpenTradesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, openTrades_);
+          onChanged();
+        } else {
+          openTradesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder clearOpenTrades() {
+        if (openTradesBuilder_ == null) {
+          openTrades_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          openTradesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public Builder removeOpenTrades(int index) {
+        if (openTradesBuilder_ == null) {
+          ensureOpenTradesIsMutable();
+          openTrades_.remove(index);
+          onChanged();
+        } else {
+          openTradesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder getOpenTradesBuilder(
+          int index) {
+        return getOpenTradesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder getOpenTradesOrBuilder(
+          int index) {
+        if (openTradesBuilder_ == null) {
+          return openTrades_.get(index);  } else {
+          return openTradesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public java.util.List<? extends mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+           getOpenTradesOrBuilderList() {
+        if (openTradesBuilder_ != null) {
+          return openTradesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(openTrades_);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder addOpenTradesBuilder() {
+        return getOpenTradesFieldBuilder().addBuilder(
+            mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder addOpenTradesBuilder(
+          int index) {
+        return getOpenTradesFieldBuilder().addBuilder(
+            index, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.TradeHistoryItemData open_trades = 4;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder> 
+           getOpenTradesBuilderList() {
+        return getOpenTradesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder> 
+          getOpenTradesFieldBuilder() {
+        if (openTradesBuilder_ == null) {
+          openTradesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder>(
+                  openTrades_,
+                  ((bitField0_ & 0x00000004) != 0),
+                  getParentForChildren(),
+                  isClean());
+          openTrades_ = null;
+        }
+        return openTradesBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -17217,6 +18317,1706 @@ public final class Mt4TermApiTradeStats {
 
     @java.lang.Override
     public mt4_term_api.Mt4TermApiTradeStats.StatsWithChartsData getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TradeHistoryItemDataOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.TradeHistoryItemData)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 ticket = 1;</code>
+     * @return The ticket.
+     */
+    long getTicket();
+
+    /**
+     * <code>string symbol = 2;</code>
+     * @return The symbol.
+     */
+    java.lang.String getSymbol();
+    /**
+     * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
+     */
+    com.google.protobuf.ByteString
+        getSymbolBytes();
+
+    /**
+     * <code>bool is_buy = 3;</code>
+     * @return The isBuy.
+     */
+    boolean getIsBuy();
+
+    /**
+     * <code>double lots = 4;</code>
+     * @return The lots.
+     */
+    double getLots();
+
+    /**
+     * <code>double open_price = 5;</code>
+     * @return The openPrice.
+     */
+    double getOpenPrice();
+
+    /**
+     * <code>double close_price = 6;</code>
+     * @return The closePrice.
+     */
+    double getClosePrice();
+
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     * @return Whether the openTime field is set.
+     */
+    boolean hasOpenTime();
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     * @return The openTime.
+     */
+    com.google.protobuf.Timestamp getOpenTime();
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     * @return Whether the closeTime field is set.
+     */
+    boolean hasCloseTime();
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     * @return The closeTime.
+     */
+    com.google.protobuf.Timestamp getCloseTime();
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder();
+
+    /**
+     * <code>double profit = 9;</code>
+     * @return The profit.
+     */
+    double getProfit();
+
+    /**
+     * <code>double commission = 10;</code>
+     * @return The commission.
+     */
+    double getCommission();
+
+    /**
+     * <code>double swap = 11;</code>
+     * @return The swap.
+     */
+    double getSwap();
+
+    /**
+     * <code>string comment = 12;</code>
+     * @return The comment.
+     */
+    java.lang.String getComment();
+    /**
+     * <code>string comment = 12;</code>
+     * @return The bytes for comment.
+     */
+    com.google.protobuf.ByteString
+        getCommentBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.TradeHistoryItemData}
+   */
+  public static final class TradeHistoryItemData extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.TradeHistoryItemData)
+      TradeHistoryItemDataOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TradeHistoryItemData.newBuilder() to construct.
+    private TradeHistoryItemData(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TradeHistoryItemData() {
+      symbol_ = "";
+      comment_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TradeHistoryItemData();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TradeHistoryItemData(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              ticket_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              symbol_ = s;
+              break;
+            }
+            case 24: {
+
+              isBuy_ = input.readBool();
+              break;
+            }
+            case 33: {
+
+              lots_ = input.readDouble();
+              break;
+            }
+            case 41: {
+
+              openPrice_ = input.readDouble();
+              break;
+            }
+            case 49: {
+
+              closePrice_ = input.readDouble();
+              break;
+            }
+            case 58: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (openTime_ != null) {
+                subBuilder = openTime_.toBuilder();
+              }
+              openTime_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(openTime_);
+                openTime_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 66: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (closeTime_ != null) {
+                subBuilder = closeTime_.toBuilder();
+              }
+              closeTime_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(closeTime_);
+                closeTime_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 73: {
+
+              profit_ = input.readDouble();
+              break;
+            }
+            case 81: {
+
+              commission_ = input.readDouble();
+              break;
+            }
+            case 89: {
+
+              swap_ = input.readDouble();
+              break;
+            }
+            case 98: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              comment_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiTradeStats.internal_static_mt4_term_api_TradeHistoryItemData_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiTradeStats.internal_static_mt4_term_api_TradeHistoryItemData_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.class, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder.class);
+    }
+
+    public static final int TICKET_FIELD_NUMBER = 1;
+    private long ticket_;
+    /**
+     * <code>int64 ticket = 1;</code>
+     * @return The ticket.
+     */
+    @java.lang.Override
+    public long getTicket() {
+      return ticket_;
+    }
+
+    public static final int SYMBOL_FIELD_NUMBER = 2;
+    private volatile java.lang.Object symbol_;
+    /**
+     * <code>string symbol = 2;</code>
+     * @return The symbol.
+     */
+    @java.lang.Override
+    public java.lang.String getSymbol() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        symbol_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string symbol = 2;</code>
+     * @return The bytes for symbol.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSymbolBytes() {
+      java.lang.Object ref = symbol_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        symbol_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IS_BUY_FIELD_NUMBER = 3;
+    private boolean isBuy_;
+    /**
+     * <code>bool is_buy = 3;</code>
+     * @return The isBuy.
+     */
+    @java.lang.Override
+    public boolean getIsBuy() {
+      return isBuy_;
+    }
+
+    public static final int LOTS_FIELD_NUMBER = 4;
+    private double lots_;
+    /**
+     * <code>double lots = 4;</code>
+     * @return The lots.
+     */
+    @java.lang.Override
+    public double getLots() {
+      return lots_;
+    }
+
+    public static final int OPEN_PRICE_FIELD_NUMBER = 5;
+    private double openPrice_;
+    /**
+     * <code>double open_price = 5;</code>
+     * @return The openPrice.
+     */
+    @java.lang.Override
+    public double getOpenPrice() {
+      return openPrice_;
+    }
+
+    public static final int CLOSE_PRICE_FIELD_NUMBER = 6;
+    private double closePrice_;
+    /**
+     * <code>double close_price = 6;</code>
+     * @return The closePrice.
+     */
+    @java.lang.Override
+    public double getClosePrice() {
+      return closePrice_;
+    }
+
+    public static final int OPEN_TIME_FIELD_NUMBER = 7;
+    private com.google.protobuf.Timestamp openTime_;
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     * @return Whether the openTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasOpenTime() {
+      return openTime_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     * @return The openTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getOpenTime() {
+      return openTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp open_time = 7;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
+      return getOpenTime();
+    }
+
+    public static final int CLOSE_TIME_FIELD_NUMBER = 8;
+    private com.google.protobuf.Timestamp closeTime_;
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     * @return Whether the closeTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasCloseTime() {
+      return closeTime_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     * @return The closeTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getCloseTime() {
+      return closeTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTime_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp close_time = 8;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
+      return getCloseTime();
+    }
+
+    public static final int PROFIT_FIELD_NUMBER = 9;
+    private double profit_;
+    /**
+     * <code>double profit = 9;</code>
+     * @return The profit.
+     */
+    @java.lang.Override
+    public double getProfit() {
+      return profit_;
+    }
+
+    public static final int COMMISSION_FIELD_NUMBER = 10;
+    private double commission_;
+    /**
+     * <code>double commission = 10;</code>
+     * @return The commission.
+     */
+    @java.lang.Override
+    public double getCommission() {
+      return commission_;
+    }
+
+    public static final int SWAP_FIELD_NUMBER = 11;
+    private double swap_;
+    /**
+     * <code>double swap = 11;</code>
+     * @return The swap.
+     */
+    @java.lang.Override
+    public double getSwap() {
+      return swap_;
+    }
+
+    public static final int COMMENT_FIELD_NUMBER = 12;
+    private volatile java.lang.Object comment_;
+    /**
+     * <code>string comment = 12;</code>
+     * @return The comment.
+     */
+    @java.lang.Override
+    public java.lang.String getComment() {
+      java.lang.Object ref = comment_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        comment_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string comment = 12;</code>
+     * @return The bytes for comment.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCommentBytes() {
+      java.lang.Object ref = comment_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        comment_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (ticket_ != 0L) {
+        output.writeInt64(1, ticket_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, symbol_);
+      }
+      if (isBuy_ != false) {
+        output.writeBool(3, isBuy_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(lots_) != 0) {
+        output.writeDouble(4, lots_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(openPrice_) != 0) {
+        output.writeDouble(5, openPrice_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(closePrice_) != 0) {
+        output.writeDouble(6, closePrice_);
+      }
+      if (openTime_ != null) {
+        output.writeMessage(7, getOpenTime());
+      }
+      if (closeTime_ != null) {
+        output.writeMessage(8, getCloseTime());
+      }
+      if (java.lang.Double.doubleToRawLongBits(profit_) != 0) {
+        output.writeDouble(9, profit_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(commission_) != 0) {
+        output.writeDouble(10, commission_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(swap_) != 0) {
+        output.writeDouble(11, swap_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(comment_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, comment_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (ticket_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, ticket_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbol_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, symbol_);
+      }
+      if (isBuy_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isBuy_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(lots_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, lots_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(openPrice_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, openPrice_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(closePrice_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, closePrice_);
+      }
+      if (openTime_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getOpenTime());
+      }
+      if (closeTime_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getCloseTime());
+      }
+      if (java.lang.Double.doubleToRawLongBits(profit_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(9, profit_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(commission_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(10, commission_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(swap_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(11, swap_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(comment_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, comment_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData other = (mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData) obj;
+
+      if (getTicket()
+          != other.getTicket()) return false;
+      if (!getSymbol()
+          .equals(other.getSymbol())) return false;
+      if (getIsBuy()
+          != other.getIsBuy()) return false;
+      if (java.lang.Double.doubleToLongBits(getLots())
+          != java.lang.Double.doubleToLongBits(
+              other.getLots())) return false;
+      if (java.lang.Double.doubleToLongBits(getOpenPrice())
+          != java.lang.Double.doubleToLongBits(
+              other.getOpenPrice())) return false;
+      if (java.lang.Double.doubleToLongBits(getClosePrice())
+          != java.lang.Double.doubleToLongBits(
+              other.getClosePrice())) return false;
+      if (hasOpenTime() != other.hasOpenTime()) return false;
+      if (hasOpenTime()) {
+        if (!getOpenTime()
+            .equals(other.getOpenTime())) return false;
+      }
+      if (hasCloseTime() != other.hasCloseTime()) return false;
+      if (hasCloseTime()) {
+        if (!getCloseTime()
+            .equals(other.getCloseTime())) return false;
+      }
+      if (java.lang.Double.doubleToLongBits(getProfit())
+          != java.lang.Double.doubleToLongBits(
+              other.getProfit())) return false;
+      if (java.lang.Double.doubleToLongBits(getCommission())
+          != java.lang.Double.doubleToLongBits(
+              other.getCommission())) return false;
+      if (java.lang.Double.doubleToLongBits(getSwap())
+          != java.lang.Double.doubleToLongBits(
+              other.getSwap())) return false;
+      if (!getComment()
+          .equals(other.getComment())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TICKET_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTicket());
+      hash = (37 * hash) + SYMBOL_FIELD_NUMBER;
+      hash = (53 * hash) + getSymbol().hashCode();
+      hash = (37 * hash) + IS_BUY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsBuy());
+      hash = (37 * hash) + LOTS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getLots()));
+      hash = (37 * hash) + OPEN_PRICE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getOpenPrice()));
+      hash = (37 * hash) + CLOSE_PRICE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getClosePrice()));
+      if (hasOpenTime()) {
+        hash = (37 * hash) + OPEN_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getOpenTime().hashCode();
+      }
+      if (hasCloseTime()) {
+        hash = (37 * hash) + CLOSE_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + getCloseTime().hashCode();
+      }
+      hash = (37 * hash) + PROFIT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getProfit()));
+      hash = (37 * hash) + COMMISSION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getCommission()));
+      hash = (37 * hash) + SWAP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getSwap()));
+      hash = (37 * hash) + COMMENT_FIELD_NUMBER;
+      hash = (53 * hash) + getComment().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.TradeHistoryItemData}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.TradeHistoryItemData)
+        mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemDataOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiTradeStats.internal_static_mt4_term_api_TradeHistoryItemData_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiTradeStats.internal_static_mt4_term_api_TradeHistoryItemData_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.class, mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        ticket_ = 0L;
+
+        symbol_ = "";
+
+        isBuy_ = false;
+
+        lots_ = 0D;
+
+        openPrice_ = 0D;
+
+        closePrice_ = 0D;
+
+        if (openTimeBuilder_ == null) {
+          openTime_ = null;
+        } else {
+          openTime_ = null;
+          openTimeBuilder_ = null;
+        }
+        if (closeTimeBuilder_ == null) {
+          closeTime_ = null;
+        } else {
+          closeTime_ = null;
+          closeTimeBuilder_ = null;
+        }
+        profit_ = 0D;
+
+        commission_ = 0D;
+
+        swap_ = 0D;
+
+        comment_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiTradeStats.internal_static_mt4_term_api_TradeHistoryItemData_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData build() {
+        mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData buildPartial() {
+        mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData result = new mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData(this);
+        result.ticket_ = ticket_;
+        result.symbol_ = symbol_;
+        result.isBuy_ = isBuy_;
+        result.lots_ = lots_;
+        result.openPrice_ = openPrice_;
+        result.closePrice_ = closePrice_;
+        if (openTimeBuilder_ == null) {
+          result.openTime_ = openTime_;
+        } else {
+          result.openTime_ = openTimeBuilder_.build();
+        }
+        if (closeTimeBuilder_ == null) {
+          result.closeTime_ = closeTime_;
+        } else {
+          result.closeTime_ = closeTimeBuilder_.build();
+        }
+        result.profit_ = profit_;
+        result.commission_ = commission_;
+        result.swap_ = swap_;
+        result.comment_ = comment_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData) {
+          return mergeFrom((mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData other) {
+        if (other == mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData.getDefaultInstance()) return this;
+        if (other.getTicket() != 0L) {
+          setTicket(other.getTicket());
+        }
+        if (!other.getSymbol().isEmpty()) {
+          symbol_ = other.symbol_;
+          onChanged();
+        }
+        if (other.getIsBuy() != false) {
+          setIsBuy(other.getIsBuy());
+        }
+        if (other.getLots() != 0D) {
+          setLots(other.getLots());
+        }
+        if (other.getOpenPrice() != 0D) {
+          setOpenPrice(other.getOpenPrice());
+        }
+        if (other.getClosePrice() != 0D) {
+          setClosePrice(other.getClosePrice());
+        }
+        if (other.hasOpenTime()) {
+          mergeOpenTime(other.getOpenTime());
+        }
+        if (other.hasCloseTime()) {
+          mergeCloseTime(other.getCloseTime());
+        }
+        if (other.getProfit() != 0D) {
+          setProfit(other.getProfit());
+        }
+        if (other.getCommission() != 0D) {
+          setCommission(other.getCommission());
+        }
+        if (other.getSwap() != 0D) {
+          setSwap(other.getSwap());
+        }
+        if (!other.getComment().isEmpty()) {
+          comment_ = other.comment_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long ticket_ ;
+      /**
+       * <code>int64 ticket = 1;</code>
+       * @return The ticket.
+       */
+      @java.lang.Override
+      public long getTicket() {
+        return ticket_;
+      }
+      /**
+       * <code>int64 ticket = 1;</code>
+       * @param value The ticket to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTicket(long value) {
+        
+        ticket_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 ticket = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTicket() {
+        
+        ticket_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object symbol_ = "";
+      /**
+       * <code>string symbol = 2;</code>
+       * @return The symbol.
+       */
+      public java.lang.String getSymbol() {
+        java.lang.Object ref = symbol_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          symbol_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string symbol = 2;</code>
+       * @return The bytes for symbol.
+       */
+      public com.google.protobuf.ByteString
+          getSymbolBytes() {
+        java.lang.Object ref = symbol_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          symbol_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string symbol = 2;</code>
+       * @param value The symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbol(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string symbol = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSymbol() {
+        
+        symbol_ = getDefaultInstance().getSymbol();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string symbol = 2;</code>
+       * @param value The bytes for symbol to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSymbolBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        symbol_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean isBuy_ ;
+      /**
+       * <code>bool is_buy = 3;</code>
+       * @return The isBuy.
+       */
+      @java.lang.Override
+      public boolean getIsBuy() {
+        return isBuy_;
+      }
+      /**
+       * <code>bool is_buy = 3;</code>
+       * @param value The isBuy to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsBuy(boolean value) {
+        
+        isBuy_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_buy = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsBuy() {
+        
+        isBuy_ = false;
+        onChanged();
+        return this;
+      }
+
+      private double lots_ ;
+      /**
+       * <code>double lots = 4;</code>
+       * @return The lots.
+       */
+      @java.lang.Override
+      public double getLots() {
+        return lots_;
+      }
+      /**
+       * <code>double lots = 4;</code>
+       * @param value The lots to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLots(double value) {
+        
+        lots_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double lots = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLots() {
+        
+        lots_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double openPrice_ ;
+      /**
+       * <code>double open_price = 5;</code>
+       * @return The openPrice.
+       */
+      @java.lang.Override
+      public double getOpenPrice() {
+        return openPrice_;
+      }
+      /**
+       * <code>double open_price = 5;</code>
+       * @param value The openPrice to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOpenPrice(double value) {
+        
+        openPrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double open_price = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOpenPrice() {
+        
+        openPrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double closePrice_ ;
+      /**
+       * <code>double close_price = 6;</code>
+       * @return The closePrice.
+       */
+      @java.lang.Override
+      public double getClosePrice() {
+        return closePrice_;
+      }
+      /**
+       * <code>double close_price = 6;</code>
+       * @param value The closePrice to set.
+       * @return This builder for chaining.
+       */
+      public Builder setClosePrice(double value) {
+        
+        closePrice_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double close_price = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearClosePrice() {
+        
+        closePrice_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp openTime_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       * @return Whether the openTime field is set.
+       */
+      public boolean hasOpenTime() {
+        return openTimeBuilder_ != null || openTime_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       * @return The openTime.
+       */
+      public com.google.protobuf.Timestamp getOpenTime() {
+        if (openTimeBuilder_ == null) {
+          return openTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
+        } else {
+          return openTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public Builder setOpenTime(com.google.protobuf.Timestamp value) {
+        if (openTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          openTime_ = value;
+          onChanged();
+        } else {
+          openTimeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public Builder setOpenTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (openTimeBuilder_ == null) {
+          openTime_ = builderForValue.build();
+          onChanged();
+        } else {
+          openTimeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public Builder mergeOpenTime(com.google.protobuf.Timestamp value) {
+        if (openTimeBuilder_ == null) {
+          if (openTime_ != null) {
+            openTime_ =
+              com.google.protobuf.Timestamp.newBuilder(openTime_).mergeFrom(value).buildPartial();
+          } else {
+            openTime_ = value;
+          }
+          onChanged();
+        } else {
+          openTimeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public Builder clearOpenTime() {
+        if (openTimeBuilder_ == null) {
+          openTime_ = null;
+          onChanged();
+        } else {
+          openTime_ = null;
+          openTimeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getOpenTimeBuilder() {
+        
+        onChanged();
+        return getOpenTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
+        if (openTimeBuilder_ != null) {
+          return openTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return openTime_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp open_time = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getOpenTimeFieldBuilder() {
+        if (openTimeBuilder_ == null) {
+          openTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getOpenTime(),
+                  getParentForChildren(),
+                  isClean());
+          openTime_ = null;
+        }
+        return openTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp closeTime_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> closeTimeBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       * @return Whether the closeTime field is set.
+       */
+      public boolean hasCloseTime() {
+        return closeTimeBuilder_ != null || closeTime_ != null;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       * @return The closeTime.
+       */
+      public com.google.protobuf.Timestamp getCloseTime() {
+        if (closeTimeBuilder_ == null) {
+          return closeTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTime_;
+        } else {
+          return closeTimeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public Builder setCloseTime(com.google.protobuf.Timestamp value) {
+        if (closeTimeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          closeTime_ = value;
+          onChanged();
+        } else {
+          closeTimeBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public Builder setCloseTime(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (closeTimeBuilder_ == null) {
+          closeTime_ = builderForValue.build();
+          onChanged();
+        } else {
+          closeTimeBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public Builder mergeCloseTime(com.google.protobuf.Timestamp value) {
+        if (closeTimeBuilder_ == null) {
+          if (closeTime_ != null) {
+            closeTime_ =
+              com.google.protobuf.Timestamp.newBuilder(closeTime_).mergeFrom(value).buildPartial();
+          } else {
+            closeTime_ = value;
+          }
+          onChanged();
+        } else {
+          closeTimeBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public Builder clearCloseTime() {
+        if (closeTimeBuilder_ == null) {
+          closeTime_ = null;
+          onChanged();
+        } else {
+          closeTime_ = null;
+          closeTimeBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getCloseTimeBuilder() {
+        
+        onChanged();
+        return getCloseTimeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
+        if (closeTimeBuilder_ != null) {
+          return closeTimeBuilder_.getMessageOrBuilder();
+        } else {
+          return closeTime_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : closeTime_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp close_time = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getCloseTimeFieldBuilder() {
+        if (closeTimeBuilder_ == null) {
+          closeTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getCloseTime(),
+                  getParentForChildren(),
+                  isClean());
+          closeTime_ = null;
+        }
+        return closeTimeBuilder_;
+      }
+
+      private double profit_ ;
+      /**
+       * <code>double profit = 9;</code>
+       * @return The profit.
+       */
+      @java.lang.Override
+      public double getProfit() {
+        return profit_;
+      }
+      /**
+       * <code>double profit = 9;</code>
+       * @param value The profit to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProfit(double value) {
+        
+        profit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double profit = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProfit() {
+        
+        profit_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double commission_ ;
+      /**
+       * <code>double commission = 10;</code>
+       * @return The commission.
+       */
+      @java.lang.Override
+      public double getCommission() {
+        return commission_;
+      }
+      /**
+       * <code>double commission = 10;</code>
+       * @param value The commission to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommission(double value) {
+        
+        commission_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double commission = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCommission() {
+        
+        commission_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double swap_ ;
+      /**
+       * <code>double swap = 11;</code>
+       * @return The swap.
+       */
+      @java.lang.Override
+      public double getSwap() {
+        return swap_;
+      }
+      /**
+       * <code>double swap = 11;</code>
+       * @param value The swap to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSwap(double value) {
+        
+        swap_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double swap = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSwap() {
+        
+        swap_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object comment_ = "";
+      /**
+       * <code>string comment = 12;</code>
+       * @return The comment.
+       */
+      public java.lang.String getComment() {
+        java.lang.Object ref = comment_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          comment_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string comment = 12;</code>
+       * @return The bytes for comment.
+       */
+      public com.google.protobuf.ByteString
+          getCommentBytes() {
+        java.lang.Object ref = comment_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          comment_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string comment = 12;</code>
+       * @param value The comment to set.
+       * @return This builder for chaining.
+       */
+      public Builder setComment(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        comment_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string comment = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearComment() {
+        
+        comment_ = getDefaultInstance().getComment();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string comment = 12;</code>
+       * @param value The bytes for comment to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCommentBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        comment_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.TradeHistoryItemData)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.TradeHistoryItemData)
+    private static final mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData();
+    }
+
+    public static mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TradeHistoryItemData>
+        PARSER = new com.google.protobuf.AbstractParser<TradeHistoryItemData>() {
+      @java.lang.Override
+      public TradeHistoryItemData parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TradeHistoryItemData(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TradeHistoryItemData> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TradeHistoryItemData> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiTradeStats.TradeHistoryItemData getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -21293,6 +24093,11 @@ public final class Mt4TermApiTradeStats {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_mt4_term_api_StatsWithChartsData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_TradeHistoryItemData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_TradeHistoryItemData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_mt4_term_api_EquityHistoryData_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -21373,53 +24178,65 @@ public final class Mt4TermApiTradeStats {
       "pen_trades\030\001 \001(\005\022\023\n\013open_profit\030\002 \001(\001\022\022\n" +
       "\nday_profit\030\003 \001(\001\022\023\n\013week_profit\030\004 \001(\001\022\024" +
       "\n\014month_profit\030\005 \001(\001\022\024\n\014total_profit\030\006 \001" +
-      "(\001\":\n\024MarketTradeCountData\022\023\n\013market_nam" +
-      "e\030\001 \001(\t\022\r\n\005count\030\002 \001(\005\"u\n\021ProfitabilityD" +
-      "ata\022\022\n\nwon_trades\030\001 \001(\003\022\032\n\022won_trades_pe" +
-      "rcent\030\002 \001(\001\022\023\n\013lost_trades\030\003 \001(\003\022\033\n\023lost" +
-      "_trades_percent\030\004 \001(\001\"?\n\022AveragePipsUsdD" +
-      "ata\022\024\n\014average_pips\030\001 \001(\001\022\023\n\013average_usd" +
-      "\030\002 \001(\001\">\n\007WonData\022\021\n\twon_count\030\001 \001(\005\022\013\n\003" +
-      "all\030\002 \001(\005\022\023\n\013won_persent\030\003 \001(\001\"U\n\nProfit" +
-      "Data\022\r\n\005tiket\030\001 \001(\003\022(\n\004date\030\002 \001(\0132\032.goog" +
-      "le.protobuf.Timestamp\022\016\n\006profit\030\003 \001(\001\"B\n" +
-      "\nZScoreData\022\027\n\017z_score_decimal\030\001 \001(\001\022\033\n\023" +
-      "z_score_probability\030\002 \001(\001\".\n\016ExpectancyD" +
-      "ata\022\014\n\004pips\030\001 \001(\001\022\016\n\006dollar\030\002 \001(\001\"l\n\023Sta" +
-      "tsWithChartsData\022&\n\005stats\030\001 \001(\0132\027.mt4_te" +
-      "rm_api.StatsData\022-\n\006charts\030\002 \003(\0132\035.mt4_t" +
-      "erm_api.EquityPointData\"B\n\021EquityHistory" +
-      "Data\022-\n\006points\030\001 \003(\0132\035.mt4_term_api.Equi" +
-      "tyPointData\"\210\002\n\017EquityPointData\022(\n\004time\030" +
-      "\001 \001(\0132\032.google.protobuf.Timestamp\022\017\n\007bal" +
-      "ance\030\002 \001(\001\022\016\n\006equity\030\003 \001(\001\022\034\n\024balance_dr" +
-      "awdown_raw\030\004 \001(\001\022!\n\031balance_drawdown_rel" +
-      "ative\030\005 \001(\001\022\033\n\023equity_drawdown_raw\030\006 \001(\001" +
-      "\022 \n\030equity_drawdown_relative\030\007 \001(\001\022\023\n\013re" +
-      "alized_pl\030\010 \001(\001\022\025\n\runrealized_pl\030\t \001(\001\"R" +
-      "\n\025TradeUnrealizedPLData\0229\n\007extrema\030\001 \003(\013" +
-      "2(.mt4_term_api.TradeUnrealizedExtremaDa" +
-      "ta\"\344\001\n\032TradeUnrealizedExtremaData\022\016\n\006tic" +
-      "ket\030\001 \001(\003\022\016\n\006symbol\030\002 \001(\t\0227\n\023max_unreali" +
-      "zed_time\030\003 \001(\0132\032.google.protobuf.Timesta" +
-      "mp\022\031\n\021max_unrealized_pl\030\004 \001(\001\0227\n\023min_unr" +
-      "ealized_time\030\005 \001(\0132\032.google.protobuf.Tim" +
-      "estamp\022\031\n\021min_unrealized_pl\030\006 \001(\0012\365\003\n\nTr" +
-      "adeStats\022a\n\nTradeStats\022\037.mt4_term_api.Tr" +
-      "adeStatsRequest\032\035.mt4_term_api.TradeStat" +
-      "sReply\"\023\202\323\344\223\002\r\022\013/TradeStats\022\225\001\n\027TradeSta" +
-      "tsEquityHistory\022,.mt4_term_api.TradeStat" +
-      "sEquityHistoryRequest\032*.mt4_term_api.Tra" +
-      "deStatsEquityHistoryReply\" \202\323\344\223\002\032\022\030/Trad" +
-      "eStatsEquityHistory\022m\n\rEquityHistory\022\".m" +
-      "t4_term_api.EquityHistoryRequest\032 .mt4_t" +
-      "erm_api.EquityHistoryReply\"\026\202\323\344\223\002\020\022\016/Equ" +
-      "ityHistory\022}\n\021TradeUnrealizedPL\022&.mt4_te" +
-      "rm_api.TradeUnrealizedPLRequest\032$.mt4_te" +
-      "rm_api.TradeUnrealizedPLReply\"\032\202\323\344\223\002\024\022\022/" +
-      "TradeUnrealizedPLBBZ1git.mtapi.io/root/m" +
-      "rpc-proto.git/mt4/libraries/go\252\002\014mt4_ter" +
-      "m_apib\006proto3"
+      "(\001\"\221\001\n\024MarketTradeCountData\022\023\n\013market_na" +
+      "me\030\001 \001(\t\022\r\n\005count\030\002 \001(\005\022\014\n\004lots\030\003 \001(\001\022\016\n" +
+      "\006profit\030\004 \001(\001\022\020\n\010win_rate\030\005 \001(\001\022\021\n\twon_c" +
+      "ount\030\006 \001(\005\022\022\n\nlost_count\030\007 \001(\005\"u\n\021Profit" +
+      "abilityData\022\022\n\nwon_trades\030\001 \001(\003\022\032\n\022won_t" +
+      "rades_percent\030\002 \001(\001\022\023\n\013lost_trades\030\003 \001(\003" +
+      "\022\033\n\023lost_trades_percent\030\004 \001(\001\"?\n\022Average" +
+      "PipsUsdData\022\024\n\014average_pips\030\001 \001(\001\022\023\n\013ave" +
+      "rage_usd\030\002 \001(\001\">\n\007WonData\022\021\n\twon_count\030\001" +
+      " \001(\005\022\013\n\003all\030\002 \001(\005\022\023\n\013won_persent\030\003 \001(\001\"U" +
+      "\n\nProfitData\022\r\n\005tiket\030\001 \001(\003\022(\n\004date\030\002 \001(" +
+      "\0132\032.google.protobuf.Timestamp\022\016\n\006profit\030" +
+      "\003 \001(\001\"B\n\nZScoreData\022\027\n\017z_score_decimal\030\001" +
+      " \001(\001\022\033\n\023z_score_probability\030\002 \001(\001\".\n\016Exp" +
+      "ectancyData\022\014\n\004pips\030\001 \001(\001\022\016\n\006dollar\030\002 \001(" +
+      "\001\"\331\001\n\023StatsWithChartsData\022&\n\005stats\030\001 \001(\013" +
+      "2\027.mt4_term_api.StatsData\022-\n\006charts\030\002 \003(" +
+      "\0132\035.mt4_term_api.EquityPointData\0222\n\006trad" +
+      "es\030\003 \003(\0132\".mt4_term_api.TradeHistoryItem" +
+      "Data\0227\n\013open_trades\030\004 \003(\0132\".mt4_term_api" +
+      ".TradeHistoryItemData\"\237\002\n\024TradeHistoryIt" +
+      "emData\022\016\n\006ticket\030\001 \001(\003\022\016\n\006symbol\030\002 \001(\t\022\016" +
+      "\n\006is_buy\030\003 \001(\010\022\014\n\004lots\030\004 \001(\001\022\022\n\nopen_pri" +
+      "ce\030\005 \001(\001\022\023\n\013close_price\030\006 \001(\001\022-\n\topen_ti" +
+      "me\030\007 \001(\0132\032.google.protobuf.Timestamp\022.\n\n" +
+      "close_time\030\010 \001(\0132\032.google.protobuf.Times" +
+      "tamp\022\016\n\006profit\030\t \001(\001\022\022\n\ncommission\030\n \001(\001" +
+      "\022\014\n\004swap\030\013 \001(\001\022\017\n\007comment\030\014 \001(\t\"B\n\021Equit" +
+      "yHistoryData\022-\n\006points\030\001 \003(\0132\035.mt4_term_" +
+      "api.EquityPointData\"\210\002\n\017EquityPointData\022" +
+      "(\n\004time\030\001 \001(\0132\032.google.protobuf.Timestam" +
+      "p\022\017\n\007balance\030\002 \001(\001\022\016\n\006equity\030\003 \001(\001\022\034\n\024ba" +
+      "lance_drawdown_raw\030\004 \001(\001\022!\n\031balance_draw" +
+      "down_relative\030\005 \001(\001\022\033\n\023equity_drawdown_r" +
+      "aw\030\006 \001(\001\022 \n\030equity_drawdown_relative\030\007 \001" +
+      "(\001\022\023\n\013realized_pl\030\010 \001(\001\022\025\n\runrealized_pl" +
+      "\030\t \001(\001\"R\n\025TradeUnrealizedPLData\0229\n\007extre" +
+      "ma\030\001 \003(\0132(.mt4_term_api.TradeUnrealizedE" +
+      "xtremaData\"\344\001\n\032TradeUnrealizedExtremaDat" +
+      "a\022\016\n\006ticket\030\001 \001(\003\022\016\n\006symbol\030\002 \001(\t\0227\n\023max" +
+      "_unrealized_time\030\003 \001(\0132\032.google.protobuf" +
+      ".Timestamp\022\031\n\021max_unrealized_pl\030\004 \001(\001\0227\n" +
+      "\023min_unrealized_time\030\005 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\022\031\n\021min_unrealized_pl\030\006 \001(" +
+      "\0012\365\003\n\nTradeStats\022a\n\nTradeStats\022\037.mt4_ter" +
+      "m_api.TradeStatsRequest\032\035.mt4_term_api.T" +
+      "radeStatsReply\"\023\202\323\344\223\002\r\022\013/TradeStats\022\225\001\n\027" +
+      "TradeStatsEquityHistory\022,.mt4_term_api.T" +
+      "radeStatsEquityHistoryRequest\032*.mt4_term" +
+      "_api.TradeStatsEquityHistoryReply\" \202\323\344\223\002" +
+      "\032\022\030/TradeStatsEquityHistory\022m\n\rEquityHis" +
+      "tory\022\".mt4_term_api.EquityHistoryRequest" +
+      "\032 .mt4_term_api.EquityHistoryReply\"\026\202\323\344\223" +
+      "\002\020\022\016/EquityHistory\022}\n\021TradeUnrealizedPL\022" +
+      "&.mt4_term_api.TradeUnrealizedPLRequest\032" +
+      "$.mt4_term_api.TradeUnrealizedPLReply\"\032\202" +
+      "\323\344\223\002\024\022\022/TradeUnrealizedPLBBZ1git.mtapi.i" +
+      "o/root/mrpc-proto.git/mt4/libraries/go\252\002" +
+      "\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -21493,7 +24310,7 @@ public final class Mt4TermApiTradeStats {
     internal_static_mt4_term_api_MarketTradeCountData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_MarketTradeCountData_descriptor,
-        new java.lang.String[] { "MarketName", "Count", });
+        new java.lang.String[] { "MarketName", "Count", "Lots", "Profit", "WinRate", "WonCount", "LostCount", });
     internal_static_mt4_term_api_ProfitabilityData_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_mt4_term_api_ProfitabilityData_fieldAccessorTable = new
@@ -21535,27 +24352,33 @@ public final class Mt4TermApiTradeStats {
     internal_static_mt4_term_api_StatsWithChartsData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_StatsWithChartsData_descriptor,
-        new java.lang.String[] { "Stats", "Charts", });
-    internal_static_mt4_term_api_EquityHistoryData_descriptor =
+        new java.lang.String[] { "Stats", "Charts", "Trades", "OpenTrades", });
+    internal_static_mt4_term_api_TradeHistoryItemData_descriptor =
       getDescriptor().getMessageTypes().get(18);
+    internal_static_mt4_term_api_TradeHistoryItemData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_TradeHistoryItemData_descriptor,
+        new java.lang.String[] { "Ticket", "Symbol", "IsBuy", "Lots", "OpenPrice", "ClosePrice", "OpenTime", "CloseTime", "Profit", "Commission", "Swap", "Comment", });
+    internal_static_mt4_term_api_EquityHistoryData_descriptor =
+      getDescriptor().getMessageTypes().get(19);
     internal_static_mt4_term_api_EquityHistoryData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_EquityHistoryData_descriptor,
         new java.lang.String[] { "Points", });
     internal_static_mt4_term_api_EquityPointData_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_mt4_term_api_EquityPointData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_EquityPointData_descriptor,
         new java.lang.String[] { "Time", "Balance", "Equity", "BalanceDrawdownRaw", "BalanceDrawdownRelative", "EquityDrawdownRaw", "EquityDrawdownRelative", "RealizedPl", "UnrealizedPl", });
     internal_static_mt4_term_api_TradeUnrealizedPLData_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_mt4_term_api_TradeUnrealizedPLData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_TradeUnrealizedPLData_descriptor,
         new java.lang.String[] { "Extrema", });
     internal_static_mt4_term_api_TradeUnrealizedExtremaData_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_mt4_term_api_TradeUnrealizedExtremaData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_TradeUnrealizedExtremaData_descriptor,
