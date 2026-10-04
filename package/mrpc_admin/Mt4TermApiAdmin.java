@@ -15788,6 +15788,86 @@ public final class Mt4TermApiAdmin {
      */
     com.google.protobuf.ByteString
         getModeBytes();
+
+    /**
+     * <pre>
+     * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+     * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+     * </pre>
+     *
+     * <code>string session_creation = 5;</code>
+     * @return The sessionCreation.
+     */
+    java.lang.String getSessionCreation();
+    /**
+     * <pre>
+     * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+     * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+     * </pre>
+     *
+     * <code>string session_creation = 5;</code>
+     * @return The bytes for sessionCreation.
+     */
+    com.google.protobuf.ByteString
+        getSessionCreationBytes();
+
+    /**
+     * <code>uint32 session_creation_consecutive_failures = 6;</code>
+     * @return The sessionCreationConsecutiveFailures.
+     */
+    int getSessionCreationConsecutiveFailures();
+
+    /**
+     * <pre>
+     * "MrpcTerminalUserN: &lt;launcher error&gt;"
+     * </pre>
+     *
+     * <code>string session_creation_last_error = 7;</code>
+     * @return The sessionCreationLastError.
+     */
+    java.lang.String getSessionCreationLastError();
+    /**
+     * <pre>
+     * "MrpcTerminalUserN: &lt;launcher error&gt;"
+     * </pre>
+     *
+     * <code>string session_creation_last_error = 7;</code>
+     * @return The bytes for sessionCreationLastError.
+     */
+    com.google.protobuf.ByteString
+        getSessionCreationLastErrorBytes();
+
+    /**
+     * <pre>
+     * ISO-8601, empty when none yet
+     * </pre>
+     *
+     * <code>string session_creation_last_success_utc = 8;</code>
+     * @return The sessionCreationLastSuccessUtc.
+     */
+    java.lang.String getSessionCreationLastSuccessUtc();
+    /**
+     * <pre>
+     * ISO-8601, empty when none yet
+     * </pre>
+     *
+     * <code>string session_creation_last_success_utc = 8;</code>
+     * @return The bytes for sessionCreationLastSuccessUtc.
+     */
+    com.google.protobuf.ByteString
+        getSessionCreationLastSuccessUtcBytes();
+
+    /**
+     * <code>string session_creation_unhealthy_since_utc = 9;</code>
+     * @return The sessionCreationUnhealthySinceUtc.
+     */
+    java.lang.String getSessionCreationUnhealthySinceUtc();
+    /**
+     * <code>string session_creation_unhealthy_since_utc = 9;</code>
+     * @return The bytes for sessionCreationUnhealthySinceUtc.
+     */
+    com.google.protobuf.ByteString
+        getSessionCreationUnhealthySinceUtcBytes();
   }
   /**
    * Protobuf type {@code mrpc_admin.VersionReply}
@@ -15806,6 +15886,10 @@ public final class Mt4TermApiAdmin {
       version_ = "";
       buildTimeUtc_ = "";
       mode_ = "";
+      sessionCreation_ = "";
+      sessionCreationLastError_ = "";
+      sessionCreationLastSuccessUtc_ = "";
+      sessionCreationUnhealthySinceUtc_ = "";
     }
 
     @java.lang.Override
@@ -15860,6 +15944,35 @@ public final class Mt4TermApiAdmin {
               java.lang.String s = input.readStringRequireUtf8();
 
               mode_ = s;
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionCreation_ = s;
+              break;
+            }
+            case 48: {
+
+              sessionCreationConsecutiveFailures_ = input.readUInt32();
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionCreationLastError_ = s;
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionCreationLastSuccessUtc_ = s;
+              break;
+            }
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionCreationUnhealthySinceUtc_ = s;
               break;
             }
             default: {
@@ -16080,6 +16193,195 @@ public final class Mt4TermApiAdmin {
       }
     }
 
+    public static final int SESSION_CREATION_FIELD_NUMBER = 5;
+    private volatile java.lang.Object sessionCreation_;
+    /**
+     * <pre>
+     * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+     * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+     * </pre>
+     *
+     * <code>string session_creation = 5;</code>
+     * @return The sessionCreation.
+     */
+    @java.lang.Override
+    public java.lang.String getSessionCreation() {
+      java.lang.Object ref = sessionCreation_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionCreation_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+     * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+     * </pre>
+     *
+     * <code>string session_creation = 5;</code>
+     * @return The bytes for sessionCreation.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSessionCreationBytes() {
+      java.lang.Object ref = sessionCreation_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCreation_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SESSION_CREATION_CONSECUTIVE_FAILURES_FIELD_NUMBER = 6;
+    private int sessionCreationConsecutiveFailures_;
+    /**
+     * <code>uint32 session_creation_consecutive_failures = 6;</code>
+     * @return The sessionCreationConsecutiveFailures.
+     */
+    @java.lang.Override
+    public int getSessionCreationConsecutiveFailures() {
+      return sessionCreationConsecutiveFailures_;
+    }
+
+    public static final int SESSION_CREATION_LAST_ERROR_FIELD_NUMBER = 7;
+    private volatile java.lang.Object sessionCreationLastError_;
+    /**
+     * <pre>
+     * "MrpcTerminalUserN: &lt;launcher error&gt;"
+     * </pre>
+     *
+     * <code>string session_creation_last_error = 7;</code>
+     * @return The sessionCreationLastError.
+     */
+    @java.lang.Override
+    public java.lang.String getSessionCreationLastError() {
+      java.lang.Object ref = sessionCreationLastError_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionCreationLastError_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * "MrpcTerminalUserN: &lt;launcher error&gt;"
+     * </pre>
+     *
+     * <code>string session_creation_last_error = 7;</code>
+     * @return The bytes for sessionCreationLastError.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSessionCreationLastErrorBytes() {
+      java.lang.Object ref = sessionCreationLastError_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCreationLastError_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SESSION_CREATION_LAST_SUCCESS_UTC_FIELD_NUMBER = 8;
+    private volatile java.lang.Object sessionCreationLastSuccessUtc_;
+    /**
+     * <pre>
+     * ISO-8601, empty when none yet
+     * </pre>
+     *
+     * <code>string session_creation_last_success_utc = 8;</code>
+     * @return The sessionCreationLastSuccessUtc.
+     */
+    @java.lang.Override
+    public java.lang.String getSessionCreationLastSuccessUtc() {
+      java.lang.Object ref = sessionCreationLastSuccessUtc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionCreationLastSuccessUtc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * ISO-8601, empty when none yet
+     * </pre>
+     *
+     * <code>string session_creation_last_success_utc = 8;</code>
+     * @return The bytes for sessionCreationLastSuccessUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSessionCreationLastSuccessUtcBytes() {
+      java.lang.Object ref = sessionCreationLastSuccessUtc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCreationLastSuccessUtc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SESSION_CREATION_UNHEALTHY_SINCE_UTC_FIELD_NUMBER = 9;
+    private volatile java.lang.Object sessionCreationUnhealthySinceUtc_;
+    /**
+     * <code>string session_creation_unhealthy_since_utc = 9;</code>
+     * @return The sessionCreationUnhealthySinceUtc.
+     */
+    @java.lang.Override
+    public java.lang.String getSessionCreationUnhealthySinceUtc() {
+      java.lang.Object ref = sessionCreationUnhealthySinceUtc_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionCreationUnhealthySinceUtc_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string session_creation_unhealthy_since_utc = 9;</code>
+     * @return The bytes for sessionCreationUnhealthySinceUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSessionCreationUnhealthySinceUtcBytes() {
+      java.lang.Object ref = sessionCreationUnhealthySinceUtc_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionCreationUnhealthySinceUtc_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -16106,6 +16408,21 @@ public final class Mt4TermApiAdmin {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mode_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, mode_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreation_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, sessionCreation_);
+      }
+      if (sessionCreationConsecutiveFailures_ != 0) {
+        output.writeUInt32(6, sessionCreationConsecutiveFailures_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationLastError_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, sessionCreationLastError_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationLastSuccessUtc_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, sessionCreationLastSuccessUtc_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationUnhealthySinceUtc_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sessionCreationUnhealthySinceUtc_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -16126,6 +16443,22 @@ public final class Mt4TermApiAdmin {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(mode_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, mode_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreation_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, sessionCreation_);
+      }
+      if (sessionCreationConsecutiveFailures_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, sessionCreationConsecutiveFailures_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationLastError_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, sessionCreationLastError_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationLastSuccessUtc_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, sessionCreationLastSuccessUtc_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionCreationUnhealthySinceUtc_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sessionCreationUnhealthySinceUtc_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -16150,6 +16483,16 @@ public final class Mt4TermApiAdmin {
           .equals(other.getBuildTimeUtc())) return false;
       if (!getMode()
           .equals(other.getMode())) return false;
+      if (!getSessionCreation()
+          .equals(other.getSessionCreation())) return false;
+      if (getSessionCreationConsecutiveFailures()
+          != other.getSessionCreationConsecutiveFailures()) return false;
+      if (!getSessionCreationLastError()
+          .equals(other.getSessionCreationLastError())) return false;
+      if (!getSessionCreationLastSuccessUtc()
+          .equals(other.getSessionCreationLastSuccessUtc())) return false;
+      if (!getSessionCreationUnhealthySinceUtc()
+          .equals(other.getSessionCreationUnhealthySinceUtc())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -16169,6 +16512,16 @@ public final class Mt4TermApiAdmin {
       hash = (53 * hash) + getBuildTimeUtc().hashCode();
       hash = (37 * hash) + MODE_FIELD_NUMBER;
       hash = (53 * hash) + getMode().hashCode();
+      hash = (37 * hash) + SESSION_CREATION_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionCreation().hashCode();
+      hash = (37 * hash) + SESSION_CREATION_CONSECUTIVE_FAILURES_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionCreationConsecutiveFailures();
+      hash = (37 * hash) + SESSION_CREATION_LAST_ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionCreationLastError().hashCode();
+      hash = (37 * hash) + SESSION_CREATION_LAST_SUCCESS_UTC_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionCreationLastSuccessUtc().hashCode();
+      hash = (37 * hash) + SESSION_CREATION_UNHEALTHY_SINCE_UTC_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionCreationUnhealthySinceUtc().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -16310,6 +16663,16 @@ public final class Mt4TermApiAdmin {
 
         mode_ = "";
 
+        sessionCreation_ = "";
+
+        sessionCreationConsecutiveFailures_ = 0;
+
+        sessionCreationLastError_ = "";
+
+        sessionCreationLastSuccessUtc_ = "";
+
+        sessionCreationUnhealthySinceUtc_ = "";
+
         return this;
       }
 
@@ -16340,6 +16703,11 @@ public final class Mt4TermApiAdmin {
         result.version_ = version_;
         result.buildTimeUtc_ = buildTimeUtc_;
         result.mode_ = mode_;
+        result.sessionCreation_ = sessionCreation_;
+        result.sessionCreationConsecutiveFailures_ = sessionCreationConsecutiveFailures_;
+        result.sessionCreationLastError_ = sessionCreationLastError_;
+        result.sessionCreationLastSuccessUtc_ = sessionCreationLastSuccessUtc_;
+        result.sessionCreationUnhealthySinceUtc_ = sessionCreationUnhealthySinceUtc_;
         onBuilt();
         return result;
       }
@@ -16402,6 +16770,25 @@ public final class Mt4TermApiAdmin {
         }
         if (!other.getMode().isEmpty()) {
           mode_ = other.mode_;
+          onChanged();
+        }
+        if (!other.getSessionCreation().isEmpty()) {
+          sessionCreation_ = other.sessionCreation_;
+          onChanged();
+        }
+        if (other.getSessionCreationConsecutiveFailures() != 0) {
+          setSessionCreationConsecutiveFailures(other.getSessionCreationConsecutiveFailures());
+        }
+        if (!other.getSessionCreationLastError().isEmpty()) {
+          sessionCreationLastError_ = other.sessionCreationLastError_;
+          onChanged();
+        }
+        if (!other.getSessionCreationLastSuccessUtc().isEmpty()) {
+          sessionCreationLastSuccessUtc_ = other.sessionCreationLastSuccessUtc_;
+          onChanged();
+        }
+        if (!other.getSessionCreationUnhealthySinceUtc().isEmpty()) {
+          sessionCreationUnhealthySinceUtc_ = other.sessionCreationUnhealthySinceUtc_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -16813,6 +17200,406 @@ public final class Mt4TermApiAdmin {
   checkByteStringIsUtf8(value);
         
         mode_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCreation_ = "";
+      /**
+       * <pre>
+       * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+       * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+       * </pre>
+       *
+       * <code>string session_creation = 5;</code>
+       * @return The sessionCreation.
+       */
+      public java.lang.String getSessionCreation() {
+        java.lang.Object ref = sessionCreation_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionCreation_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+       * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+       * </pre>
+       *
+       * <code>string session_creation = 5;</code>
+       * @return The bytes for sessionCreation.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCreationBytes() {
+        java.lang.Object ref = sessionCreation_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCreation_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+       * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+       * </pre>
+       *
+       * <code>string session_creation = 5;</code>
+       * @param value The sessionCreation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreation(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionCreation_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+       * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+       * </pre>
+       *
+       * <code>string session_creation = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCreation() {
+        
+        sessionCreation_ = getDefaultInstance().getSessionCreation();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Windows session creation on this pod (SessionCreationHealth): "healthy", "unhealthy" (its last
+       * consecutive creations all failed - restore placement skips it) or "disabled" (no on-demand sessions).
+       * </pre>
+       *
+       * <code>string session_creation = 5;</code>
+       * @param value The bytes for sessionCreation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionCreation_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int sessionCreationConsecutiveFailures_ ;
+      /**
+       * <code>uint32 session_creation_consecutive_failures = 6;</code>
+       * @return The sessionCreationConsecutiveFailures.
+       */
+      @java.lang.Override
+      public int getSessionCreationConsecutiveFailures() {
+        return sessionCreationConsecutiveFailures_;
+      }
+      /**
+       * <code>uint32 session_creation_consecutive_failures = 6;</code>
+       * @param value The sessionCreationConsecutiveFailures to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationConsecutiveFailures(int value) {
+        
+        sessionCreationConsecutiveFailures_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 session_creation_consecutive_failures = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCreationConsecutiveFailures() {
+        
+        sessionCreationConsecutiveFailures_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCreationLastError_ = "";
+      /**
+       * <pre>
+       * "MrpcTerminalUserN: &lt;launcher error&gt;"
+       * </pre>
+       *
+       * <code>string session_creation_last_error = 7;</code>
+       * @return The sessionCreationLastError.
+       */
+      public java.lang.String getSessionCreationLastError() {
+        java.lang.Object ref = sessionCreationLastError_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionCreationLastError_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * "MrpcTerminalUserN: &lt;launcher error&gt;"
+       * </pre>
+       *
+       * <code>string session_creation_last_error = 7;</code>
+       * @return The bytes for sessionCreationLastError.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCreationLastErrorBytes() {
+        java.lang.Object ref = sessionCreationLastError_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCreationLastError_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * "MrpcTerminalUserN: &lt;launcher error&gt;"
+       * </pre>
+       *
+       * <code>string session_creation_last_error = 7;</code>
+       * @param value The sessionCreationLastError to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationLastError(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionCreationLastError_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * "MrpcTerminalUserN: &lt;launcher error&gt;"
+       * </pre>
+       *
+       * <code>string session_creation_last_error = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCreationLastError() {
+        
+        sessionCreationLastError_ = getDefaultInstance().getSessionCreationLastError();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * "MrpcTerminalUserN: &lt;launcher error&gt;"
+       * </pre>
+       *
+       * <code>string session_creation_last_error = 7;</code>
+       * @param value The bytes for sessionCreationLastError to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationLastErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionCreationLastError_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCreationLastSuccessUtc_ = "";
+      /**
+       * <pre>
+       * ISO-8601, empty when none yet
+       * </pre>
+       *
+       * <code>string session_creation_last_success_utc = 8;</code>
+       * @return The sessionCreationLastSuccessUtc.
+       */
+      public java.lang.String getSessionCreationLastSuccessUtc() {
+        java.lang.Object ref = sessionCreationLastSuccessUtc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionCreationLastSuccessUtc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO-8601, empty when none yet
+       * </pre>
+       *
+       * <code>string session_creation_last_success_utc = 8;</code>
+       * @return The bytes for sessionCreationLastSuccessUtc.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCreationLastSuccessUtcBytes() {
+        java.lang.Object ref = sessionCreationLastSuccessUtc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCreationLastSuccessUtc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * ISO-8601, empty when none yet
+       * </pre>
+       *
+       * <code>string session_creation_last_success_utc = 8;</code>
+       * @param value The sessionCreationLastSuccessUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationLastSuccessUtc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionCreationLastSuccessUtc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO-8601, empty when none yet
+       * </pre>
+       *
+       * <code>string session_creation_last_success_utc = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCreationLastSuccessUtc() {
+        
+        sessionCreationLastSuccessUtc_ = getDefaultInstance().getSessionCreationLastSuccessUtc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO-8601, empty when none yet
+       * </pre>
+       *
+       * <code>string session_creation_last_success_utc = 8;</code>
+       * @param value The bytes for sessionCreationLastSuccessUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationLastSuccessUtcBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionCreationLastSuccessUtc_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionCreationUnhealthySinceUtc_ = "";
+      /**
+       * <code>string session_creation_unhealthy_since_utc = 9;</code>
+       * @return The sessionCreationUnhealthySinceUtc.
+       */
+      public java.lang.String getSessionCreationUnhealthySinceUtc() {
+        java.lang.Object ref = sessionCreationUnhealthySinceUtc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionCreationUnhealthySinceUtc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string session_creation_unhealthy_since_utc = 9;</code>
+       * @return The bytes for sessionCreationUnhealthySinceUtc.
+       */
+      public com.google.protobuf.ByteString
+          getSessionCreationUnhealthySinceUtcBytes() {
+        java.lang.Object ref = sessionCreationUnhealthySinceUtc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionCreationUnhealthySinceUtc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string session_creation_unhealthy_since_utc = 9;</code>
+       * @param value The sessionCreationUnhealthySinceUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationUnhealthySinceUtc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionCreationUnhealthySinceUtc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string session_creation_unhealthy_since_utc = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSessionCreationUnhealthySinceUtc() {
+        
+        sessionCreationUnhealthySinceUtc_ = getDefaultInstance().getSessionCreationUnhealthySinceUtc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string session_creation_unhealthy_since_utc = 9;</code>
+       * @param value The bytes for sessionCreationUnhealthySinceUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSessionCreationUnhealthySinceUtcBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionCreationUnhealthySinceUtc_ = value;
         onChanged();
         return this;
       }
@@ -36853,9 +37640,14 @@ public final class Mt4TermApiAdmin {
       "\001(\t\022\017\n\007content\030\006 \001(\t\022\021\n\ttruncated\030\007 \001(\010\022" +
       "\r\n\005error\030\010 \001(\t\"H\n\017GetAllLogsReply\022&\n\004log" +
       "s\030\001 \003(\0132\030.mrpc_admin.AllLogsEntry\022\r\n\005err" +
-      "or\030\002 \001(\t\"\020\n\016VersionRequest\"V\n\014VersionRep" +
-      "ly\022\017\n\007service\030\001 \001(\t\022\017\n\007version\030\002 \001(\t\022\026\n\016" +
-      "build_time_utc\030\003 \001(\t\022\014\n\004mode\030\004 \001(\t\"K\n\021Li" +
+      "or\030\002 \001(\t\"\020\n\016VersionRequest\"\235\002\n\014VersionRe" +
+      "ply\022\017\n\007service\030\001 \001(\t\022\017\n\007version\030\002 \001(\t\022\026\n" +
+      "\016build_time_utc\030\003 \001(\t\022\014\n\004mode\030\004 \001(\t\022\030\n\020s" +
+      "ession_creation\030\005 \001(\t\022-\n%session_creatio" +
+      "n_consecutive_failures\030\006 \001(\r\022#\n\033session_" +
+      "creation_last_error\030\007 \001(\t\022)\n!session_cre" +
+      "ation_last_success_utc\030\010 \001(\t\022,\n$session_" +
+      "creation_unhealthy_since_utc\030\t \001(\t\"K\n\021Li" +
       "stLogFilesReply\022\'\n\005files\030\001 \003(\0132\030.mrpc_ad" +
       "min.LogFileEntry\022\r\n\005error\030\002 \001(\t\"a\n\014LogFi" +
       "leEntry\022\014\n\004name\030\001 \001(\t\022\022\n\nsize_bytes\030\002 \001(" +
@@ -37065,7 +37857,7 @@ public final class Mt4TermApiAdmin {
     internal_static_mrpc_admin_VersionReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mrpc_admin_VersionReply_descriptor,
-        new java.lang.String[] { "Service", "Version", "BuildTimeUtc", "Mode", });
+        new java.lang.String[] { "Service", "Version", "BuildTimeUtc", "Mode", "SessionCreation", "SessionCreationConsecutiveFailures", "SessionCreationLastError", "SessionCreationLastSuccessUtc", "SessionCreationUnhealthySinceUtc", });
     internal_static_mrpc_admin_ListLogFilesReply_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_mrpc_admin_ListLogFilesReply_fieldAccessorTable = new
