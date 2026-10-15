@@ -11,9 +11,26 @@
 
 ## 📦 Installation
 
+The SDK is not published to Maven Central yet: build it from this repository once (JDK 11+); it installs
+`pro.mrpc:mt4:1.0.0` into your local Maven repository.
+
 ```bash
-implementation 'mrpc.pro:mt4:1.0.0'
+git clone https://github.com/MetaRPC/JavaMT4.git
+cd JavaMT4
+./gradlew publishToMavenLocal
 ```
+
+Then depend on it (Gradle, with `mavenLocal()` among the repositories): `implementation 'pro.mrpc:mt4:1.0.0'`, or Maven:
+
+```xml
+<dependency>
+    <groupId>pro.mrpc</groupId>
+    <artifactId>mt4</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+The jar holds the gRPC stubs generated from the current MT4 protos (`mt4_term_api`, synced into `package/` on every release).
 
 ---
 
