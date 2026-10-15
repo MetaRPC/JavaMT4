@@ -401,27 +401,10 @@
   <a href="#what-is-javamt4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 What is JavaMT4?
+        What is JavaMT4?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="🎯 What is JavaMT4?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-advantages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌟 Key Advantages
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -429,7 +412,7 @@
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Installation
+        Installation
       
     </span>
   </a>
@@ -437,10 +420,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api-key-authentication" class="md-nav__link">
+  <a href="#api-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔑 API Key &amp; Authentication
+        API key
       
     </span>
   </a>
@@ -448,10 +431,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#automatic-account-id-authentication" class="md-nav__link">
+  <a href="#api-key-and-terminal-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🆔 Automatic Account ID &amp; Authentication
+        API key and terminal id
       
     </span>
   </a>
@@ -459,10 +442,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#minimal-connection-example" class="md-nav__link">
+  <a href="#minimal-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔌 Minimal Connection Example
+        Minimal example
       
     </span>
   </a>
@@ -470,10 +453,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#documentation-road-map" class="md-nav__link">
+  <a href="#reading-order" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗺️ Documentation Road Map
+        Reading order
       
     </span>
   </a>
@@ -1058,27 +1041,10 @@
   <a href="#what-is-javamt4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🎯 What is JavaMT4?
+        What is JavaMT4?
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="🎯 What is JavaMT4?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-advantages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌟 Key Advantages
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1086,7 +1052,7 @@
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        📦 Installation
+        Installation
       
     </span>
   </a>
@@ -1094,10 +1060,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api-key-authentication" class="md-nav__link">
+  <a href="#api-key" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔑 API Key &amp; Authentication
+        API key
       
     </span>
   </a>
@@ -1105,10 +1071,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#automatic-account-id-authentication" class="md-nav__link">
+  <a href="#api-key-and-terminal-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🆔 Automatic Account ID &amp; Authentication
+        API key and terminal id
       
     </span>
   </a>
@@ -1116,10 +1082,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#minimal-connection-example" class="md-nav__link">
+  <a href="#minimal-example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🔌 Minimal Connection Example
+        Minimal example
       
     </span>
   </a>
@@ -1127,10 +1093,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#documentation-road-map" class="md-nav__link">
+  <a href="#reading-order" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🗺️ Documentation Road Map
+        Reading order
       
     </span>
   </a>
@@ -1159,57 +1125,72 @@
 
 <h1 id="getting-started-with-javamt4">Getting Started with JavaMT4<a class="headerlink" href="#getting-started-with-javamt4" title="Permanent link">¶</a></h1>
 <blockquote>
-<p><strong>Quick Setup &amp; Overview</strong> - Start automating your trading with JavaMT4 (Java for MetaTrader 4) in minutes.</p>
+<p><strong>Quick Setup &amp; Overview</strong> - Connect to MetaTrader 4 from Java in a few minutes.</p>
 </blockquote>
 <hr />
-<h2 id="what-is-javamt4">🎯 What is JavaMT4?<a class="headerlink" href="#what-is-javamt4" title="Permanent link">¶</a></h2>
-<p><strong>JavaMT4</strong> is an industrial-grade, type-safe Java client library for interacting with <strong>MetaTrader 4</strong> terminals via high-performance <strong>gRPC</strong>. It eliminates complex C++ DLL wrappers and provides direct, reliable programmatic trading.</p>
-<h3 id="key-advantages">🌟 Key Advantages<a class="headerlink" href="#key-advantages" title="Permanent link">¶</a></h3>
+<h2 id="what-is-javamt4">What is JavaMT4?<a class="headerlink" href="#what-is-javamt4" title="Permanent link">¶</a></h2>
+<p><strong>JavaMT4</strong> is the Java client of the MRPC MT4 API (<code>mt4.mrpc.pro:443</code>, gRPC over TLS):</p>
 <ul>
-<li>🚀 <strong>High Throughput</strong>: Native gRPC streaming for sub-millisecond price ticks and trade execution.</li>
-<li>🛡️ <strong>Three-Layer Architecture</strong>: Low-level gRPC (<code>MT4Account</code>), typed wrapper methods (<code>MT4Service</code>), and high-level convenience (<code>MT4Sugar</code>).</li>
-<li>🔄 <strong>Resilient Connection</strong>: Auto-reconnect, exponential backoff, and transparent channel healing.</li>
-<li>💼 <strong>Production Ready</strong>: Fully verified across institutional accounts, hedge fund systems, and automated retail bots.</li>
+<li><strong><code>MT4Account</code></strong>: connect, account, quotes, orders, tick stream, disconnect (see <a href="../../api/">API Reference</a>).</li>
+<li><strong>The generated gRPC stubs</strong> of the whole API (<code>mt4_term_api.*Grpc</code>), for everything else, with
+  <code>account.authorized(stub)</code> adding the API key and terminal id.</li>
 </ul>
+<p>The package also has <code>MT4Client</code>, a client of the MT4 server protocol that connects straight to a broker's MT4 server
+(no MRPC). The other pages of these guides describe the API itself (methods, enums, return codes, streams); some of their
+code samples are in Python, the calls and messages are the same from Java.</p>
 <hr />
-<h2 id="installation">📦 Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h2>
-<p>Install JavaMT4 via your standard Java package manager:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>implementation<span class="w"> </span><span class="s1">'pro.mrpc:mt4:1.0.0'</span>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/MetaRPC/JavaMT4.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>JavaMT4
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>./gradlew<span class="w"> </span>publishToMavenLocal<span class="w">      </span><span class="c1"># installs pro.mrpc:mt4:1.0.0 into ~/.m2</span>
 </code></pre></div>
+<p>Then, with <code>mavenLocal()</code> among your repositories: <code>implementation 'pro.mrpc:mt4:1.0.0'</code> (it brings gRPC and the generated
+<code>mt4_term_api</code> stubs along). The SDK is not on Maven Central.</p>
 <hr />
-<h2 id="api-key-authentication">🔑 API Key &amp; Authentication<a class="headerlink" href="#api-key-authentication" title="Permanent link">¶</a></h2>
-<p>Connecting to MetaRPC production endpoints (<code>mt4.mrpc.pro:443</code>) requires an API key:</p>
+<h2 id="api-key">API key<a class="headerlink" href="#api-key" title="Permanent link">¶</a></h2>
 <ol>
-<li><strong>Sign Up</strong>: Create an account for free at <a href="https://mrpc.pro/signup">https://mrpc.pro/signup</a>.</li>
-<li><strong>Generate API Key</strong>: In your MetaRPC Portal dashboard at <a href="https://mrpc.pro/my">https://mrpc.pro/my</a>, go to <strong>API Keys</strong> to generate and copy your personal API token.</li>
-<li><strong>Configure Connection</strong>: Pass your API key / token along with the server address (<code>mt4.mrpc.pro:443</code>) in your connection settings.</li>
+<li><strong>Sign up</strong> free at <a href="https://mrpc.pro/signup">https://mrpc.pro/signup</a>.</li>
+<li><strong>Create a key</strong> at <a href="https://mrpc.pro/my">https://mrpc.pro/my</a> under <strong>API Keys</strong>.</li>
+<li>Pass it to <code>new MT4Account(apiKey)</code> or set <code>MRPC_API_KEY</code>.</li>
 </ol>
 <hr />
-<hr />
-<h2 id="automatic-account-id-authentication">🆔 Automatic Account ID &amp; Authentication<a class="headerlink" href="#automatic-account-id-authentication" title="Permanent link">¶</a></h2>
-<p>MetaRPC endpoints require authentication and session management:
-1. <strong><code>APIKey</code></strong>: Your personal authentication token from <a href="https://mrpc.pro/my">https://mrpc.pro/my</a> (obtained by registering at <a href="https://mrpc.pro/signup">https://mrpc.pro/signup</a>). Sent in the <code>APIKey</code> header.
-2. <strong><code>id</code></strong>: A terminal session GUID returned by <code>Connect</code> / <code>ConnectEx</code> (<code>terminalInstanceGuid</code>).</p>
-<blockquote>
-<p>💡 <strong>Seamless Automation</strong>: You do not need to call <code>GetId</code> or provide an <code>id</code> header when connecting. The server automatically generates a session GUID upon connection and returns it to the caller. The SDK automatically captures this session ID and attaches it alongside your <code>APIKey</code> to all subsequent requests and streaming subscriptions.</p>
-</blockquote>
-<h2 id="minimal-connection-example">🔌 Minimal Connection Example<a class="headerlink" href="#minimal-connection-example" title="Permanent link">¶</a></h2>
-<p>Here is how easy it is to initialize <code>MT4Account</code>, connect to your MetaTrader terminal, and retrieve your account balance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>MT4Account account = new MT4Account(user, password, grpcServer);
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>account.connectByServerNameAsync(serverName, "EURUSD", 30).get();
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>AccountSummary summary = account.accountSummaryAsync().get();
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>System.out.println("Balance: " + summary.getAccountBalance());
+<h2 id="api-key-and-terminal-id">API key and terminal id<a class="headerlink" href="#api-key-and-terminal-id" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>API key</strong>: from <a href="https://mrpc.pro/my">https://mrpc.pro/my</a> (sign up free at <a href="https://mrpc.pro/signup">https://mrpc.pro/signup</a>).
+  Pass it to <code>new MT4Account(apiKey)</code> or set <code>MRPC_API_KEY</code>; without one the client sends <code>TRIAL</code>.</li>
+<li><strong>Terminal id</strong>: <code>connect()</code> receives it from the server, keeps it (<code>getTerminalId()</code>) and sends it with every later call
+  and stream. <code>attach(id)</code> uses a terminal that is already connected.</li>
+</ul>
+<h2 id="minimal-example">Minimal example<a class="headerlink" href="#minimal-example" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mt4_term_api.Mt4TermApiTradingHelper.OrderSendData</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mt4_term_api.Mt4TermApiTradingHelper.OrderSendOperationType</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.MT4Account</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">App</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MT4Account</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MT4Account</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getenv</span><span class="p">(</span><span class="s">"MRPC_API_KEY"</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w">      </span><span class="c1">// mt4.mrpc.pro:443</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="n">account</span><span class="p">.</span><span class="na">connect</span><span class="p">(</span><span class="n">Long</span><span class="p">.</span><span class="na">parseLong</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">getenv</span><span class="p">(</span><span class="s">"MT4_LOGIN"</span><span class="p">)),</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getenv</span><span class="p">(</span><span class="s">"MT4_PASSWORD"</span><span class="p">),</span><span class="w"> </span><span class="s">"TeleTrade-Demo"</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">                </span><span class="n">AccountSummaryData</span><span class="w"> </span><span class="n">summary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">accountSummary</span><span class="p">();</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Balance: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="na">getAccountBalance</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">summary</span><span class="p">.</span><span class="na">getAccountCurrency</span><span class="p">());</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                </span><span class="n">OrderSendData</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">orderSend</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">,</span><span class="w"> </span><span class="n">OrderSendOperationType</span><span class="p">.</span><span class="na">OC_OP_BUY</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">);</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Ticket #"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getTicket</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" at "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">getPrice</span><span class="p">());</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="n">account</span><span class="p">.</span><span class="na">disconnect</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w">   </span><span class="c1">// true also deletes the terminal</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
 </code></pre></div>
 <hr />
-<h2 id="documentation-road-map">🗺️ Documentation Road Map<a class="headerlink" href="#documentation-road-map" title="Permanent link">¶</a></h2>
-<p>To get the most out of JavaMT4, follow this suggested reading order:</p>
+<h2 id="reading-order">Reading order<a class="headerlink" href="#reading-order" title="Permanent link">¶</a></h2>
 <ol>
-<li>🚀 <strong><a href="../Your_First_Project/">Your First Project</a></strong> - Build and run a working project in 10 minutes.</li>
-<li>🗺️ <strong><a href="../PROJECT_MAP/">Project Map</a></strong> - Understand the 3 architectural layers and interaction flow.</li>
-<li>📖 <strong><a href="../GLOSSARY/">Glossary</a></strong> - Essential MetaTrader 4 and algorithmic trading terminology.</li>
-<li>🐣 <strong><a href="../MT4_For_Beginners/">MT4 for Beginners</a></strong> - Step-by-step terminal setup and demo account guide.</li>
-<li>📡 <strong><a href="../GRPC_STREAM_MANAGEMENT/">gRPC Streaming</a></strong> - Subscribe to ticks, trades, DOM, and position updates.</li>
-<li>📊 <strong><a href="../RETURN_CODES_REFERENCE/">Return Codes</a></strong> - Complete reference of broker and gateway return codes.</li>
+<li><strong><a href="../Your_First_Project/">Your First Project</a></strong> - a working project in 10 minutes.</li>
+<li><strong><a href="../../api/">API Reference</a></strong> - what <code>MT4Account</code> does, and how to call the rest of the API.</li>
+<li><strong><a href="../GRPC_STREAM_MANAGEMENT/">gRPC Streaming</a></strong> - ticks, trades and other streams.</li>
+<li><strong><a href="../RETURN_CODES_REFERENCE/">Return Codes</a></strong> - broker and API return codes.</li>
 </ol>
 
 

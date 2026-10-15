@@ -933,10 +933,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mt4client" class="md-nav__link">
+  <a href="#mt4account-the-mrpc-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MT4Client
+        MT4Account (the MRPC API)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mt4client-mt4-server-protocol-no-mrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MT4Client (MT4 server protocol, no MRPC)
       
     </span>
   </a>
@@ -960,15 +971,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
+  <a href="#mt4client-enumerations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enumerations
+        MT4Client enumerations
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Enumerations">
+    <nav class="md-nav" aria-label="MT4Client enumerations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1010,15 +1021,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#request-response-objects" class="md-nav__link">
+  <a href="#mt4client-request-response-objects" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Request &amp; Response Objects
+        MT4Client request &amp; response objects
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Request &amp; Response Objects">
+    <nav class="md-nav" aria-label="MT4Client request &amp; response objects">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1069,42 +1080,78 @@
 
 
 <h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">¶</a></h1>
-<p>Complete reference of the primary classes, interfaces, and data models in the <code>pro.mrpc.mt4</code> package.</p>
+<p>The classes of the <code>pro.mrpc.mt4</code> package.</p>
 <h2 id="classes-interfaces">Classes &amp; Interfaces<a class="headerlink" href="#classes-interfaces" title="Permanent link">¶</a></h2>
-<h3 id="mt4client"><code>MT4Client</code><a class="headerlink" href="#mt4client" title="Permanent link">¶</a></h3>
-<p>The primary client class for connecting to and interacting with MetaTrader 4 servers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MT4Client</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MT4Client</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">MessageHandler</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">();</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isConnected</span><span class="p">();</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isBaseAccountRead</span><span class="p">();</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">AccountInfo</span><span class="w"> </span><span class="nf">getAccountInfo</span><span class="p">();</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getBalance</span><span class="p">();</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getLeverage</span><span class="p">();</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAccountCurrency</span><span class="p">();</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCompany</span><span class="p">();</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">SymbolTable</span><span class="w"> </span><span class="nf">getSymbolTable</span><span class="p">();</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ServerInfo</span><span class="w"> </span><span class="nf">getServerInfo</span><span class="p">();</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ConcurrentHashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">OrderUpdateEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getOpenOrders</span><span class="p">();</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="nf">sendRequest</span><span class="p">(</span><span class="n">MetaTraderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendRequestAsync</span><span class="p">(</span><span class="n">MetaTraderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderHistoryRes</span><span class="w"> </span><span class="nf">requestOrderHistory</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fromTime</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">toTime</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="p">;</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+<h3 id="mt4account-the-mrpc-api"><code>MT4Account</code> (the MRPC API)<a class="headerlink" href="#mt4account-the-mrpc-api" title="Permanent link">¶</a></h3>
+<p>The client of the MRPC MT4 API (<code>mt4.mrpc.pro:443</code>, gRPC over TLS). Every method returns the reply's data or throws
+<code>MrpcException</code> (<code>getCode()</code> is the API's error code, e.g. <code>TERMINAL_INSTANCE_NOT_FOUND</code>, or the gRPC status of a failed
+call).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MT4Account</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">AutoCloseable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MT4Account</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">apiKey</span><span class="p">);</span><span class="w">                              </span><span class="c1">// mt4.mrpc.pro:443</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MT4Account</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">apiKey</span><span class="p">);</span><span class="w">           </span><span class="c1">// host:port, TLS</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MT4Account</span><span class="p">(</span><span class="n">ManagedChannel</span><span class="w"> </span><span class="n">channel</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">apiKey</span><span class="p">);</span><span class="w">      </span><span class="c1">// your own channel</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">serverName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutSeconds</span><span class="p">);</span><span class="w">  </span><span class="c1">// ConnectEx, e.g. "TeleTrade-Demo"</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">timeoutSeconds</span><span class="p">);</span><span class="w"> </span><span class="c1">// Connect by address</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getId</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">);</span><span class="w">              </span><span class="c1">// GetId; a following connect() uses this id</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">attach</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">terminalId</span><span class="p">);</span><span class="w">                        </span><span class="c1">// an already connected terminal</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getTerminalId</span><span class="p">();</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">AccountSummaryData</span><span class="w"> </span><span class="nf">accountSummary</span><span class="p">();</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">QuoteData</span><span class="w"> </span><span class="nf">quote</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">symbol</span><span class="p">);</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderSendData</span><span class="w"> </span><span class="nf">orderSend</span><span class="p">(</span><span class="n">OrderSendRequest</span><span class="w"> </span><span class="n">request</span><span class="p">);</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderSendData</span><span class="w"> </span><span class="nf">orderSend</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="n">OrderSendOperationType</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">lots</span><span class="p">);</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderCloseDeleteData</span><span class="w"> </span><span class="nf">orderClose</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">ticket</span><span class="p">);</span><span class="w">           </span><span class="c1">// close a market order, delete a pending one</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Subscription</span><span class="w"> </span><span class="nf">onSymbolTick</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">symbols</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">OnSymbolMqlTickInfo</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onTick</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Throwable</span><span class="o">&gt;</span><span class="w"> </span><span class="n">onError</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="kt">boolean</span><span class="w"> </span><span class="n">delete</span><span class="p">);</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">close</span><span class="p">();</span><span class="w">                                          </span><span class="c1">// shuts the channel down</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ManagedChannel</span><span class="w"> </span><span class="nf">getChannel</span><span class="p">();</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="o">&lt;</span><span class="n">S</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractStub</span><span class="o">&lt;</span><span class="n">S</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="nf">authorized</span><span class="p">(</span><span class="n">S</span><span class="w"> </span><span class="n">stub</span><span class="p">);</span><span class="w">      </span><span class="c1">// any generated stub, with the API key and terminal id</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="p">}</span>
+</code></pre></div>
+<p>Every other method of the API is in the generated stubs (<code>mt4_term_api.*Grpc</code>), for example
+<code>account.authorized(AccountHelperGrpc.newBlockingStub(account.getChannel())).openedOrders(...)</code>. The full API:
+<a href="https://mt4.mrpc.pro/apiui">https://mt4.mrpc.pro/apiui</a>.</p>
+<h3 id="mt4client-mt4-server-protocol-no-mrpc"><code>MT4Client</code> (MT4 server protocol, no MRPC)<a class="headerlink" href="#mt4client-mt4-server-protocol-no-mrpc" title="Permanent link">¶</a></h3>
+<blockquote>
+<p><strong><code>MT4Client</code> is a different client.</strong> It speaks the MT4 server protocol straight to a broker's MT4 server (the
+broker's access point host and port), without MRPC and without an API key. It cannot connect to <code>mt4.mrpc.pro</code>; for the
+MRPC API use <code>MT4Account</code>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MT4Client</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">MT4Client</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">host</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span><span class="p">,</span><span class="w"> </span><span class="n">MessageHandler</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">();</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isConnected</span><span class="p">();</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isBaseAccountRead</span><span class="p">();</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">AccountInfo</span><span class="w"> </span><span class="nf">getAccountInfo</span><span class="p">();</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getBalance</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getLeverage</span><span class="p">();</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAccountCurrency</span><span class="p">();</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCompany</span><span class="p">();</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">SymbolTable</span><span class="w"> </span><span class="nf">getSymbolTable</span><span class="p">();</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ServerInfo</span><span class="w"> </span><span class="nf">getServerInfo</span><span class="p">();</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ConcurrentHashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">OrderUpdateEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getOpenOrders</span><span class="p">();</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="nf">sendRequest</span><span class="p">(</span><span class="n">MetaTraderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sendRequestAsync</span><span class="p">(</span><span class="n">MetaTraderRequest</span><span class="w"> </span><span class="n">request</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">OrderHistoryRes</span><span class="w"> </span><span class="nf">requestOrderHistory</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fromTime</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">toTime</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="p">;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="messagehandler"><code>MessageHandler</code><a class="headerlink" href="#messagehandler" title="Permanent link">¶</a></h3>
-<p>Callback interface for receiving non-blocking network events from the MetaTrader 4 server.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">MessageHandler</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onConnected</span><span class="p">(</span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onDisconnected</span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">exception</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onMessage</span><span class="p">(</span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onReceiveFailure</span><span class="p">(</span><span class="n">DecoderException</span><span class="w"> </span><span class="n">exception</span><span class="p">);</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onSendFailure</span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">exception</span><span class="p">);</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+<p>Callback interface of <code>MT4Client</code> for the events of the MT4 server connection.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">MessageHandler</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onConnected</span><span class="p">(</span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onDisconnected</span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">exception</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onMessage</span><span class="p">(</span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">client</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onReceiveFailure</span><span class="p">(</span><span class="n">DecoderException</span><span class="w"> </span><span class="n">exception</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">onSendFailure</span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">exception</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">}</span>
 </code></pre></div>
-<h2 id="enumerations">Enumerations<a class="headerlink" href="#enumerations" title="Permanent link">¶</a></h2>
+<h2 id="mt4client-enumerations"><code>MT4Client</code> enumerations<a class="headerlink" href="#mt4client-enumerations" title="Permanent link">¶</a></h2>
 <h3 id="op-order-type"><code>Op</code> (Order Type)<a class="headerlink" href="#op-order-type" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>Op.Buy</code>: Market buy order</li>
@@ -1136,7 +1183,7 @@
 <li><code>Timeframe.W1</code>: 1 Week</li>
 <li><code>Timeframe.MN1</code>: 1 Month</li>
 </ul>
-<h2 id="request-response-objects">Request &amp; Response Objects<a class="headerlink" href="#request-response-objects" title="Permanent link">¶</a></h2>
+<h2 id="mt4client-request-response-objects"><code>MT4Client</code> request &amp; response objects<a class="headerlink" href="#mt4client-request-response-objects" title="Permanent link">¶</a></h2>
 <h3 id="ordertransactionreq"><code>OrderTransactionReq</code><a class="headerlink" href="#ordertransactionreq" title="Permanent link">¶</a></h3>
 <p>Request payload for creating, modifying, and closing orders.</p>
 <table>

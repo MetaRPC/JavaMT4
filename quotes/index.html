@@ -921,6 +921,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#mt4account-mrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MT4Account (MRPC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mt4client-mt4-server-protocol-no-mrpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MT4Client (MT4 server protocol, no MRPC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MT4Client (MT4 server protocol, no MRPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#subscribing-to-live-quotes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -929,8 +952,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Subscribing to Live Quotes">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#handling-incoming-quotes" class="md-nav__link">
@@ -943,12 +965,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#unsubscribing-from-quotes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -958,8 +975,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#requesting-historical-bars" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -967,6 +984,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -991,62 +1013,80 @@
 
 
 <h1 id="quotes-market-data">Quotes &amp; Market Data<a class="headerlink" href="#quotes-market-data" title="Permanent link">¶</a></h1>
-<p>JavaMT4 provides real-time streaming market prices and historical candlestick data.</p>
-<h2 id="subscribing-to-live-quotes">Subscribing to Live Quotes<a class="headerlink" href="#subscribing-to-live-quotes" title="Permanent link">¶</a></h2>
+<h2 id="mt4account-mrpc">MT4Account (MRPC)<a class="headerlink" href="#mt4account-mrpc" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">QuoteData</span><span class="w"> </span><span class="n">quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">quote</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"EURUSD "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quote</span><span class="p">.</span><span class="na">getBid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" / "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quote</span><span class="p">.</span><span class="na">getAsk</span><span class="p">());</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MT4Account</span><span class="p">.</span><span class="na">Subscription</span><span class="w"> </span><span class="n">ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">onSymbolTick</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">,</span><span class="w"> </span><span class="s">"GBPUSD"</span><span class="p">),</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">tick</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tick</span><span class="p">.</span><span class="na">getSymbol</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tick</span><span class="p">.</span><span class="na">getBid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" / "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tick</span><span class="p">.</span><span class="na">getAsk</span><span class="p">()),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">error</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"stream error: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">error</span><span class="p">.</span><span class="na">getMessage</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">10_000</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span><span class="w">   </span><span class="c1">// close() ends the stream</span>
+</code></pre></div>
+<p><code>onError</code> gets an error the stream answers with (an <code>MrpcException</code>, e.g. <code>NO_CHARTS_OPENED_FOR_SYMBOLS</code> for a symbol the
+terminal doesn't have) or the stream's failure. Bars: <code>Bars</code> of <code>QuoteHistoryGrpc</code> (or <code>QuoteHistory</code> of <code>MarketInfoGrpc</code>), through <code>account.authorized(...)</code>.</p>
+<h2 id="mt4client-mt4-server-protocol-no-mrpc">MT4Client (MT4 server protocol, no MRPC)<a class="headerlink" href="#mt4client-mt4-server-protocol-no-mrpc" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong><code>MT4Client</code> is a different client.</strong> It speaks the MT4 server protocol straight to a broker's MT4 server (the
+broker's access point host and port), without MRPC and without an API key. It cannot connect to <code>mt4.mrpc.pro</code>; for the
+MRPC API use <code>MT4Account</code>.</p>
+</blockquote>
+<p><code>MT4Client</code> streams prices and reads bars from the MT4 server.</p>
+<h3 id="subscribing-to-live-quotes">Subscribing to Live Quotes<a class="headerlink" href="#subscribing-to-live-quotes" title="Permanent link">¶</a></h3>
 <p>To receive live tick updates, request quotes using the symbol code from the client's <code>SymbolTable</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// Resolve symbol code</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kt">short</span><span class="w"> </span><span class="n">eurusdCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getCode</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">);</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kt">short</span><span class="w"> </span><span class="n">gbpusdCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getCode</span><span class="p">(</span><span class="s">"GBPUSD"</span><span class="p">);</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">SubscribeQuotesReq</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SubscribeQuotesReq</span><span class="p">();</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">req</span><span class="p">.</span><span class="na">symbolCodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">short</span><span class="o">[]</span><span class="p">{</span><span class="w"> </span><span class="n">eurusdCode</span><span class="p">,</span><span class="w"> </span><span class="n">gbpusdCode</span><span class="w"> </span><span class="p">};</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">client</span><span class="p">.</span><span class="na">sendRequestAsync</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Resolve symbol code</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kt">short</span><span class="w"> </span><span class="n">eurusdCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getCode</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">short</span><span class="w"> </span><span class="n">gbpusdCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getCode</span><span class="p">(</span><span class="s">"GBPUSD"</span><span class="p">);</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">SubscribeQuotesReq</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SubscribeQuotesReq</span><span class="p">();</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">req</span><span class="p">.</span><span class="na">symbolCodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">short</span><span class="o">[]</span><span class="p">{</span><span class="w"> </span><span class="n">eurusdCode</span><span class="p">,</span><span class="w"> </span><span class="n">gbpusdCode</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">client</span><span class="p">.</span><span class="na">sendRequestAsync</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="handling-incoming-quotes">Handling Incoming Quotes<a class="headerlink" href="#handling-incoming-quotes" title="Permanent link">¶</a></h3>
 <p>In your <code>MessageHandler</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@Override</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onMessage</span><span class="p">(</span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">QuoteEvent</span><span class="w"> </span><span class="n">quote</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"[%s] Bid: %.5f | Ask: %.5f | Time: %s%n"</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">symbol</span><span class="p">,</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">bid</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">ask</span><span class="p">,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">                </span><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">Instant</span><span class="p">.</span><span class="na">ofEpochSecond</span><span class="p">(</span><span class="n">quote</span><span class="p">.</span><span class="na">time</span><span class="p">));</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nd">@Override</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onMessage</span><span class="p">(</span><span class="n">MetaTraderMessage</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">MT4Client</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">QuoteEvent</span><span class="w"> </span><span class="n">quote</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"[%s] Bid: %.5f | Ask: %.5f | Time: %s%n"</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">symbol</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">bid</span><span class="p">,</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                </span><span class="n">quote</span><span class="p">.</span><span class="na">ask</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                </span><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">Instant</span><span class="p">.</span><span class="na">ofEpochSecond</span><span class="p">(</span><span class="n">quote</span><span class="p">.</span><span class="na">time</span><span class="p">));</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
 </code></pre></div>
-<h2 id="unsubscribing-from-quotes">Unsubscribing from Quotes<a class="headerlink" href="#unsubscribing-from-quotes" title="Permanent link">¶</a></h2>
+<h3 id="unsubscribing-from-quotes">Unsubscribing from Quotes<a class="headerlink" href="#unsubscribing-from-quotes" title="Permanent link">¶</a></h3>
 <p>To cancel active subscriptions, send an empty symbol code array:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">SubscribeQuotesReq</span><span class="w"> </span><span class="n">unsubReq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SubscribeQuotesReq</span><span class="p">();</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">unsubReq</span><span class="p">.</span><span class="na">symbolCodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">short</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">client</span><span class="p">.</span><span class="na">sendRequestAsync</span><span class="p">(</span><span class="n">unsubReq</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">SubscribeQuotesReq</span><span class="w"> </span><span class="n">unsubReq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SubscribeQuotesReq</span><span class="p">();</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">unsubReq</span><span class="p">.</span><span class="na">symbolCodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">short</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">client</span><span class="p">.</span><span class="na">sendRequestAsync</span><span class="p">(</span><span class="n">unsubReq</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="requesting-historical-bars">Requesting Historical Bars<a class="headerlink" href="#requesting-historical-bars" title="Permanent link">¶</a></h2>
+<h3 id="requesting-historical-bars">Requesting Historical Bars<a class="headerlink" href="#requesting-historical-bars" title="Permanent link">¶</a></h3>
 <p>You can query historical OHLCV candlestick data across any timeframe:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.enums.Timeframe</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.req.HistoricalBarsReq</span><span class="p">;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.res.HistoricalBarsRes</span><span class="p">;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.parts.BarRecord</span><span class="p">;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">HistoricalBarsReq</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HistoricalBarsReq</span><span class="p">();</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">req</span><span class="p">.</span><span class="na">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"EURUSD"</span><span class="p">;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">req</span><span class="p">.</span><span class="na">timeframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Timeframe</span><span class="p">.</span><span class="na">H1</span><span class="p">;</span><span class="w"> </span><span class="c1">// M1, M5, M15, M30, H1, H4, D1, W1, MN1</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">req</span><span class="p">.</span><span class="na">fromTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">86400</span><span class="p">));</span><span class="w"> </span><span class="c1">// 7 days ago</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">req</span><span class="p">.</span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">HistoricalBarsRes</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">HistoricalBarsRes</span><span class="p">)</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">sendRequest</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kt">int</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getDigits</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">);</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="kt">double</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">digits</span><span class="p">);</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">BarRecord</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="na">bars</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="kd">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">open</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">high</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">low</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">close</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Time: %s | Open: %.5f | High: %.5f | Low: %.5f | Close: %.5f | Vol: %.0f%n"</span><span class="p">,</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">            </span><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">Instant</span><span class="p">.</span><span class="na">ofEpochSecond</span><span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="na">time</span><span class="p">),</span><span class="w"> </span><span class="kd">open</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">volume</span><span class="p">);</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.enums.Timeframe</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.req.HistoricalBarsReq</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.messages.res.HistoricalBarsRes</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pro.mrpc.mt4.network.parts.BarRecord</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">HistoricalBarsReq</span><span class="w"> </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HistoricalBarsReq</span><span class="p">();</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="n">req</span><span class="p">.</span><span class="na">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"EURUSD"</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">req</span><span class="p">.</span><span class="na">timeframe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Timeframe</span><span class="p">.</span><span class="na">H1</span><span class="p">;</span><span class="w"> </span><span class="c1">// M1, M5, M15, M30, H1, H4, D1, W1, MN1</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">req</span><span class="p">.</span><span class="na">fromTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">7</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">86400</span><span class="p">));</span><span class="w"> </span><span class="c1">// 7 days ago</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">req</span><span class="p">.</span><span class="na">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">HistoricalBarsRes</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">HistoricalBarsRes</span><span class="p">)</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">sendRequest</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="kt">int</span><span class="w"> </span><span class="n">digits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getSymbolTable</span><span class="p">().</span><span class="na">getDigits</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">);</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="kt">double</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">digits</span><span class="p">);</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">BarRecord</span><span class="w"> </span><span class="n">bar</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">res</span><span class="p">.</span><span class="na">bars</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="kd">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">open</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">high</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">high</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">low</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">low</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">close</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">point</span><span class="p">;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Time: %s | Open: %.5f | High: %.5f | Low: %.5f | Close: %.5f | Vol: %.0f%n"</span><span class="p">,</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">            </span><span class="n">java</span><span class="p">.</span><span class="na">time</span><span class="p">.</span><span class="na">Instant</span><span class="p">.</span><span class="na">ofEpochSecond</span><span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="na">time</span><span class="p">),</span><span class="w"> </span><span class="kd">open</span><span class="p">,</span><span class="w"> </span><span class="n">high</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">,</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">.</span><span class="na">volume</span><span class="p">);</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="p">}</span>
 </code></pre></div>
 
 
