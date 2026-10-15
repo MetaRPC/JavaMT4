@@ -449,6 +449,16 @@ public final class Mt4TermApiHealthCheck {
      * @return The serverTimeMsc.
      */
     long getServerTimeMsc();
+
+    /**
+     * <pre>
+     * serverTimeMsc in UTC (the same moment; serverTimeMsc is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>int64 serverTimeMscUtc = 3;</code>
+     * @return The serverTimeMscUtc.
+     */
+    long getServerTimeMscUtc();
   }
   /**
    * Protobuf type {@code mt4_term_api.HealthCheckReply}
@@ -503,6 +513,11 @@ public final class Mt4TermApiHealthCheck {
             case 16: {
 
               serverTimeMsc_ = input.readInt64();
+              break;
+            }
+            case 24: {
+
+              serverTimeMscUtc_ = input.readInt64();
               break;
             }
             default: {
@@ -561,6 +576,21 @@ public final class Mt4TermApiHealthCheck {
       return serverTimeMsc_;
     }
 
+    public static final int SERVERTIMEMSCUTC_FIELD_NUMBER = 3;
+    private long serverTimeMscUtc_;
+    /**
+     * <pre>
+     * serverTimeMsc in UTC (the same moment; serverTimeMsc is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>int64 serverTimeMscUtc = 3;</code>
+     * @return The serverTimeMscUtc.
+     */
+    @java.lang.Override
+    public long getServerTimeMscUtc() {
+      return serverTimeMscUtc_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -581,6 +611,9 @@ public final class Mt4TermApiHealthCheck {
       if (serverTimeMsc_ != 0L) {
         output.writeInt64(2, serverTimeMsc_);
       }
+      if (serverTimeMscUtc_ != 0L) {
+        output.writeInt64(3, serverTimeMscUtc_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -597,6 +630,10 @@ public final class Mt4TermApiHealthCheck {
       if (serverTimeMsc_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(2, serverTimeMsc_);
+      }
+      if (serverTimeMscUtc_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, serverTimeMscUtc_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -617,6 +654,8 @@ public final class Mt4TermApiHealthCheck {
           != other.getConnected()) return false;
       if (getServerTimeMsc()
           != other.getServerTimeMsc()) return false;
+      if (getServerTimeMscUtc()
+          != other.getServerTimeMscUtc()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -634,6 +673,9 @@ public final class Mt4TermApiHealthCheck {
       hash = (37 * hash) + SERVERTIMEMSC_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getServerTimeMsc());
+      hash = (37 * hash) + SERVERTIMEMSCUTC_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getServerTimeMscUtc());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -771,6 +813,8 @@ public final class Mt4TermApiHealthCheck {
 
         serverTimeMsc_ = 0L;
 
+        serverTimeMscUtc_ = 0L;
+
         return this;
       }
 
@@ -799,6 +843,7 @@ public final class Mt4TermApiHealthCheck {
         mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply result = new mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply(this);
         result.connected_ = connected_;
         result.serverTimeMsc_ = serverTimeMsc_;
+        result.serverTimeMscUtc_ = serverTimeMscUtc_;
         onBuilt();
         return result;
       }
@@ -852,6 +897,9 @@ public final class Mt4TermApiHealthCheck {
         }
         if (other.getServerTimeMsc() != 0L) {
           setServerTimeMsc(other.getServerTimeMsc());
+        }
+        if (other.getServerTimeMscUtc() != 0L) {
+          setServerTimeMscUtc(other.getServerTimeMscUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -940,6 +988,49 @@ public final class Mt4TermApiHealthCheck {
       public Builder clearServerTimeMsc() {
         
         serverTimeMsc_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long serverTimeMscUtc_ ;
+      /**
+       * <pre>
+       * serverTimeMsc in UTC (the same moment; serverTimeMsc is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 serverTimeMscUtc = 3;</code>
+       * @return The serverTimeMscUtc.
+       */
+      @java.lang.Override
+      public long getServerTimeMscUtc() {
+        return serverTimeMscUtc_;
+      }
+      /**
+       * <pre>
+       * serverTimeMsc in UTC (the same moment; serverTimeMsc is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 serverTimeMscUtc = 3;</code>
+       * @param value The serverTimeMscUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerTimeMscUtc(long value) {
+        
+        serverTimeMscUtc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * serverTimeMsc in UTC (the same moment; serverTimeMsc is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 serverTimeMscUtc = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServerTimeMscUtc() {
+        
+        serverTimeMscUtc_ = 0L;
         onChanged();
         return this;
       }
@@ -1866,16 +1957,17 @@ public final class Mt4TermApiHealthCheck {
   static {
     java.lang.String[] descriptorData = {
       "\n\037mt4-term-api-health-check.proto\022\014mt4_t" +
-      "erm_api\"\024\n\022HealthCheckRequest\"<\n\020HealthC" +
+      "erm_api\"\024\n\022HealthCheckRequest\"V\n\020HealthC" +
       "heckReply\022\021\n\tconnected\030\001 \001(\010\022\025\n\rserverTi" +
-      "meMsc\030\002 \001(\003\"\026\n\024CloseTerminalRequest\"\024\n\022C" +
-      "loseTerminalReply2\267\001\n\rHealthService\022O\n\013H" +
-      "ealthCheck\022 .mt4_term_api.HealthCheckReq" +
-      "uest\032\036.mt4_term_api.HealthCheckReply\022U\n\r" +
-      "CloseTerminal\022\".mt4_term_api.CloseTermin" +
-      "alRequest\032 .mt4_term_api.CloseTerminalRe" +
-      "plyBBZ1git.mtapi.io/root/mrpc-proto.git/" +
-      "mt4/libraries/go\252\002\014mt4_term_apib\006proto3"
+      "meMsc\030\002 \001(\003\022\030\n\020serverTimeMscUtc\030\003 \001(\003\"\026\n" +
+      "\024CloseTerminalRequest\"\024\n\022CloseTerminalRe" +
+      "ply2\267\001\n\rHealthService\022O\n\013HealthCheck\022 .m" +
+      "t4_term_api.HealthCheckRequest\032\036.mt4_ter" +
+      "m_api.HealthCheckReply\022U\n\rCloseTerminal\022" +
+      "\".mt4_term_api.CloseTerminalRequest\032 .mt" +
+      "4_term_api.CloseTerminalReplyBBZ1git.mta" +
+      "pi.io/root/mrpc-proto.git/mt4/libraries/" +
+      "go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1892,7 +1984,7 @@ public final class Mt4TermApiHealthCheck {
     internal_static_mt4_term_api_HealthCheckReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_HealthCheckReply_descriptor,
-        new java.lang.String[] { "Connected", "ServerTimeMsc", });
+        new java.lang.String[] { "Connected", "ServerTimeMsc", "ServerTimeMscUtc", });
     internal_static_mt4_term_api_CloseTerminalRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_mt4_term_api_CloseTerminalRequest_fieldAccessorTable = new

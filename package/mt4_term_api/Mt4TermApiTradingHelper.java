@@ -1842,19 +1842,64 @@ public final class Mt4TermApiTradingHelper {
     double getProfit();
 
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      * @return Whether the closeTime field is set.
      */
     boolean hasCloseTime();
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      * @return The closeTime.
      */
     com.google.protobuf.Timestamp getCloseTime();
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder();
+
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     * @return Whether the closeTimeUtc field is set.
+     */
+    boolean hasCloseTimeUtc();
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     * @return The closeTimeUtc.
+     */
+    com.google.protobuf.Timestamp getCloseTimeUtc();
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrderCloseByData}
@@ -1924,6 +1969,19 @@ public final class Mt4TermApiTradingHelper {
 
               break;
             }
+            case 34: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (closeTimeUtc_ != null) {
+                subBuilder = closeTimeUtc_.toBuilder();
+              }
+              closeTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(closeTimeUtc_);
+                closeTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -1983,6 +2041,12 @@ public final class Mt4TermApiTradingHelper {
     public static final int CLOSE_TIME_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp closeTime_;
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      * @return Whether the closeTime field is set.
      */
@@ -1991,6 +2055,12 @@ public final class Mt4TermApiTradingHelper {
       return closeTime_ != null;
     }
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      * @return The closeTime.
      */
@@ -1999,11 +2069,55 @@ public final class Mt4TermApiTradingHelper {
       return closeTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTime_;
     }
     /**
+     * <pre>
+     * Close time of the orders (broker server time).
+     * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
       return getCloseTime();
+    }
+
+    public static final int CLOSE_TIME_UTC_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp closeTimeUtc_;
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     * @return Whether the closeTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasCloseTimeUtc() {
+      return closeTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     * @return The closeTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getCloseTimeUtc() {
+      return closeTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+    }
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder() {
+      return getCloseTimeUtc();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2029,6 +2143,9 @@ public final class Mt4TermApiTradingHelper {
       if (closeTime_ != null) {
         output.writeMessage(3, getCloseTime());
       }
+      if (closeTimeUtc_ != null) {
+        output.writeMessage(4, getCloseTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2049,6 +2166,10 @@ public final class Mt4TermApiTradingHelper {
       if (closeTime_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getCloseTime());
+      }
+      if (closeTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getCloseTimeUtc());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2076,6 +2197,11 @@ public final class Mt4TermApiTradingHelper {
         if (!getCloseTime()
             .equals(other.getCloseTime())) return false;
       }
+      if (hasCloseTimeUtc() != other.hasCloseTimeUtc()) return false;
+      if (hasCloseTimeUtc()) {
+        if (!getCloseTimeUtc()
+            .equals(other.getCloseTimeUtc())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2096,6 +2222,10 @@ public final class Mt4TermApiTradingHelper {
       if (hasCloseTime()) {
         hash = (37 * hash) + CLOSE_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getCloseTime().hashCode();
+      }
+      if (hasCloseTimeUtc()) {
+        hash = (37 * hash) + CLOSE_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getCloseTimeUtc().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2240,6 +2370,12 @@ public final class Mt4TermApiTradingHelper {
           closeTime_ = null;
           closeTimeBuilder_ = null;
         }
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = null;
+        } else {
+          closeTimeUtc_ = null;
+          closeTimeUtcBuilder_ = null;
+        }
         return this;
       }
 
@@ -2272,6 +2408,11 @@ public final class Mt4TermApiTradingHelper {
           result.closeTime_ = closeTime_;
         } else {
           result.closeTime_ = closeTimeBuilder_.build();
+        }
+        if (closeTimeUtcBuilder_ == null) {
+          result.closeTimeUtc_ = closeTimeUtc_;
+        } else {
+          result.closeTimeUtc_ = closeTimeUtcBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2329,6 +2470,9 @@ public final class Mt4TermApiTradingHelper {
         }
         if (other.hasCloseTime()) {
           mergeCloseTime(other.getCloseTime());
+        }
+        if (other.hasCloseTimeUtc()) {
+          mergeCloseTimeUtc(other.getCloseTimeUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2425,6 +2569,12 @@ public final class Mt4TermApiTradingHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> closeTimeBuilder_;
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        * @return Whether the closeTime field is set.
        */
@@ -2432,6 +2582,12 @@ public final class Mt4TermApiTradingHelper {
         return closeTimeBuilder_ != null || closeTime_ != null;
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        * @return The closeTime.
        */
@@ -2443,6 +2599,12 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public Builder setCloseTime(com.google.protobuf.Timestamp value) {
@@ -2459,6 +2621,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public Builder setCloseTime(
@@ -2473,6 +2641,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public Builder mergeCloseTime(com.google.protobuf.Timestamp value) {
@@ -2491,6 +2665,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public Builder clearCloseTime() {
@@ -2505,6 +2685,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCloseTimeBuilder() {
@@ -2513,6 +2699,12 @@ public final class Mt4TermApiTradingHelper {
         return getCloseTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
@@ -2524,6 +2716,12 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * Close time of the orders (broker server time).
+       * With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -2538,6 +2736,161 @@ public final class Mt4TermApiTradingHelper {
           closeTime_ = null;
         }
         return closeTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp closeTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> closeTimeUtcBuilder_;
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       * @return Whether the closeTimeUtc field is set.
+       */
+      public boolean hasCloseTimeUtc() {
+        return closeTimeUtcBuilder_ != null || closeTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       * @return The closeTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getCloseTimeUtc() {
+        if (closeTimeUtcBuilder_ == null) {
+          return closeTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+        } else {
+          return closeTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public Builder setCloseTimeUtc(com.google.protobuf.Timestamp value) {
+        if (closeTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          closeTimeUtc_ = value;
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public Builder setCloseTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public Builder mergeCloseTimeUtc(com.google.protobuf.Timestamp value) {
+        if (closeTimeUtcBuilder_ == null) {
+          if (closeTimeUtc_ != null) {
+            closeTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(closeTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            closeTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public Builder clearCloseTimeUtc() {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = null;
+          onChanged();
+        } else {
+          closeTimeUtc_ = null;
+          closeTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getCloseTimeUtcBuilder() {
+        
+        onChanged();
+        return getCloseTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder() {
+        if (closeTimeUtcBuilder_ != null) {
+          return closeTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return closeTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getCloseTimeUtcFieldBuilder() {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getCloseTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          closeTimeUtc_ = null;
+        }
+        return closeTimeUtcBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2795,6 +3148,33 @@ public final class Mt4TermApiTradingHelper {
      * <code>optional .google.protobuf.Timestamp expiration = 10;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpirationOrBuilder();
+
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     * @return Whether the expirationUtc field is set.
+     */
+    boolean hasExpirationUtc();
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     * @return The expirationUtc.
+     */
+    com.google.protobuf.Timestamp getExpirationUtc();
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpirationUtcOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrderSendRequest}
@@ -2904,6 +3284,19 @@ public final class Mt4TermApiTradingHelper {
                 expiration_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000040;
+              break;
+            }
+            case 90: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) != 0)) {
+                subBuilder = expirationUtc_.toBuilder();
+              }
+              expirationUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(expirationUtc_);
+                expirationUtc_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
               break;
             }
             default: {
@@ -3260,6 +3653,44 @@ public final class Mt4TermApiTradingHelper {
       return expiration_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiration_;
     }
 
+    public static final int EXPIRATION_UTC_FIELD_NUMBER = 11;
+    private com.google.protobuf.Timestamp expirationUtc_;
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     * @return Whether the expirationUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpirationUtc() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     * @return The expirationUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpirationUtc() {
+      return expirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationUtc_;
+    }
+    /**
+     * <pre>
+     * expiration in UTC: send either expiration or expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpirationUtcOrBuilder() {
+      return expirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationUtc_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3303,6 +3734,9 @@ public final class Mt4TermApiTradingHelper {
       }
       if (((bitField0_ & 0x00000040) != 0)) {
         output.writeMessage(10, getExpiration());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        output.writeMessage(11, getExpirationUtc());
       }
       unknownFields.writeTo(output);
     }
@@ -3350,6 +3784,10 @@ public final class Mt4TermApiTradingHelper {
       if (((bitField0_ & 0x00000040) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getExpiration());
+      }
+      if (((bitField0_ & 0x00000080) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getExpirationUtc());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3410,6 +3848,11 @@ public final class Mt4TermApiTradingHelper {
         if (!getExpiration()
             .equals(other.getExpiration())) return false;
       }
+      if (hasExpirationUtc() != other.hasExpirationUtc()) return false;
+      if (hasExpirationUtc()) {
+        if (!getExpirationUtc()
+            .equals(other.getExpirationUtc())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3458,6 +3901,10 @@ public final class Mt4TermApiTradingHelper {
       if (hasExpiration()) {
         hash = (37 * hash) + EXPIRATION_FIELD_NUMBER;
         hash = (53 * hash) + getExpiration().hashCode();
+      }
+      if (hasExpirationUtc()) {
+        hash = (37 * hash) + EXPIRATION_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getExpirationUtc().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3588,6 +4035,7 @@ public final class Mt4TermApiTradingHelper {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getExpirationFieldBuilder();
+          getExpirationUtcFieldBuilder();
         }
       }
       @java.lang.Override
@@ -3617,6 +4065,12 @@ public final class Mt4TermApiTradingHelper {
           expirationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000040);
+        if (expirationUtcBuilder_ == null) {
+          expirationUtc_ = null;
+        } else {
+          expirationUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -3679,6 +4133,14 @@ public final class Mt4TermApiTradingHelper {
             result.expiration_ = expirationBuilder_.build();
           }
           to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          if (expirationUtcBuilder_ == null) {
+            result.expirationUtc_ = expirationUtc_;
+          } else {
+            result.expirationUtc_ = expirationUtcBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000080;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -3761,6 +4223,9 @@ public final class Mt4TermApiTradingHelper {
         }
         if (other.hasExpiration()) {
           mergeExpiration(other.getExpiration());
+        }
+        if (other.hasExpirationUtc()) {
+          mergeExpirationUtc(other.getExpirationUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4541,6 +5006,162 @@ public final class Mt4TermApiTradingHelper {
           expiration_ = null;
         }
         return expirationBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp expirationUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationUtcBuilder_;
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       * @return Whether the expirationUtc field is set.
+       */
+      public boolean hasExpirationUtc() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       * @return The expirationUtc.
+       */
+      public com.google.protobuf.Timestamp getExpirationUtc() {
+        if (expirationUtcBuilder_ == null) {
+          return expirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationUtc_;
+        } else {
+          return expirationUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public Builder setExpirationUtc(com.google.protobuf.Timestamp value) {
+        if (expirationUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expirationUtc_ = value;
+          onChanged();
+        } else {
+          expirationUtcBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public Builder setExpirationUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expirationUtcBuilder_ == null) {
+          expirationUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          expirationUtcBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public Builder mergeExpirationUtc(com.google.protobuf.Timestamp value) {
+        if (expirationUtcBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0) &&
+              expirationUtc_ != null &&
+              expirationUtc_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            expirationUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(expirationUtc_).mergeFrom(value).buildPartial();
+          } else {
+            expirationUtc_ = value;
+          }
+          onChanged();
+        } else {
+          expirationUtcBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public Builder clearExpirationUtc() {
+        if (expirationUtcBuilder_ == null) {
+          expirationUtc_ = null;
+          onChanged();
+        } else {
+          expirationUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpirationUtcBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return getExpirationUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpirationUtcOrBuilder() {
+        if (expirationUtcBuilder_ != null) {
+          return expirationUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return expirationUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expirationUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * expiration in UTC: send either expiration or expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp expiration_utc = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getExpirationUtcFieldBuilder() {
+        if (expirationUtcBuilder_ == null) {
+          expirationUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpirationUtc(),
+                  getParentForChildren(),
+                  isClean());
+          expirationUtc_ = null;
+        }
+        return expirationUtcBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -5569,19 +6190,64 @@ public final class Mt4TermApiTradingHelper {
     double getPrice();
 
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      * @return Whether the openTime field is set.
      */
     boolean hasOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      * @return The openTime.
      */
     com.google.protobuf.Timestamp getOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder();
+
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    boolean hasOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     * @return The openTimeUtc.
+     */
+    com.google.protobuf.Timestamp getOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrderSendData}
@@ -5656,6 +6322,19 @@ public final class Mt4TermApiTradingHelper {
 
               break;
             }
+            case 42: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (openTimeUtc_ != null) {
+                subBuilder = openTimeUtc_.toBuilder();
+              }
+              openTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(openTimeUtc_);
+                openTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -5726,6 +6405,12 @@ public final class Mt4TermApiTradingHelper {
     public static final int OPEN_TIME_FIELD_NUMBER = 4;
     private com.google.protobuf.Timestamp openTime_;
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      * @return Whether the openTime field is set.
      */
@@ -5734,6 +6419,12 @@ public final class Mt4TermApiTradingHelper {
       return openTime_ != null;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      * @return The openTime.
      */
@@ -5742,11 +6433,55 @@ public final class Mt4TermApiTradingHelper {
       return openTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+     * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
       return getOpenTime();
+    }
+
+    public static final int OPEN_TIME_UTC_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp openTimeUtc_;
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasOpenTimeUtc() {
+      return openTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     * @return The openTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getOpenTimeUtc() {
+      return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+      return getOpenTimeUtc();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5775,6 +6510,9 @@ public final class Mt4TermApiTradingHelper {
       if (openTime_ != null) {
         output.writeMessage(4, getOpenTime());
       }
+      if (openTimeUtc_ != null) {
+        output.writeMessage(5, getOpenTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5799,6 +6537,10 @@ public final class Mt4TermApiTradingHelper {
       if (openTime_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getOpenTime());
+      }
+      if (openTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getOpenTimeUtc());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5828,6 +6570,11 @@ public final class Mt4TermApiTradingHelper {
         if (!getOpenTime()
             .equals(other.getOpenTime())) return false;
       }
+      if (hasOpenTimeUtc() != other.hasOpenTimeUtc()) return false;
+      if (hasOpenTimeUtc()) {
+        if (!getOpenTimeUtc()
+            .equals(other.getOpenTimeUtc())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5850,6 +6597,10 @@ public final class Mt4TermApiTradingHelper {
       if (hasOpenTime()) {
         hash = (37 * hash) + OPEN_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getOpenTime().hashCode();
+      }
+      if (hasOpenTimeUtc()) {
+        hash = (37 * hash) + OPEN_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getOpenTimeUtc().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5996,6 +6747,12 @@ public final class Mt4TermApiTradingHelper {
           openTime_ = null;
           openTimeBuilder_ = null;
         }
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
+        }
         return this;
       }
 
@@ -6029,6 +6786,11 @@ public final class Mt4TermApiTradingHelper {
           result.openTime_ = openTime_;
         } else {
           result.openTime_ = openTimeBuilder_.build();
+        }
+        if (openTimeUtcBuilder_ == null) {
+          result.openTimeUtc_ = openTimeUtc_;
+        } else {
+          result.openTimeUtc_ = openTimeUtcBuilder_.build();
         }
         onBuilt();
         return result;
@@ -6089,6 +6851,9 @@ public final class Mt4TermApiTradingHelper {
         }
         if (other.hasOpenTime()) {
           mergeOpenTime(other.getOpenTime());
+        }
+        if (other.hasOpenTimeUtc()) {
+          mergeOpenTimeUtc(other.getOpenTimeUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6216,6 +6981,12 @@ public final class Mt4TermApiTradingHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeBuilder_;
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        * @return Whether the openTime field is set.
        */
@@ -6223,6 +6994,12 @@ public final class Mt4TermApiTradingHelper {
         return openTimeBuilder_ != null || openTime_ != null;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        * @return The openTime.
        */
@@ -6234,6 +7011,12 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public Builder setOpenTime(com.google.protobuf.Timestamp value) {
@@ -6250,6 +7033,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public Builder setOpenTime(
@@ -6264,6 +7053,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public Builder mergeOpenTime(com.google.protobuf.Timestamp value) {
@@ -6282,6 +7077,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public Builder clearOpenTime() {
@@ -6296,6 +7097,12 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getOpenTimeBuilder() {
@@ -6304,6 +7111,12 @@ public final class Mt4TermApiTradingHelper {
         return getOpenTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
@@ -6315,6 +7128,12 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED /
+       * SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -6329,6 +7148,161 @@ public final class Mt4TermApiTradingHelper {
           openTime_ = null;
         }
         return openTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp openTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeUtcBuilder_;
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       * @return Whether the openTimeUtc field is set.
+       */
+      public boolean hasOpenTimeUtc() {
+        return openTimeUtcBuilder_ != null || openTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       * @return The openTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        } else {
+          return openTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public Builder setOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          openTimeUtc_ = value;
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public Builder setOpenTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public Builder mergeOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (openTimeUtc_ != null) {
+            openTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(openTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            openTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public Builder clearOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+          onChanged();
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getOpenTimeUtcBuilder() {
+        
+        onChanged();
+        return getOpenTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+        if (openTimeUtcBuilder_ != null) {
+          return openTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return openTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getOpenTimeUtcFieldBuilder() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getOpenTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          openTimeUtc_ = null;
+        }
+        return openTimeUtcBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -6427,19 +7401,58 @@ public final class Mt4TermApiTradingHelper {
     double getNewTakeProfit();
 
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      * @return Whether the newExpiration field is set.
      */
     boolean hasNewExpiration();
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      * @return The newExpiration.
      */
     com.google.protobuf.Timestamp getNewExpiration();
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getNewExpirationOrBuilder();
+
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     * @return Whether the newExpirationUtc field is set.
+     */
+    boolean hasNewExpirationUtc();
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     * @return The newExpirationUtc.
+     */
+    com.google.protobuf.Timestamp getNewExpirationUtc();
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getNewExpirationUtcOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrderModifyRequest}
@@ -6518,6 +7531,19 @@ public final class Mt4TermApiTradingHelper {
                 newExpiration_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000008;
+              break;
+            }
+            case 50: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) != 0)) {
+                subBuilder = newExpirationUtc_.toBuilder();
+              }
+              newExpirationUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(newExpirationUtc_);
+                newExpirationUtc_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
               break;
             }
             default: {
@@ -6626,6 +7652,10 @@ public final class Mt4TermApiTradingHelper {
     public static final int NEW_EXPIRATION_FIELD_NUMBER = 5;
     private com.google.protobuf.Timestamp newExpiration_;
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      * @return Whether the newExpiration field is set.
      */
@@ -6634,6 +7664,10 @@ public final class Mt4TermApiTradingHelper {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      * @return The newExpiration.
      */
@@ -6642,11 +7676,53 @@ public final class Mt4TermApiTradingHelper {
       return newExpiration_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : newExpiration_;
     }
     /**
+     * <pre>
+     * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getNewExpirationOrBuilder() {
       return newExpiration_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : newExpiration_;
+    }
+
+    public static final int NEW_EXPIRATION_UTC_FIELD_NUMBER = 6;
+    private com.google.protobuf.Timestamp newExpirationUtc_;
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     * @return Whether the newExpirationUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasNewExpirationUtc() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     * @return The newExpirationUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getNewExpirationUtc() {
+      return newExpirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : newExpirationUtc_;
+    }
+    /**
+     * <pre>
+     * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getNewExpirationUtcOrBuilder() {
+      return newExpirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : newExpirationUtc_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -6678,6 +7754,9 @@ public final class Mt4TermApiTradingHelper {
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeMessage(5, getNewExpiration());
       }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeMessage(6, getNewExpirationUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -6706,6 +7785,10 @@ public final class Mt4TermApiTradingHelper {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getNewExpiration());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getNewExpirationUtc());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6747,6 +7830,11 @@ public final class Mt4TermApiTradingHelper {
         if (!getNewExpiration()
             .equals(other.getNewExpiration())) return false;
       }
+      if (hasNewExpirationUtc() != other.hasNewExpirationUtc()) return false;
+      if (hasNewExpirationUtc()) {
+        if (!getNewExpirationUtc()
+            .equals(other.getNewExpirationUtc())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -6778,6 +7866,10 @@ public final class Mt4TermApiTradingHelper {
       if (hasNewExpiration()) {
         hash = (37 * hash) + NEW_EXPIRATION_FIELD_NUMBER;
         hash = (53 * hash) + getNewExpiration().hashCode();
+      }
+      if (hasNewExpirationUtc()) {
+        hash = (37 * hash) + NEW_EXPIRATION_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getNewExpirationUtc().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6908,6 +8000,7 @@ public final class Mt4TermApiTradingHelper {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getNewExpirationFieldBuilder();
+          getNewExpirationUtcFieldBuilder();
         }
       }
       @java.lang.Override
@@ -6927,6 +8020,12 @@ public final class Mt4TermApiTradingHelper {
           newExpirationBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (newExpirationUtcBuilder_ == null) {
+          newExpirationUtc_ = null;
+        } else {
+          newExpirationUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -6975,6 +8074,14 @@ public final class Mt4TermApiTradingHelper {
             result.newExpiration_ = newExpirationBuilder_.build();
           }
           to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          if (newExpirationUtcBuilder_ == null) {
+            result.newExpirationUtc_ = newExpirationUtc_;
+          } else {
+            result.newExpirationUtc_ = newExpirationUtcBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -7039,6 +8146,9 @@ public final class Mt4TermApiTradingHelper {
         }
         if (other.hasNewExpiration()) {
           mergeNewExpiration(other.getNewExpiration());
+        }
+        if (other.hasNewExpirationUtc()) {
+          mergeNewExpirationUtc(other.getNewExpirationUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7222,6 +8332,10 @@ public final class Mt4TermApiTradingHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> newExpirationBuilder_;
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        * @return Whether the newExpiration field is set.
        */
@@ -7229,6 +8343,10 @@ public final class Mt4TermApiTradingHelper {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        * @return The newExpiration.
        */
@@ -7240,6 +8358,10 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public Builder setNewExpiration(com.google.protobuf.Timestamp value) {
@@ -7256,6 +8378,10 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public Builder setNewExpiration(
@@ -7270,6 +8396,10 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public Builder mergeNewExpiration(com.google.protobuf.Timestamp value) {
@@ -7290,6 +8420,10 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public Builder clearNewExpiration() {
@@ -7303,6 +8437,10 @@ public final class Mt4TermApiTradingHelper {
         return this;
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getNewExpirationBuilder() {
@@ -7311,6 +8449,10 @@ public final class Mt4TermApiTradingHelper {
         return getNewExpirationFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getNewExpirationOrBuilder() {
@@ -7322,6 +8464,10 @@ public final class Mt4TermApiTradingHelper {
         }
       }
       /**
+       * <pre>
+       * New expiration of a pending order (broker server time). Unset = the expiration is not changed.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp new_expiration = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7336,6 +8482,162 @@ public final class Mt4TermApiTradingHelper {
           newExpiration_ = null;
         }
         return newExpirationBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp newExpirationUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> newExpirationUtcBuilder_;
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       * @return Whether the newExpirationUtc field is set.
+       */
+      public boolean hasNewExpirationUtc() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       * @return The newExpirationUtc.
+       */
+      public com.google.protobuf.Timestamp getNewExpirationUtc() {
+        if (newExpirationUtcBuilder_ == null) {
+          return newExpirationUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : newExpirationUtc_;
+        } else {
+          return newExpirationUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public Builder setNewExpirationUtc(com.google.protobuf.Timestamp value) {
+        if (newExpirationUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          newExpirationUtc_ = value;
+          onChanged();
+        } else {
+          newExpirationUtcBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public Builder setNewExpirationUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (newExpirationUtcBuilder_ == null) {
+          newExpirationUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          newExpirationUtcBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public Builder mergeNewExpirationUtc(com.google.protobuf.Timestamp value) {
+        if (newExpirationUtcBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+              newExpirationUtc_ != null &&
+              newExpirationUtc_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            newExpirationUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(newExpirationUtc_).mergeFrom(value).buildPartial();
+          } else {
+            newExpirationUtc_ = value;
+          }
+          onChanged();
+        } else {
+          newExpirationUtcBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public Builder clearNewExpirationUtc() {
+        if (newExpirationUtcBuilder_ == null) {
+          newExpirationUtc_ = null;
+          onChanged();
+        } else {
+          newExpirationUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getNewExpirationUtcBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getNewExpirationUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getNewExpirationUtcOrBuilder() {
+        if (newExpirationUtcBuilder_ != null) {
+          return newExpirationUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return newExpirationUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : newExpirationUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * new_expiration in UTC: send either new_expiration or new_expiration_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp new_expiration_utc = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getNewExpirationUtcFieldBuilder() {
+        if (newExpirationUtcBuilder_ == null) {
+          newExpirationUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getNewExpirationUtc(),
+                  getParentForChildren(),
+                  isClean());
+          newExpirationUtc_ = null;
+        }
+        return newExpirationUtcBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -11369,65 +12671,71 @@ public final class Mt4TermApiTradingHelper {
       "t_closing_by\030\002 \001(\005\"u\n\021OrderCloseByReply\022" +
       ".\n\004data\030\001 \001(\0132\036.mt4_term_api.OrderCloseB" +
       "yDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.Er" +
-      "rorH\000B\n\n\010response\"g\n\020OrderCloseByData\022\023\n" +
-      "\013close_price\030\001 \001(\001\022\016\n\006profit\030\002 \001(\001\022.\n\ncl" +
-      "ose_time\030\003 \001(\0132\032.google.protobuf.Timesta" +
-      "mp\"\220\003\n\020OrderSendRequest\022\016\n\006symbol\030\001 \001(\t\022" +
-      "<\n\016operation_type\030\002 \001(\0162$.mt4_term_api.O" +
-      "rderSendOperationType\022\016\n\006volume\030\003 \001(\001\022\022\n" +
-      "\005price\030\004 \001(\001H\000\210\001\001\022\025\n\010slippage\030\005 \001(\005H\001\210\001\001" +
-      "\022\025\n\010stoploss\030\006 \001(\001H\002\210\001\001\022\027\n\ntakeprofit\030\007 " +
-      "\001(\001H\003\210\001\001\022\024\n\007comment\030\010 \001(\tH\004\210\001\001\022\031\n\014magic_" +
-      "number\030\t \001(\005H\005\210\001\001\0223\n\nexpiration\030\n \001(\0132\032." +
-      "google.protobuf.TimestampH\006\210\001\001B\010\n\006_price" +
-      "B\013\n\t_slippageB\013\n\t_stoplossB\r\n\013_takeprofi" +
-      "tB\n\n\010_commentB\017\n\r_magic_numberB\r\n\013_expir" +
-      "ation\"o\n\016OrderSendReply\022+\n\004data\030\001 \001(\0132\033." +
-      "mt4_term_api.OrderSendDataH\000\022$\n\005error\030\002 " +
-      "\001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"m" +
-      "\n\rOrderSendData\022\016\n\006ticket\030\001 \001(\005\022\016\n\006volum" +
-      "e\030\002 \001(\001\022\r\n\005price\030\003 \001(\001\022-\n\topen_time\030\004 \001(" +
-      "\0132\032.google.protobuf.Timestamp\"\374\001\n\022OrderM" +
-      "odifyRequest\022\024\n\014order_ticket\030\001 \001(\005\022\026\n\tne" +
-      "w_price\030\002 \001(\001H\000\210\001\001\022\032\n\rnew_stop_loss\030\003 \001(" +
-      "\001H\001\210\001\001\022\034\n\017new_take_profit\030\004 \001(\001H\002\210\001\001\0227\n\016" +
-      "new_expiration\030\005 \001(\0132\032.google.protobuf.T" +
-      "imestampH\003\210\001\001B\014\n\n_new_priceB\020\n\016_new_stop" +
-      "_lossB\022\n\020_new_take_profitB\021\n\017_new_expira" +
-      "tion\"s\n\020OrderModifyReply\022-\n\004data\030\001 \001(\0132\035" +
-      ".mt4_term_api.OrderModifyDataH\000\022$\n\005error" +
-      "\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respons" +
-      "e\"-\n\017OrderModifyData\022\032\n\022order_was_modifi" +
-      "ed\030\001 \001(\010\"\235\001\n\027OrderCloseDeleteRequest\022\024\n\014" +
-      "order_ticket\030\001 \001(\005\022\021\n\004lots\030\002 \001(\001H\000\210\001\001\022\032\n" +
-      "\rclosing_price\030\003 \001(\001H\001\210\001\001\022\025\n\010slippage\030\004 " +
-      "\001(\005H\002\210\001\001B\007\n\005_lotsB\020\n\016_closing_priceB\013\n\t_" +
-      "slippage\"}\n\025OrderCloseDeleteReply\0222\n\004dat" +
-      "a\030\001 \001(\0132\".mt4_term_api.OrderCloseDeleteD" +
-      "ataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.Erro" +
-      "rH\000B\n\n\010response\"\206\001\n\024OrderCloseDeleteData" +
-      "\0220\n\004mode\030\001 \001(\0162\".mt4_term_api.OrderClose" +
-      "DeleteMode\022\"\n\025history_order_comment\030\002 \001(" +
-      "\tH\000\210\001\001B\030\n\026_history_order_comment*\207\001\n\026Ord" +
-      "erSendOperationType\022\r\n\tOC_OP_BUY\020\000\022\016\n\nOC" +
-      "_OP_SELL\020\001\022\022\n\016OC_OP_BUYLIMIT\020\002\022\023\n\017OC_OP_" +
-      "SELLLIMIT\020\003\022\021\n\rOC_OP_BUYSTOP\020\004\022\022\n\016OC_OP_" +
-      "SELLSTOP\020\005*C\n\024OrderCloseDeleteMode\022\024\n\020OC" +
-      "D_MARKET_ORDER\020\000\022\025\n\021OCD_PENDING_ORDER\020\0012" +
-      "\273\003\n\rTradingHelper\022]\n\tOrderSend\022\036.mt4_ter" +
-      "m_api.OrderSendRequest\032\034.mt4_term_api.Or" +
-      "derSendReply\"\022\202\323\344\223\002\014\022\n/OrderSend\022e\n\013Orde" +
-      "rModify\022 .mt4_term_api.OrderModifyReques" +
-      "t\032\036.mt4_term_api.OrderModifyReply\"\024\202\323\344\223\002" +
-      "\016\022\014/OrderModify\022y\n\020OrderCloseDelete\022%.mt" +
-      "4_term_api.OrderCloseDeleteRequest\032#.mt4" +
-      "_term_api.OrderCloseDeleteReply\"\031\202\323\344\223\002\023\022" +
-      "\021/OrderCloseDelete\022i\n\014OrderCloseBy\022!.mt4" +
-      "_term_api.OrderCloseByRequest\032\037.mt4_term" +
-      "_api.OrderCloseByReply\"\025\202\323\344\223\002\017\022\r/OrderCl" +
-      "oseByBBZ1git.mtapi.io/root/mrpc-proto.gi" +
-      "t/mt4/libraries/go\252\002\014mt4_term_apib\006proto" +
-      "3"
+      "rorH\000B\n\n\010response\"\233\001\n\020OrderCloseByData\022\023" +
+      "\n\013close_price\030\001 \001(\001\022\016\n\006profit\030\002 \001(\001\022.\n\nc" +
+      "lose_time\030\003 \001(\0132\032.google.protobuf.Timest" +
+      "amp\0222\n\016close_time_utc\030\004 \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\"\334\003\n\020OrderSendRequest\022\016\n\006" +
+      "symbol\030\001 \001(\t\022<\n\016operation_type\030\002 \001(\0162$.m" +
+      "t4_term_api.OrderSendOperationType\022\016\n\006vo" +
+      "lume\030\003 \001(\001\022\022\n\005price\030\004 \001(\001H\000\210\001\001\022\025\n\010slippa" +
+      "ge\030\005 \001(\005H\001\210\001\001\022\025\n\010stoploss\030\006 \001(\001H\002\210\001\001\022\027\n\n" +
+      "takeprofit\030\007 \001(\001H\003\210\001\001\022\024\n\007comment\030\010 \001(\tH\004" +
+      "\210\001\001\022\031\n\014magic_number\030\t \001(\005H\005\210\001\001\0223\n\nexpira" +
+      "tion\030\n \001(\0132\032.google.protobuf.TimestampH\006" +
+      "\210\001\001\0227\n\016expiration_utc\030\013 \001(\0132\032.google.pro" +
+      "tobuf.TimestampH\007\210\001\001B\010\n\006_priceB\013\n\t_slipp" +
+      "ageB\013\n\t_stoplossB\r\n\013_takeprofitB\n\n\010_comm" +
+      "entB\017\n\r_magic_numberB\r\n\013_expirationB\021\n\017_" +
+      "expiration_utc\"o\n\016OrderSendReply\022+\n\004data" +
+      "\030\001 \001(\0132\033.mt4_term_api.OrderSendDataH\000\022$\n" +
+      "\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010r" +
+      "esponse\"\240\001\n\rOrderSendData\022\016\n\006ticket\030\001 \001(" +
+      "\005\022\016\n\006volume\030\002 \001(\001\022\r\n\005price\030\003 \001(\001\022-\n\topen" +
+      "_time\030\004 \001(\0132\032.google.protobuf.Timestamp\022" +
+      "1\n\ropen_time_utc\030\005 \001(\0132\032.google.protobuf" +
+      ".Timestamp\"\320\002\n\022OrderModifyRequest\022\024\n\014ord" +
+      "er_ticket\030\001 \001(\005\022\026\n\tnew_price\030\002 \001(\001H\000\210\001\001\022" +
+      "\032\n\rnew_stop_loss\030\003 \001(\001H\001\210\001\001\022\034\n\017new_take_" +
+      "profit\030\004 \001(\001H\002\210\001\001\0227\n\016new_expiration\030\005 \001(" +
+      "\0132\032.google.protobuf.TimestampH\003\210\001\001\022;\n\022ne" +
+      "w_expiration_utc\030\006 \001(\0132\032.google.protobuf" +
+      ".TimestampH\004\210\001\001B\014\n\n_new_priceB\020\n\016_new_st" +
+      "op_lossB\022\n\020_new_take_profitB\021\n\017_new_expi" +
+      "rationB\025\n\023_new_expiration_utc\"s\n\020OrderMo" +
+      "difyReply\022-\n\004data\030\001 \001(\0132\035.mt4_term_api.O" +
+      "rderModifyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_te" +
+      "rm_api.ErrorH\000B\n\n\010response\"-\n\017OrderModif" +
+      "yData\022\032\n\022order_was_modified\030\001 \001(\010\"\235\001\n\027Or" +
+      "derCloseDeleteRequest\022\024\n\014order_ticket\030\001 " +
+      "\001(\005\022\021\n\004lots\030\002 \001(\001H\000\210\001\001\022\032\n\rclosing_price\030" +
+      "\003 \001(\001H\001\210\001\001\022\025\n\010slippage\030\004 \001(\005H\002\210\001\001B\007\n\005_lo" +
+      "tsB\020\n\016_closing_priceB\013\n\t_slippage\"}\n\025Ord" +
+      "erCloseDeleteReply\0222\n\004data\030\001 \001(\0132\".mt4_t" +
+      "erm_api.OrderCloseDeleteDataH\000\022$\n\005error\030" +
+      "\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response" +
+      "\"\206\001\n\024OrderCloseDeleteData\0220\n\004mode\030\001 \001(\0162" +
+      "\".mt4_term_api.OrderCloseDeleteMode\022\"\n\025h" +
+      "istory_order_comment\030\002 \001(\tH\000\210\001\001B\030\n\026_hist" +
+      "ory_order_comment*\207\001\n\026OrderSendOperation" +
+      "Type\022\r\n\tOC_OP_BUY\020\000\022\016\n\nOC_OP_SELL\020\001\022\022\n\016O" +
+      "C_OP_BUYLIMIT\020\002\022\023\n\017OC_OP_SELLLIMIT\020\003\022\021\n\r" +
+      "OC_OP_BUYSTOP\020\004\022\022\n\016OC_OP_SELLSTOP\020\005*C\n\024O" +
+      "rderCloseDeleteMode\022\024\n\020OCD_MARKET_ORDER\020" +
+      "\000\022\025\n\021OCD_PENDING_ORDER\020\0012\273\003\n\rTradingHelp" +
+      "er\022]\n\tOrderSend\022\036.mt4_term_api.OrderSend" +
+      "Request\032\034.mt4_term_api.OrderSendReply\"\022\202" +
+      "\323\344\223\002\014\022\n/OrderSend\022e\n\013OrderModify\022 .mt4_t" +
+      "erm_api.OrderModifyRequest\032\036.mt4_term_ap" +
+      "i.OrderModifyReply\"\024\202\323\344\223\002\016\022\014/OrderModify" +
+      "\022y\n\020OrderCloseDelete\022%.mt4_term_api.Orde" +
+      "rCloseDeleteRequest\032#.mt4_term_api.Order" +
+      "CloseDeleteReply\"\031\202\323\344\223\002\023\022\021/OrderCloseDel" +
+      "ete\022i\n\014OrderCloseBy\022!.mt4_term_api.Order" +
+      "CloseByRequest\032\037.mt4_term_api.OrderClose" +
+      "ByReply\"\025\202\323\344\223\002\017\022\r/OrderCloseByBBZ1git.mt" +
+      "api.io/root/mrpc-proto.git/mt4/libraries" +
+      "/go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -11453,13 +12761,13 @@ public final class Mt4TermApiTradingHelper {
     internal_static_mt4_term_api_OrderCloseByData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrderCloseByData_descriptor,
-        new java.lang.String[] { "ClosePrice", "Profit", "CloseTime", });
+        new java.lang.String[] { "ClosePrice", "Profit", "CloseTime", "CloseTimeUtc", });
     internal_static_mt4_term_api_OrderSendRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_mt4_term_api_OrderSendRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrderSendRequest_descriptor,
-        new java.lang.String[] { "Symbol", "OperationType", "Volume", "Price", "Slippage", "Stoploss", "Takeprofit", "Comment", "MagicNumber", "Expiration", "Price", "Slippage", "Stoploss", "Takeprofit", "Comment", "MagicNumber", "Expiration", });
+        new java.lang.String[] { "Symbol", "OperationType", "Volume", "Price", "Slippage", "Stoploss", "Takeprofit", "Comment", "MagicNumber", "Expiration", "ExpirationUtc", "Price", "Slippage", "Stoploss", "Takeprofit", "Comment", "MagicNumber", "Expiration", "ExpirationUtc", });
     internal_static_mt4_term_api_OrderSendReply_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_mt4_term_api_OrderSendReply_fieldAccessorTable = new
@@ -11471,13 +12779,13 @@ public final class Mt4TermApiTradingHelper {
     internal_static_mt4_term_api_OrderSendData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrderSendData_descriptor,
-        new java.lang.String[] { "Ticket", "Volume", "Price", "OpenTime", });
+        new java.lang.String[] { "Ticket", "Volume", "Price", "OpenTime", "OpenTimeUtc", });
     internal_static_mt4_term_api_OrderModifyRequest_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_mt4_term_api_OrderModifyRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrderModifyRequest_descriptor,
-        new java.lang.String[] { "OrderTicket", "NewPrice", "NewStopLoss", "NewTakeProfit", "NewExpiration", "NewPrice", "NewStopLoss", "NewTakeProfit", "NewExpiration", });
+        new java.lang.String[] { "OrderTicket", "NewPrice", "NewStopLoss", "NewTakeProfit", "NewExpiration", "NewExpirationUtc", "NewPrice", "NewStopLoss", "NewTakeProfit", "NewExpiration", "NewExpirationUtc", });
     internal_static_mt4_term_api_OrderModifyReply_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_mt4_term_api_OrderModifyReply_fieldAccessorTable = new

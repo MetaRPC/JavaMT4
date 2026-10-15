@@ -246,7 +246,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public void quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQuoteHistoryMethod(), responseObserver);
@@ -349,7 +353,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public void quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -411,7 +419,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getQuoteHistoryMethod(), getCallOptions(), request);
@@ -474,7 +486,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> quoteHistory(
         mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(

@@ -1843,19 +1843,58 @@ public final class Mt4TermApiMarketInfo {
     double getAsk();
 
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      * @return Whether the dateTime field is set.
      */
     boolean hasDateTime();
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      * @return The dateTime.
      */
     com.google.protobuf.Timestamp getDateTime();
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getDateTimeOrBuilder();
+
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     * @return Whether the dateTimeUtc field is set.
+     */
+    boolean hasDateTimeUtc();
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     * @return The dateTimeUtc.
+     */
+    com.google.protobuf.Timestamp getDateTimeUtc();
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getDateTimeUtcOrBuilder();
 
     /**
      * <code>double high = 5;</code>
@@ -1952,6 +1991,19 @@ public final class Mt4TermApiMarketInfo {
             case 49: {
 
               low_ = input.readDouble();
+              break;
+            }
+            case 58: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (dateTimeUtc_ != null) {
+                subBuilder = dateTimeUtc_.toBuilder();
+              }
+              dateTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(dateTimeUtc_);
+                dateTimeUtc_ = subBuilder.buildPartial();
+              }
+
               break;
             }
             default: {
@@ -2051,6 +2103,10 @@ public final class Mt4TermApiMarketInfo {
     public static final int DATE_TIME_FIELD_NUMBER = 4;
     private com.google.protobuf.Timestamp dateTime_;
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      * @return Whether the dateTime field is set.
      */
@@ -2059,6 +2115,10 @@ public final class Mt4TermApiMarketInfo {
       return dateTime_ != null;
     }
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      * @return The dateTime.
      */
@@ -2067,11 +2127,53 @@ public final class Mt4TermApiMarketInfo {
       return dateTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : dateTime_;
     }
     /**
+     * <pre>
+     * Time of the quote (broker server time). Unset when the terminal has no quote time.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp date_time = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getDateTimeOrBuilder() {
       return getDateTime();
+    }
+
+    public static final int DATE_TIME_UTC_FIELD_NUMBER = 7;
+    private com.google.protobuf.Timestamp dateTimeUtc_;
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     * @return Whether the dateTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasDateTimeUtc() {
+      return dateTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     * @return The dateTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getDateTimeUtc() {
+      return dateTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : dateTimeUtc_;
+    }
+    /**
+     * <pre>
+     * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getDateTimeUtcOrBuilder() {
+      return getDateTimeUtc();
     }
 
     public static final int HIGH_FIELD_NUMBER = 5;
@@ -2128,6 +2230,9 @@ public final class Mt4TermApiMarketInfo {
       if (java.lang.Double.doubleToRawLongBits(low_) != 0) {
         output.writeDouble(6, low_);
       }
+      if (dateTimeUtc_ != null) {
+        output.writeMessage(7, getDateTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2160,6 +2265,10 @@ public final class Mt4TermApiMarketInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(6, low_);
       }
+      if (dateTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getDateTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2187,6 +2296,11 @@ public final class Mt4TermApiMarketInfo {
       if (hasDateTime()) {
         if (!getDateTime()
             .equals(other.getDateTime())) return false;
+      }
+      if (hasDateTimeUtc() != other.hasDateTimeUtc()) return false;
+      if (hasDateTimeUtc()) {
+        if (!getDateTimeUtc()
+            .equals(other.getDateTimeUtc())) return false;
       }
       if (java.lang.Double.doubleToLongBits(getHigh())
           != java.lang.Double.doubleToLongBits(
@@ -2216,6 +2330,10 @@ public final class Mt4TermApiMarketInfo {
       if (hasDateTime()) {
         hash = (37 * hash) + DATE_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getDateTime().hashCode();
+      }
+      if (hasDateTimeUtc()) {
+        hash = (37 * hash) + DATE_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getDateTimeUtc().hashCode();
       }
       hash = (37 * hash) + HIGH_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -2368,6 +2486,12 @@ public final class Mt4TermApiMarketInfo {
           dateTime_ = null;
           dateTimeBuilder_ = null;
         }
+        if (dateTimeUtcBuilder_ == null) {
+          dateTimeUtc_ = null;
+        } else {
+          dateTimeUtc_ = null;
+          dateTimeUtcBuilder_ = null;
+        }
         high_ = 0D;
 
         low_ = 0D;
@@ -2405,6 +2529,11 @@ public final class Mt4TermApiMarketInfo {
           result.dateTime_ = dateTime_;
         } else {
           result.dateTime_ = dateTimeBuilder_.build();
+        }
+        if (dateTimeUtcBuilder_ == null) {
+          result.dateTimeUtc_ = dateTimeUtc_;
+        } else {
+          result.dateTimeUtc_ = dateTimeUtcBuilder_.build();
         }
         result.high_ = high_;
         result.low_ = low_;
@@ -2468,6 +2597,9 @@ public final class Mt4TermApiMarketInfo {
         }
         if (other.hasDateTime()) {
           mergeDateTime(other.getDateTime());
+        }
+        if (other.hasDateTimeUtc()) {
+          mergeDateTimeUtc(other.getDateTimeUtc());
         }
         if (other.getHigh() != 0D) {
           setHigh(other.getHigh());
@@ -2646,6 +2778,10 @@ public final class Mt4TermApiMarketInfo {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> dateTimeBuilder_;
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        * @return Whether the dateTime field is set.
        */
@@ -2653,6 +2789,10 @@ public final class Mt4TermApiMarketInfo {
         return dateTimeBuilder_ != null || dateTime_ != null;
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        * @return The dateTime.
        */
@@ -2664,6 +2804,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public Builder setDateTime(com.google.protobuf.Timestamp value) {
@@ -2680,6 +2824,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public Builder setDateTime(
@@ -2694,6 +2842,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public Builder mergeDateTime(com.google.protobuf.Timestamp value) {
@@ -2712,6 +2864,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public Builder clearDateTime() {
@@ -2726,6 +2882,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getDateTimeBuilder() {
@@ -2734,6 +2894,10 @@ public final class Mt4TermApiMarketInfo {
         return getDateTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getDateTimeOrBuilder() {
@@ -2745,6 +2909,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Time of the quote (broker server time). Unset when the terminal has no quote time.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp date_time = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -2759,6 +2927,161 @@ public final class Mt4TermApiMarketInfo {
           dateTime_ = null;
         }
         return dateTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp dateTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> dateTimeUtcBuilder_;
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       * @return Whether the dateTimeUtc field is set.
+       */
+      public boolean hasDateTimeUtc() {
+        return dateTimeUtcBuilder_ != null || dateTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       * @return The dateTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getDateTimeUtc() {
+        if (dateTimeUtcBuilder_ == null) {
+          return dateTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : dateTimeUtc_;
+        } else {
+          return dateTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public Builder setDateTimeUtc(com.google.protobuf.Timestamp value) {
+        if (dateTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          dateTimeUtc_ = value;
+          onChanged();
+        } else {
+          dateTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public Builder setDateTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (dateTimeUtcBuilder_ == null) {
+          dateTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          dateTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public Builder mergeDateTimeUtc(com.google.protobuf.Timestamp value) {
+        if (dateTimeUtcBuilder_ == null) {
+          if (dateTimeUtc_ != null) {
+            dateTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(dateTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            dateTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          dateTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public Builder clearDateTimeUtc() {
+        if (dateTimeUtcBuilder_ == null) {
+          dateTimeUtc_ = null;
+          onChanged();
+        } else {
+          dateTimeUtc_ = null;
+          dateTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getDateTimeUtcBuilder() {
+        
+        onChanged();
+        return getDateTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getDateTimeUtcOrBuilder() {
+        if (dateTimeUtcBuilder_ != null) {
+          return dateTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return dateTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : dateTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * date_time in UTC (the same moment; date_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp date_time_utc = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getDateTimeUtcFieldBuilder() {
+        if (dateTimeUtcBuilder_ == null) {
+          dateTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getDateTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          dateTimeUtc_ = null;
+        }
+        return dateTimeUtcBuilder_;
       }
 
       private double high_ ;
@@ -8095,34 +8418,112 @@ public final class Mt4TermApiMarketInfo {
     mt4_term_api.Mt4TermApiMarketInfo.ENUM_QUOTE_HISTORY_TIMEFRAME getTimeframe();
 
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      * @return Whether the fromTime field is set.
      */
     boolean hasFromTime();
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      * @return The fromTime.
      */
     com.google.protobuf.Timestamp getFromTime();
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getFromTimeOrBuilder();
 
     /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     * @return Whether the fromTimeUtc field is set.
+     */
+    boolean hasFromTimeUtc();
+    /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     * @return The fromTimeUtc.
+     */
+    com.google.protobuf.Timestamp getFromTimeUtc();
+    /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getFromTimeUtcOrBuilder();
+
+    /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      * @return Whether the toTime field is set.
      */
     boolean hasToTime();
     /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      * @return The toTime.
      */
     com.google.protobuf.Timestamp getToTime();
     /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getToTimeOrBuilder();
+
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     * @return Whether the toTimeUtc field is set.
+     */
+    boolean hasToTimeUtc();
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     * @return The toTimeUtc.
+     */
+    com.google.protobuf.Timestamp getToTimeUtc();
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getToTimeUtcOrBuilder();
   }
   /**
    * Protobuf type {@code mt4_term_api.QuoteHistoryRequest}
@@ -8205,6 +8606,32 @@ public final class Mt4TermApiMarketInfo {
               if (subBuilder != null) {
                 subBuilder.mergeFrom(toTime_);
                 toTime_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 42: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (fromTimeUtc_ != null) {
+                subBuilder = fromTimeUtc_.toBuilder();
+              }
+              fromTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(fromTimeUtc_);
+                fromTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 50: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (toTimeUtc_ != null) {
+                subBuilder = toTimeUtc_.toBuilder();
+              }
+              toTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(toTimeUtc_);
+                toTimeUtc_ = subBuilder.buildPartial();
               }
 
               break;
@@ -8303,6 +8730,10 @@ public final class Mt4TermApiMarketInfo {
     public static final int FROMTIME_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp fromTime_;
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      * @return Whether the fromTime field is set.
      */
@@ -8311,6 +8742,10 @@ public final class Mt4TermApiMarketInfo {
       return fromTime_ != null;
     }
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      * @return The fromTime.
      */
@@ -8319,6 +8754,10 @@ public final class Mt4TermApiMarketInfo {
       return fromTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : fromTime_;
     }
     /**
+     * <pre>
+     * Start of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp fromTime = 3;</code>
      */
     @java.lang.Override
@@ -8326,9 +8765,51 @@ public final class Mt4TermApiMarketInfo {
       return getFromTime();
     }
 
+    public static final int FROMTIMEUTC_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp fromTimeUtc_;
+    /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     * @return Whether the fromTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasFromTimeUtc() {
+      return fromTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     * @return The fromTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getFromTimeUtc() {
+      return fromTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : fromTimeUtc_;
+    }
+    /**
+     * <pre>
+     * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getFromTimeUtcOrBuilder() {
+      return getFromTimeUtc();
+    }
+
     public static final int TOTIME_FIELD_NUMBER = 4;
     private com.google.protobuf.Timestamp toTime_;
     /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      * @return Whether the toTime field is set.
      */
@@ -8337,6 +8818,10 @@ public final class Mt4TermApiMarketInfo {
       return toTime_ != null;
     }
     /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      * @return The toTime.
      */
@@ -8345,11 +8830,53 @@ public final class Mt4TermApiMarketInfo {
       return toTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : toTime_;
     }
     /**
+     * <pre>
+     * End of the range of bars (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp toTime = 4;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getToTimeOrBuilder() {
       return getToTime();
+    }
+
+    public static final int TOTIMEUTC_FIELD_NUMBER = 6;
+    private com.google.protobuf.Timestamp toTimeUtc_;
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     * @return Whether the toTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasToTimeUtc() {
+      return toTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     * @return The toTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getToTimeUtc() {
+      return toTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : toTimeUtc_;
+    }
+    /**
+     * <pre>
+     * toTime in UTC: send either toTime or toTimeUtc, not both.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getToTimeUtcOrBuilder() {
+      return getToTimeUtc();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8378,6 +8905,12 @@ public final class Mt4TermApiMarketInfo {
       if (toTime_ != null) {
         output.writeMessage(4, getToTime());
       }
+      if (fromTimeUtc_ != null) {
+        output.writeMessage(5, getFromTimeUtc());
+      }
+      if (toTimeUtc_ != null) {
+        output.writeMessage(6, getToTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -8402,6 +8935,14 @@ public final class Mt4TermApiMarketInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getToTime());
       }
+      if (fromTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getFromTimeUtc());
+      }
+      if (toTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getToTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -8425,10 +8966,20 @@ public final class Mt4TermApiMarketInfo {
         if (!getFromTime()
             .equals(other.getFromTime())) return false;
       }
+      if (hasFromTimeUtc() != other.hasFromTimeUtc()) return false;
+      if (hasFromTimeUtc()) {
+        if (!getFromTimeUtc()
+            .equals(other.getFromTimeUtc())) return false;
+      }
       if (hasToTime() != other.hasToTime()) return false;
       if (hasToTime()) {
         if (!getToTime()
             .equals(other.getToTime())) return false;
+      }
+      if (hasToTimeUtc() != other.hasToTimeUtc()) return false;
+      if (hasToTimeUtc()) {
+        if (!getToTimeUtc()
+            .equals(other.getToTimeUtc())) return false;
       }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -8449,9 +9000,17 @@ public final class Mt4TermApiMarketInfo {
         hash = (37 * hash) + FROMTIME_FIELD_NUMBER;
         hash = (53 * hash) + getFromTime().hashCode();
       }
+      if (hasFromTimeUtc()) {
+        hash = (37 * hash) + FROMTIMEUTC_FIELD_NUMBER;
+        hash = (53 * hash) + getFromTimeUtc().hashCode();
+      }
       if (hasToTime()) {
         hash = (37 * hash) + TOTIME_FIELD_NUMBER;
         hash = (53 * hash) + getToTime().hashCode();
+      }
+      if (hasToTimeUtc()) {
+        hash = (37 * hash) + TOTIMEUTC_FIELD_NUMBER;
+        hash = (53 * hash) + getToTimeUtc().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -8596,11 +9155,23 @@ public final class Mt4TermApiMarketInfo {
           fromTime_ = null;
           fromTimeBuilder_ = null;
         }
+        if (fromTimeUtcBuilder_ == null) {
+          fromTimeUtc_ = null;
+        } else {
+          fromTimeUtc_ = null;
+          fromTimeUtcBuilder_ = null;
+        }
         if (toTimeBuilder_ == null) {
           toTime_ = null;
         } else {
           toTime_ = null;
           toTimeBuilder_ = null;
+        }
+        if (toTimeUtcBuilder_ == null) {
+          toTimeUtc_ = null;
+        } else {
+          toTimeUtc_ = null;
+          toTimeUtcBuilder_ = null;
         }
         return this;
       }
@@ -8635,10 +9206,20 @@ public final class Mt4TermApiMarketInfo {
         } else {
           result.fromTime_ = fromTimeBuilder_.build();
         }
+        if (fromTimeUtcBuilder_ == null) {
+          result.fromTimeUtc_ = fromTimeUtc_;
+        } else {
+          result.fromTimeUtc_ = fromTimeUtcBuilder_.build();
+        }
         if (toTimeBuilder_ == null) {
           result.toTime_ = toTime_;
         } else {
           result.toTime_ = toTimeBuilder_.build();
+        }
+        if (toTimeUtcBuilder_ == null) {
+          result.toTimeUtc_ = toTimeUtc_;
+        } else {
+          result.toTimeUtc_ = toTimeUtcBuilder_.build();
         }
         onBuilt();
         return result;
@@ -8698,8 +9279,14 @@ public final class Mt4TermApiMarketInfo {
         if (other.hasFromTime()) {
           mergeFromTime(other.getFromTime());
         }
+        if (other.hasFromTimeUtc()) {
+          mergeFromTimeUtc(other.getFromTimeUtc());
+        }
         if (other.hasToTime()) {
           mergeToTime(other.getToTime());
+        }
+        if (other.hasToTimeUtc()) {
+          mergeToTimeUtc(other.getToTimeUtc());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8864,6 +9451,10 @@ public final class Mt4TermApiMarketInfo {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> fromTimeBuilder_;
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        * @return Whether the fromTime field is set.
        */
@@ -8871,6 +9462,10 @@ public final class Mt4TermApiMarketInfo {
         return fromTimeBuilder_ != null || fromTime_ != null;
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        * @return The fromTime.
        */
@@ -8882,6 +9477,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public Builder setFromTime(com.google.protobuf.Timestamp value) {
@@ -8898,6 +9497,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public Builder setFromTime(
@@ -8912,6 +9515,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public Builder mergeFromTime(com.google.protobuf.Timestamp value) {
@@ -8930,6 +9537,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public Builder clearFromTime() {
@@ -8944,6 +9555,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getFromTimeBuilder() {
@@ -8952,6 +9567,10 @@ public final class Mt4TermApiMarketInfo {
         return getFromTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getFromTimeOrBuilder() {
@@ -8963,6 +9582,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Start of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp fromTime = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -8979,10 +9602,169 @@ public final class Mt4TermApiMarketInfo {
         return fromTimeBuilder_;
       }
 
+      private com.google.protobuf.Timestamp fromTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> fromTimeUtcBuilder_;
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       * @return Whether the fromTimeUtc field is set.
+       */
+      public boolean hasFromTimeUtc() {
+        return fromTimeUtcBuilder_ != null || fromTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       * @return The fromTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getFromTimeUtc() {
+        if (fromTimeUtcBuilder_ == null) {
+          return fromTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : fromTimeUtc_;
+        } else {
+          return fromTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public Builder setFromTimeUtc(com.google.protobuf.Timestamp value) {
+        if (fromTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fromTimeUtc_ = value;
+          onChanged();
+        } else {
+          fromTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public Builder setFromTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (fromTimeUtcBuilder_ == null) {
+          fromTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          fromTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public Builder mergeFromTimeUtc(com.google.protobuf.Timestamp value) {
+        if (fromTimeUtcBuilder_ == null) {
+          if (fromTimeUtc_ != null) {
+            fromTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(fromTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            fromTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          fromTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public Builder clearFromTimeUtc() {
+        if (fromTimeUtcBuilder_ == null) {
+          fromTimeUtc_ = null;
+          onChanged();
+        } else {
+          fromTimeUtc_ = null;
+          fromTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getFromTimeUtcBuilder() {
+        
+        onChanged();
+        return getFromTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getFromTimeUtcOrBuilder() {
+        if (fromTimeUtcBuilder_ != null) {
+          return fromTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return fromTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : fromTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * fromTime in UTC: send either fromTime or fromTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp fromTimeUtc = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getFromTimeUtcFieldBuilder() {
+        if (fromTimeUtcBuilder_ == null) {
+          fromTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getFromTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          fromTimeUtc_ = null;
+        }
+        return fromTimeUtcBuilder_;
+      }
+
       private com.google.protobuf.Timestamp toTime_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> toTimeBuilder_;
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        * @return Whether the toTime field is set.
        */
@@ -8990,6 +9772,10 @@ public final class Mt4TermApiMarketInfo {
         return toTimeBuilder_ != null || toTime_ != null;
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        * @return The toTime.
        */
@@ -9001,6 +9787,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public Builder setToTime(com.google.protobuf.Timestamp value) {
@@ -9017,6 +9807,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public Builder setToTime(
@@ -9031,6 +9825,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public Builder mergeToTime(com.google.protobuf.Timestamp value) {
@@ -9049,6 +9847,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public Builder clearToTime() {
@@ -9063,6 +9865,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getToTimeBuilder() {
@@ -9071,6 +9877,10 @@ public final class Mt4TermApiMarketInfo {
         return getToTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getToTimeOrBuilder() {
@@ -9082,6 +9892,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * End of the range of bars (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp toTime = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -9096,6 +9910,161 @@ public final class Mt4TermApiMarketInfo {
           toTime_ = null;
         }
         return toTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp toTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> toTimeUtcBuilder_;
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       * @return Whether the toTimeUtc field is set.
+       */
+      public boolean hasToTimeUtc() {
+        return toTimeUtcBuilder_ != null || toTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       * @return The toTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getToTimeUtc() {
+        if (toTimeUtcBuilder_ == null) {
+          return toTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : toTimeUtc_;
+        } else {
+          return toTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public Builder setToTimeUtc(com.google.protobuf.Timestamp value) {
+        if (toTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          toTimeUtc_ = value;
+          onChanged();
+        } else {
+          toTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public Builder setToTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (toTimeUtcBuilder_ == null) {
+          toTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          toTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public Builder mergeToTimeUtc(com.google.protobuf.Timestamp value) {
+        if (toTimeUtcBuilder_ == null) {
+          if (toTimeUtc_ != null) {
+            toTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(toTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            toTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          toTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public Builder clearToTimeUtc() {
+        if (toTimeUtcBuilder_ == null) {
+          toTimeUtc_ = null;
+          onChanged();
+        } else {
+          toTimeUtc_ = null;
+          toTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getToTimeUtcBuilder() {
+        
+        onChanged();
+        return getToTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getToTimeUtcOrBuilder() {
+        if (toTimeUtcBuilder_ != null) {
+          return toTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return toTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : toTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * toTime in UTC: send either toTime or toTimeUtc, not both.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp toTimeUtc = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getToTimeUtcFieldBuilder() {
+        if (toTimeUtcBuilder_ == null) {
+          toTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getToTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          toTimeUtc_ = null;
+        }
+        return toTimeUtcBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -10919,19 +11888,58 @@ public final class Mt4TermApiMarketInfo {
     int getIndex();
 
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      * @return Whether the time field is set.
      */
     boolean hasTime();
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      * @return The time.
      */
     com.google.protobuf.Timestamp getTime();
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getTimeOrBuilder();
+
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     * @return Whether the timeUtc field is set.
+     */
+    boolean hasTimeUtc();
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     * @return The timeUtc.
+     */
+    com.google.protobuf.Timestamp getTimeUtc();
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getTimeUtcOrBuilder();
 
     /**
      * <code>double open = 4;</code>
@@ -11080,6 +12088,19 @@ public final class Mt4TermApiMarketInfo {
               spread_ = input.readInt32();
               break;
             }
+            case 90: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (timeUtc_ != null) {
+                subBuilder = timeUtc_.toBuilder();
+              }
+              timeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(timeUtc_);
+                timeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -11166,6 +12187,10 @@ public final class Mt4TermApiMarketInfo {
     public static final int TIME_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp time_;
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      * @return Whether the time field is set.
      */
@@ -11174,6 +12199,10 @@ public final class Mt4TermApiMarketInfo {
       return time_ != null;
     }
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      * @return The time.
      */
@@ -11182,11 +12211,53 @@ public final class Mt4TermApiMarketInfo {
       return time_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : time_;
     }
     /**
+     * <pre>
+     * Open time of the bar (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp time = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getTimeOrBuilder() {
       return getTime();
+    }
+
+    public static final int TIME_UTC_FIELD_NUMBER = 11;
+    private com.google.protobuf.Timestamp timeUtc_;
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     * @return Whether the timeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasTimeUtc() {
+      return timeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     * @return The timeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getTimeUtc() {
+      return timeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeUtc_;
+    }
+    /**
+     * <pre>
+     * time in UTC (the same moment; time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getTimeUtcOrBuilder() {
+      return getTimeUtc();
     }
 
     public static final int OPEN_FIELD_NUMBER = 4;
@@ -11310,6 +12381,9 @@ public final class Mt4TermApiMarketInfo {
       if (spread_ != 0) {
         output.writeInt32(10, spread_);
       }
+      if (timeUtc_ != null) {
+        output.writeMessage(11, getTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -11358,6 +12432,10 @@ public final class Mt4TermApiMarketInfo {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, spread_);
       }
+      if (timeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, getTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -11381,6 +12459,11 @@ public final class Mt4TermApiMarketInfo {
       if (hasTime()) {
         if (!getTime()
             .equals(other.getTime())) return false;
+      }
+      if (hasTimeUtc() != other.hasTimeUtc()) return false;
+      if (hasTimeUtc()) {
+        if (!getTimeUtc()
+            .equals(other.getTimeUtc())) return false;
       }
       if (java.lang.Double.doubleToLongBits(getOpen())
           != java.lang.Double.doubleToLongBits(
@@ -11418,6 +12501,10 @@ public final class Mt4TermApiMarketInfo {
       if (hasTime()) {
         hash = (37 * hash) + TIME_FIELD_NUMBER;
         hash = (53 * hash) + getTime().hashCode();
+      }
+      if (hasTimeUtc()) {
+        hash = (37 * hash) + TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getTimeUtc().hashCode();
       }
       hash = (37 * hash) + OPEN_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -11582,6 +12669,12 @@ public final class Mt4TermApiMarketInfo {
           time_ = null;
           timeBuilder_ = null;
         }
+        if (timeUtcBuilder_ == null) {
+          timeUtc_ = null;
+        } else {
+          timeUtc_ = null;
+          timeUtcBuilder_ = null;
+        }
         open_ = 0D;
 
         close_ = 0D;
@@ -11628,6 +12721,11 @@ public final class Mt4TermApiMarketInfo {
           result.time_ = time_;
         } else {
           result.time_ = timeBuilder_.build();
+        }
+        if (timeUtcBuilder_ == null) {
+          result.timeUtc_ = timeUtc_;
+        } else {
+          result.timeUtc_ = timeUtcBuilder_.build();
         }
         result.open_ = open_;
         result.close_ = close_;
@@ -11693,6 +12791,9 @@ public final class Mt4TermApiMarketInfo {
         }
         if (other.hasTime()) {
           mergeTime(other.getTime());
+        }
+        if (other.hasTimeUtc()) {
+          mergeTimeUtc(other.getTimeUtc());
         }
         if (other.getOpen() != 0D) {
           setOpen(other.getOpen());
@@ -11855,6 +12956,10 @@ public final class Mt4TermApiMarketInfo {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timeBuilder_;
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        * @return Whether the time field is set.
        */
@@ -11862,6 +12967,10 @@ public final class Mt4TermApiMarketInfo {
         return timeBuilder_ != null || time_ != null;
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        * @return The time.
        */
@@ -11873,6 +12982,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public Builder setTime(com.google.protobuf.Timestamp value) {
@@ -11889,6 +13002,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public Builder setTime(
@@ -11903,6 +13020,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public Builder mergeTime(com.google.protobuf.Timestamp value) {
@@ -11921,6 +13042,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public Builder clearTime() {
@@ -11935,6 +13060,10 @@ public final class Mt4TermApiMarketInfo {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getTimeBuilder() {
@@ -11943,6 +13072,10 @@ public final class Mt4TermApiMarketInfo {
         return getTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getTimeOrBuilder() {
@@ -11954,6 +13087,10 @@ public final class Mt4TermApiMarketInfo {
         }
       }
       /**
+       * <pre>
+       * Open time of the bar (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp time = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -11968,6 +13105,161 @@ public final class Mt4TermApiMarketInfo {
           time_ = null;
         }
         return timeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp timeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timeUtcBuilder_;
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       * @return Whether the timeUtc field is set.
+       */
+      public boolean hasTimeUtc() {
+        return timeUtcBuilder_ != null || timeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       * @return The timeUtc.
+       */
+      public com.google.protobuf.Timestamp getTimeUtc() {
+        if (timeUtcBuilder_ == null) {
+          return timeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timeUtc_;
+        } else {
+          return timeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public Builder setTimeUtc(com.google.protobuf.Timestamp value) {
+        if (timeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timeUtc_ = value;
+          onChanged();
+        } else {
+          timeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public Builder setTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (timeUtcBuilder_ == null) {
+          timeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          timeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public Builder mergeTimeUtc(com.google.protobuf.Timestamp value) {
+        if (timeUtcBuilder_ == null) {
+          if (timeUtc_ != null) {
+            timeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(timeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            timeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          timeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public Builder clearTimeUtc() {
+        if (timeUtcBuilder_ == null) {
+          timeUtc_ = null;
+          onChanged();
+        } else {
+          timeUtc_ = null;
+          timeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getTimeUtcBuilder() {
+        
+        onChanged();
+        return getTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getTimeUtcOrBuilder() {
+        if (timeUtcBuilder_ != null) {
+          return timeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return timeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : timeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * time in UTC (the same moment; time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp time_utc = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getTimeUtcFieldBuilder() {
+        if (timeUtcBuilder_ == null) {
+          timeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          timeUtc_ = null;
+        }
+        return timeUtcBuilder_;
       }
 
       private double open_ ;
@@ -14506,61 +15798,66 @@ public final class Mt4TermApiMarketInfo {
       "error.proto\"\036\n\014QuoteRequest\022\016\n\006symbol\030\001 " +
       "\001(\t\"g\n\nQuoteReply\022\'\n\004data\030\001 \001(\0132\027.mt4_te" +
       "rm_api.QuoteDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_" +
-      "term_api.ErrorH\000B\n\n\010response\"\177\n\tQuoteDat" +
-      "a\022\016\n\006symbol\030\001 \001(\t\022\013\n\003bid\030\002 \001(\001\022\013\n\003ask\030\003 " +
-      "\001(\001\022-\n\tdate_time\030\004 \001(\0132\032.google.protobuf" +
-      ".Timestamp\022\014\n\004high\030\005 \001(\001\022\013\n\003low\030\006 \001(\001\"#\n" +
-      "\020QuoteManyRequest\022\017\n\007symbols\030\001 \003(\t\"o\n\016Qu" +
-      "oteManyReply\022+\n\004data\030\001 \001(\0132\033.mt4_term_ap" +
-      "i.QuoteManyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_t" +
-      "erm_api.ErrorH\000B\n\n\010response\"8\n\rQuoteMany" +
-      "Data\022\'\n\006quotes\030\001 \003(\0132\027.mt4_term_api.Quot" +
-      "eData\"\020\n\016SymbolsRequest\"k\n\014SymbolsReply\022" +
-      ")\n\004data\030\001 \001(\0132\031.mt4_term_api.SymbolsData" +
-      "H\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000" +
-      "B\n\n\010response\"D\n\013SymbolsData\0225\n\017SymbolNam" +
-      "eInfos\030\001 \003(\0132\034.mt4_term_api.SymbolNameIn" +
-      "fo\";\n\016SymbolNameInfo\022\023\n\013symbol_name\030\001 \001(" +
-      "\t\022\024\n\014symbol_index\030\002 \001(\005\"\276\001\n\023QuoteHistory" +
-      "Request\022\016\n\006symbol\030\001 \001(\t\022=\n\ttimeframe\030\002 \001" +
-      "(\0162*.mt4_term_api.ENUM_QUOTE_HISTORY_TIM" +
-      "EFRAME\022,\n\010fromTime\030\003 \001(\0132\032.google.protob" +
-      "uf.Timestamp\022*\n\006toTime\030\004 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\"u\n\021QuoteHistoryReply\022.\n" +
-      "\004data\030\001 \001(\0132\036.mt4_term_api.QuoteHistoryD" +
-      "ataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.Erro" +
-      "rH\000B\n\n\010response\"I\n\020QuoteHistoryData\0225\n\021h" +
-      "istorical_quotes\030\001 \003(\0132\032.mt4_term_api.Hi" +
-      "storyQuote\"\311\001\n\014HistoryQuote\022\016\n\006symbol\030\001 " +
-      "\001(\t\022\r\n\005index\030\002 \001(\005\022(\n\004time\030\003 \001(\0132\032.googl" +
-      "e.protobuf.Timestamp\022\014\n\004open\030\004 \001(\001\022\r\n\005cl" +
-      "ose\030\005 \001(\001\022\014\n\004high\030\006 \001(\001\022\013\n\003low\030\007 \001(\001\022\023\n\013" +
-      "real_volume\030\010 \001(\003\022\023\n\013tick_volume\030\t \001(\003\022\016" +
-      "\n\006spread\030\n \001(\005\"5\n\023SymbolSelectRequest\022\016\n" +
-      "\006symbol\030\001 \001(\t\022\016\n\006select\030\002 \001(\010\"u\n\021SymbolS" +
-      "electReply\022.\n\004data\030\001 \001(\0132\036.mt4_term_api." +
-      "SymbolSelectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_" +
-      "term_api.ErrorH\000B\n\n\010response\"#\n\020SymbolSe" +
-      "lectData\022\017\n\007success\030\001 \001(\010*\303\001\n\034ENUM_QUOTE" +
-      "_HISTORY_TIMEFRAME\022\020\n\014QH_PERIOD_M1\020\000\022\020\n\014" +
-      "QH_PERIOD_M5\020\001\022\021\n\rQH_PERIOD_M15\020\002\022\021\n\rQH_" +
-      "PERIOD_M30\020\003\022\020\n\014QH_PERIOD_H1\020\004\022\020\n\014QH_PER" +
-      "IOD_H4\020\005\022\020\n\014QH_PERIOD_D1\020\006\022\020\n\014QH_PERIOD_" +
-      "W1\020\007\022\021\n\rQH_PERIOD_MN1\020\0102\347\003\n\nMarketInfo\022M" +
-      "\n\005Quote\022\032.mt4_term_api.QuoteRequest\032\030.mt" +
-      "4_term_api.QuoteReply\"\016\202\323\344\223\002\010\022\006/Quote\022]\n" +
-      "\tQuoteMany\022\036.mt4_term_api.QuoteManyReque" +
-      "st\032\034.mt4_term_api.QuoteManyReply\"\022\202\323\344\223\002\014" +
-      "\022\n/QuoteMany\022U\n\007Symbols\022\034.mt4_term_api.S" +
-      "ymbolsRequest\032\032.mt4_term_api.SymbolsRepl" +
-      "y\"\020\202\323\344\223\002\n\022\010/Symbols\022i\n\014QuoteHistory\022!.mt" +
-      "4_term_api.QuoteHistoryRequest\032\037.mt4_ter" +
-      "m_api.QuoteHistoryReply\"\025\202\323\344\223\002\017\022\r/QuoteH" +
-      "istory\022i\n\014SymbolSelect\022!.mt4_term_api.Sy" +
-      "mbolSelectRequest\032\037.mt4_term_api.SymbolS" +
-      "electReply\"\025\202\323\344\223\002\017\022\r/SymbolSelectBBZ1git" +
-      ".mtapi.io/root/mrpc-proto.git/mt4/librar" +
-      "ies/go\252\002\014mt4_term_apib\006proto3"
+      "term_api.ErrorH\000B\n\n\010response\"\262\001\n\tQuoteDa" +
+      "ta\022\016\n\006symbol\030\001 \001(\t\022\013\n\003bid\030\002 \001(\001\022\013\n\003ask\030\003" +
+      " \001(\001\022-\n\tdate_time\030\004 \001(\0132\032.google.protobu" +
+      "f.Timestamp\0221\n\rdate_time_utc\030\007 \001(\0132\032.goo" +
+      "gle.protobuf.Timestamp\022\014\n\004high\030\005 \001(\001\022\013\n\003" +
+      "low\030\006 \001(\001\"#\n\020QuoteManyRequest\022\017\n\007symbols" +
+      "\030\001 \003(\t\"o\n\016QuoteManyReply\022+\n\004data\030\001 \001(\0132\033" +
+      ".mt4_term_api.QuoteManyDataH\000\022$\n\005error\030\002" +
+      " \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"" +
+      "8\n\rQuoteManyData\022\'\n\006quotes\030\001 \003(\0132\027.mt4_t" +
+      "erm_api.QuoteData\"\020\n\016SymbolsRequest\"k\n\014S" +
+      "ymbolsReply\022)\n\004data\030\001 \001(\0132\031.mt4_term_api" +
+      ".SymbolsDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term" +
+      "_api.ErrorH\000B\n\n\010response\"D\n\013SymbolsData\022" +
+      "5\n\017SymbolNameInfos\030\001 \003(\0132\034.mt4_term_api." +
+      "SymbolNameInfo\";\n\016SymbolNameInfo\022\023\n\013symb" +
+      "ol_name\030\001 \001(\t\022\024\n\014symbol_index\030\002 \001(\005\"\236\002\n\023" +
+      "QuoteHistoryRequest\022\016\n\006symbol\030\001 \001(\t\022=\n\tt" +
+      "imeframe\030\002 \001(\0162*.mt4_term_api.ENUM_QUOTE" +
+      "_HISTORY_TIMEFRAME\022,\n\010fromTime\030\003 \001(\0132\032.g" +
+      "oogle.protobuf.Timestamp\022/\n\013fromTimeUtc\030" +
+      "\005 \001(\0132\032.google.protobuf.Timestamp\022*\n\006toT" +
+      "ime\030\004 \001(\0132\032.google.protobuf.Timestamp\022-\n" +
+      "\ttoTimeUtc\030\006 \001(\0132\032.google.protobuf.Times" +
+      "tamp\"u\n\021QuoteHistoryReply\022.\n\004data\030\001 \001(\0132" +
+      "\036.mt4_term_api.QuoteHistoryDataH\000\022$\n\005err" +
+      "or\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respo" +
+      "nse\"I\n\020QuoteHistoryData\0225\n\021historical_qu" +
+      "otes\030\001 \003(\0132\032.mt4_term_api.HistoryQuote\"\367" +
+      "\001\n\014HistoryQuote\022\016\n\006symbol\030\001 \001(\t\022\r\n\005index" +
+      "\030\002 \001(\005\022(\n\004time\030\003 \001(\0132\032.google.protobuf.T" +
+      "imestamp\022,\n\010time_utc\030\013 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\022\014\n\004open\030\004 \001(\001\022\r\n\005close\030\005 " +
+      "\001(\001\022\014\n\004high\030\006 \001(\001\022\013\n\003low\030\007 \001(\001\022\023\n\013real_v" +
+      "olume\030\010 \001(\003\022\023\n\013tick_volume\030\t \001(\003\022\016\n\006spre" +
+      "ad\030\n \001(\005\"5\n\023SymbolSelectRequest\022\016\n\006symbo" +
+      "l\030\001 \001(\t\022\016\n\006select\030\002 \001(\010\"u\n\021SymbolSelectR" +
+      "eply\022.\n\004data\030\001 \001(\0132\036.mt4_term_api.Symbol" +
+      "SelectDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_a" +
+      "pi.ErrorH\000B\n\n\010response\"#\n\020SymbolSelectDa" +
+      "ta\022\017\n\007success\030\001 \001(\010*\303\001\n\034ENUM_QUOTE_HISTO" +
+      "RY_TIMEFRAME\022\020\n\014QH_PERIOD_M1\020\000\022\020\n\014QH_PER" +
+      "IOD_M5\020\001\022\021\n\rQH_PERIOD_M15\020\002\022\021\n\rQH_PERIOD" +
+      "_M30\020\003\022\020\n\014QH_PERIOD_H1\020\004\022\020\n\014QH_PERIOD_H4" +
+      "\020\005\022\020\n\014QH_PERIOD_D1\020\006\022\020\n\014QH_PERIOD_W1\020\007\022\021" +
+      "\n\rQH_PERIOD_MN1\020\0102\352\003\n\nMarketInfo\022M\n\005Quot" +
+      "e\022\032.mt4_term_api.QuoteRequest\032\030.mt4_term" +
+      "_api.QuoteReply\"\016\202\323\344\223\002\010\022\006/Quote\022]\n\tQuote" +
+      "Many\022\036.mt4_term_api.QuoteManyRequest\032\034.m" +
+      "t4_term_api.QuoteManyReply\"\022\202\323\344\223\002\014\022\n/Quo" +
+      "teMany\022U\n\007Symbols\022\034.mt4_term_api.Symbols" +
+      "Request\032\032.mt4_term_api.SymbolsReply\"\020\202\323\344" +
+      "\223\002\n\022\010/Symbols\022l\n\014QuoteHistory\022!.mt4_term" +
+      "_api.QuoteHistoryRequest\032\037.mt4_term_api." +
+      "QuoteHistoryReply\"\030\210\002\001\202\323\344\223\002\017\022\r/QuoteHist" +
+      "ory\022i\n\014SymbolSelect\022!.mt4_term_api.Symbo" +
+      "lSelectRequest\032\037.mt4_term_api.SymbolSele" +
+      "ctReply\"\025\202\323\344\223\002\017\022\r/SymbolSelectBBZ1git.mt" +
+      "api.io/root/mrpc-proto.git/mt4/libraries" +
+      "/go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14586,7 +15883,7 @@ public final class Mt4TermApiMarketInfo {
     internal_static_mt4_term_api_QuoteData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_QuoteData_descriptor,
-        new java.lang.String[] { "Symbol", "Bid", "Ask", "DateTime", "High", "Low", });
+        new java.lang.String[] { "Symbol", "Bid", "Ask", "DateTime", "DateTimeUtc", "High", "Low", });
     internal_static_mt4_term_api_QuoteManyRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_mt4_term_api_QuoteManyRequest_fieldAccessorTable = new
@@ -14634,7 +15931,7 @@ public final class Mt4TermApiMarketInfo {
     internal_static_mt4_term_api_QuoteHistoryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_QuoteHistoryRequest_descriptor,
-        new java.lang.String[] { "Symbol", "Timeframe", "FromTime", "ToTime", });
+        new java.lang.String[] { "Symbol", "Timeframe", "FromTime", "FromTimeUtc", "ToTime", "ToTimeUtc", });
     internal_static_mt4_term_api_QuoteHistoryReply_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_mt4_term_api_QuoteHistoryReply_fieldAccessorTable = new
@@ -14652,7 +15949,7 @@ public final class Mt4TermApiMarketInfo {
     internal_static_mt4_term_api_HistoryQuote_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_HistoryQuote_descriptor,
-        new java.lang.String[] { "Symbol", "Index", "Time", "Open", "Close", "High", "Low", "RealVolume", "TickVolume", "Spread", });
+        new java.lang.String[] { "Symbol", "Index", "Time", "TimeUtc", "Open", "Close", "High", "Low", "RealVolume", "TickVolume", "Spread", });
     internal_static_mt4_term_api_SymbolSelectRequest_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_mt4_term_api_SymbolSelectRequest_fieldAccessorTable = new

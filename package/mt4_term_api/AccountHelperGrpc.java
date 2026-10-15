@@ -300,6 +300,10 @@ public final class AccountHelperGrpc {
     }
 
     /**
+     * <pre>
+     * Tick value as array. Name the symbols (symbolNames); with no names the reply covers the
+     * symbols currently in Market Watch, never the whole server list.
+     * </pre>
      */
     public void tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply> responseObserver) {
@@ -424,6 +428,10 @@ public final class AccountHelperGrpc {
     }
 
     /**
+     * <pre>
+     * Tick value as array. Name the symbols (symbolNames); with no names the reply covers the
+     * symbols currently in Market Watch, never the whole server list.
+     * </pre>
      */
     public void tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply> responseObserver) {
@@ -497,6 +505,10 @@ public final class AccountHelperGrpc {
     }
 
     /**
+     * <pre>
+     * Tick value as array. Name the symbols (symbolNames); with no names the reply covers the
+     * symbols currently in Market Watch, never the whole server list.
+     * </pre>
      */
     public mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -574,6 +586,10 @@ public final class AccountHelperGrpc {
     }
 
     /**
+     * <pre>
+     * Tick value as array. Name the symbols (symbolNames); with no names the reply covers the
+     * symbols currently in Market Watch, never the whole server list.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply> tickValueWithSize(
         mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request) {

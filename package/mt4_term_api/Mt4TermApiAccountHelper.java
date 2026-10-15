@@ -2466,19 +2466,58 @@ public final class Mt4TermApiAccountHelper {
         getAccountCurrencyBytes();
 
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      * @return Whether the serverTime field is set.
      */
     boolean hasServerTime();
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      * @return The serverTime.
      */
     com.google.protobuf.Timestamp getServerTime();
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      */
     com.google.protobuf.TimestampOrBuilder getServerTimeOrBuilder();
+
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     * @return Whether the serverTimeUtc field is set.
+     */
+    boolean hasServerTimeUtc();
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     * @return The serverTimeUtc.
+     */
+    com.google.protobuf.Timestamp getServerTimeUtc();
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getServerTimeUtcOrBuilder();
 
     /**
      * <code>double account_credit = 10;</code>
@@ -2493,10 +2532,46 @@ public final class Mt4TermApiAccountHelper {
     boolean getIsInvestor();
 
     /**
+     * <pre>
+     * The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information,
+     * never converted. 0 while the account is not connected yet.
+     * </pre>
+     *
      * <code>int32 utc_server_time_shift_minutes = 12;</code>
      * @return The utcServerTimeShiftMinutes.
      */
     int getUtcServerTimeShiftMinutes();
+
+    /**
+     * <pre>
+     * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+     * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+     * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+     * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+     * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+     * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+     * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+     * </pre>
+     *
+     * <code>optional int32 server_utc_offset_seconds = 14;</code>
+     * @return Whether the serverUtcOffsetSeconds field is set.
+     */
+    boolean hasServerUtcOffsetSeconds();
+    /**
+     * <pre>
+     * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+     * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+     * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+     * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+     * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+     * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+     * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+     * </pre>
+     *
+     * <code>optional int32 server_utc_offset_seconds = 14;</code>
+     * @return The serverUtcOffsetSeconds.
+     */
+    int getServerUtcOffsetSeconds();
   }
   /**
    * Protobuf type {@code mt4_term_api.AccountSummaryData}
@@ -2537,6 +2612,7 @@ public final class Mt4TermApiAccountHelper {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -2619,6 +2695,24 @@ public final class Mt4TermApiAccountHelper {
               utcServerTimeShiftMinutes_ = input.readInt32();
               break;
             }
+            case 112: {
+              bitField0_ |= 0x00000001;
+              serverUtcOffsetSeconds_ = input.readInt32();
+              break;
+            }
+            case 122: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (serverTimeUtc_ != null) {
+                subBuilder = serverTimeUtc_.toBuilder();
+              }
+              serverTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(serverTimeUtc_);
+                serverTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2653,6 +2747,7 @@ public final class Mt4TermApiAccountHelper {
               mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData.class, mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ACCOUNT_LOGIN_FIELD_NUMBER = 1;
     private long accountLogin_;
     /**
@@ -2833,6 +2928,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int SERVER_TIME_FIELD_NUMBER = 9;
     private com.google.protobuf.Timestamp serverTime_;
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      * @return Whether the serverTime field is set.
      */
@@ -2841,6 +2940,10 @@ public final class Mt4TermApiAccountHelper {
       return serverTime_ != null;
     }
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      * @return The serverTime.
      */
@@ -2849,11 +2952,53 @@ public final class Mt4TermApiAccountHelper {
       return serverTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : serverTime_;
     }
     /**
+     * <pre>
+     * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp server_time = 9;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getServerTimeOrBuilder() {
       return getServerTime();
+    }
+
+    public static final int SERVER_TIME_UTC_FIELD_NUMBER = 15;
+    private com.google.protobuf.Timestamp serverTimeUtc_;
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     * @return Whether the serverTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasServerTimeUtc() {
+      return serverTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     * @return The serverTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getServerTimeUtc() {
+      return serverTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : serverTimeUtc_;
+    }
+    /**
+     * <pre>
+     * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getServerTimeUtcOrBuilder() {
+      return getServerTimeUtc();
     }
 
     public static final int ACCOUNT_CREDIT_FIELD_NUMBER = 10;
@@ -2881,12 +3026,56 @@ public final class Mt4TermApiAccountHelper {
     public static final int UTC_SERVER_TIME_SHIFT_MINUTES_FIELD_NUMBER = 12;
     private int utcServerTimeShiftMinutes_;
     /**
+     * <pre>
+     * The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information,
+     * never converted. 0 while the account is not connected yet.
+     * </pre>
+     *
      * <code>int32 utc_server_time_shift_minutes = 12;</code>
      * @return The utcServerTimeShiftMinutes.
      */
     @java.lang.Override
     public int getUtcServerTimeShiftMinutes() {
       return utcServerTimeShiftMinutes_;
+    }
+
+    public static final int SERVER_UTC_OFFSET_SECONDS_FIELD_NUMBER = 14;
+    private int serverUtcOffsetSeconds_;
+    /**
+     * <pre>
+     * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+     * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+     * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+     * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+     * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+     * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+     * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+     * </pre>
+     *
+     * <code>optional int32 server_utc_offset_seconds = 14;</code>
+     * @return Whether the serverUtcOffsetSeconds field is set.
+     */
+    @java.lang.Override
+    public boolean hasServerUtcOffsetSeconds() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+     * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+     * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+     * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+     * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+     * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+     * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+     * </pre>
+     *
+     * <code>optional int32 server_utc_offset_seconds = 14;</code>
+     * @return The serverUtcOffsetSeconds.
+     */
+    @java.lang.Override
+    public int getServerUtcOffsetSeconds() {
+      return serverUtcOffsetSeconds_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2938,6 +3127,12 @@ public final class Mt4TermApiAccountHelper {
       }
       if (utcServerTimeShiftMinutes_ != 0) {
         output.writeInt32(12, utcServerTimeShiftMinutes_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(14, serverUtcOffsetSeconds_);
+      }
+      if (serverTimeUtc_ != null) {
+        output.writeMessage(15, getServerTimeUtc());
       }
       unknownFields.writeTo(output);
     }
@@ -2993,6 +3188,14 @@ public final class Mt4TermApiAccountHelper {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(12, utcServerTimeShiftMinutes_);
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, serverUtcOffsetSeconds_);
+      }
+      if (serverTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, getServerTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3030,6 +3233,11 @@ public final class Mt4TermApiAccountHelper {
         if (!getServerTime()
             .equals(other.getServerTime())) return false;
       }
+      if (hasServerTimeUtc() != other.hasServerTimeUtc()) return false;
+      if (hasServerTimeUtc()) {
+        if (!getServerTimeUtc()
+            .equals(other.getServerTimeUtc())) return false;
+      }
       if (java.lang.Double.doubleToLongBits(getAccountCredit())
           != java.lang.Double.doubleToLongBits(
               other.getAccountCredit())) return false;
@@ -3037,6 +3245,11 @@ public final class Mt4TermApiAccountHelper {
           != other.getIsInvestor()) return false;
       if (getUtcServerTimeShiftMinutes()
           != other.getUtcServerTimeShiftMinutes()) return false;
+      if (hasServerUtcOffsetSeconds() != other.hasServerUtcOffsetSeconds()) return false;
+      if (hasServerUtcOffsetSeconds()) {
+        if (getServerUtcOffsetSeconds()
+            != other.getServerUtcOffsetSeconds()) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3072,6 +3285,10 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + SERVER_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getServerTime().hashCode();
       }
+      if (hasServerTimeUtc()) {
+        hash = (37 * hash) + SERVER_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getServerTimeUtc().hashCode();
+      }
       hash = (37 * hash) + ACCOUNT_CREDIT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getAccountCredit()));
@@ -3080,6 +3297,10 @@ public final class Mt4TermApiAccountHelper {
           getIsInvestor());
       hash = (37 * hash) + UTC_SERVER_TIME_SHIFT_MINUTES_FIELD_NUMBER;
       hash = (53 * hash) + getUtcServerTimeShiftMinutes();
+      if (hasServerUtcOffsetSeconds()) {
+        hash = (37 * hash) + SERVER_UTC_OFFSET_SECONDS_FIELD_NUMBER;
+        hash = (53 * hash) + getServerUtcOffsetSeconds();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3235,12 +3456,20 @@ public final class Mt4TermApiAccountHelper {
           serverTime_ = null;
           serverTimeBuilder_ = null;
         }
+        if (serverTimeUtcBuilder_ == null) {
+          serverTimeUtc_ = null;
+        } else {
+          serverTimeUtc_ = null;
+          serverTimeUtcBuilder_ = null;
+        }
         accountCredit_ = 0D;
 
         isInvestor_ = false;
 
         utcServerTimeShiftMinutes_ = 0;
 
+        serverUtcOffsetSeconds_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -3267,6 +3496,8 @@ public final class Mt4TermApiAccountHelper {
       @java.lang.Override
       public mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData buildPartial() {
         mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData result = new mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.accountLogin_ = accountLogin_;
         result.accountBalance_ = accountBalance_;
         result.accountEquity_ = accountEquity_;
@@ -3280,9 +3511,19 @@ public final class Mt4TermApiAccountHelper {
         } else {
           result.serverTime_ = serverTimeBuilder_.build();
         }
+        if (serverTimeUtcBuilder_ == null) {
+          result.serverTimeUtc_ = serverTimeUtc_;
+        } else {
+          result.serverTimeUtc_ = serverTimeUtcBuilder_.build();
+        }
         result.accountCredit_ = accountCredit_;
         result.isInvestor_ = isInvestor_;
         result.utcServerTimeShiftMinutes_ = utcServerTimeShiftMinutes_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.serverUtcOffsetSeconds_ = serverUtcOffsetSeconds_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -3361,6 +3602,9 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasServerTime()) {
           mergeServerTime(other.getServerTime());
         }
+        if (other.hasServerTimeUtc()) {
+          mergeServerTimeUtc(other.getServerTimeUtc());
+        }
         if (other.getAccountCredit() != 0D) {
           setAccountCredit(other.getAccountCredit());
         }
@@ -3369,6 +3613,9 @@ public final class Mt4TermApiAccountHelper {
         }
         if (other.getUtcServerTimeShiftMinutes() != 0) {
           setUtcServerTimeShiftMinutes(other.getUtcServerTimeShiftMinutes());
+        }
+        if (other.hasServerUtcOffsetSeconds()) {
+          setServerUtcOffsetSeconds(other.getServerUtcOffsetSeconds());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3398,6 +3645,7 @@ public final class Mt4TermApiAccountHelper {
         }
         return this;
       }
+      private int bitField0_;
 
       private long accountLogin_ ;
       /**
@@ -3809,6 +4057,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> serverTimeBuilder_;
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        * @return Whether the serverTime field is set.
        */
@@ -3816,6 +4068,10 @@ public final class Mt4TermApiAccountHelper {
         return serverTimeBuilder_ != null || serverTime_ != null;
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        * @return The serverTime.
        */
@@ -3827,6 +4083,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public Builder setServerTime(com.google.protobuf.Timestamp value) {
@@ -3843,6 +4103,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public Builder setServerTime(
@@ -3857,6 +4121,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public Builder mergeServerTime(com.google.protobuf.Timestamp value) {
@@ -3875,6 +4143,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public Builder clearServerTime() {
@@ -3889,6 +4161,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public com.google.protobuf.Timestamp.Builder getServerTimeBuilder() {
@@ -3897,6 +4173,10 @@ public final class Mt4TermApiAccountHelper {
         return getServerTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getServerTimeOrBuilder() {
@@ -3908,6 +4188,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp server_time = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3922,6 +4206,161 @@ public final class Mt4TermApiAccountHelper {
           serverTime_ = null;
         }
         return serverTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp serverTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> serverTimeUtcBuilder_;
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       * @return Whether the serverTimeUtc field is set.
+       */
+      public boolean hasServerTimeUtc() {
+        return serverTimeUtcBuilder_ != null || serverTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       * @return The serverTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getServerTimeUtc() {
+        if (serverTimeUtcBuilder_ == null) {
+          return serverTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : serverTimeUtc_;
+        } else {
+          return serverTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public Builder setServerTimeUtc(com.google.protobuf.Timestamp value) {
+        if (serverTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          serverTimeUtc_ = value;
+          onChanged();
+        } else {
+          serverTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public Builder setServerTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (serverTimeUtcBuilder_ == null) {
+          serverTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          serverTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public Builder mergeServerTimeUtc(com.google.protobuf.Timestamp value) {
+        if (serverTimeUtcBuilder_ == null) {
+          if (serverTimeUtc_ != null) {
+            serverTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(serverTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            serverTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          serverTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public Builder clearServerTimeUtc() {
+        if (serverTimeUtcBuilder_ == null) {
+          serverTimeUtc_ = null;
+          onChanged();
+        } else {
+          serverTimeUtc_ = null;
+          serverTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getServerTimeUtcBuilder() {
+        
+        onChanged();
+        return getServerTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getServerTimeUtcOrBuilder() {
+        if (serverTimeUtcBuilder_ != null) {
+          return serverTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return serverTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : serverTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * server_time in UTC (the same moment; server_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp server_time_utc = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getServerTimeUtcFieldBuilder() {
+        if (serverTimeUtcBuilder_ == null) {
+          serverTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getServerTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          serverTimeUtc_ = null;
+        }
+        return serverTimeUtcBuilder_;
       }
 
       private double accountCredit_ ;
@@ -3988,6 +4427,11 @@ public final class Mt4TermApiAccountHelper {
 
       private int utcServerTimeShiftMinutes_ ;
       /**
+       * <pre>
+       * The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information,
+       * never converted. 0 while the account is not connected yet.
+       * </pre>
+       *
        * <code>int32 utc_server_time_shift_minutes = 12;</code>
        * @return The utcServerTimeShiftMinutes.
        */
@@ -3996,6 +4440,11 @@ public final class Mt4TermApiAccountHelper {
         return utcServerTimeShiftMinutes_;
       }
       /**
+       * <pre>
+       * The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information,
+       * never converted. 0 while the account is not connected yet.
+       * </pre>
+       *
        * <code>int32 utc_server_time_shift_minutes = 12;</code>
        * @param value The utcServerTimeShiftMinutes to set.
        * @return This builder for chaining.
@@ -4007,12 +4456,96 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information,
+       * never converted. 0 while the account is not connected yet.
+       * </pre>
+       *
        * <code>int32 utc_server_time_shift_minutes = 12;</code>
        * @return This builder for chaining.
        */
       public Builder clearUtcServerTimeShiftMinutes() {
         
         utcServerTimeShiftMinutes_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int serverUtcOffsetSeconds_ ;
+      /**
+       * <pre>
+       * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+       * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+       * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+       * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+       * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+       * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+       * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+       * </pre>
+       *
+       * <code>optional int32 server_utc_offset_seconds = 14;</code>
+       * @return Whether the serverUtcOffsetSeconds field is set.
+       */
+      @java.lang.Override
+      public boolean hasServerUtcOffsetSeconds() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <pre>
+       * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+       * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+       * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+       * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+       * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+       * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+       * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+       * </pre>
+       *
+       * <code>optional int32 server_utc_offset_seconds = 14;</code>
+       * @return The serverUtcOffsetSeconds.
+       */
+      @java.lang.Override
+      public int getServerUtcOffsetSeconds() {
+        return serverUtcOffsetSeconds_;
+      }
+      /**
+       * <pre>
+       * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+       * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+       * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+       * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+       * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+       * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+       * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+       * </pre>
+       *
+       * <code>optional int32 server_utc_offset_seconds = 14;</code>
+       * @param value The serverUtcOffsetSeconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerUtcOffsetSeconds(int value) {
+        bitField0_ |= 0x00000001;
+        serverUtcOffsetSeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes).
+       * Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false)
+       * while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived
+       * since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it
+       * present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers
+       * SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's
+       * last daylight-saving change is off by the daylight-saving step (usually 3600 s).
+       * </pre>
+       *
+       * <code>optional int32 server_utc_offset_seconds = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServerUtcOffsetSeconds() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        serverUtcOffsetSeconds_ = 0;
         onChanged();
         return this;
       }
@@ -6365,19 +6898,58 @@ public final class Mt4TermApiAccountHelper {
     double getCommision();
 
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return Whether the expirationTime field is set.
      */
     boolean hasExpirationTime();
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return The expirationTime.
      */
     com.google.protobuf.Timestamp getExpirationTime();
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder();
+
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    boolean hasExpirationTimeUtc();
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     * @return The expirationTimeUtc.
+     */
+    com.google.protobuf.Timestamp getExpirationTimeUtc();
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder();
 
     /**
      * <code>double lots = 4;</code>
@@ -6463,19 +7035,58 @@ public final class Mt4TermApiAccountHelper {
     int getSortIndex();
 
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return Whether the openTime field is set.
      */
     boolean hasOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return The openTime.
      */
     com.google.protobuf.Timestamp getOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      */
     com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder();
+
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    boolean hasOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     * @return The openTimeUtc.
+     */
+    com.google.protobuf.Timestamp getOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder();
 
     /**
      * <code>int64 account_login = 17;</code>
@@ -6635,6 +7246,32 @@ public final class Mt4TermApiAccountHelper {
               accountLogin_ = input.readInt64();
               break;
             }
+            case 146: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (expirationTimeUtc_ != null) {
+                subBuilder = expirationTimeUtc_.toBuilder();
+              }
+              expirationTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(expirationTimeUtc_);
+                expirationTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 154: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (openTimeUtc_ != null) {
+                subBuilder = openTimeUtc_.toBuilder();
+              }
+              openTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(openTimeUtc_);
+                openTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -6721,6 +7358,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int EXPIRATION_TIME_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp expirationTime_;
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return Whether the expirationTime field is set.
      */
@@ -6729,6 +7370,10 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ != null;
     }
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return The expirationTime.
      */
@@ -6737,11 +7382,53 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTime_;
     }
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
       return getExpirationTime();
+    }
+
+    public static final int EXPIRATION_TIME_UTC_FIELD_NUMBER = 18;
+    private com.google.protobuf.Timestamp expirationTimeUtc_;
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpirationTimeUtc() {
+      return expirationTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     * @return The expirationTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+      return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+    }
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+      return getExpirationTimeUtc();
     }
 
     public static final int LOTS_FIELD_NUMBER = 4;
@@ -6914,6 +7601,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int OPEN_TIME_FIELD_NUMBER = 16;
     private com.google.protobuf.Timestamp openTime_;
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return Whether the openTime field is set.
      */
@@ -6922,6 +7613,10 @@ public final class Mt4TermApiAccountHelper {
       return openTime_ != null;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return The openTime.
      */
@@ -6930,11 +7625,53 @@ public final class Mt4TermApiAccountHelper {
       return openTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
       return getOpenTime();
+    }
+
+    public static final int OPEN_TIME_UTC_FIELD_NUMBER = 19;
+    private com.google.protobuf.Timestamp openTimeUtc_;
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasOpenTimeUtc() {
+      return openTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     * @return The openTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getOpenTimeUtc() {
+      return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+      return getOpenTimeUtc();
     }
 
     public static final int ACCOUNT_LOGIN_FIELD_NUMBER = 17;
@@ -7013,6 +7750,12 @@ public final class Mt4TermApiAccountHelper {
       if (accountLogin_ != 0L) {
         output.writeInt64(17, accountLogin_);
       }
+      if (expirationTimeUtc_ != null) {
+        output.writeMessage(18, getExpirationTimeUtc());
+      }
+      if (openTimeUtc_ != null) {
+        output.writeMessage(19, getOpenTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -7088,6 +7831,14 @@ public final class Mt4TermApiAccountHelper {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(17, accountLogin_);
       }
+      if (expirationTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(18, getExpirationTimeUtc());
+      }
+      if (openTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(19, getOpenTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -7112,6 +7863,11 @@ public final class Mt4TermApiAccountHelper {
       if (hasExpirationTime()) {
         if (!getExpirationTime()
             .equals(other.getExpirationTime())) return false;
+      }
+      if (hasExpirationTimeUtc() != other.hasExpirationTimeUtc()) return false;
+      if (hasExpirationTimeUtc()) {
+        if (!getExpirationTimeUtc()
+            .equals(other.getExpirationTimeUtc())) return false;
       }
       if (java.lang.Double.doubleToLongBits(getLots())
           != java.lang.Double.doubleToLongBits(
@@ -7147,6 +7903,11 @@ public final class Mt4TermApiAccountHelper {
         if (!getOpenTime()
             .equals(other.getOpenTime())) return false;
       }
+      if (hasOpenTimeUtc() != other.hasOpenTimeUtc()) return false;
+      if (hasOpenTimeUtc()) {
+        if (!getOpenTimeUtc()
+            .equals(other.getOpenTimeUtc())) return false;
+      }
       if (getAccountLogin()
           != other.getAccountLogin()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -7168,6 +7929,10 @@ public final class Mt4TermApiAccountHelper {
       if (hasExpirationTime()) {
         hash = (37 * hash) + EXPIRATION_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getExpirationTime().hashCode();
+      }
+      if (hasExpirationTimeUtc()) {
+        hash = (37 * hash) + EXPIRATION_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getExpirationTimeUtc().hashCode();
       }
       hash = (37 * hash) + LOTS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -7202,6 +7967,10 @@ public final class Mt4TermApiAccountHelper {
       if (hasOpenTime()) {
         hash = (37 * hash) + OPEN_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getOpenTime().hashCode();
+      }
+      if (hasOpenTimeUtc()) {
+        hash = (37 * hash) + OPEN_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getOpenTimeUtc().hashCode();
       }
       hash = (37 * hash) + ACCOUNT_LOGIN_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -7349,6 +8118,12 @@ public final class Mt4TermApiAccountHelper {
           expirationTime_ = null;
           expirationTimeBuilder_ = null;
         }
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
+        }
         lots_ = 0D;
 
         magicNumber_ = 0;
@@ -7378,6 +8153,12 @@ public final class Mt4TermApiAccountHelper {
         } else {
           openTime_ = null;
           openTimeBuilder_ = null;
+        }
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
         }
         accountLogin_ = 0L;
 
@@ -7414,6 +8195,11 @@ public final class Mt4TermApiAccountHelper {
         } else {
           result.expirationTime_ = expirationTimeBuilder_.build();
         }
+        if (expirationTimeUtcBuilder_ == null) {
+          result.expirationTimeUtc_ = expirationTimeUtc_;
+        } else {
+          result.expirationTimeUtc_ = expirationTimeUtcBuilder_.build();
+        }
         result.lots_ = lots_;
         result.magicNumber_ = magicNumber_;
         result.openPrice_ = openPrice_;
@@ -7430,6 +8216,11 @@ public final class Mt4TermApiAccountHelper {
           result.openTime_ = openTime_;
         } else {
           result.openTime_ = openTimeBuilder_.build();
+        }
+        if (openTimeUtcBuilder_ == null) {
+          result.openTimeUtc_ = openTimeUtc_;
+        } else {
+          result.openTimeUtc_ = openTimeUtcBuilder_.build();
         }
         result.accountLogin_ = accountLogin_;
         onBuilt();
@@ -7490,6 +8281,9 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasExpirationTime()) {
           mergeExpirationTime(other.getExpirationTime());
         }
+        if (other.hasExpirationTimeUtc()) {
+          mergeExpirationTimeUtc(other.getExpirationTimeUtc());
+        }
         if (other.getLots() != 0D) {
           setLots(other.getLots());
         }
@@ -7529,6 +8323,9 @@ public final class Mt4TermApiAccountHelper {
         }
         if (other.hasOpenTime()) {
           mergeOpenTime(other.getOpenTime());
+        }
+        if (other.hasOpenTimeUtc()) {
+          mergeOpenTimeUtc(other.getOpenTimeUtc());
         }
         if (other.getAccountLogin() != 0L) {
           setAccountLogin(other.getAccountLogin());
@@ -7673,6 +8470,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeBuilder_;
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        * @return Whether the expirationTime field is set.
        */
@@ -7680,6 +8481,10 @@ public final class Mt4TermApiAccountHelper {
         return expirationTimeBuilder_ != null || expirationTime_ != null;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        * @return The expirationTime.
        */
@@ -7691,6 +8496,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder setExpirationTime(com.google.protobuf.Timestamp value) {
@@ -7707,6 +8516,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder setExpirationTime(
@@ -7721,6 +8534,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder mergeExpirationTime(com.google.protobuf.Timestamp value) {
@@ -7739,6 +8556,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder clearExpirationTime() {
@@ -7753,6 +8574,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getExpirationTimeBuilder() {
@@ -7761,6 +8586,10 @@ public final class Mt4TermApiAccountHelper {
         return getExpirationTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
@@ -7772,6 +8601,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -7786,6 +8619,161 @@ public final class Mt4TermApiAccountHelper {
           expirationTime_ = null;
         }
         return expirationTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp expirationTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeUtcBuilder_;
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       * @return Whether the expirationTimeUtc field is set.
+       */
+      public boolean hasExpirationTimeUtc() {
+        return expirationTimeUtcBuilder_ != null || expirationTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       * @return The expirationTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        } else {
+          return expirationTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public Builder setExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expirationTimeUtc_ = value;
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public Builder setExpirationTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public Builder mergeExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (expirationTimeUtc_ != null) {
+            expirationTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(expirationTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            expirationTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public Builder clearExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+          onChanged();
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpirationTimeUtcBuilder() {
+        
+        onChanged();
+        return getExpirationTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+        if (expirationTimeUtcBuilder_ != null) {
+          return expirationTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return expirationTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 18;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getExpirationTimeUtcFieldBuilder() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpirationTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          expirationTimeUtc_ = null;
+        }
+        return expirationTimeUtcBuilder_;
       }
 
       private double lots_ ;
@@ -8232,6 +9220,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeBuilder_;
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        * @return Whether the openTime field is set.
        */
@@ -8239,6 +9231,10 @@ public final class Mt4TermApiAccountHelper {
         return openTimeBuilder_ != null || openTime_ != null;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        * @return The openTime.
        */
@@ -8250,6 +9246,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder setOpenTime(com.google.protobuf.Timestamp value) {
@@ -8266,6 +9266,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder setOpenTime(
@@ -8280,6 +9284,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder mergeOpenTime(com.google.protobuf.Timestamp value) {
@@ -8298,6 +9306,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder clearOpenTime() {
@@ -8312,6 +9324,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public com.google.protobuf.Timestamp.Builder getOpenTimeBuilder() {
@@ -8320,6 +9336,10 @@ public final class Mt4TermApiAccountHelper {
         return getOpenTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
@@ -8331,6 +9351,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -8345,6 +9369,161 @@ public final class Mt4TermApiAccountHelper {
           openTime_ = null;
         }
         return openTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp openTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeUtcBuilder_;
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       * @return Whether the openTimeUtc field is set.
+       */
+      public boolean hasOpenTimeUtc() {
+        return openTimeUtcBuilder_ != null || openTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       * @return The openTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        } else {
+          return openTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public Builder setOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          openTimeUtc_ = value;
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public Builder setOpenTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public Builder mergeOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (openTimeUtc_ != null) {
+            openTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(openTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            openTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public Builder clearOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+          onChanged();
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getOpenTimeUtcBuilder() {
+        
+        onChanged();
+        return getOpenTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+        if (openTimeUtcBuilder_ != null) {
+          return openTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return openTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 19;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getOpenTimeUtcFieldBuilder() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getOpenTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          openTimeUtc_ = null;
+        }
+        return openTimeUtcBuilder_;
       }
 
       private long accountLogin_ ;
@@ -11374,34 +12553,83 @@ public final class Mt4TermApiAccountHelper {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     java.util.List<mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo> 
         getOrdersInfoList();
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo getOrdersInfo(int index);
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     int getOrdersInfoCount();
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     java.util.List<? extends mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfoOrBuilder> 
         getOrdersInfoOrBuilderList();
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfoOrBuilder getOrdersInfoOrBuilder(
         int index);
 
     /**
+     * <pre>
+     * Number of orders in the whole selection, over all pages (at the moment of the call).
+     * </pre>
+     *
      * <code>int32 total_count = 2;</code>
      * @return The totalCount.
      */
     int getTotalCount();
+
+    /**
+     * <pre>
+     * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+     * </pre>
+     *
+     * <code>string next_page_token = 3;</code>
+     * @return The nextPageToken.
+     */
+    java.lang.String getNextPageToken();
+    /**
+     * <pre>
+     * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+     * </pre>
+     *
+     * <code>string next_page_token = 3;</code>
+     * @return The bytes for nextPageToken.
+     */
+    com.google.protobuf.ByteString
+        getNextPageTokenBytes();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrdersHistoryData}
@@ -11417,6 +12645,7 @@ public final class Mt4TermApiAccountHelper {
     }
     private OrdersHistoryData() {
       ordersInfo_ = java.util.Collections.emptyList();
+      nextPageToken_ = "";
     }
 
     @java.lang.Override
@@ -11464,6 +12693,12 @@ public final class Mt4TermApiAccountHelper {
               totalCount_ = input.readInt32();
               break;
             }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nextPageToken_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -11504,6 +12739,11 @@ public final class Mt4TermApiAccountHelper {
     public static final int ORDERS_INFO_FIELD_NUMBER = 1;
     private java.util.List<mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo> ordersInfo_;
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     @java.lang.Override
@@ -11511,6 +12751,11 @@ public final class Mt4TermApiAccountHelper {
       return ordersInfo_;
     }
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     @java.lang.Override
@@ -11519,6 +12764,11 @@ public final class Mt4TermApiAccountHelper {
       return ordersInfo_;
     }
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     @java.lang.Override
@@ -11526,6 +12776,11 @@ public final class Mt4TermApiAccountHelper {
       return ordersInfo_.size();
     }
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     @java.lang.Override
@@ -11533,6 +12788,11 @@ public final class Mt4TermApiAccountHelper {
       return ordersInfo_.get(index);
     }
     /**
+     * <pre>
+     * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+     * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+     * </pre>
+     *
      * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
      */
     @java.lang.Override
@@ -11544,12 +12804,62 @@ public final class Mt4TermApiAccountHelper {
     public static final int TOTAL_COUNT_FIELD_NUMBER = 2;
     private int totalCount_;
     /**
+     * <pre>
+     * Number of orders in the whole selection, over all pages (at the moment of the call).
+     * </pre>
+     *
      * <code>int32 total_count = 2;</code>
      * @return The totalCount.
      */
     @java.lang.Override
     public int getTotalCount() {
       return totalCount_;
+    }
+
+    public static final int NEXT_PAGE_TOKEN_FIELD_NUMBER = 3;
+    private volatile java.lang.Object nextPageToken_;
+    /**
+     * <pre>
+     * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+     * </pre>
+     *
+     * <code>string next_page_token = 3;</code>
+     * @return The nextPageToken.
+     */
+    @java.lang.Override
+    public java.lang.String getNextPageToken() {
+      java.lang.Object ref = nextPageToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nextPageToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+     * </pre>
+     *
+     * <code>string next_page_token = 3;</code>
+     * @return The bytes for nextPageToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNextPageTokenBytes() {
+      java.lang.Object ref = nextPageToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nextPageToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -11572,6 +12882,9 @@ public final class Mt4TermApiAccountHelper {
       if (totalCount_ != 0) {
         output.writeInt32(2, totalCount_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nextPageToken_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nextPageToken_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -11588,6 +12901,9 @@ public final class Mt4TermApiAccountHelper {
       if (totalCount_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, totalCount_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nextPageToken_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nextPageToken_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11608,6 +12924,8 @@ public final class Mt4TermApiAccountHelper {
           .equals(other.getOrdersInfoList())) return false;
       if (getTotalCount()
           != other.getTotalCount()) return false;
+      if (!getNextPageToken()
+          .equals(other.getNextPageToken())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -11625,6 +12943,8 @@ public final class Mt4TermApiAccountHelper {
       }
       hash = (37 * hash) + TOTAL_COUNT_FIELD_NUMBER;
       hash = (53 * hash) + getTotalCount();
+      hash = (37 * hash) + NEXT_PAGE_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getNextPageToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -11767,6 +13087,8 @@ public final class Mt4TermApiAccountHelper {
         }
         totalCount_ = 0;
 
+        nextPageToken_ = "";
+
         return this;
       }
 
@@ -11804,6 +13126,7 @@ public final class Mt4TermApiAccountHelper {
           result.ordersInfo_ = ordersInfoBuilder_.build();
         }
         result.totalCount_ = totalCount_;
+        result.nextPageToken_ = nextPageToken_;
         onBuilt();
         return result;
       }
@@ -11881,6 +13204,10 @@ public final class Mt4TermApiAccountHelper {
         if (other.getTotalCount() != 0) {
           setTotalCount(other.getTotalCount());
         }
+        if (!other.getNextPageToken().isEmpty()) {
+          nextPageToken_ = other.nextPageToken_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -11924,6 +13251,11 @@ public final class Mt4TermApiAccountHelper {
           mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo, mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.Builder, mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfoOrBuilder> ordersInfoBuilder_;
 
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public java.util.List<mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo> getOrdersInfoList() {
@@ -11934,6 +13266,11 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public int getOrdersInfoCount() {
@@ -11944,6 +13281,11 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo getOrdersInfo(int index) {
@@ -11954,6 +13296,11 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder setOrdersInfo(
@@ -11971,6 +13318,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder setOrdersInfo(
@@ -11985,6 +13337,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder addOrdersInfo(mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo value) {
@@ -12001,6 +13358,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder addOrdersInfo(
@@ -12018,6 +13380,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder addOrdersInfo(
@@ -12032,6 +13399,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder addOrdersInfo(
@@ -12046,6 +13418,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder addAllOrdersInfo(
@@ -12061,6 +13438,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder clearOrdersInfo() {
@@ -12074,6 +13456,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public Builder removeOrdersInfo(int index) {
@@ -12087,6 +13474,11 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.Builder getOrdersInfoBuilder(
@@ -12094,6 +13486,11 @@ public final class Mt4TermApiAccountHelper {
         return getOrdersInfoFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfoOrBuilder getOrdersInfoOrBuilder(
@@ -12104,6 +13501,11 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public java.util.List<? extends mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfoOrBuilder> 
@@ -12115,6 +13517,11 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.Builder addOrdersInfoBuilder() {
@@ -12122,6 +13529,11 @@ public final class Mt4TermApiAccountHelper {
             mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.Builder addOrdersInfoBuilder(
@@ -12130,6 +13542,11 @@ public final class Mt4TermApiAccountHelper {
             index, mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.getDefaultInstance());
       }
       /**
+       * <pre>
+       * Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal
+       * sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.
+       * </pre>
+       *
        * <code>repeated .mt4_term_api.HistoryOrderInfo orders_info = 1;</code>
        */
       public java.util.List<mt4_term_api.Mt4TermApiAccountHelper.HistoryOrderInfo.Builder> 
@@ -12153,6 +13570,10 @@ public final class Mt4TermApiAccountHelper {
 
       private int totalCount_ ;
       /**
+       * <pre>
+       * Number of orders in the whole selection, over all pages (at the moment of the call).
+       * </pre>
+       *
        * <code>int32 total_count = 2;</code>
        * @return The totalCount.
        */
@@ -12161,6 +13582,10 @@ public final class Mt4TermApiAccountHelper {
         return totalCount_;
       }
       /**
+       * <pre>
+       * Number of orders in the whole selection, over all pages (at the moment of the call).
+       * </pre>
+       *
        * <code>int32 total_count = 2;</code>
        * @param value The totalCount to set.
        * @return This builder for chaining.
@@ -12172,12 +13597,112 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Number of orders in the whole selection, over all pages (at the moment of the call).
+       * </pre>
+       *
        * <code>int32 total_count = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTotalCount() {
         
         totalCount_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nextPageToken_ = "";
+      /**
+       * <pre>
+       * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+       * </pre>
+       *
+       * <code>string next_page_token = 3;</code>
+       * @return The nextPageToken.
+       */
+      public java.lang.String getNextPageToken() {
+        java.lang.Object ref = nextPageToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nextPageToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+       * </pre>
+       *
+       * <code>string next_page_token = 3;</code>
+       * @return The bytes for nextPageToken.
+       */
+      public com.google.protobuf.ByteString
+          getNextPageTokenBytes() {
+        java.lang.Object ref = nextPageToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nextPageToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+       * </pre>
+       *
+       * <code>string next_page_token = 3;</code>
+       * @param value The nextPageToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNextPageToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nextPageToken_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+       * </pre>
+       *
+       * <code>string next_page_token = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNextPageToken() {
+        
+        nextPageToken_ = getDefaultInstance().getNextPageToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).
+       * </pre>
+       *
+       * <code>string next_page_token = 3;</code>
+       * @param value The bytes for nextPageToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNextPageTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nextPageToken_ = value;
         onChanged();
         return this;
       }
@@ -12257,19 +13782,58 @@ public final class Mt4TermApiAccountHelper {
     double getCommision();
 
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return Whether the expirationTime field is set.
      */
     boolean hasExpirationTime();
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return The expirationTime.
      */
     com.google.protobuf.Timestamp getExpirationTime();
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder();
+
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    boolean hasExpirationTimeUtc();
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     * @return The expirationTimeUtc.
+     */
+    com.google.protobuf.Timestamp getExpirationTimeUtc();
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder();
 
     /**
      * <code>double lots = 4;</code>
@@ -12355,34 +13919,112 @@ public final class Mt4TermApiAccountHelper {
     int getSortIndex();
 
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return Whether the openTime field is set.
      */
     boolean hasOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return The openTime.
      */
     com.google.protobuf.Timestamp getOpenTime();
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      */
     com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder();
 
     /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    boolean hasOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     * @return The openTimeUtc.
+     */
+    com.google.protobuf.Timestamp getOpenTimeUtc();
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder();
+
+    /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      * @return Whether the closeTime field is set.
      */
     boolean hasCloseTime();
     /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      * @return The closeTime.
      */
     com.google.protobuf.Timestamp getCloseTime();
     /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder();
+
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     * @return Whether the closeTimeUtc field is set.
+     */
+    boolean hasCloseTimeUtc();
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     * @return The closeTimeUtc.
+     */
+    com.google.protobuf.Timestamp getCloseTimeUtc();
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder();
 
     /**
      * <code>double close_price = 18;</code>
@@ -12566,6 +14208,45 @@ public final class Mt4TermApiAccountHelper {
               accountLogin_ = input.readInt64();
               break;
             }
+            case 162: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (expirationTimeUtc_ != null) {
+                subBuilder = expirationTimeUtc_.toBuilder();
+              }
+              expirationTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(expirationTimeUtc_);
+                expirationTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 170: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (openTimeUtc_ != null) {
+                subBuilder = openTimeUtc_.toBuilder();
+              }
+              openTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(openTimeUtc_);
+                openTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 178: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (closeTimeUtc_ != null) {
+                subBuilder = closeTimeUtc_.toBuilder();
+              }
+              closeTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(closeTimeUtc_);
+                closeTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -12652,6 +14333,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int EXPIRATION_TIME_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp expirationTime_;
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return Whether the expirationTime field is set.
      */
@@ -12660,6 +14345,10 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ != null;
     }
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      * @return The expirationTime.
      */
@@ -12668,11 +14357,53 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTime_;
     }
     /**
+     * <pre>
+     * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
       return getExpirationTime();
+    }
+
+    public static final int EXPIRATION_TIME_UTC_FIELD_NUMBER = 20;
+    private com.google.protobuf.Timestamp expirationTimeUtc_;
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpirationTimeUtc() {
+      return expirationTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     * @return The expirationTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+      return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+    }
+    /**
+     * <pre>
+     * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+      return getExpirationTimeUtc();
     }
 
     public static final int LOTS_FIELD_NUMBER = 4;
@@ -12845,6 +14576,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int OPEN_TIME_FIELD_NUMBER = 16;
     private com.google.protobuf.Timestamp openTime_;
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return Whether the openTime field is set.
      */
@@ -12853,6 +14588,10 @@ public final class Mt4TermApiAccountHelper {
       return openTime_ != null;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      * @return The openTime.
      */
@@ -12861,6 +14600,10 @@ public final class Mt4TermApiAccountHelper {
       return openTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTime_;
     }
     /**
+     * <pre>
+     * Open time of the order (broker server time).
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp open_time = 16;</code>
      */
     @java.lang.Override
@@ -12868,9 +14611,51 @@ public final class Mt4TermApiAccountHelper {
       return getOpenTime();
     }
 
+    public static final int OPEN_TIME_UTC_FIELD_NUMBER = 21;
+    private com.google.protobuf.Timestamp openTimeUtc_;
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     * @return Whether the openTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasOpenTimeUtc() {
+      return openTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     * @return The openTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getOpenTimeUtc() {
+      return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+    }
+    /**
+     * <pre>
+     * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+      return getOpenTimeUtc();
+    }
+
     public static final int CLOSE_TIME_FIELD_NUMBER = 17;
     private com.google.protobuf.Timestamp closeTime_;
     /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      * @return Whether the closeTime field is set.
      */
@@ -12879,6 +14664,10 @@ public final class Mt4TermApiAccountHelper {
       return closeTime_ != null;
     }
     /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      * @return The closeTime.
      */
@@ -12887,11 +14676,53 @@ public final class Mt4TermApiAccountHelper {
       return closeTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTime_;
     }
     /**
+     * <pre>
+     * Close time of the order (broker server time). Unset when the order is not closed.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp close_time = 17;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
       return getCloseTime();
+    }
+
+    public static final int CLOSE_TIME_UTC_FIELD_NUMBER = 22;
+    private com.google.protobuf.Timestamp closeTimeUtc_;
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     * @return Whether the closeTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasCloseTimeUtc() {
+      return closeTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     * @return The closeTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getCloseTimeUtc() {
+      return closeTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+    }
+    /**
+     * <pre>
+     * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder() {
+      return getCloseTimeUtc();
     }
 
     public static final int CLOSE_PRICE_FIELD_NUMBER = 18;
@@ -12987,6 +14818,15 @@ public final class Mt4TermApiAccountHelper {
       if (accountLogin_ != 0L) {
         output.writeInt64(19, accountLogin_);
       }
+      if (expirationTimeUtc_ != null) {
+        output.writeMessage(20, getExpirationTimeUtc());
+      }
+      if (openTimeUtc_ != null) {
+        output.writeMessage(21, getOpenTimeUtc());
+      }
+      if (closeTimeUtc_ != null) {
+        output.writeMessage(22, getCloseTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -13070,6 +14910,18 @@ public final class Mt4TermApiAccountHelper {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(19, accountLogin_);
       }
+      if (expirationTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, getExpirationTimeUtc());
+      }
+      if (openTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, getOpenTimeUtc());
+      }
+      if (closeTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(22, getCloseTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -13094,6 +14946,11 @@ public final class Mt4TermApiAccountHelper {
       if (hasExpirationTime()) {
         if (!getExpirationTime()
             .equals(other.getExpirationTime())) return false;
+      }
+      if (hasExpirationTimeUtc() != other.hasExpirationTimeUtc()) return false;
+      if (hasExpirationTimeUtc()) {
+        if (!getExpirationTimeUtc()
+            .equals(other.getExpirationTimeUtc())) return false;
       }
       if (java.lang.Double.doubleToLongBits(getLots())
           != java.lang.Double.doubleToLongBits(
@@ -13129,10 +14986,20 @@ public final class Mt4TermApiAccountHelper {
         if (!getOpenTime()
             .equals(other.getOpenTime())) return false;
       }
+      if (hasOpenTimeUtc() != other.hasOpenTimeUtc()) return false;
+      if (hasOpenTimeUtc()) {
+        if (!getOpenTimeUtc()
+            .equals(other.getOpenTimeUtc())) return false;
+      }
       if (hasCloseTime() != other.hasCloseTime()) return false;
       if (hasCloseTime()) {
         if (!getCloseTime()
             .equals(other.getCloseTime())) return false;
+      }
+      if (hasCloseTimeUtc() != other.hasCloseTimeUtc()) return false;
+      if (hasCloseTimeUtc()) {
+        if (!getCloseTimeUtc()
+            .equals(other.getCloseTimeUtc())) return false;
       }
       if (java.lang.Double.doubleToLongBits(getClosePrice())
           != java.lang.Double.doubleToLongBits(
@@ -13158,6 +15025,10 @@ public final class Mt4TermApiAccountHelper {
       if (hasExpirationTime()) {
         hash = (37 * hash) + EXPIRATION_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getExpirationTime().hashCode();
+      }
+      if (hasExpirationTimeUtc()) {
+        hash = (37 * hash) + EXPIRATION_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getExpirationTimeUtc().hashCode();
       }
       hash = (37 * hash) + LOTS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -13193,9 +15064,17 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + OPEN_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getOpenTime().hashCode();
       }
+      if (hasOpenTimeUtc()) {
+        hash = (37 * hash) + OPEN_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getOpenTimeUtc().hashCode();
+      }
       if (hasCloseTime()) {
         hash = (37 * hash) + CLOSE_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getCloseTime().hashCode();
+      }
+      if (hasCloseTimeUtc()) {
+        hash = (37 * hash) + CLOSE_TIME_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getCloseTimeUtc().hashCode();
       }
       hash = (37 * hash) + CLOSE_PRICE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -13346,6 +15225,12 @@ public final class Mt4TermApiAccountHelper {
           expirationTime_ = null;
           expirationTimeBuilder_ = null;
         }
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
+        }
         lots_ = 0D;
 
         magicNumber_ = 0;
@@ -13376,11 +15261,23 @@ public final class Mt4TermApiAccountHelper {
           openTime_ = null;
           openTimeBuilder_ = null;
         }
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
+        }
         if (closeTimeBuilder_ == null) {
           closeTime_ = null;
         } else {
           closeTime_ = null;
           closeTimeBuilder_ = null;
+        }
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = null;
+        } else {
+          closeTimeUtc_ = null;
+          closeTimeUtcBuilder_ = null;
         }
         closePrice_ = 0D;
 
@@ -13419,6 +15316,11 @@ public final class Mt4TermApiAccountHelper {
         } else {
           result.expirationTime_ = expirationTimeBuilder_.build();
         }
+        if (expirationTimeUtcBuilder_ == null) {
+          result.expirationTimeUtc_ = expirationTimeUtc_;
+        } else {
+          result.expirationTimeUtc_ = expirationTimeUtcBuilder_.build();
+        }
         result.lots_ = lots_;
         result.magicNumber_ = magicNumber_;
         result.openPrice_ = openPrice_;
@@ -13436,10 +15338,20 @@ public final class Mt4TermApiAccountHelper {
         } else {
           result.openTime_ = openTimeBuilder_.build();
         }
+        if (openTimeUtcBuilder_ == null) {
+          result.openTimeUtc_ = openTimeUtc_;
+        } else {
+          result.openTimeUtc_ = openTimeUtcBuilder_.build();
+        }
         if (closeTimeBuilder_ == null) {
           result.closeTime_ = closeTime_;
         } else {
           result.closeTime_ = closeTimeBuilder_.build();
+        }
+        if (closeTimeUtcBuilder_ == null) {
+          result.closeTimeUtc_ = closeTimeUtc_;
+        } else {
+          result.closeTimeUtc_ = closeTimeUtcBuilder_.build();
         }
         result.closePrice_ = closePrice_;
         result.accountLogin_ = accountLogin_;
@@ -13501,6 +15413,9 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasExpirationTime()) {
           mergeExpirationTime(other.getExpirationTime());
         }
+        if (other.hasExpirationTimeUtc()) {
+          mergeExpirationTimeUtc(other.getExpirationTimeUtc());
+        }
         if (other.getLots() != 0D) {
           setLots(other.getLots());
         }
@@ -13541,8 +15456,14 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasOpenTime()) {
           mergeOpenTime(other.getOpenTime());
         }
+        if (other.hasOpenTimeUtc()) {
+          mergeOpenTimeUtc(other.getOpenTimeUtc());
+        }
         if (other.hasCloseTime()) {
           mergeCloseTime(other.getCloseTime());
+        }
+        if (other.hasCloseTimeUtc()) {
+          mergeCloseTimeUtc(other.getCloseTimeUtc());
         }
         if (other.getClosePrice() != 0D) {
           setClosePrice(other.getClosePrice());
@@ -13690,6 +15611,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeBuilder_;
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        * @return Whether the expirationTime field is set.
        */
@@ -13697,6 +15622,10 @@ public final class Mt4TermApiAccountHelper {
         return expirationTimeBuilder_ != null || expirationTime_ != null;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        * @return The expirationTime.
        */
@@ -13708,6 +15637,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder setExpirationTime(com.google.protobuf.Timestamp value) {
@@ -13724,6 +15657,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder setExpirationTime(
@@ -13738,6 +15675,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder mergeExpirationTime(com.google.protobuf.Timestamp value) {
@@ -13756,6 +15697,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public Builder clearExpirationTime() {
@@ -13770,6 +15715,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getExpirationTimeBuilder() {
@@ -13778,6 +15727,10 @@ public final class Mt4TermApiAccountHelper {
         return getExpirationTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
@@ -13789,6 +15742,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of a pending order (broker server time). Unset when the order has no expiration.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp expiration_time = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -13803,6 +15760,161 @@ public final class Mt4TermApiAccountHelper {
           expirationTime_ = null;
         }
         return expirationTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp expirationTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeUtcBuilder_;
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       * @return Whether the expirationTimeUtc field is set.
+       */
+      public boolean hasExpirationTimeUtc() {
+        return expirationTimeUtcBuilder_ != null || expirationTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       * @return The expirationTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        } else {
+          return expirationTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public Builder setExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expirationTimeUtc_ = value;
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public Builder setExpirationTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public Builder mergeExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (expirationTimeUtc_ != null) {
+            expirationTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(expirationTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            expirationTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public Builder clearExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+          onChanged();
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpirationTimeUtcBuilder() {
+        
+        onChanged();
+        return getExpirationTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+        if (expirationTimeUtcBuilder_ != null) {
+          return expirationTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return expirationTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expiration_time_utc = 20;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getExpirationTimeUtcFieldBuilder() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpirationTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          expirationTimeUtc_ = null;
+        }
+        return expirationTimeUtcBuilder_;
       }
 
       private double lots_ ;
@@ -14249,6 +16361,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeBuilder_;
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        * @return Whether the openTime field is set.
        */
@@ -14256,6 +16372,10 @@ public final class Mt4TermApiAccountHelper {
         return openTimeBuilder_ != null || openTime_ != null;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        * @return The openTime.
        */
@@ -14267,6 +16387,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder setOpenTime(com.google.protobuf.Timestamp value) {
@@ -14283,6 +16407,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder setOpenTime(
@@ -14297,6 +16425,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder mergeOpenTime(com.google.protobuf.Timestamp value) {
@@ -14315,6 +16447,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public Builder clearOpenTime() {
@@ -14329,6 +16465,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public com.google.protobuf.Timestamp.Builder getOpenTimeBuilder() {
@@ -14337,6 +16477,10 @@ public final class Mt4TermApiAccountHelper {
         return getOpenTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getOpenTimeOrBuilder() {
@@ -14348,6 +16492,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Open time of the order (broker server time).
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp open_time = 16;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -14364,10 +16512,169 @@ public final class Mt4TermApiAccountHelper {
         return openTimeBuilder_;
       }
 
+      private com.google.protobuf.Timestamp openTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> openTimeUtcBuilder_;
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       * @return Whether the openTimeUtc field is set.
+       */
+      public boolean hasOpenTimeUtc() {
+        return openTimeUtcBuilder_ != null || openTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       * @return The openTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          return openTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        } else {
+          return openTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public Builder setOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          openTimeUtc_ = value;
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public Builder setOpenTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public Builder mergeOpenTimeUtc(com.google.protobuf.Timestamp value) {
+        if (openTimeUtcBuilder_ == null) {
+          if (openTimeUtc_ != null) {
+            openTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(openTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            openTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          openTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public Builder clearOpenTimeUtc() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtc_ = null;
+          onChanged();
+        } else {
+          openTimeUtc_ = null;
+          openTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getOpenTimeUtcBuilder() {
+        
+        onChanged();
+        return getOpenTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getOpenTimeUtcOrBuilder() {
+        if (openTimeUtcBuilder_ != null) {
+          return openTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return openTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : openTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * open_time in UTC (the same moment; open_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp open_time_utc = 21;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getOpenTimeUtcFieldBuilder() {
+        if (openTimeUtcBuilder_ == null) {
+          openTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getOpenTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          openTimeUtc_ = null;
+        }
+        return openTimeUtcBuilder_;
+      }
+
       private com.google.protobuf.Timestamp closeTime_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> closeTimeBuilder_;
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        * @return Whether the closeTime field is set.
        */
@@ -14375,6 +16682,10 @@ public final class Mt4TermApiAccountHelper {
         return closeTimeBuilder_ != null || closeTime_ != null;
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        * @return The closeTime.
        */
@@ -14386,6 +16697,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public Builder setCloseTime(com.google.protobuf.Timestamp value) {
@@ -14402,6 +16717,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public Builder setCloseTime(
@@ -14416,6 +16735,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public Builder mergeCloseTime(com.google.protobuf.Timestamp value) {
@@ -14434,6 +16757,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public Builder clearCloseTime() {
@@ -14448,6 +16775,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCloseTimeBuilder() {
@@ -14456,6 +16787,10 @@ public final class Mt4TermApiAccountHelper {
         return getCloseTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCloseTimeOrBuilder() {
@@ -14467,6 +16802,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Close time of the order (broker server time). Unset when the order is not closed.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp close_time = 17;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -14481,6 +16820,161 @@ public final class Mt4TermApiAccountHelper {
           closeTime_ = null;
         }
         return closeTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp closeTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> closeTimeUtcBuilder_;
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       * @return Whether the closeTimeUtc field is set.
+       */
+      public boolean hasCloseTimeUtc() {
+        return closeTimeUtcBuilder_ != null || closeTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       * @return The closeTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getCloseTimeUtc() {
+        if (closeTimeUtcBuilder_ == null) {
+          return closeTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+        } else {
+          return closeTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public Builder setCloseTimeUtc(com.google.protobuf.Timestamp value) {
+        if (closeTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          closeTimeUtc_ = value;
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public Builder setCloseTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public Builder mergeCloseTimeUtc(com.google.protobuf.Timestamp value) {
+        if (closeTimeUtcBuilder_ == null) {
+          if (closeTimeUtc_ != null) {
+            closeTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(closeTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            closeTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          closeTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public Builder clearCloseTimeUtc() {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtc_ = null;
+          onChanged();
+        } else {
+          closeTimeUtc_ = null;
+          closeTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getCloseTimeUtcBuilder() {
+        
+        onChanged();
+        return getCloseTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getCloseTimeUtcOrBuilder() {
+        if (closeTimeUtcBuilder_ != null) {
+          return closeTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return closeTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : closeTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * close_time in UTC (the same moment; close_time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp close_time_utc = 22;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getCloseTimeUtcFieldBuilder() {
+        if (closeTimeUtcBuilder_ == null) {
+          closeTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getCloseTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          closeTimeUtc_ = null;
+        }
+        return closeTimeUtcBuilder_;
       }
 
       private double closePrice_ ;
@@ -14613,56 +17107,184 @@ public final class Mt4TermApiAccountHelper {
     mt4_term_api.Mt4TermApiAccountHelper.EnumOrderHistorySortType getInputSortMode();
 
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      * @return Whether the inputFrom field is set.
      */
     boolean hasInputFrom();
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      * @return The inputFrom.
      */
     com.google.protobuf.Timestamp getInputFrom();
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      */
     com.google.protobuf.TimestampOrBuilder getInputFromOrBuilder();
 
     /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     * @return Whether the inputFromUtc field is set.
+     */
+    boolean hasInputFromUtc();
+    /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     * @return The inputFromUtc.
+     */
+    com.google.protobuf.Timestamp getInputFromUtc();
+    /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getInputFromUtcOrBuilder();
+
+    /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      * @return Whether the inputTo field is set.
      */
     boolean hasInputTo();
     /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      * @return The inputTo.
      */
     com.google.protobuf.Timestamp getInputTo();
     /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getInputToOrBuilder();
 
     /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     * @return Whether the inputToUtc field is set.
+     */
+    boolean hasInputToUtc();
+    /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     * @return The inputToUtc.
+     */
+    com.google.protobuf.Timestamp getInputToUtc();
+    /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getInputToUtcOrBuilder();
+
+    /**
+     * <pre>
+     * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 page_number = 4;</code>
      * @return Whether the pageNumber field is set.
      */
     boolean hasPageNumber();
     /**
+     * <pre>
+     * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 page_number = 4;</code>
      * @return The pageNumber.
      */
     int getPageNumber();
 
     /**
+     * <pre>
+     * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 items_per_page = 5;</code>
      * @return Whether the itemsPerPage field is set.
      */
     boolean hasItemsPerPage();
     /**
+     * <pre>
+     * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 items_per_page = 5;</code>
      * @return The itemsPerPage.
      */
     int getItemsPerPage();
+
+    /**
+     * <pre>
+     * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+     * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+     * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+     * </pre>
+     *
+     * <code>string page_token = 6;</code>
+     * @return The pageToken.
+     */
+    java.lang.String getPageToken();
+    /**
+     * <pre>
+     * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+     * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+     * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+     * </pre>
+     *
+     * <code>string page_token = 6;</code>
+     * @return The bytes for pageToken.
+     */
+    com.google.protobuf.ByteString
+        getPageTokenBytes();
+
+    /**
+     * <pre>
+     * Cursor paging: orders per page, 1..5000 (more is clamped to 5000). 0 = 1000 when page_token is set.
+     * </pre>
+     *
+     * <code>int32 page_size = 7;</code>
+     * @return The pageSize.
+     */
+    int getPageSize();
   }
   /**
    * Protobuf type {@code mt4_term_api.OrdersHistoryRequest}
@@ -14678,6 +17300,7 @@ public final class Mt4TermApiAccountHelper {
     }
     private OrdersHistoryRequest() {
       inputSortMode_ = 0;
+      pageToken_ = "";
     }
 
     @java.lang.Override
@@ -14732,7 +17355,7 @@ public final class Mt4TermApiAccountHelper {
             }
             case 26: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) != 0)) {
+              if (((bitField0_ & 0x00000004) != 0)) {
                 subBuilder = inputTo_.toBuilder();
               }
               inputTo_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
@@ -14740,17 +17363,54 @@ public final class Mt4TermApiAccountHelper {
                 subBuilder.mergeFrom(inputTo_);
                 inputTo_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000010;
               pageNumber_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000020;
               itemsPerPage_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              pageToken_ = s;
+              break;
+            }
+            case 56: {
+
+              pageSize_ = input.readInt32();
+              break;
+            }
+            case 66: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) != 0)) {
+                subBuilder = inputFromUtc_.toBuilder();
+              }
+              inputFromUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(inputFromUtc_);
+                inputFromUtc_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 74: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) != 0)) {
+                subBuilder = inputToUtc_.toBuilder();
+              }
+              inputToUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(inputToUtc_);
+                inputToUtc_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
               break;
             }
             default: {
@@ -14810,6 +17470,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int INPUT_FROM_FIELD_NUMBER = 2;
     private com.google.protobuf.Timestamp inputFrom_;
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      * @return Whether the inputFrom field is set.
      */
@@ -14818,6 +17482,10 @@ public final class Mt4TermApiAccountHelper {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      * @return The inputFrom.
      */
@@ -14826,6 +17494,10 @@ public final class Mt4TermApiAccountHelper {
       return inputFrom_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputFrom_;
     }
     /**
+     * <pre>
+     * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
      */
     @java.lang.Override
@@ -14833,17 +17505,63 @@ public final class Mt4TermApiAccountHelper {
       return inputFrom_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputFrom_;
     }
 
+    public static final int INPUT_FROM_UTC_FIELD_NUMBER = 8;
+    private com.google.protobuf.Timestamp inputFromUtc_;
+    /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     * @return Whether the inputFromUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasInputFromUtc() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     * @return The inputFromUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getInputFromUtc() {
+      return inputFromUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputFromUtc_;
+    }
+    /**
+     * <pre>
+     * input_from in UTC: send either input_from or input_from_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getInputFromUtcOrBuilder() {
+      return inputFromUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputFromUtc_;
+    }
+
     public static final int INPUT_TO_FIELD_NUMBER = 3;
     private com.google.protobuf.Timestamp inputTo_;
     /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      * @return Whether the inputTo field is set.
      */
     @java.lang.Override
     public boolean hasInputTo() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      * @return The inputTo.
      */
@@ -14852,6 +17570,10 @@ public final class Mt4TermApiAccountHelper {
       return inputTo_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputTo_;
     }
     /**
+     * <pre>
+     * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+     * </pre>
+     *
      * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
      */
     @java.lang.Override
@@ -14859,17 +17581,63 @@ public final class Mt4TermApiAccountHelper {
       return inputTo_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputTo_;
     }
 
+    public static final int INPUT_TO_UTC_FIELD_NUMBER = 9;
+    private com.google.protobuf.Timestamp inputToUtc_;
+    /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     * @return Whether the inputToUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasInputToUtc() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     * @return The inputToUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getInputToUtc() {
+      return inputToUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputToUtc_;
+    }
+    /**
+     * <pre>
+     * input_to in UTC: send either input_to or input_to_utc, not both.
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getInputToUtcOrBuilder() {
+      return inputToUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputToUtc_;
+    }
+
     public static final int PAGE_NUMBER_FIELD_NUMBER = 4;
     private int pageNumber_;
     /**
+     * <pre>
+     * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 page_number = 4;</code>
      * @return Whether the pageNumber field is set.
      */
     @java.lang.Override
     public boolean hasPageNumber() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
+     * <pre>
+     * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 page_number = 4;</code>
      * @return The pageNumber.
      */
@@ -14881,20 +17649,93 @@ public final class Mt4TermApiAccountHelper {
     public static final int ITEMS_PER_PAGE_FIELD_NUMBER = 5;
     private int itemsPerPage_;
     /**
+     * <pre>
+     * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 items_per_page = 5;</code>
      * @return Whether the itemsPerPage field is set.
      */
     @java.lang.Override
     public boolean hasItemsPerPage() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
+     * <pre>
+     * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+     * </pre>
+     *
      * <code>optional int32 items_per_page = 5;</code>
      * @return The itemsPerPage.
      */
     @java.lang.Override
     public int getItemsPerPage() {
       return itemsPerPage_;
+    }
+
+    public static final int PAGE_TOKEN_FIELD_NUMBER = 6;
+    private volatile java.lang.Object pageToken_;
+    /**
+     * <pre>
+     * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+     * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+     * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+     * </pre>
+     *
+     * <code>string page_token = 6;</code>
+     * @return The pageToken.
+     */
+    @java.lang.Override
+    public java.lang.String getPageToken() {
+      java.lang.Object ref = pageToken_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        pageToken_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+     * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+     * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+     * </pre>
+     *
+     * <code>string page_token = 6;</code>
+     * @return The bytes for pageToken.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPageTokenBytes() {
+      java.lang.Object ref = pageToken_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        pageToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PAGE_SIZE_FIELD_NUMBER = 7;
+    private int pageSize_;
+    /**
+     * <pre>
+     * Cursor paging: orders per page, 1..5000 (more is clamped to 5000). 0 = 1000 when page_token is set.
+     * </pre>
+     *
+     * <code>int32 page_size = 7;</code>
+     * @return The pageSize.
+     */
+    @java.lang.Override
+    public int getPageSize() {
+      return pageSize_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -14917,14 +17758,26 @@ public final class Mt4TermApiAccountHelper {
       if (((bitField0_ & 0x00000001) != 0)) {
         output.writeMessage(2, getInputFrom());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (((bitField0_ & 0x00000004) != 0)) {
         output.writeMessage(3, getInputTo());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000010) != 0)) {
         output.writeInt32(4, pageNumber_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(5, itemsPerPage_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(pageToken_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, pageToken_);
+      }
+      if (pageSize_ != 0) {
+        output.writeInt32(7, pageSize_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(8, getInputFromUtc());
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeMessage(9, getInputToUtc());
       }
       unknownFields.writeTo(output);
     }
@@ -14943,17 +17796,32 @@ public final class Mt4TermApiAccountHelper {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getInputFrom());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
+      if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getInputTo());
       }
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, pageNumber_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, itemsPerPage_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(pageToken_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, pageToken_);
+      }
+      if (pageSize_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, pageSize_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, getInputFromUtc());
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, getInputToUtc());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -14976,10 +17844,20 @@ public final class Mt4TermApiAccountHelper {
         if (!getInputFrom()
             .equals(other.getInputFrom())) return false;
       }
+      if (hasInputFromUtc() != other.hasInputFromUtc()) return false;
+      if (hasInputFromUtc()) {
+        if (!getInputFromUtc()
+            .equals(other.getInputFromUtc())) return false;
+      }
       if (hasInputTo() != other.hasInputTo()) return false;
       if (hasInputTo()) {
         if (!getInputTo()
             .equals(other.getInputTo())) return false;
+      }
+      if (hasInputToUtc() != other.hasInputToUtc()) return false;
+      if (hasInputToUtc()) {
+        if (!getInputToUtc()
+            .equals(other.getInputToUtc())) return false;
       }
       if (hasPageNumber() != other.hasPageNumber()) return false;
       if (hasPageNumber()) {
@@ -14991,6 +17869,10 @@ public final class Mt4TermApiAccountHelper {
         if (getItemsPerPage()
             != other.getItemsPerPage()) return false;
       }
+      if (!getPageToken()
+          .equals(other.getPageToken())) return false;
+      if (getPageSize()
+          != other.getPageSize()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -15008,9 +17890,17 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + INPUT_FROM_FIELD_NUMBER;
         hash = (53 * hash) + getInputFrom().hashCode();
       }
+      if (hasInputFromUtc()) {
+        hash = (37 * hash) + INPUT_FROM_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getInputFromUtc().hashCode();
+      }
       if (hasInputTo()) {
         hash = (37 * hash) + INPUT_TO_FIELD_NUMBER;
         hash = (53 * hash) + getInputTo().hashCode();
+      }
+      if (hasInputToUtc()) {
+        hash = (37 * hash) + INPUT_TO_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getInputToUtc().hashCode();
       }
       if (hasPageNumber()) {
         hash = (37 * hash) + PAGE_NUMBER_FIELD_NUMBER;
@@ -15020,6 +17910,10 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + ITEMS_PER_PAGE_FIELD_NUMBER;
         hash = (53 * hash) + getItemsPerPage();
       }
+      hash = (37 * hash) + PAGE_TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getPageToken().hashCode();
+      hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
+      hash = (53 * hash) + getPageSize();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -15149,7 +18043,9 @@ public final class Mt4TermApiAccountHelper {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getInputFromFieldBuilder();
+          getInputFromUtcFieldBuilder();
           getInputToFieldBuilder();
+          getInputToUtcFieldBuilder();
         }
       }
       @java.lang.Override
@@ -15163,16 +18059,32 @@ public final class Mt4TermApiAccountHelper {
           inputFromBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        if (inputFromUtcBuilder_ == null) {
+          inputFromUtc_ = null;
+        } else {
+          inputFromUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (inputToBuilder_ == null) {
           inputTo_ = null;
         } else {
           inputToBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
-        pageNumber_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        itemsPerPage_ = 0;
+        if (inputToUtcBuilder_ == null) {
+          inputToUtc_ = null;
+        } else {
+          inputToUtcBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000008);
+        pageNumber_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        itemsPerPage_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        pageToken_ = "";
+
+        pageSize_ = 0;
+
         return this;
       }
 
@@ -15211,21 +18123,39 @@ public final class Mt4TermApiAccountHelper {
           to_bitField0_ |= 0x00000001;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
+          if (inputFromUtcBuilder_ == null) {
+            result.inputFromUtc_ = inputFromUtc_;
+          } else {
+            result.inputFromUtc_ = inputFromUtcBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
           if (inputToBuilder_ == null) {
             result.inputTo_ = inputTo_;
           } else {
             result.inputTo_ = inputToBuilder_.build();
           }
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.pageNumber_ = pageNumber_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.itemsPerPage_ = itemsPerPage_;
+          if (inputToUtcBuilder_ == null) {
+            result.inputToUtc_ = inputToUtc_;
+          } else {
+            result.inputToUtc_ = inputToUtcBuilder_.build();
+          }
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.pageNumber_ = pageNumber_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.itemsPerPage_ = itemsPerPage_;
+          to_bitField0_ |= 0x00000020;
+        }
+        result.pageToken_ = pageToken_;
+        result.pageSize_ = pageSize_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -15281,14 +18211,27 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasInputFrom()) {
           mergeInputFrom(other.getInputFrom());
         }
+        if (other.hasInputFromUtc()) {
+          mergeInputFromUtc(other.getInputFromUtc());
+        }
         if (other.hasInputTo()) {
           mergeInputTo(other.getInputTo());
+        }
+        if (other.hasInputToUtc()) {
+          mergeInputToUtc(other.getInputToUtc());
         }
         if (other.hasPageNumber()) {
           setPageNumber(other.getPageNumber());
         }
         if (other.hasItemsPerPage()) {
           setItemsPerPage(other.getItemsPerPage());
+        }
+        if (!other.getPageToken().isEmpty()) {
+          pageToken_ = other.pageToken_;
+          onChanged();
+        }
+        if (other.getPageSize() != 0) {
+          setPageSize(other.getPageSize());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -15378,6 +18321,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> inputFromBuilder_;
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        * @return Whether the inputFrom field is set.
        */
@@ -15385,6 +18332,10 @@ public final class Mt4TermApiAccountHelper {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        * @return The inputFrom.
        */
@@ -15396,6 +18347,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public Builder setInputFrom(com.google.protobuf.Timestamp value) {
@@ -15412,6 +18367,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public Builder setInputFrom(
@@ -15426,6 +18385,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public Builder mergeInputFrom(com.google.protobuf.Timestamp value) {
@@ -15446,6 +18409,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public Builder clearInputFrom() {
@@ -15459,6 +18426,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public com.google.protobuf.Timestamp.Builder getInputFromBuilder() {
@@ -15467,6 +18438,10 @@ public final class Mt4TermApiAccountHelper {
         return getInputFromFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getInputFromOrBuilder() {
@@ -15478,6 +18453,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Start of the range of order OPEN times (inclusive) (broker server time). Unset = no lower bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_from = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -15494,17 +18473,181 @@ public final class Mt4TermApiAccountHelper {
         return inputFromBuilder_;
       }
 
+      private com.google.protobuf.Timestamp inputFromUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> inputFromUtcBuilder_;
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       * @return Whether the inputFromUtc field is set.
+       */
+      public boolean hasInputFromUtc() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       * @return The inputFromUtc.
+       */
+      public com.google.protobuf.Timestamp getInputFromUtc() {
+        if (inputFromUtcBuilder_ == null) {
+          return inputFromUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputFromUtc_;
+        } else {
+          return inputFromUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public Builder setInputFromUtc(com.google.protobuf.Timestamp value) {
+        if (inputFromUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          inputFromUtc_ = value;
+          onChanged();
+        } else {
+          inputFromUtcBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public Builder setInputFromUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (inputFromUtcBuilder_ == null) {
+          inputFromUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          inputFromUtcBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public Builder mergeInputFromUtc(com.google.protobuf.Timestamp value) {
+        if (inputFromUtcBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+              inputFromUtc_ != null &&
+              inputFromUtc_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            inputFromUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(inputFromUtc_).mergeFrom(value).buildPartial();
+          } else {
+            inputFromUtc_ = value;
+          }
+          onChanged();
+        } else {
+          inputFromUtcBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public Builder clearInputFromUtc() {
+        if (inputFromUtcBuilder_ == null) {
+          inputFromUtc_ = null;
+          onChanged();
+        } else {
+          inputFromUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getInputFromUtcBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getInputFromUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getInputFromUtcOrBuilder() {
+        if (inputFromUtcBuilder_ != null) {
+          return inputFromUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return inputFromUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : inputFromUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * input_from in UTC: send either input_from or input_from_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_from_utc = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getInputFromUtcFieldBuilder() {
+        if (inputFromUtcBuilder_ == null) {
+          inputFromUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getInputFromUtc(),
+                  getParentForChildren(),
+                  isClean());
+          inputFromUtc_ = null;
+        }
+        return inputFromUtcBuilder_;
+      }
+
       private com.google.protobuf.Timestamp inputTo_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> inputToBuilder_;
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        * @return Whether the inputTo field is set.
        */
       public boolean hasInputTo() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        * @return The inputTo.
        */
@@ -15516,6 +18659,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public Builder setInputTo(com.google.protobuf.Timestamp value) {
@@ -15528,10 +18675,14 @@ public final class Mt4TermApiAccountHelper {
         } else {
           inputToBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public Builder setInputTo(
@@ -15542,15 +18693,19 @@ public final class Mt4TermApiAccountHelper {
         } else {
           inputToBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public Builder mergeInputTo(com.google.protobuf.Timestamp value) {
         if (inputToBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
+          if (((bitField0_ & 0x00000004) != 0) &&
               inputTo_ != null &&
               inputTo_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
             inputTo_ =
@@ -15562,10 +18717,14 @@ public final class Mt4TermApiAccountHelper {
         } else {
           inputToBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public Builder clearInputTo() {
@@ -15575,18 +18734,26 @@ public final class Mt4TermApiAccountHelper {
         } else {
           inputToBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getInputToBuilder() {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
         return getInputToFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getInputToOrBuilder() {
@@ -15598,6 +18765,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * End of the range of order OPEN times (inclusive) (broker server time). Unset = no upper bound.
+       * </pre>
+       *
        * <code>optional .google.protobuf.Timestamp input_to = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -15614,16 +18785,180 @@ public final class Mt4TermApiAccountHelper {
         return inputToBuilder_;
       }
 
+      private com.google.protobuf.Timestamp inputToUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> inputToUtcBuilder_;
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       * @return Whether the inputToUtc field is set.
+       */
+      public boolean hasInputToUtc() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       * @return The inputToUtc.
+       */
+      public com.google.protobuf.Timestamp getInputToUtc() {
+        if (inputToUtcBuilder_ == null) {
+          return inputToUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : inputToUtc_;
+        } else {
+          return inputToUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public Builder setInputToUtc(com.google.protobuf.Timestamp value) {
+        if (inputToUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          inputToUtc_ = value;
+          onChanged();
+        } else {
+          inputToUtcBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public Builder setInputToUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (inputToUtcBuilder_ == null) {
+          inputToUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          inputToUtcBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public Builder mergeInputToUtc(com.google.protobuf.Timestamp value) {
+        if (inputToUtcBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+              inputToUtc_ != null &&
+              inputToUtc_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            inputToUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(inputToUtc_).mergeFrom(value).buildPartial();
+          } else {
+            inputToUtc_ = value;
+          }
+          onChanged();
+        } else {
+          inputToUtcBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public Builder clearInputToUtc() {
+        if (inputToUtcBuilder_ == null) {
+          inputToUtc_ = null;
+          onChanged();
+        } else {
+          inputToUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getInputToUtcBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getInputToUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getInputToUtcOrBuilder() {
+        if (inputToUtcBuilder_ != null) {
+          return inputToUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return inputToUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : inputToUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * input_to in UTC: send either input_to or input_to_utc, not both.
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp input_to_utc = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getInputToUtcFieldBuilder() {
+        if (inputToUtcBuilder_ == null) {
+          inputToUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getInputToUtc(),
+                  getParentForChildren(),
+                  isClean());
+          inputToUtc_ = null;
+        }
+        return inputToUtcBuilder_;
+      }
+
       private int pageNumber_ ;
       /**
+       * <pre>
+       * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 page_number = 4;</code>
        * @return Whether the pageNumber field is set.
        */
       @java.lang.Override
       public boolean hasPageNumber() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 page_number = 4;</code>
        * @return The pageNumber.
        */
@@ -15632,22 +18967,30 @@ public final class Mt4TermApiAccountHelper {
         return pageNumber_;
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 page_number = 4;</code>
        * @param value The pageNumber to set.
        * @return This builder for chaining.
        */
       public Builder setPageNumber(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000010;
         pageNumber_ = value;
         onChanged();
         return this;
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): 1-based, needs itemsPerPage too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 page_number = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearPageNumber() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         pageNumber_ = 0;
         onChanged();
         return this;
@@ -15655,14 +18998,22 @@ public final class Mt4TermApiAccountHelper {
 
       private int itemsPerPage_ ;
       /**
+       * <pre>
+       * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 items_per_page = 5;</code>
        * @return Whether the itemsPerPage field is set.
        */
       @java.lang.Override
       public boolean hasItemsPerPage() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 items_per_page = 5;</code>
        * @return The itemsPerPage.
        */
@@ -15671,23 +19022,180 @@ public final class Mt4TermApiAccountHelper {
         return itemsPerPage_;
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 items_per_page = 5;</code>
        * @param value The itemsPerPage to set.
        * @return This builder for chaining.
        */
       public Builder setItemsPerPage(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         itemsPerPage_ = value;
         onChanged();
         return this;
       }
       /**
+       * <pre>
+       * Page-number paging (legacy): rows per page, needs pageNumber too. 0 = not used
+       * </pre>
+       *
        * <code>optional int32 items_per_page = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearItemsPerPage() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000020);
         itemsPerPage_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object pageToken_ = "";
+      /**
+       * <pre>
+       * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+       * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+       * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+       * </pre>
+       *
+       * <code>string page_token = 6;</code>
+       * @return The pageToken.
+       */
+      public java.lang.String getPageToken() {
+        java.lang.Object ref = pageToken_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          pageToken_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+       * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+       * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+       * </pre>
+       *
+       * <code>string page_token = 6;</code>
+       * @return The bytes for pageToken.
+       */
+      public com.google.protobuf.ByteString
+          getPageTokenBytes() {
+        java.lang.Object ref = pageToken_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          pageToken_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+       * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+       * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+       * </pre>
+       *
+       * <code>string page_token = 6;</code>
+       * @param value The pageToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPageToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        pageToken_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+       * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+       * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+       * </pre>
+       *
+       * <code>string page_token = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPageToken() {
+        
+        pageToken_ = getDefaultInstance().getPageToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor paging (preferred, stable): the next_page_token of the previous page; empty for the first page. Send it back
+       * with the same inputFrom, inputTo and inputSortMode. Cursor paging is on when page_token or page_size is set; it cannot be
+       * combined with pageNumber/itemsPerPage (ORDERS_HISTORY_PAGING_INVALID).
+       * </pre>
+       *
+       * <code>string page_token = 6;</code>
+       * @param value The bytes for pageToken to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPageTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        pageToken_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int pageSize_ ;
+      /**
+       * <pre>
+       * Cursor paging: orders per page, 1..5000 (more is clamped to 5000). 0 = 1000 when page_token is set.
+       * </pre>
+       *
+       * <code>int32 page_size = 7;</code>
+       * @return The pageSize.
+       */
+      @java.lang.Override
+      public int getPageSize() {
+        return pageSize_;
+      }
+      /**
+       * <pre>
+       * Cursor paging: orders per page, 1..5000 (more is clamped to 5000). 0 = 1000 when page_token is set.
+       * </pre>
+       *
+       * <code>int32 page_size = 7;</code>
+       * @param value The pageSize to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPageSize(int value) {
+        
+        pageSize_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Cursor paging: orders per page, 1..5000 (more is clamped to 5000). 0 = 1000 when page_token is set.
+       * </pre>
+       *
+       * <code>int32 page_size = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPageSize() {
+        
+        pageSize_ = 0;
         onChanged();
         return this;
       }
@@ -18148,10 +21656,24 @@ public final class Mt4TermApiAccountHelper {
     long getVolumeLow();
 
     /**
+     * <pre>
+     * Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.
+     * </pre>
+     *
      * <code>int64 Time = 9;</code>
      * @return The time.
      */
     long getTime();
+
+    /**
+     * <pre>
+     * Time in UTC (the same moment; Time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>int64 TimeUtc = 68;</code>
+     * @return The timeUtc.
+     */
+    long getTimeUtc();
 
     /**
      * <code>int32 Digits = 10;</code>
@@ -18202,34 +21724,112 @@ public final class Mt4TermApiAccountHelper {
     mt4_term_api.Mt4TermApiAccountHelper.SP_ENUM_SYMBOL_TRADE_MODE getTradeMode();
 
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      * @return Whether the startTime field is set.
      */
     boolean hasStartTime();
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      * @return The startTime.
      */
     com.google.protobuf.Timestamp getStartTime();
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      */
     com.google.protobuf.TimestampOrBuilder getStartTimeOrBuilder();
 
     /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     * @return Whether the startTimeUtc field is set.
+     */
+    boolean hasStartTimeUtc();
+    /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     * @return The startTimeUtc.
+     */
+    com.google.protobuf.Timestamp getStartTimeUtc();
+    /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getStartTimeUtcOrBuilder();
+
+    /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      * @return Whether the expirationTime field is set.
      */
     boolean hasExpirationTime();
     /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      * @return The expirationTime.
      */
     com.google.protobuf.Timestamp getExpirationTime();
     /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder();
+
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    boolean hasExpirationTimeUtc();
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     * @return The expirationTimeUtc.
+     */
+    com.google.protobuf.Timestamp getExpirationTimeUtc();
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder();
 
     /**
      * <code>int32 TradeStopsLevel = 17;</code>
@@ -19008,6 +22608,37 @@ public final class Mt4TermApiAccountHelper {
               symbolName_ = s;
               break;
             }
+            case 544: {
+
+              timeUtc_ = input.readInt64();
+              break;
+            }
+            case 554: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (startTimeUtc_ != null) {
+                subBuilder = startTimeUtc_.toBuilder();
+              }
+              startTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(startTimeUtc_);
+                startTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 562: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (expirationTimeUtc_ != null) {
+                subBuilder = expirationTimeUtc_.toBuilder();
+              }
+              expirationTimeUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(expirationTimeUtc_);
+                expirationTimeUtc_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -19133,12 +22764,31 @@ public final class Mt4TermApiAccountHelper {
     public static final int TIME_FIELD_NUMBER = 9;
     private long time_;
     /**
+     * <pre>
+     * Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.
+     * </pre>
+     *
      * <code>int64 Time = 9;</code>
      * @return The time.
      */
     @java.lang.Override
     public long getTime() {
       return time_;
+    }
+
+    public static final int TIMEUTC_FIELD_NUMBER = 68;
+    private long timeUtc_;
+    /**
+     * <pre>
+     * Time in UTC (the same moment; Time is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>int64 TimeUtc = 68;</code>
+     * @return The timeUtc.
+     */
+    @java.lang.Override
+    public long getTimeUtc() {
+      return timeUtc_;
     }
 
     public static final int DIGITS_FIELD_NUMBER = 10;
@@ -19223,6 +22873,10 @@ public final class Mt4TermApiAccountHelper {
     public static final int STARTTIME_FIELD_NUMBER = 15;
     private com.google.protobuf.Timestamp startTime_;
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      * @return Whether the startTime field is set.
      */
@@ -19231,6 +22885,10 @@ public final class Mt4TermApiAccountHelper {
       return startTime_ != null;
     }
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      * @return The startTime.
      */
@@ -19239,6 +22897,10 @@ public final class Mt4TermApiAccountHelper {
       return startTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startTime_;
     }
     /**
+     * <pre>
+     * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp StartTime = 15;</code>
      */
     @java.lang.Override
@@ -19246,9 +22908,51 @@ public final class Mt4TermApiAccountHelper {
       return getStartTime();
     }
 
+    public static final int STARTTIMEUTC_FIELD_NUMBER = 69;
+    private com.google.protobuf.Timestamp startTimeUtc_;
+    /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     * @return Whether the startTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasStartTimeUtc() {
+      return startTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     * @return The startTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getStartTimeUtc() {
+      return startTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startTimeUtc_;
+    }
+    /**
+     * <pre>
+     * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getStartTimeUtcOrBuilder() {
+      return getStartTimeUtc();
+    }
+
     public static final int EXPIRATIONTIME_FIELD_NUMBER = 16;
     private com.google.protobuf.Timestamp expirationTime_;
     /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      * @return Whether the expirationTime field is set.
      */
@@ -19257,6 +22961,10 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ != null;
     }
     /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      * @return The expirationTime.
      */
@@ -19265,11 +22973,53 @@ public final class Mt4TermApiAccountHelper {
       return expirationTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTime_;
     }
     /**
+     * <pre>
+     * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+     * </pre>
+     *
      * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
       return getExpirationTime();
+    }
+
+    public static final int EXPIRATIONTIMEUTC_FIELD_NUMBER = 70;
+    private com.google.protobuf.Timestamp expirationTimeUtc_;
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     * @return Whether the expirationTimeUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpirationTimeUtc() {
+      return expirationTimeUtc_ != null;
+    }
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     * @return The expirationTimeUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+      return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+    }
+    /**
+     * <pre>
+     * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+      return getExpirationTimeUtc();
     }
 
     public static final int TRADESTOPSLEVEL_FIELD_NUMBER = 17;
@@ -20272,6 +24022,15 @@ public final class Mt4TermApiAccountHelper {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbolName_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 67, symbolName_);
       }
+      if (timeUtc_ != 0L) {
+        output.writeInt64(68, timeUtc_);
+      }
+      if (startTimeUtc_ != null) {
+        output.writeMessage(69, getStartTimeUtc());
+      }
+      if (expirationTimeUtc_ != null) {
+        output.writeMessage(70, getExpirationTimeUtc());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -20541,6 +24300,18 @@ public final class Mt4TermApiAccountHelper {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(symbolName_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(67, symbolName_);
       }
+      if (timeUtc_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(68, timeUtc_);
+      }
+      if (startTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(69, getStartTimeUtc());
+      }
+      if (expirationTimeUtc_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(70, getExpirationTimeUtc());
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -20574,6 +24345,8 @@ public final class Mt4TermApiAccountHelper {
           != other.getVolumeLow()) return false;
       if (getTime()
           != other.getTime()) return false;
+      if (getTimeUtc()
+          != other.getTimeUtc()) return false;
       if (getDigits()
           != other.getDigits()) return false;
       if (getSpreadFloat()
@@ -20587,10 +24360,20 @@ public final class Mt4TermApiAccountHelper {
         if (!getStartTime()
             .equals(other.getStartTime())) return false;
       }
+      if (hasStartTimeUtc() != other.hasStartTimeUtc()) return false;
+      if (hasStartTimeUtc()) {
+        if (!getStartTimeUtc()
+            .equals(other.getStartTimeUtc())) return false;
+      }
       if (hasExpirationTime() != other.hasExpirationTime()) return false;
       if (hasExpirationTime()) {
         if (!getExpirationTime()
             .equals(other.getExpirationTime())) return false;
+      }
+      if (hasExpirationTimeUtc() != other.hasExpirationTimeUtc()) return false;
+      if (hasExpirationTimeUtc()) {
+        if (!getExpirationTimeUtc()
+            .equals(other.getExpirationTimeUtc())) return false;
       }
       if (getTradeStopsLevel()
           != other.getTradeStopsLevel()) return false;
@@ -20769,6 +24552,9 @@ public final class Mt4TermApiAccountHelper {
       hash = (37 * hash) + TIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTime());
+      hash = (37 * hash) + TIMEUTC_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimeUtc());
       hash = (37 * hash) + DIGITS_FIELD_NUMBER;
       hash = (53 * hash) + getDigits();
       hash = (37 * hash) + SPREADFLOAT_FIELD_NUMBER;
@@ -20784,9 +24570,17 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + STARTTIME_FIELD_NUMBER;
         hash = (53 * hash) + getStartTime().hashCode();
       }
+      if (hasStartTimeUtc()) {
+        hash = (37 * hash) + STARTTIMEUTC_FIELD_NUMBER;
+        hash = (53 * hash) + getStartTimeUtc().hashCode();
+      }
       if (hasExpirationTime()) {
         hash = (37 * hash) + EXPIRATIONTIME_FIELD_NUMBER;
         hash = (53 * hash) + getExpirationTime().hashCode();
+      }
+      if (hasExpirationTimeUtc()) {
+        hash = (37 * hash) + EXPIRATIONTIMEUTC_FIELD_NUMBER;
+        hash = (53 * hash) + getExpirationTimeUtc().hashCode();
       }
       hash = (37 * hash) + TRADESTOPSLEVEL_FIELD_NUMBER;
       hash = (53 * hash) + getTradeStopsLevel();
@@ -21079,6 +24873,8 @@ public final class Mt4TermApiAccountHelper {
 
         time_ = 0L;
 
+        timeUtc_ = 0L;
+
         digits_ = 0;
 
         spreadFloat_ = false;
@@ -21095,11 +24891,23 @@ public final class Mt4TermApiAccountHelper {
           startTime_ = null;
           startTimeBuilder_ = null;
         }
+        if (startTimeUtcBuilder_ == null) {
+          startTimeUtc_ = null;
+        } else {
+          startTimeUtc_ = null;
+          startTimeUtcBuilder_ = null;
+        }
         if (expirationTimeBuilder_ == null) {
           expirationTime_ = null;
         } else {
           expirationTime_ = null;
           expirationTimeBuilder_ = null;
+        }
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
         }
         tradeStopsLevel_ = 0;
 
@@ -21238,6 +25046,7 @@ public final class Mt4TermApiAccountHelper {
         result.volumeHigh_ = volumeHigh_;
         result.volumeLow_ = volumeLow_;
         result.time_ = time_;
+        result.timeUtc_ = timeUtc_;
         result.digits_ = digits_;
         result.spreadFloat_ = spreadFloat_;
         result.ticksBookDepth_ = ticksBookDepth_;
@@ -21248,10 +25057,20 @@ public final class Mt4TermApiAccountHelper {
         } else {
           result.startTime_ = startTimeBuilder_.build();
         }
+        if (startTimeUtcBuilder_ == null) {
+          result.startTimeUtc_ = startTimeUtc_;
+        } else {
+          result.startTimeUtc_ = startTimeUtcBuilder_.build();
+        }
         if (expirationTimeBuilder_ == null) {
           result.expirationTime_ = expirationTime_;
         } else {
           result.expirationTime_ = expirationTimeBuilder_.build();
+        }
+        if (expirationTimeUtcBuilder_ == null) {
+          result.expirationTimeUtc_ = expirationTimeUtc_;
+        } else {
+          result.expirationTimeUtc_ = expirationTimeUtcBuilder_.build();
         }
         result.tradeStopsLevel_ = tradeStopsLevel_;
         result.tradeFreezeLevel_ = tradeFreezeLevel_;
@@ -21379,6 +25198,9 @@ public final class Mt4TermApiAccountHelper {
         if (other.getTime() != 0L) {
           setTime(other.getTime());
         }
+        if (other.getTimeUtc() != 0L) {
+          setTimeUtc(other.getTimeUtc());
+        }
         if (other.getDigits() != 0) {
           setDigits(other.getDigits());
         }
@@ -21397,8 +25219,14 @@ public final class Mt4TermApiAccountHelper {
         if (other.hasStartTime()) {
           mergeStartTime(other.getStartTime());
         }
+        if (other.hasStartTimeUtc()) {
+          mergeStartTimeUtc(other.getStartTimeUtc());
+        }
         if (other.hasExpirationTime()) {
           mergeExpirationTime(other.getExpirationTime());
+        }
+        if (other.hasExpirationTimeUtc()) {
+          mergeExpirationTimeUtc(other.getExpirationTimeUtc());
         }
         if (other.getTradeStopsLevel() != 0) {
           setTradeStopsLevel(other.getTradeStopsLevel());
@@ -21840,6 +25668,10 @@ public final class Mt4TermApiAccountHelper {
 
       private long time_ ;
       /**
+       * <pre>
+       * Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.
+       * </pre>
+       *
        * <code>int64 Time = 9;</code>
        * @return The time.
        */
@@ -21848,6 +25680,10 @@ public final class Mt4TermApiAccountHelper {
         return time_;
       }
       /**
+       * <pre>
+       * Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.
+       * </pre>
+       *
        * <code>int64 Time = 9;</code>
        * @param value The time to set.
        * @return This builder for chaining.
@@ -21859,12 +25695,59 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.
+       * </pre>
+       *
        * <code>int64 Time = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearTime() {
         
         time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long timeUtc_ ;
+      /**
+       * <pre>
+       * Time in UTC (the same moment; Time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 TimeUtc = 68;</code>
+       * @return The timeUtc.
+       */
+      @java.lang.Override
+      public long getTimeUtc() {
+        return timeUtc_;
+      }
+      /**
+       * <pre>
+       * Time in UTC (the same moment; Time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 TimeUtc = 68;</code>
+       * @param value The timeUtc to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeUtc(long value) {
+        
+        timeUtc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Time in UTC (the same moment; Time is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>int64 TimeUtc = 68;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeUtc() {
+        
+        timeUtc_ = 0L;
         onChanged();
         return this;
       }
@@ -22094,6 +25977,10 @@ public final class Mt4TermApiAccountHelper {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> startTimeBuilder_;
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        * @return Whether the startTime field is set.
        */
@@ -22101,6 +25988,10 @@ public final class Mt4TermApiAccountHelper {
         return startTimeBuilder_ != null || startTime_ != null;
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        * @return The startTime.
        */
@@ -22112,6 +26003,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public Builder setStartTime(com.google.protobuf.Timestamp value) {
@@ -22128,6 +26023,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public Builder setStartTime(
@@ -22142,6 +26041,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public Builder mergeStartTime(com.google.protobuf.Timestamp value) {
@@ -22160,6 +26063,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public Builder clearStartTime() {
@@ -22174,6 +26081,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public com.google.protobuf.Timestamp.Builder getStartTimeBuilder() {
@@ -22182,6 +26093,10 @@ public final class Mt4TermApiAccountHelper {
         return getStartTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getStartTimeOrBuilder() {
@@ -22193,6 +26108,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp StartTime = 15;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -22209,10 +26128,169 @@ public final class Mt4TermApiAccountHelper {
         return startTimeBuilder_;
       }
 
+      private com.google.protobuf.Timestamp startTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> startTimeUtcBuilder_;
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       * @return Whether the startTimeUtc field is set.
+       */
+      public boolean hasStartTimeUtc() {
+        return startTimeUtcBuilder_ != null || startTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       * @return The startTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getStartTimeUtc() {
+        if (startTimeUtcBuilder_ == null) {
+          return startTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startTimeUtc_;
+        } else {
+          return startTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public Builder setStartTimeUtc(com.google.protobuf.Timestamp value) {
+        if (startTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          startTimeUtc_ = value;
+          onChanged();
+        } else {
+          startTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public Builder setStartTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (startTimeUtcBuilder_ == null) {
+          startTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          startTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public Builder mergeStartTimeUtc(com.google.protobuf.Timestamp value) {
+        if (startTimeUtcBuilder_ == null) {
+          if (startTimeUtc_ != null) {
+            startTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(startTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            startTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          startTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public Builder clearStartTimeUtc() {
+        if (startTimeUtcBuilder_ == null) {
+          startTimeUtc_ = null;
+          onChanged();
+        } else {
+          startTimeUtc_ = null;
+          startTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getStartTimeUtcBuilder() {
+        
+        onChanged();
+        return getStartTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getStartTimeUtcOrBuilder() {
+        if (startTimeUtcBuilder_ != null) {
+          return startTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return startTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : startTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * StartTime in UTC (the same moment; StartTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp StartTimeUtc = 69;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getStartTimeUtcFieldBuilder() {
+        if (startTimeUtcBuilder_ == null) {
+          startTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getStartTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          startTimeUtc_ = null;
+        }
+        return startTimeUtcBuilder_;
+      }
+
       private com.google.protobuf.Timestamp expirationTime_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeBuilder_;
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        * @return Whether the expirationTime field is set.
        */
@@ -22220,6 +26298,10 @@ public final class Mt4TermApiAccountHelper {
         return expirationTimeBuilder_ != null || expirationTime_ != null;
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        * @return The expirationTime.
        */
@@ -22231,6 +26313,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public Builder setExpirationTime(com.google.protobuf.Timestamp value) {
@@ -22247,6 +26333,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public Builder setExpirationTime(
@@ -22261,6 +26351,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public Builder mergeExpirationTime(com.google.protobuf.Timestamp value) {
@@ -22279,6 +26373,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public Builder clearExpirationTime() {
@@ -22293,6 +26391,10 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public com.google.protobuf.Timestamp.Builder getExpirationTimeBuilder() {
@@ -22301,6 +26403,10 @@ public final class Mt4TermApiAccountHelper {
         return getExpirationTimeFieldBuilder().getBuilder();
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getExpirationTimeOrBuilder() {
@@ -22312,6 +26418,10 @@ public final class Mt4TermApiAccountHelper {
         }
       }
       /**
+       * <pre>
+       * Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.
+       * </pre>
+       *
        * <code>.google.protobuf.Timestamp ExpirationTime = 16;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -22326,6 +26436,161 @@ public final class Mt4TermApiAccountHelper {
           expirationTime_ = null;
         }
         return expirationTimeBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp expirationTimeUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expirationTimeUtcBuilder_;
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       * @return Whether the expirationTimeUtc field is set.
+       */
+      public boolean hasExpirationTimeUtc() {
+        return expirationTimeUtcBuilder_ != null || expirationTimeUtc_ != null;
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       * @return The expirationTimeUtc.
+       */
+      public com.google.protobuf.Timestamp getExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          return expirationTimeUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        } else {
+          return expirationTimeUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public Builder setExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expirationTimeUtc_ = value;
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public Builder setExpirationTimeUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public Builder mergeExpirationTimeUtc(com.google.protobuf.Timestamp value) {
+        if (expirationTimeUtcBuilder_ == null) {
+          if (expirationTimeUtc_ != null) {
+            expirationTimeUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(expirationTimeUtc_).mergeFrom(value).buildPartial();
+          } else {
+            expirationTimeUtc_ = value;
+          }
+          onChanged();
+        } else {
+          expirationTimeUtcBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public Builder clearExpirationTimeUtc() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtc_ = null;
+          onChanged();
+        } else {
+          expirationTimeUtc_ = null;
+          expirationTimeUtcBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpirationTimeUtcBuilder() {
+        
+        onChanged();
+        return getExpirationTimeUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpirationTimeUtcOrBuilder() {
+        if (expirationTimeUtcBuilder_ != null) {
+          return expirationTimeUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return expirationTimeUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expirationTimeUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp ExpirationTimeUtc = 70;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getExpirationTimeUtcFieldBuilder() {
+        if (expirationTimeUtcBuilder_ == null) {
+          expirationTimeUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpirationTimeUtc(),
+                  getParentForChildren(),
+                  isClean());
+          expirationTimeUtc_ = null;
+        }
+        return expirationTimeUtcBuilder_;
       }
 
       private int tradeStopsLevel_ ;
@@ -24349,23 +28614,63 @@ public final class Mt4TermApiAccountHelper {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @return A list containing the symbolNames.
      */
     java.util.List<java.lang.String>
         getSymbolNamesList();
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @return The count of symbolNames.
      */
     int getSymbolNamesCount();
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @param index The index of the element to return.
      * @return The symbolNames at the given index.
      */
     java.lang.String getSymbolNames(int index);
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @param index The index of the value to return.
      * @return The bytes of the symbolNames at the given index.
@@ -24469,6 +28774,16 @@ public final class Mt4TermApiAccountHelper {
     public static final int SYMBOL_NAMES_FIELD_NUMBER = 1;
     private com.google.protobuf.LazyStringList symbolNames_;
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @return A list containing the symbolNames.
      */
@@ -24477,6 +28792,16 @@ public final class Mt4TermApiAccountHelper {
       return symbolNames_;
     }
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @return The count of symbolNames.
      */
@@ -24484,6 +28809,16 @@ public final class Mt4TermApiAccountHelper {
       return symbolNames_.size();
     }
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @param index The index of the element to return.
      * @return The symbolNames at the given index.
@@ -24492,6 +28827,16 @@ public final class Mt4TermApiAccountHelper {
       return symbolNames_.get(index);
     }
     /**
+     * <pre>
+     * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+     * Each named symbol is added to Market Watch when it is not there yet, then read.
+     * At most 1000 names per request; a longer list is answered with an error.
+     * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+     * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+     * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+     * and changing the user's selection. Name the symbols you need.
+     * </pre>
+     *
      * <code>repeated string symbol_names = 1;</code>
      * @param index The index of the value to return.
      * @return The bytes of the symbolNames at the given index.
@@ -24830,6 +29175,16 @@ public final class Mt4TermApiAccountHelper {
          }
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @return A list containing the symbolNames.
        */
@@ -24838,6 +29193,16 @@ public final class Mt4TermApiAccountHelper {
         return symbolNames_.getUnmodifiableView();
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @return The count of symbolNames.
        */
@@ -24845,6 +29210,16 @@ public final class Mt4TermApiAccountHelper {
         return symbolNames_.size();
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param index The index of the element to return.
        * @return The symbolNames at the given index.
@@ -24853,6 +29228,16 @@ public final class Mt4TermApiAccountHelper {
         return symbolNames_.get(index);
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param index The index of the value to return.
        * @return The bytes of the symbolNames at the given index.
@@ -24862,6 +29247,16 @@ public final class Mt4TermApiAccountHelper {
         return symbolNames_.getByteString(index);
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param index The index to set the value at.
        * @param value The symbolNames to set.
@@ -24878,6 +29273,16 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param value The symbolNames to add.
        * @return This builder for chaining.
@@ -24893,6 +29298,16 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param values The symbolNames to add.
        * @return This builder for chaining.
@@ -24906,6 +29321,16 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @return This builder for chaining.
        */
@@ -24916,6 +29341,16 @@ public final class Mt4TermApiAccountHelper {
         return this;
       }
       /**
+       * <pre>
+       * Symbols to read, by exact name (REST: repeated query parameter symbolNames).
+       * Each named symbol is added to Market Watch when it is not there yet, then read.
+       * At most 1000 names per request; a longer list is answered with an error.
+       * EMPTY list = every symbol currently in Market Watch. It is NOT "all symbols of the
+       * server": the terminal's Market Watch holds at most ~1000 symbols, so serving the
+       * server's list (12,000+ at some brokers) would mean adding all of them to Market Watch
+       * and changing the user's selection. Name the symbols you need.
+       * </pre>
+       *
        * <code>repeated string symbol_names = 1;</code>
        * @param value The bytes of the symbolNames to add.
        * @return This builder for chaining.
@@ -27712,7 +32147,7 @@ public final class Mt4TermApiAccountHelper {
       "y\n\023AccountSummaryReply\0220\n\004data\030\001 \001(\0132 .m" +
       "t4_term_api.AccountSummaryDataH\000\022$\n\005erro" +
       "r\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respon" +
-      "se\"\216\003\n\022AccountSummaryData\022\025\n\raccount_log" +
+      "se\"\211\004\n\022AccountSummaryData\022\025\n\raccount_log" +
       "in\030\001 \001(\003\022\027\n\017account_balance\030\002 \001(\001\022\026\n\016acc" +
       "ount_equity\030\003 \001(\001\022\031\n\021account_user_name\030\004" +
       " \001(\t\022\030\n\020account_leverage\030\005 \001(\003\022>\n\022accoun" +
@@ -27720,165 +32155,183 @@ public final class Mt4TermApiAccountHelper {
       "countTradeMode\022\034\n\024account_company_name\030\007" +
       " \001(\t\022\030\n\020account_currency\030\010 \001(\t\022/\n\013server" +
       "_time\030\t \001(\0132\032.google.protobuf.Timestamp\022" +
-      "\026\n\016account_credit\030\n \001(\001\022\023\n\013is_investor\030\013" +
-      " \001(\010\022%\n\035utc_server_time_shift_minutes\030\014 " +
-      "\001(\005\"O\n\023OpenedOrdersRequest\0228\n\tsort_type\030" +
-      "\001 \001(\0162%.mt4_term_api.EnumOpenedOrderSort" +
-      "Type\"u\n\021OpenedOrdersReply\022.\n\004data\030\001 \001(\0132" +
-      "\036.mt4_term_api.OpenedOrdersDataH\000\022$\n\005err" +
-      "or\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respo" +
-      "nse\"F\n\020OpenedOrdersData\0222\n\013order_infos\030\001" +
-      " \003(\0132\035.mt4_term_api.OpenedOrderInfo\"\255\003\n\017" +
-      "OpenedOrderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tcomm" +
-      "ision\030\002 \001(\001\0223\n\017expiration_time\030\003 \001(\0132\032.g" +
-      "oogle.protobuf.Timestamp\022\014\n\004lots\030\004 \001(\001\022\024" +
-      "\n\014magic_number\030\005 \001(\005\022\022\n\nopen_price\030\006 \001(\001" +
-      "\022\016\n\006profit\030\007 \001(\001\022\021\n\tstop_loss\030\010 \001(\001\022\014\n\004s" +
-      "wap\030\t \001(\001\022\016\n\006symbol\030\n \001(\t\022\023\n\013take_profit" +
-      "\030\013 \001(\001\022\016\n\006ticket\030\014 \001(\005\022\026\n\016position_index" +
-      "\030\r \001(\005\0221\n\norder_type\030\016 \001(\0162\035.mt4_term_ap" +
-      "i.OpenedOrderType\022\022\n\nsort_index\030\017 \001(\005\022-\n" +
-      "\topen_time\030\020 \001(\0132\032.google.protobuf.Times" +
-      "tamp\022\025\n\raccount_login\030\021 \001(\003\"\034\n\032OpenedOrd" +
-      "ersTicketsRequest\"\203\001\n\030OpenedOrdersTicket" +
-      "sReply\0225\n\004data\030\001 \001(\0132%.mt4_term_api.Open" +
-      "edOrdersTicketsDataH\000\022$\n\005error\030\002 \001(\0132\023.m" +
-      "t4_term_api.ErrorH\000B\n\n\010response\"*\n\027Opene" +
-      "dOrdersTicketsData\022\017\n\007tickets\030\001 \003(\005\"w\n\022O" +
-      "rdersHistoryReply\022/\n\004data\030\001 \001(\0132\037.mt4_te" +
-      "rm_api.OrdersHistoryDataH\000\022$\n\005error\030\002 \001(" +
-      "\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"]\n\021" +
-      "OrdersHistoryData\0223\n\013orders_info\030\001 \003(\0132\036" +
-      ".mt4_term_api.HistoryOrderInfo\022\023\n\013total_" +
-      "count\030\002 \001(\005\"\363\003\n\020HistoryOrderInfo\022\017\n\007comm" +
-      "ent\030\001 \001(\t\022\021\n\tcommision\030\002 \001(\001\0223\n\017expirati" +
-      "on_time\030\003 \001(\0132\032.google.protobuf.Timestam" +
-      "p\022\014\n\004lots\030\004 \001(\001\022\024\n\014magic_number\030\005 \001(\005\022\022\n" +
-      "\nopen_price\030\006 \001(\001\022\016\n\006profit\030\007 \001(\001\022\021\n\tsto" +
-      "p_loss\030\010 \001(\001\022\014\n\004swap\030\t \001(\001\022\016\n\006symbol\030\n \001" +
-      "(\t\022\023\n\013take_profit\030\013 \001(\001\022\016\n\006ticket\030\014 \001(\005\022" +
-      "\026\n\016position_index\030\r \001(\005\0221\n\norder_type\030\016 " +
-      "\001(\0162\035.mt4_term_api.OpenedOrderType\022\022\n\nso" +
-      "rt_index\030\017 \001(\005\022-\n\topen_time\030\020 \001(\0132\032.goog" +
-      "le.protobuf.Timestamp\022.\n\nclose_time\030\021 \001(" +
-      "\0132\032.google.protobuf.Timestamp\022\023\n\013close_p" +
-      "rice\030\022 \001(\001\022\025\n\raccount_login\030\023 \001(\003\"\265\002\n\024Or" +
-      "dersHistoryRequest\022?\n\017input_sort_mode\030\001 " +
-      "\001(\0162&.mt4_term_api.EnumOrderHistorySortT" +
-      "ype\0223\n\ninput_from\030\002 \001(\0132\032.google.protobu" +
-      "f.TimestampH\000\210\001\001\0221\n\010input_to\030\003 \001(\0132\032.goo" +
-      "gle.protobuf.TimestampH\001\210\001\001\022\030\n\013page_numb" +
-      "er\030\004 \001(\005H\002\210\001\001\022\033\n\016items_per_page\030\005 \001(\005H\003\210" +
-      "\001\001B\r\n\013_input_fromB\013\n\t_input_toB\016\n\014_page_" +
-      "numberB\021\n\017_items_per_page\"C\n\027SymbolParam" +
-      "sManyRequest\022\030\n\013symbol_name\030\001 \001(\tH\000\210\001\001B\016" +
-      "\n\014_symbol_name\"}\n\025SymbolParamsManyReply\022" +
-      "2\n\004data\030\001 \001(\0132\".mt4_term_api.SymbolParam" +
-      "sManyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_ap" +
-      "i.ErrorH\000B\n\n\010response\"P\n\024SymbolParamsMan" +
-      "yData\0228\n\014symbol_infos\030\001 \003(\0132\".mt4_term_a" +
-      "pi.SymbolParamsManyInfo\"\367\014\n\024SymbolParams" +
-      "ManyInfo\022\023\n\013is_selected\030\001 \001(\010\022\017\n\007visible" +
-      "\030\002 \001(\010\022\025\n\rsession_deals\030\003 \001(\003\022\032\n\022session" +
-      "_buy_orders\030\004 \001(\003\022\033\n\023session_sell_orders" +
-      "\030\005 \001(\003\022\016\n\006volume\030\006 \001(\003\022\023\n\013volume_high\030\007 " +
-      "\001(\003\022\021\n\tVolumeLow\030\010 \001(\003\022\014\n\004Time\030\t \001(\003\022\016\n\006" +
-      "Digits\030\n \001(\005\022\023\n\013SpreadFloat\030\013 \001(\010\022\026\n\016Tic" +
-      "ksBookDepth\030\014 \001(\005\022<\n\rTradeCalcMode\030\r \001(\016" +
-      "2%.mt4_term_api.SP_ENUM_TRADE_CALC_MODE\022" +
-      ":\n\tTradeMode\030\016 \001(\0162\'.mt4_term_api.SP_ENU" +
-      "M_SYMBOL_TRADE_MODE\022-\n\tStartTime\030\017 \001(\0132\032" +
-      ".google.protobuf.Timestamp\0222\n\016Expiration" +
-      "Time\030\020 \001(\0132\032.google.protobuf.Timestamp\022\027" +
-      "\n\017TradeStopsLevel\030\021 \001(\005\022\030\n\020TradeFreezeLe" +
-      "vel\030\022 \001(\005\022B\n\014TradeExeMode\030\023 \001(\0162,.mt4_te" +
-      "rm_api.SP_ENUM_SYMBOL_TRADE_EXECUTION\022\020\n" +
-      "\010SwapMode\030\024 \001(\005\022\031\n\021SwapRollover3Days\030\025 \001" +
-      "(\005\022\017\n\007TheLast\030\026 \001(\001\022\020\n\010LastHigh\030\027 \001(\001\022\017\n" +
-      "\007LastLow\030\030 \001(\001\022\r\n\005Point\030\031 \001(\001\022\026\n\016TradeTi" +
-      "ckValue\030\032 \001(\001\022\034\n\024TradeTickValueProfit\030\033 " +
-      "\001(\001\022\032\n\022TradeTickValueLoss\030\034 \001(\001\022\025\n\rTrade" +
-      "TickSize\030\035 \001(\001\022\031\n\021TradeContractSize\030\036 \001(" +
-      "\001\022\021\n\tVolumeMin\030\037 \001(\001\022\021\n\tVolumeMax\030  \001(\001\022" +
-      "\022\n\nVolumeStep\030! \001(\001\022\023\n\013VolumeLimit\030\" \001(\001" +
-      "\022\020\n\010SwapLong\030# \001(\001\022\021\n\tSwapShort\030$ \001(\001\022\025\n" +
-      "\rMarginInitial\030% \001(\001\022\031\n\021MarginMaintenanc" +
-      "e\030& \001(\001\022\022\n\nMarginLong\030\' \001(\001\022\023\n\013MarginSho" +
-      "rt\030( \001(\001\022\023\n\013MarginLimit\030) \001(\001\022\022\n\nMarginS" +
-      "top\030* \001(\001\022\027\n\017MarginStopLimit\030+ \001(\001\022\025\n\rSe" +
-      "ssionVolume\030, \001(\001\022\027\n\017SessionTurnover\030- \001" +
-      "(\001\022\027\n\017SessionInterest\030. \001(\001\022\036\n\026SessionBu" +
-      "yOrdersVolume\030/ \001(\001\022\037\n\027SessionSellOrders" +
-      "Volume\0300 \001(\001\022\023\n\013SessionOpen\0301 \001(\001\022\024\n\014Ses" +
-      "sionClose\0302 \001(\001\022\021\n\tSessionAW\0303 \001(\001\022\036\n\026Se" +
-      "ssionPriceSettlement\0304 \001(\001\022\034\n\024SessionPri" +
-      "ceLimitMin\0305 \001(\001\022\034\n\024SessionPriceLimitMax" +
-      "\0306 \001(\001\022\013\n\003Bid\0307 \001(\001\022\017\n\007BidHigh\0308 \001(\001\022\016\n\006" +
-      "BidLow\0309 \001(\001\022\017\n\007AskHigh\030: \001(\001\022\016\n\006AskLow\030" +
-      "; \001(\001\022\024\n\014CurrencyBase\030< \001(\t\022\026\n\016CurrencyP" +
-      "rofit\030= \001(\t\022\026\n\016CurrencyMargin\030> \001(\t\022\014\n\004B" +
-      "ank\030? \001(\t\022\026\n\016SymDescription\030@ \001(\t\022\014\n\004Isi" +
-      "n\030A \001(\t\022\014\n\004Path\030B \001(\t\022\022\n\nSymbolName\030C \001(" +
-      "\t\"0\n\030TickValueWithSizeRequest\022\024\n\014symbol_" +
-      "names\030\001 \003(\t\"\177\n\026TickValueWithSizeReply\0223\n" +
-      "\004data\030\001 \001(\0132#.mt4_term_api.TickValueWith" +
-      "SizeDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api" +
-      ".ErrorH\000B\n\n\010response\"Q\n\025TickValueWithSiz" +
-      "eData\0228\n\005infos\030\001 \003(\0132).mt4_term_api.Symb" +
-      "olTickValueWithSizeInfo\"\212\001\n\033SymbolTickVa" +
-      "lueWithSizeInfo\022\r\n\005index\030\001 \001(\005\022\022\n\nsymbol" +
-      "Name\030\002 \001(\t\022\026\n\016TradeTickValue\030\003 \001(\001\022\025\n\rTr" +
-      "adeTickSize\030\004 \001(\001\022\031\n\021TradeContractSize\030\005" +
-      " \001(\001*p\n\024EnumAccountTradeMode\022\033\n\027ACCOUNT_" +
-      "TRADE_MODE_DEMO\020\000\022\036\n\032ACCOUNT_TRADE_MODE_" +
-      "CONTEST\020\001\022\033\n\027ACCOUNT_TRADE_MODE_REAL\020\002*\223" +
-      "\001\n\027EnumOpenedOrderSortType\022\031\n\025SORT_BY_OP" +
-      "EN_TIME_ASC\020\000\022\032\n\026SORT_BY_OPEN_TIME_DESC\020" +
-      "\001\022\037\n\033SORT_BY_ORDER_TICKET_ID_ASC\020\002\022 \n\034SO" +
-      "RT_BY_ORDER_TICKET_ID_DESC\020\003*\200\001\n\017OpenedO" +
-      "rderType\022\r\n\tOO_OP_BUY\020\000\022\016\n\nOO_OP_SELL\020\001\022" +
-      "\022\n\016OO_OP_BUYLIMIT\020\002\022\023\n\017OO_OP_SELLLIMIT\020\003" +
-      "\022\021\n\rOO_OP_BUYSTOP\020\004\022\022\n\016OO_OP_SELLSTOP\020\005*" +
-      "\375\001\n\030EnumOrderHistorySortType\022!\n\035HISTORY_" +
-      "SORT_BY_OPEN_TIME_ASC\020\000\022\"\n\036HISTORY_SORT_" +
-      "BY_OPEN_TIME_DESC\020\001\022\"\n\036HISTORY_SORT_BY_C" +
-      "LOSE_TIME_ASC\020\002\022#\n\037HISTORY_SORT_BY_CLOSE" +
-      "_TIME_DESC\020\003\022\'\n#HISTORY_SORT_BY_ORDER_TI" +
-      "CKET_ID_ASC\020\004\022(\n$HISTORY_SORT_BY_ORDER_T" +
-      "ICKET_ID_DESC\020\005*\271\001\n\031SP_ENUM_SYMBOL_TRADE" +
-      "_MODE\022\036\n\032SYMBOL_TRADE_MODE_DISABLED\020\000\022\036\n" +
-      "\032SYMBOL_TRADE_MODE_LONGONLY\020\001\022\037\n\033SYMBOL_" +
-      "TRADE_MODE_SHORTONLY\020\002\022\037\n\033SYMBOL_TRADE_M" +
-      "ODE_CLOSEONLY\020\003\022\032\n\026SYMBOL_TRADE_MODE_FUL" +
-      "L\020\004*\260\001\n\036SP_ENUM_SYMBOL_TRADE_EXECUTION\022\"" +
-      "\n\036SYMBOL_TRADE_EXECUTION_REQUEST\020\000\022\"\n\036SY" +
-      "MBOL_TRADE_EXECUTION_INSTANT\020\001\022!\n\035SYMBOL" +
-      "_TRADE_EXECUTION_MARKET\020\002\022#\n\037SYMBOL_TRAD" +
-      "E_EXECUTION_EXCHANGE\020\003*\227\001\n\027SP_ENUM_TRADE" +
-      "_CALC_MODE\022(\n$SYMBOL_TRADE_MARGINE_CALC_" +
-      "MODE_FOREX\020\000\022*\n&SYMBOL_TRADE_MARGINE_CAL" +
-      "C_MODE_FUTURES\020\001\022&\n\"SYMBOL_TRADE_MARGINE" +
-      "_CALC_MODE_CFD\020\0022\336\005\n\rAccountHelper\022q\n\016Ac" +
-      "countSummary\022#.mt4_term_api.AccountSumma" +
-      "ryRequest\032!.mt4_term_api.AccountSummaryR" +
-      "eply\"\027\202\323\344\223\002\021\022\017/AccountSummary\022i\n\014OpenedO" +
-      "rders\022!.mt4_term_api.OpenedOrdersRequest" +
-      "\032\037.mt4_term_api.OpenedOrdersReply\"\025\202\323\344\223\002" +
-      "\017\022\r/OpenedOrders\022\205\001\n\023OpenedOrdersTickets" +
-      "\022(.mt4_term_api.OpenedOrdersTicketsReque" +
-      "st\032&.mt4_term_api.OpenedOrdersTicketsRep" +
-      "ly\"\034\202\323\344\223\002\026\022\024/OpenedOrdersTickets\022m\n\rOrde" +
-      "rsHistory\022\".mt4_term_api.OrdersHistoryRe" +
-      "quest\032 .mt4_term_api.OrdersHistoryReply\"" +
-      "\026\202\323\344\223\002\020\022\016/OrdersHistory\022y\n\020SymbolParamsM" +
-      "any\022%.mt4_term_api.SymbolParamsManyReque" +
-      "st\032#.mt4_term_api.SymbolParamsManyReply\"" +
-      "\031\202\323\344\223\002\023\022\021/SymbolParamsMany\022}\n\021TickValueW" +
-      "ithSize\022&.mt4_term_api.TickValueWithSize" +
-      "Request\032$.mt4_term_api.TickValueWithSize" +
-      "Reply\"\032\202\323\344\223\002\024\022\022/TickValueWithSizeBBZ1git" +
-      ".mtapi.io/root/mrpc-proto.git/mt4/librar" +
-      "ies/go\252\002\014mt4_term_apib\006proto3"
+      "3\n\017server_time_utc\030\017 \001(\0132\032.google.protob" +
+      "uf.Timestamp\022\026\n\016account_credit\030\n \001(\001\022\023\n\013" +
+      "is_investor\030\013 \001(\010\022%\n\035utc_server_time_shi" +
+      "ft_minutes\030\014 \001(\005\022&\n\031server_utc_offset_se" +
+      "conds\030\016 \001(\005H\000\210\001\001B\034\n\032_server_utc_offset_s" +
+      "econds\"O\n\023OpenedOrdersRequest\0228\n\tsort_ty" +
+      "pe\030\001 \001(\0162%.mt4_term_api.EnumOpenedOrderS" +
+      "ortType\"u\n\021OpenedOrdersReply\022.\n\004data\030\001 \001" +
+      "(\0132\036.mt4_term_api.OpenedOrdersDataH\000\022$\n\005" +
+      "error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010re" +
+      "sponse\"F\n\020OpenedOrdersData\0222\n\013order_info" +
+      "s\030\001 \003(\0132\035.mt4_term_api.OpenedOrderInfo\"\231" +
+      "\004\n\017OpenedOrderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tc" +
+      "ommision\030\002 \001(\001\0223\n\017expiration_time\030\003 \001(\0132" +
+      "\032.google.protobuf.Timestamp\0227\n\023expiratio" +
+      "n_time_utc\030\022 \001(\0132\032.google.protobuf.Times" +
+      "tamp\022\014\n\004lots\030\004 \001(\001\022\024\n\014magic_number\030\005 \001(\005" +
+      "\022\022\n\nopen_price\030\006 \001(\001\022\016\n\006profit\030\007 \001(\001\022\021\n\t" +
+      "stop_loss\030\010 \001(\001\022\014\n\004swap\030\t \001(\001\022\016\n\006symbol\030" +
+      "\n \001(\t\022\023\n\013take_profit\030\013 \001(\001\022\016\n\006ticket\030\014 \001" +
+      "(\005\022\026\n\016position_index\030\r \001(\005\0221\n\norder_type" +
+      "\030\016 \001(\0162\035.mt4_term_api.OpenedOrderType\022\022\n" +
+      "\nsort_index\030\017 \001(\005\022-\n\topen_time\030\020 \001(\0132\032.g" +
+      "oogle.protobuf.Timestamp\0221\n\ropen_time_ut" +
+      "c\030\023 \001(\0132\032.google.protobuf.Timestamp\022\025\n\ra" +
+      "ccount_login\030\021 \001(\003\"\034\n\032OpenedOrdersTicket" +
+      "sRequest\"\203\001\n\030OpenedOrdersTicketsReply\0225\n" +
+      "\004data\030\001 \001(\0132%.mt4_term_api.OpenedOrdersT" +
+      "icketsDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_a" +
+      "pi.ErrorH\000B\n\n\010response\"*\n\027OpenedOrdersTi" +
+      "cketsData\022\017\n\007tickets\030\001 \003(\005\"w\n\022OrdersHist" +
+      "oryReply\022/\n\004data\030\001 \001(\0132\037.mt4_term_api.Or" +
+      "dersHistoryDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_t" +
+      "erm_api.ErrorH\000B\n\n\010response\"v\n\021OrdersHis" +
+      "toryData\0223\n\013orders_info\030\001 \003(\0132\036.mt4_term" +
+      "_api.HistoryOrderInfo\022\023\n\013total_count\030\002 \001" +
+      "(\005\022\027\n\017next_page_token\030\003 \001(\t\"\223\005\n\020HistoryO" +
+      "rderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tcommision\030\002" +
+      " \001(\001\0223\n\017expiration_time\030\003 \001(\0132\032.google.p" +
+      "rotobuf.Timestamp\0227\n\023expiration_time_utc" +
+      "\030\024 \001(\0132\032.google.protobuf.Timestamp\022\014\n\004lo" +
+      "ts\030\004 \001(\001\022\024\n\014magic_number\030\005 \001(\005\022\022\n\nopen_p" +
+      "rice\030\006 \001(\001\022\016\n\006profit\030\007 \001(\001\022\021\n\tstop_loss\030" +
+      "\010 \001(\001\022\014\n\004swap\030\t \001(\001\022\016\n\006symbol\030\n \001(\t\022\023\n\013t" +
+      "ake_profit\030\013 \001(\001\022\016\n\006ticket\030\014 \001(\005\022\026\n\016posi" +
+      "tion_index\030\r \001(\005\0221\n\norder_type\030\016 \001(\0162\035.m" +
+      "t4_term_api.OpenedOrderType\022\022\n\nsort_inde" +
+      "x\030\017 \001(\005\022-\n\topen_time\030\020 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\0221\n\ropen_time_utc\030\025 \001(\0132\032." +
+      "google.protobuf.Timestamp\022.\n\nclose_time\030" +
+      "\021 \001(\0132\032.google.protobuf.Timestamp\0222\n\016clo" +
+      "se_time_utc\030\026 \001(\0132\032.google.protobuf.Time" +
+      "stamp\022\023\n\013close_price\030\022 \001(\001\022\025\n\raccount_lo" +
+      "gin\030\023 \001(\003\"\360\003\n\024OrdersHistoryRequest\022?\n\017in" +
+      "put_sort_mode\030\001 \001(\0162&.mt4_term_api.EnumO" +
+      "rderHistorySortType\0223\n\ninput_from\030\002 \001(\0132" +
+      "\032.google.protobuf.TimestampH\000\210\001\001\0227\n\016inpu" +
+      "t_from_utc\030\010 \001(\0132\032.google.protobuf.Times" +
+      "tampH\001\210\001\001\0221\n\010input_to\030\003 \001(\0132\032.google.pro" +
+      "tobuf.TimestampH\002\210\001\001\0225\n\014input_to_utc\030\t \001" +
+      "(\0132\032.google.protobuf.TimestampH\003\210\001\001\022\030\n\013p" +
+      "age_number\030\004 \001(\005H\004\210\001\001\022\033\n\016items_per_page\030" +
+      "\005 \001(\005H\005\210\001\001\022\022\n\npage_token\030\006 \001(\t\022\021\n\tpage_s" +
+      "ize\030\007 \001(\005B\r\n\013_input_fromB\021\n\017_input_from_" +
+      "utcB\013\n\t_input_toB\017\n\r_input_to_utcB\016\n\014_pa" +
+      "ge_numberB\021\n\017_items_per_page\"C\n\027SymbolPa" +
+      "ramsManyRequest\022\030\n\013symbol_name\030\001 \001(\tH\000\210\001" +
+      "\001B\016\n\014_symbol_name\"}\n\025SymbolParamsManyRep" +
+      "ly\0222\n\004data\030\001 \001(\0132\".mt4_term_api.SymbolPa" +
+      "ramsManyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term" +
+      "_api.ErrorH\000B\n\n\010response\"P\n\024SymbolParams" +
+      "ManyData\0228\n\014symbol_infos\030\001 \003(\0132\".mt4_ter" +
+      "m_api.SymbolParamsManyInfo\"\361\r\n\024SymbolPar" +
+      "amsManyInfo\022\023\n\013is_selected\030\001 \001(\010\022\017\n\007visi" +
+      "ble\030\002 \001(\010\022\025\n\rsession_deals\030\003 \001(\003\022\032\n\022sess" +
+      "ion_buy_orders\030\004 \001(\003\022\033\n\023session_sell_ord" +
+      "ers\030\005 \001(\003\022\016\n\006volume\030\006 \001(\003\022\023\n\013volume_high" +
+      "\030\007 \001(\003\022\021\n\tVolumeLow\030\010 \001(\003\022\014\n\004Time\030\t \001(\003\022" +
+      "\017\n\007TimeUtc\030D \001(\003\022\016\n\006Digits\030\n \001(\005\022\023\n\013Spre" +
+      "adFloat\030\013 \001(\010\022\026\n\016TicksBookDepth\030\014 \001(\005\022<\n" +
+      "\rTradeCalcMode\030\r \001(\0162%.mt4_term_api.SP_E" +
+      "NUM_TRADE_CALC_MODE\022:\n\tTradeMode\030\016 \001(\0162\'" +
+      ".mt4_term_api.SP_ENUM_SYMBOL_TRADE_MODE\022" +
+      "-\n\tStartTime\030\017 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\0220\n\014StartTimeUtc\030E \001(\0132\032.google.pr" +
+      "otobuf.Timestamp\0222\n\016ExpirationTime\030\020 \001(\013" +
+      "2\032.google.protobuf.Timestamp\0225\n\021Expirati" +
+      "onTimeUtc\030F \001(\0132\032.google.protobuf.Timest" +
+      "amp\022\027\n\017TradeStopsLevel\030\021 \001(\005\022\030\n\020TradeFre" +
+      "ezeLevel\030\022 \001(\005\022B\n\014TradeExeMode\030\023 \001(\0162,.m" +
+      "t4_term_api.SP_ENUM_SYMBOL_TRADE_EXECUTI" +
+      "ON\022\020\n\010SwapMode\030\024 \001(\005\022\031\n\021SwapRollover3Day" +
+      "s\030\025 \001(\005\022\017\n\007TheLast\030\026 \001(\001\022\020\n\010LastHigh\030\027 \001" +
+      "(\001\022\017\n\007LastLow\030\030 \001(\001\022\r\n\005Point\030\031 \001(\001\022\026\n\016Tr" +
+      "adeTickValue\030\032 \001(\001\022\034\n\024TradeTickValueProf" +
+      "it\030\033 \001(\001\022\032\n\022TradeTickValueLoss\030\034 \001(\001\022\025\n\r" +
+      "TradeTickSize\030\035 \001(\001\022\031\n\021TradeContractSize" +
+      "\030\036 \001(\001\022\021\n\tVolumeMin\030\037 \001(\001\022\021\n\tVolumeMax\030 " +
+      " \001(\001\022\022\n\nVolumeStep\030! \001(\001\022\023\n\013VolumeLimit\030" +
+      "\" \001(\001\022\020\n\010SwapLong\030# \001(\001\022\021\n\tSwapShort\030$ \001" +
+      "(\001\022\025\n\rMarginInitial\030% \001(\001\022\031\n\021MarginMaint" +
+      "enance\030& \001(\001\022\022\n\nMarginLong\030\' \001(\001\022\023\n\013Marg" +
+      "inShort\030( \001(\001\022\023\n\013MarginLimit\030) \001(\001\022\022\n\nMa" +
+      "rginStop\030* \001(\001\022\027\n\017MarginStopLimit\030+ \001(\001\022" +
+      "\025\n\rSessionVolume\030, \001(\001\022\027\n\017SessionTurnove" +
+      "r\030- \001(\001\022\027\n\017SessionInterest\030. \001(\001\022\036\n\026Sess" +
+      "ionBuyOrdersVolume\030/ \001(\001\022\037\n\027SessionSellO" +
+      "rdersVolume\0300 \001(\001\022\023\n\013SessionOpen\0301 \001(\001\022\024" +
+      "\n\014SessionClose\0302 \001(\001\022\021\n\tSessionAW\0303 \001(\001\022" +
+      "\036\n\026SessionPriceSettlement\0304 \001(\001\022\034\n\024Sessi" +
+      "onPriceLimitMin\0305 \001(\001\022\034\n\024SessionPriceLim" +
+      "itMax\0306 \001(\001\022\013\n\003Bid\0307 \001(\001\022\017\n\007BidHigh\0308 \001(" +
+      "\001\022\016\n\006BidLow\0309 \001(\001\022\017\n\007AskHigh\030: \001(\001\022\016\n\006As" +
+      "kLow\030; \001(\001\022\024\n\014CurrencyBase\030< \001(\t\022\026\n\016Curr" +
+      "encyProfit\030= \001(\t\022\026\n\016CurrencyMargin\030> \001(\t" +
+      "\022\014\n\004Bank\030? \001(\t\022\026\n\016SymDescription\030@ \001(\t\022\014" +
+      "\n\004Isin\030A \001(\t\022\014\n\004Path\030B \001(\t\022\022\n\nSymbolName" +
+      "\030C \001(\t\"0\n\030TickValueWithSizeRequest\022\024\n\014sy" +
+      "mbol_names\030\001 \003(\t\"\177\n\026TickValueWithSizeRep" +
+      "ly\0223\n\004data\030\001 \001(\0132#.mt4_term_api.TickValu" +
+      "eWithSizeDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
+      "m_api.ErrorH\000B\n\n\010response\"Q\n\025TickValueWi" +
+      "thSizeData\0228\n\005infos\030\001 \003(\0132).mt4_term_api" +
+      ".SymbolTickValueWithSizeInfo\"\212\001\n\033SymbolT" +
+      "ickValueWithSizeInfo\022\r\n\005index\030\001 \001(\005\022\022\n\ns" +
+      "ymbolName\030\002 \001(\t\022\026\n\016TradeTickValue\030\003 \001(\001\022" +
+      "\025\n\rTradeTickSize\030\004 \001(\001\022\031\n\021TradeContractS" +
+      "ize\030\005 \001(\001*p\n\024EnumAccountTradeMode\022\033\n\027ACC" +
+      "OUNT_TRADE_MODE_DEMO\020\000\022\036\n\032ACCOUNT_TRADE_" +
+      "MODE_CONTEST\020\001\022\033\n\027ACCOUNT_TRADE_MODE_REA" +
+      "L\020\002*\223\001\n\027EnumOpenedOrderSortType\022\031\n\025SORT_" +
+      "BY_OPEN_TIME_ASC\020\000\022\032\n\026SORT_BY_OPEN_TIME_" +
+      "DESC\020\001\022\037\n\033SORT_BY_ORDER_TICKET_ID_ASC\020\002\022" +
+      " \n\034SORT_BY_ORDER_TICKET_ID_DESC\020\003*\200\001\n\017Op" +
+      "enedOrderType\022\r\n\tOO_OP_BUY\020\000\022\016\n\nOO_OP_SE" +
+      "LL\020\001\022\022\n\016OO_OP_BUYLIMIT\020\002\022\023\n\017OO_OP_SELLLI" +
+      "MIT\020\003\022\021\n\rOO_OP_BUYSTOP\020\004\022\022\n\016OO_OP_SELLST" +
+      "OP\020\005*\375\001\n\030EnumOrderHistorySortType\022!\n\035HIS" +
+      "TORY_SORT_BY_OPEN_TIME_ASC\020\000\022\"\n\036HISTORY_" +
+      "SORT_BY_OPEN_TIME_DESC\020\001\022\"\n\036HISTORY_SORT" +
+      "_BY_CLOSE_TIME_ASC\020\002\022#\n\037HISTORY_SORT_BY_" +
+      "CLOSE_TIME_DESC\020\003\022\'\n#HISTORY_SORT_BY_ORD" +
+      "ER_TICKET_ID_ASC\020\004\022(\n$HISTORY_SORT_BY_OR" +
+      "DER_TICKET_ID_DESC\020\005*\271\001\n\031SP_ENUM_SYMBOL_" +
+      "TRADE_MODE\022\036\n\032SYMBOL_TRADE_MODE_DISABLED" +
+      "\020\000\022\036\n\032SYMBOL_TRADE_MODE_LONGONLY\020\001\022\037\n\033SY" +
+      "MBOL_TRADE_MODE_SHORTONLY\020\002\022\037\n\033SYMBOL_TR" +
+      "ADE_MODE_CLOSEONLY\020\003\022\032\n\026SYMBOL_TRADE_MOD" +
+      "E_FULL\020\004*\260\001\n\036SP_ENUM_SYMBOL_TRADE_EXECUT" +
+      "ION\022\"\n\036SYMBOL_TRADE_EXECUTION_REQUEST\020\000\022" +
+      "\"\n\036SYMBOL_TRADE_EXECUTION_INSTANT\020\001\022!\n\035S" +
+      "YMBOL_TRADE_EXECUTION_MARKET\020\002\022#\n\037SYMBOL" +
+      "_TRADE_EXECUTION_EXCHANGE\020\003*\227\001\n\027SP_ENUM_" +
+      "TRADE_CALC_MODE\022(\n$SYMBOL_TRADE_MARGINE_" +
+      "CALC_MODE_FOREX\020\000\022*\n&SYMBOL_TRADE_MARGIN" +
+      "E_CALC_MODE_FUTURES\020\001\022&\n\"SYMBOL_TRADE_MA" +
+      "RGINE_CALC_MODE_CFD\020\0022\336\005\n\rAccountHelper\022" +
+      "q\n\016AccountSummary\022#.mt4_term_api.Account" +
+      "SummaryRequest\032!.mt4_term_api.AccountSum" +
+      "maryReply\"\027\202\323\344\223\002\021\022\017/AccountSummary\022i\n\014Op" +
+      "enedOrders\022!.mt4_term_api.OpenedOrdersRe" +
+      "quest\032\037.mt4_term_api.OpenedOrdersReply\"\025" +
+      "\202\323\344\223\002\017\022\r/OpenedOrders\022\205\001\n\023OpenedOrdersTi" +
+      "ckets\022(.mt4_term_api.OpenedOrdersTickets" +
+      "Request\032&.mt4_term_api.OpenedOrdersTicke" +
+      "tsReply\"\034\202\323\344\223\002\026\022\024/OpenedOrdersTickets\022m\n" +
+      "\rOrdersHistory\022\".mt4_term_api.OrdersHist" +
+      "oryRequest\032 .mt4_term_api.OrdersHistoryR" +
+      "eply\"\026\202\323\344\223\002\020\022\016/OrdersHistory\022y\n\020SymbolPa" +
+      "ramsMany\022%.mt4_term_api.SymbolParamsMany" +
+      "Request\032#.mt4_term_api.SymbolParamsManyR" +
+      "eply\"\031\202\323\344\223\002\023\022\021/SymbolParamsMany\022}\n\021TickV" +
+      "alueWithSize\022&.mt4_term_api.TickValueWit" +
+      "hSizeRequest\032$.mt4_term_api.TickValueWit" +
+      "hSizeReply\"\032\202\323\344\223\002\024\022\022/TickValueWithSizeBB" +
+      "Z1git.mtapi.io/root/mrpc-proto.git/mt4/l" +
+      "ibraries/go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -27904,7 +32357,7 @@ public final class Mt4TermApiAccountHelper {
     internal_static_mt4_term_api_AccountSummaryData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_AccountSummaryData_descriptor,
-        new java.lang.String[] { "AccountLogin", "AccountBalance", "AccountEquity", "AccountUserName", "AccountLeverage", "AccountTradeMode", "AccountCompanyName", "AccountCurrency", "ServerTime", "AccountCredit", "IsInvestor", "UtcServerTimeShiftMinutes", });
+        new java.lang.String[] { "AccountLogin", "AccountBalance", "AccountEquity", "AccountUserName", "AccountLeverage", "AccountTradeMode", "AccountCompanyName", "AccountCurrency", "ServerTime", "ServerTimeUtc", "AccountCredit", "IsInvestor", "UtcServerTimeShiftMinutes", "ServerUtcOffsetSeconds", "ServerUtcOffsetSeconds", });
     internal_static_mt4_term_api_OpenedOrdersRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_mt4_term_api_OpenedOrdersRequest_fieldAccessorTable = new
@@ -27928,7 +32381,7 @@ public final class Mt4TermApiAccountHelper {
     internal_static_mt4_term_api_OpenedOrderInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OpenedOrderInfo_descriptor,
-        new java.lang.String[] { "Comment", "Commision", "ExpirationTime", "Lots", "MagicNumber", "OpenPrice", "Profit", "StopLoss", "Swap", "Symbol", "TakeProfit", "Ticket", "PositionIndex", "OrderType", "SortIndex", "OpenTime", "AccountLogin", });
+        new java.lang.String[] { "Comment", "Commision", "ExpirationTime", "ExpirationTimeUtc", "Lots", "MagicNumber", "OpenPrice", "Profit", "StopLoss", "Swap", "Symbol", "TakeProfit", "Ticket", "PositionIndex", "OrderType", "SortIndex", "OpenTime", "OpenTimeUtc", "AccountLogin", });
     internal_static_mt4_term_api_OpenedOrdersTicketsRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_mt4_term_api_OpenedOrdersTicketsRequest_fieldAccessorTable = new
@@ -27958,19 +32411,19 @@ public final class Mt4TermApiAccountHelper {
     internal_static_mt4_term_api_OrdersHistoryData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrdersHistoryData_descriptor,
-        new java.lang.String[] { "OrdersInfo", "TotalCount", });
+        new java.lang.String[] { "OrdersInfo", "TotalCount", "NextPageToken", });
     internal_static_mt4_term_api_HistoryOrderInfo_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_mt4_term_api_HistoryOrderInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_HistoryOrderInfo_descriptor,
-        new java.lang.String[] { "Comment", "Commision", "ExpirationTime", "Lots", "MagicNumber", "OpenPrice", "Profit", "StopLoss", "Swap", "Symbol", "TakeProfit", "Ticket", "PositionIndex", "OrderType", "SortIndex", "OpenTime", "CloseTime", "ClosePrice", "AccountLogin", });
+        new java.lang.String[] { "Comment", "Commision", "ExpirationTime", "ExpirationTimeUtc", "Lots", "MagicNumber", "OpenPrice", "Profit", "StopLoss", "Swap", "Symbol", "TakeProfit", "Ticket", "PositionIndex", "OrderType", "SortIndex", "OpenTime", "OpenTimeUtc", "CloseTime", "CloseTimeUtc", "ClosePrice", "AccountLogin", });
     internal_static_mt4_term_api_OrdersHistoryRequest_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_mt4_term_api_OrdersHistoryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_OrdersHistoryRequest_descriptor,
-        new java.lang.String[] { "InputSortMode", "InputFrom", "InputTo", "PageNumber", "ItemsPerPage", "InputFrom", "InputTo", "PageNumber", "ItemsPerPage", });
+        new java.lang.String[] { "InputSortMode", "InputFrom", "InputFromUtc", "InputTo", "InputToUtc", "PageNumber", "ItemsPerPage", "PageToken", "PageSize", "InputFrom", "InputFromUtc", "InputTo", "InputToUtc", "PageNumber", "ItemsPerPage", });
     internal_static_mt4_term_api_SymbolParamsManyRequest_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_mt4_term_api_SymbolParamsManyRequest_fieldAccessorTable = new
@@ -27994,7 +32447,7 @@ public final class Mt4TermApiAccountHelper {
     internal_static_mt4_term_api_SymbolParamsManyInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_SymbolParamsManyInfo_descriptor,
-        new java.lang.String[] { "IsSelected", "Visible", "SessionDeals", "SessionBuyOrders", "SessionSellOrders", "Volume", "VolumeHigh", "VolumeLow", "Time", "Digits", "SpreadFloat", "TicksBookDepth", "TradeCalcMode", "TradeMode", "StartTime", "ExpirationTime", "TradeStopsLevel", "TradeFreezeLevel", "TradeExeMode", "SwapMode", "SwapRollover3Days", "TheLast", "LastHigh", "LastLow", "Point", "TradeTickValue", "TradeTickValueProfit", "TradeTickValueLoss", "TradeTickSize", "TradeContractSize", "VolumeMin", "VolumeMax", "VolumeStep", "VolumeLimit", "SwapLong", "SwapShort", "MarginInitial", "MarginMaintenance", "MarginLong", "MarginShort", "MarginLimit", "MarginStop", "MarginStopLimit", "SessionVolume", "SessionTurnover", "SessionInterest", "SessionBuyOrdersVolume", "SessionSellOrdersVolume", "SessionOpen", "SessionClose", "SessionAW", "SessionPriceSettlement", "SessionPriceLimitMin", "SessionPriceLimitMax", "Bid", "BidHigh", "BidLow", "AskHigh", "AskLow", "CurrencyBase", "CurrencyProfit", "CurrencyMargin", "Bank", "SymDescription", "Isin", "Path", "SymbolName", });
+        new java.lang.String[] { "IsSelected", "Visible", "SessionDeals", "SessionBuyOrders", "SessionSellOrders", "Volume", "VolumeHigh", "VolumeLow", "Time", "TimeUtc", "Digits", "SpreadFloat", "TicksBookDepth", "TradeCalcMode", "TradeMode", "StartTime", "StartTimeUtc", "ExpirationTime", "ExpirationTimeUtc", "TradeStopsLevel", "TradeFreezeLevel", "TradeExeMode", "SwapMode", "SwapRollover3Days", "TheLast", "LastHigh", "LastLow", "Point", "TradeTickValue", "TradeTickValueProfit", "TradeTickValueLoss", "TradeTickSize", "TradeContractSize", "VolumeMin", "VolumeMax", "VolumeStep", "VolumeLimit", "SwapLong", "SwapShort", "MarginInitial", "MarginMaintenance", "MarginLong", "MarginShort", "MarginLimit", "MarginStop", "MarginStopLimit", "SessionVolume", "SessionTurnover", "SessionInterest", "SessionBuyOrdersVolume", "SessionSellOrdersVolume", "SessionOpen", "SessionClose", "SessionAW", "SessionPriceSettlement", "SessionPriceLimitMin", "SessionPriceLimitMax", "Bid", "BidHigh", "BidLow", "AskHigh", "AskLow", "CurrencyBase", "CurrencyProfit", "CurrencyMargin", "Bank", "SymDescription", "Isin", "Path", "SymbolName", });
     internal_static_mt4_term_api_TickValueWithSizeRequest_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_mt4_term_api_TickValueWithSizeRequest_fieldAccessorTable = new
