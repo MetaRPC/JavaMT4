@@ -14,17 +14,25 @@
 
 ## Step 1: Install the SDK
 
-```bash
-git clone https://github.com/MetaRPC/JavaMT4.git
-cd JavaMT4
-./gradlew publishToMavenLocal      # installs pro.mrpc:mt4:1.0.0 into ~/.m2
+Gradle, from [JitPack](https://jitpack.io/#MetaRPC/JavaMT4) (built from this repository on request):
+
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.MetaRPC:JavaMT4:fa9acfb453'   // a commit of this repository; main-SNAPSHOT = the latest
+}
 ```
 
-Then, with `mavenLocal()` among your repositories: `implementation 'pro.mrpc:mt4:1.0.0'` (it brings gRPC and the generated
-`mt4_term_api` stubs along). The SDK is not on Maven Central.
+Maven: add the repository `https://jitpack.io` and the dependency `com.github.MetaRPC` / `JavaMT4` / `fa9acfb453`.
+The jar brings gRPC and the generated `mt4_term_api` stubs along; Java 17+. It is not on Maven Central.
 
-Create a Gradle project with `mavenLocal()` and `mavenCentral()` among its repositories and
-`implementation 'pro.mrpc:mt4:1.0.0'` among its dependencies.
+Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd JavaMT4 && ./gradlew publishToMavenLocal` installs
+`pro.mrpc:mt4:1.0.0` into your local Maven repository (`mavenLocal()`).
+
+Create a Gradle project (`gradle init --type java-application`) with the repositories and the dependency above.
 
 ---
 

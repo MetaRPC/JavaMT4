@@ -11,24 +11,23 @@
 
 ## 📦 Installation
 
-The SDK is not published to Maven Central yet: build it from this repository once (JDK 17+); it installs
-`pro.mrpc:mt4:1.0.0` into your local Maven repository.
+Gradle, from [JitPack](https://jitpack.io/#MetaRPC/JavaMT4) (built from this repository on request):
 
-```bash
-git clone https://github.com/MetaRPC/JavaMT4.git
-cd JavaMT4
-./gradlew publishToMavenLocal
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.MetaRPC:JavaMT4:fa9acfb453'   // a commit of this repository; main-SNAPSHOT = the latest
+}
 ```
 
-Then depend on it (Gradle, with `mavenLocal()` among the repositories): `implementation 'pro.mrpc:mt4:1.0.0'`, or Maven:
+Maven: add the repository `https://jitpack.io` and the dependency `com.github.MetaRPC` / `JavaMT4` / `fa9acfb453`.
+The jar brings gRPC and the generated `mt4_term_api` stubs along; Java 17+. It is not on Maven Central.
 
-```xml
-<dependency>
-    <groupId>pro.mrpc</groupId>
-    <artifactId>mt4</artifactId>
-    <version>1.0.0</version>
-</dependency>
-```
+Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd JavaMT4 && ./gradlew publishToMavenLocal` installs
+`pro.mrpc:mt4:1.0.0` into your local Maven repository (`mavenLocal()`).
 
 The jar holds the gRPC stubs generated from the current MT4 protos (`mt4_term_api`, synced into `package/` on every release).
 
