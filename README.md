@@ -11,7 +11,7 @@
 
 ## 📦 Installation
 
-The SDK is not published to Maven Central yet: build it from this repository once (JDK 11+); it installs
+The SDK is not published to Maven Central yet: build it from this repository once (JDK 17+); it installs
 `pro.mrpc:mt4:1.0.0` into your local Maven repository.
 
 ```bash
