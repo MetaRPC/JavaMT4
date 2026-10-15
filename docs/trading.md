@@ -1,8 +1,32 @@
 # Trading & Orders
 
-JavaMT4 supports execution of market orders, pending limit/stop orders, position modification (Stop Loss / Take Profit), and position closing.
+## MT4Account (MRPC)
 
-## Opening an Order
+```java
+OrderSendData order = account.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.01);
+System.out.println("Ticket #" + order.getTicket() + " at " + order.getPrice());
+
+// pending order with stops
+OrderSendData pending = account.orderSend(OrderSendRequest.newBuilder()
+        .setSymbol("EURUSD").setOperationType(OrderSendOperationType.OC_OP_BUYLIMIT)
+        .setVolume(0.01).setPrice(1.05).setStoploss(1.04).setTakeprofit(1.07).build());
+
+account.orderClose(order.getTicket());      // closes the market order
+account.orderClose(pending.getTicket());    // deletes the pending one
+```
+
+An order the server refuses throws `MrpcException` with the server's code. Modifying an order: `OrderModify` of
+`TradingHelperGrpc`, through `account.authorized(TradingHelperGrpc.newBlockingStub(account.getChannel()))`.
+
+## MT4Client (MT4 server protocol, no MRPC)
+
+> **`MT4Client` is a different client.** It speaks the MT4 server protocol straight to a broker's MT4 server (the
+> broker's access point host and port), without MRPC and without an API key. It cannot connect to `mt4.mrpc.pro`; for the
+> MRPC API use `MT4Account`.
+
+`MT4Client` sends trade requests to the MT4 server.
+
+### Opening an Order
 
 MetaTrader 4 brokers use either **Market Execution** or **Instant Execution**. You can check the execution mode using `SymbolInfo`:
 
@@ -41,7 +65,7 @@ if (result.ticket > 0) {
 }
 ```
 
-## Modifying Stop Loss and Take Profit
+### Modifying Stop Loss and Take Profit
 
 ```java
 OrderTransactionReq modifyReq = new OrderTransactionReq();
@@ -59,7 +83,7 @@ if (modifyRes.ticket > 0) {
 }
 ```
 
-## Closing an Order
+### Closing an Order
 
 ```java
 OrderTransactionReq closeReq = new OrderTransactionReq();
@@ -82,7 +106,7 @@ TradeEvent closeRes = (TradeEvent) client.sendRequest(closeReq);
 System.out.println("Closed order ticket #" + closeRes.ticket);
 ```
 
-## Pending Orders
+### Pending Orders
 
 To place limit or stop orders:
 

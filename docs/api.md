@@ -1,11 +1,52 @@
 # API Reference
 
-Complete reference of the primary classes, interfaces, and data models in the `pro.mrpc.mt4` package.
+The classes of the `pro.mrpc.mt4` package.
 
 ## Classes & Interfaces
 
-### `MT4Client`
-The primary client class for connecting to and interacting with MetaTrader 4 servers.
+### `MT4Account` (the MRPC API)
+
+The client of the MRPC MT4 API (`mt4.mrpc.pro:443`, gRPC over TLS). Every method returns the reply's data or throws
+`MrpcException` (`getCode()` is the API's error code, e.g. `TERMINAL_INSTANCE_NOT_FOUND`, or the gRPC status of a failed
+call).
+
+```java
+public class MT4Account implements AutoCloseable {
+    public MT4Account(String apiKey);                              // mt4.mrpc.pro:443
+    public MT4Account(String grpcServer, String apiKey);           // host:port, TLS
+    public MT4Account(ManagedChannel channel, String apiKey);      // your own channel
+
+    public String connect(long user, String password, String serverName, int timeoutSeconds);  // ConnectEx, e.g. "TeleTrade-Demo"
+    public String connect(long user, String password, String host, int port, int timeoutSeconds); // Connect by address
+    public String getId(long user, String password);              // GetId; a following connect() uses this id
+    public void attach(String terminalId);                        // an already connected terminal
+    public String getTerminalId();
+
+    public AccountSummaryData accountSummary();
+    public QuoteData quote(String symbol);
+    public OrderSendData orderSend(OrderSendRequest request);
+    public OrderSendData orderSend(String symbol, OrderSendOperationType type, double lots);
+    public OrderCloseDeleteData orderClose(int ticket);           // close a market order, delete a pending one
+    public Subscription onSymbolTick(List<String> symbols, Consumer<OnSymbolMqlTickInfo> onTick, Consumer<Throwable> onError);
+
+    public void disconnect(boolean delete);
+    public void close();                                          // shuts the channel down
+
+    public ManagedChannel getChannel();
+    public <S extends AbstractStub<S>> S authorized(S stub);      // any generated stub, with the API key and terminal id
+}
+```
+
+Every other method of the API is in the generated stubs (`mt4_term_api.*Grpc`), for example
+`account.authorized(AccountHelperGrpc.newBlockingStub(account.getChannel())).openedOrders(...)`. The full API:
+[https://mt4.mrpc.pro/apiui](https://mt4.mrpc.pro/apiui).
+
+### `MT4Client` (MT4 server protocol, no MRPC)
+
+> **`MT4Client` is a different client.** It speaks the MT4 server protocol straight to a broker's MT4 server (the
+> broker's access point host and port), without MRPC and without an API key. It cannot connect to `mt4.mrpc.pro`; for the
+> MRPC API use `MT4Account`.
+
 
 ```java
 public class MT4Client {
@@ -31,7 +72,7 @@ public class MT4Client {
 ```
 
 ### `MessageHandler`
-Callback interface for receiving non-blocking network events from the MetaTrader 4 server.
+Callback interface of `MT4Client` for the events of the MT4 server connection.
 
 ```java
 public interface MessageHandler {
@@ -43,7 +84,7 @@ public interface MessageHandler {
 }
 ```
 
-## Enumerations
+## `MT4Client` enumerations
 
 ### `Op` (Order Type)
 - `Op.Buy`: Market buy order
@@ -73,7 +114,7 @@ public interface MessageHandler {
 - `Timeframe.W1`: 1 Week
 - `Timeframe.MN1`: 1 Month
 
-## Request & Response Objects
+## `MT4Client` request & response objects
 
 ### `OrderTransactionReq`
 Request payload for creating, modifying, and closing orders.

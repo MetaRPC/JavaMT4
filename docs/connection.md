@@ -1,14 +1,38 @@
+# Connection
 
-## 🆔 Automatic Account ID & Authentication
+## MT4Account (MRPC)
 
-MetaRPC endpoints route calls using a terminal session GUID (`id`).
-When connecting via `Connect` / `ConnectEx`, the server automatically generates and returns your session GUID (`terminalInstanceGuid`). The SDK captures this ID and attaches both your `id` and `APIKey` headers to all subsequent terminal calls — no manual `GetId` or curl steps required.
+```java
+MT4Account account = new MT4Account("your-api-key");            // mt4.mrpc.pro:443
+String terminal = account.connect(7689280, "your-password", "TeleTrade-Demo", 120);
 
-# Connection & Authentication
+// ... calls ...
 
-The `MT4Client` class manages the lifecycle of the TCP socket connection, encrypted handshake, and authentication with the MetaTrader 4 server.
+account.disconnect(false);   // true: stop the terminal and delete it
+account.close();             // the channel
+```
 
-## Connection Lifecycle
+`connect()` returns once the terminal is connected and throws `MrpcException` when the server refuses (wrong password,
+unknown server, ...). `connect(user, password, host, port, timeoutSeconds)` connects by the address of the broker's MT4
+server instead of its name.
+
+There is no automatic reconnect: when a call throws `TERMINAL_INSTANCE_NOT_FOUND` or the channel fails, call `connect()`
+again.
+
+## API key and terminal id
+
+- **API key**: from [https://mrpc.pro/my](https://mrpc.pro/my) (sign up free at [https://mrpc.pro/signup](https://mrpc.pro/signup)).
+  Pass it to `new MT4Account(apiKey)` or set `MRPC_API_KEY`; without one the client sends `TRIAL`.
+- **Terminal id**: `connect()` receives it from the server, keeps it (`getTerminalId()`) and sends it with every later call
+  and stream. `attach(id)` uses a terminal that is already connected.
+
+## MT4Client (MT4 server protocol, no MRPC)
+
+> **`MT4Client` is a different client.** It speaks the MT4 server protocol straight to a broker's MT4 server (the
+> broker's access point host and port), without MRPC and without an API key. It cannot connect to `mt4.mrpc.pro`; for the
+> MRPC API use `MT4Account`.
+
+### Connection lifecycle
 
 ```mermaid
 sequenceDiagram
@@ -25,12 +49,12 @@ sequenceDiagram
     Client-->>App: handler.onConnected(client)
 ```
 
-## Connecting to a Broker
+### Connecting
 
-To establish a connection, instantiate `MT4Client` with the server hostname, port, and a `MessageHandler` implementation:
+Instantiate `MT4Client` with the host and port of the broker's MT4 server and a `MessageHandler`:
 
 ```java
-MT4Client client = new MT4Client("mt4.mrpc.pro", 443, new MessageHandler() {
+MT4Client client = new MT4Client("<broker MT4 server host>", 443, new MessageHandler() {
     @Override
     public void onConnected(MT4Client client) {
         System.out.println("Session connected and authenticated.");
@@ -61,7 +85,7 @@ MT4Client client = new MT4Client("mt4.mrpc.pro", 443, new MessageHandler() {
 client.connect(1002345, "investor_or_master_password");
 ```
 
-## Connection State Verification
+### Connection state
 
 You can query connection state anytime:
 
@@ -76,14 +100,10 @@ int build = client.getLoginHelper().getServerBuild();
 System.out.println("Server MT4 build version: " + build);
 ```
 
-## Graceful Disconnection
+### Disconnecting
 
 Always close client connections cleanly when terminating:
 
 ```java
 client.disconnect();
 ```
-
-
-> **Authentication Note**: Connecting to `mt4.mrpc.pro:443` requires a valid MetaRPC API key. Register for free at [https://mrpc.pro/signup](https://mrpc.pro/signup) and generate your token in [https://mrpc.pro/my](https://mrpc.pro/my).
-

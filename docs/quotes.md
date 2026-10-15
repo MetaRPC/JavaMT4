@@ -1,8 +1,30 @@
 # Quotes & Market Data
 
-JavaMT4 provides real-time streaming market prices and historical candlestick data.
+## MT4Account (MRPC)
 
-## Subscribing to Live Quotes
+```java
+QuoteData quote = account.quote("EURUSD");
+System.out.println("EURUSD " + quote.getBid() + " / " + quote.getAsk());
+
+try (MT4Account.Subscription ticks = account.onSymbolTick(List.of("EURUSD", "GBPUSD"),
+        tick -> System.out.println(tick.getSymbol() + " " + tick.getBid() + " / " + tick.getAsk()),
+        error -> System.err.println("stream error: " + error.getMessage()))) {
+    Thread.sleep(10_000);
+}   // close() ends the stream
+```
+
+`onError` gets an error the stream answers with (an `MrpcException`, e.g. `NO_CHARTS_OPENED_FOR_SYMBOLS` for a symbol the
+terminal doesn't have) or the stream's failure. Bars: `Bars` of `QuoteHistoryGrpc` (or `QuoteHistory` of `MarketInfoGrpc`), through `account.authorized(...)`.
+
+## MT4Client (MT4 server protocol, no MRPC)
+
+> **`MT4Client` is a different client.** It speaks the MT4 server protocol straight to a broker's MT4 server (the
+> broker's access point host and port), without MRPC and without an API key. It cannot connect to `mt4.mrpc.pro`; for the
+> MRPC API use `MT4Account`.
+
+`MT4Client` streams prices and reads bars from the MT4 server.
+
+### Subscribing to Live Quotes
 
 To receive live tick updates, request quotes using the symbol code from the client's `SymbolTable`:
 
@@ -33,7 +55,7 @@ public void onMessage(MetaTraderMessage message, MT4Client c) {
 }
 ```
 
-## Unsubscribing from Quotes
+### Unsubscribing from Quotes
 
 To cancel active subscriptions, send an empty symbol code array:
 
@@ -43,7 +65,7 @@ unsubReq.symbolCodes = new short[0];
 client.sendRequestAsync(unsubReq);
 ```
 
-## Requesting Historical Bars
+### Requesting Historical Bars
 
 You can query historical OHLCV candlestick data across any timeframe:
 
