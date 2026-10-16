@@ -241,8 +241,9 @@ class MT4AccountTest {
             fail("TERMINAL_INSTANCE_NOT_FOUND", "no terminal");
             assertEquals("TERMINAL_INSTANCE_NOT_FOUND", assertThrows(MrpcException.class, a::accountSummary).getCode());
             fail("ERR_NOT_ENOUGH_MONEY", "Not enough money");
-            assertEquals("ERR_NOT_ENOUGH_MONEY", assertThrows(MrpcException.class,
-                    () -> a.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.1)).getCode());
+            MrpcException trade = assertThrows(MrpcException.class, () -> a.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.1));
+            assertEquals("ERR_NOT_ENOUGH_MONEY", trade.getCode());
+            assertEquals("Not enough money", trade.getError().getErrorMessage());
         }
     }
 
@@ -252,6 +253,7 @@ class MT4AccountTest {
         a.close();
         MrpcException e = assertThrows(MrpcException.class, () -> a.connect(123, "p", "TeleTrade-Demo", 60));
         assertEquals("UNAVAILABLE", e.getCode());
+        assertNull(e.getError());
     }
 
     @Test

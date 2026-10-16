@@ -217,7 +217,7 @@ public class MT4Account implements AutoCloseable {
         public void onNext(OnSymbolTickReply reply) {
             if (closed) return;
             if (reply.hasError()) {
-                onError.accept(new MrpcException(reply.getError().getErrorCode(), reply.getError().getErrorMessage()));
+                onError.accept(new MrpcException(reply.getError()));
             } else if (reply.hasData() && reply.getData().hasSymbolTick()) {
                 onTick.accept(reply.getData().getSymbolTick());
             }
@@ -267,7 +267,7 @@ public class MT4Account implements AutoCloseable {
         FieldDescriptor error = reply.getDescriptorForType().findFieldByName("error");
         if (error != null && reply.hasField(error)) {
             MrpcMt4Error.Error e = (MrpcMt4Error.Error) reply.getField(error);
-            throw new MrpcException(e.getErrorCode(), e.getErrorMessage());
+            throw new MrpcException(e);
         }
     }
 

@@ -38,8 +38,8 @@ public class MT4Account implements AutoCloseable {
 ```
 
 Every other method of the API is in the generated stubs (`mt4_term_api.*Grpc`), for example
-`account.authorized(AccountHelperGrpc.newBlockingStub(account.getChannel())).openedOrders(...)`. The full API:
-[https://mt4.mrpc.pro/apiui](https://mt4.mrpc.pro/apiui).
+`account.authorized(AccountHelperGrpc.newBlockingStub(account.getChannel())).openedOrders(...)`. Every method, its request
+and reply: [API methods](API_Reference/methods.md); try them at [https://mt4.mrpc.pro/apiui](https://mt4.mrpc.pro/apiui).
 
 ### `MT4Client` (MT4 server protocol, no MRPC)
 

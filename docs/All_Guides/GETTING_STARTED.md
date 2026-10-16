@@ -87,5 +87,5 @@ public class App {
 
 1. **[Your First Project](Your_First_Project.md)** - a working project in 10 minutes.
 2. **[API Reference](../api.md)** - what `MT4Account` does, and how to call the rest of the API.
-3. **[gRPC Streaming](GRPC_STREAM_MANAGEMENT.md)** - ticks, trades and other streams.
-4. **[Return Codes](RETURN_CODES_REFERENCE.md)** - broker and API return codes.
+3. **[Streams](STREAMS.md)** - ticks, trades, profit and the other streams.
+4. **[Errors](ERRORS.md)** - what a refused call looks like, and its codes.

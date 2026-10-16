@@ -82,4 +82,4 @@ No account yet? Open a demo account:
 
 - **[Quotes](../quotes.md)** - stream ticks with `onSymbolTick`.
 - **[API Reference](../api.md)** - everything `MT4Account` does, and the generated stubs for the rest of the API.
-- **[gRPC Streaming](GRPC_STREAM_MANAGEMENT.md)** - the other streams.
+- **[Streams](STREAMS.md)** - the other streams.
