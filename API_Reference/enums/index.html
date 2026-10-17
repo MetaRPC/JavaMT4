@@ -1,0 +1,2581 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete Java SDK for MetaTrader 4 trading automation via gRPC">
+      
+      
+      
+        <link rel="canonical" href="https://metarpc.github.io/JavaMT4/API_Reference/enums/">
+      
+      
+        <link rel="prev" href="../messages/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Enums - JavaMT4 SDK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enums" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JavaMT4 SDK Documentation" class="md-header__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JavaMT4 SDK Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enums
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MetaRPC/JavaMT4" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MetaRPC/JavaMT4
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JavaMT4 SDK Documentation" class="md-nav__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
+
+    </a>
+    JavaMT4 SDK Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MetaRPC/JavaMT4" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MetaRPC/JavaMT4
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/GETTING_STARTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/Your_First_Project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../trading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quotes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quotes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/STREAMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/ERRORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MT4Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../messages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enum_quote_history_timeframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ENUM_QUOTE_HISTORY_TIMEFRAME
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumaccounttrademode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumAccountTradeMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumopenedordersorttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumOpenedOrderSortType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumorderhistorysorttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumOrderHistorySortType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errortype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ErrorType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LogType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mt4_sub_enum_event_group_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MT4_SUB_ENUM_EVENT_GROUP_TYPE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqlerrorcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MqlErrorCode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordertype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrderType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosedeletemode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseDeleteMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordersendoperationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderSendOperationType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxytypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProxyTypes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quote_history_timeframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QUOTE_HISTORY_TIMEFRAME
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server_timezone_source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SERVER_TIMEZONE_SOURCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_symbol_trade_execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_SYMBOL_TRADE_EXECUTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_symbol_trade_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_SYMBOL_TRADE_MODE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_trade_calc_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_TRADE_CALC_MODE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sub_order_operation_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUB_ORDER_OPERATION_TYPE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminaltype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalType
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#enum_quote_history_timeframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ENUM_QUOTE_HISTORY_TIMEFRAME
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumaccounttrademode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumAccountTradeMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumopenedordersorttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumOpenedOrderSortType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enumorderhistorysorttype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EnumOrderHistorySortType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errortype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ErrorType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LogType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mt4_sub_enum_event_group_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MT4_SUB_ENUM_EVENT_GROUP_TYPE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mqlerrorcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MqlErrorCode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordertype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrderType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosedeletemode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseDeleteMode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordersendoperationtype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderSendOperationType
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxytypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProxyTypes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quote_history_timeframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QUOTE_HISTORY_TIMEFRAME
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server_timezone_source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SERVER_TIMEZONE_SOURCE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_symbol_trade_execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_SYMBOL_TRADE_EXECUTION
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_symbol_trade_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_SYMBOL_TRADE_MODE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sp_enum_trade_calc_mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SP_ENUM_TRADE_CALC_MODE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sub_order_operation_type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SUB_ORDER_OPERATION_TYPE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminaltype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalType
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">¶</a></h1>
+<p>The enums of the <a href="../methods/">API methods</a> (package <code>mt4_term_api</code>), generated from the protos. JSON (REST) uses the
+value names; gRPC the numbers.</p>
+<h2 id="enum_quote_history_timeframe">ENUM_QUOTE_HISTORY_TIMEFRAME<a class="headerlink" href="#enum_quote_history_timeframe" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QH_PERIOD_M1</code></td>
+<td>0</td>
+<td>1 minute</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_M5</code></td>
+<td>1</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_M15</code></td>
+<td>2</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_M30</code></td>
+<td>3</td>
+<td>30 minutes</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_H1</code></td>
+<td>4</td>
+<td>1 hour</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_H4</code></td>
+<td>5</td>
+<td>4 hours</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_D1</code></td>
+<td>6</td>
+<td>1 day</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_W1</code></td>
+<td>7</td>
+<td>1 week</td>
+</tr>
+<tr>
+<td><code>QH_PERIOD_MN1</code></td>
+<td>8</td>
+<td>1 month</td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumaccounttrademode">EnumAccountTradeMode<a class="headerlink" href="#enumaccounttrademode" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACCOUNT_TRADE_MODE_DEMO</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ACCOUNT_TRADE_MODE_CONTEST</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ACCOUNT_TRADE_MODE_REAL</code></td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumopenedordersorttype">EnumOpenedOrderSortType<a class="headerlink" href="#enumopenedordersorttype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SORT_BY_OPEN_TIME_ASC</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SORT_BY_OPEN_TIME_DESC</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SORT_BY_ORDER_TICKET_ID_ASC</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SORT_BY_ORDER_TICKET_ID_DESC</code></td>
+<td>3</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="enumorderhistorysorttype">EnumOrderHistorySortType<a class="headerlink" href="#enumorderhistorysorttype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HISTORY_SORT_BY_OPEN_TIME_ASC</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_SORT_BY_OPEN_TIME_DESC</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_SORT_BY_CLOSE_TIME_ASC</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_SORT_BY_CLOSE_TIME_DESC</code></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_SORT_BY_ORDER_TICKET_ID_ASC</code></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HISTORY_SORT_BY_ORDER_TICKET_ID_DESC</code></td>
+<td>5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="errortype">ErrorType<a class="headerlink" href="#errortype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UNDEFINED</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MRPC</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MRPC_VALIDATION</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MRPC_TIMEOUT</code></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TERMINAL_API_TIMEOUT</code></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TERMINAL_API_GET_PARAMS</code></td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TERMINAL_API_SET_RESULT</code></td>
+<td>6</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TERMINAL_API_UNEXPECTED</code></td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MQL_EXECUTION</code></td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MQL_CUSTOM_EXECUTION</code></td>
+<td>9</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="logtype">LogType<a class="headerlink" href="#logtype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Global</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MQL5</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MQL4</code></td>
+<td>2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mt4_sub_enum_event_group_type">MT4_SUB_ENUM_EVENT_GROUP_TYPE<a class="headerlink" href="#mt4_sub_enum_event_group_type" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OrderProfit</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OrderUpdate</code></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mqlerrorcode">MqlErrorCode<a class="headerlink" href="#mqlerrorcode" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ERR_NO_ERROR</code></td>
+<td>0</td>
+<td>No error</td>
+</tr>
+<tr>
+<td><code>ERR_NO_RESULT</code></td>
+<td>1</td>
+<td>No result</td>
+</tr>
+<tr>
+<td><code>ERR_COMMON_ERROR</code></td>
+<td>2</td>
+<td>Common error</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_TRADE_PARAMETERS</code></td>
+<td>3</td>
+<td>Invalid trade parameters</td>
+</tr>
+<tr>
+<td><code>ERR_SERVER_BUSY</code></td>
+<td>4</td>
+<td>Server busy</td>
+</tr>
+<tr>
+<td><code>ERR_OLD_VERSION</code></td>
+<td>5</td>
+<td>Old version</td>
+</tr>
+<tr>
+<td><code>ERR_NO_CONNECTION</code></td>
+<td>6</td>
+<td>No connection</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_ENOUGH_RIGHTS</code></td>
+<td>7</td>
+<td>Not enough rights</td>
+</tr>
+<tr>
+<td><code>ERR_TOO_FREQUENT_REQUESTS</code></td>
+<td>8</td>
+<td>Too frequent requests</td>
+</tr>
+<tr>
+<td><code>ERR_MALFUNCTIONAL_TRADE</code></td>
+<td>9</td>
+<td>Malfunctional trade</td>
+</tr>
+<tr>
+<td><code>ERR_ACCOUNT_DISABLED</code></td>
+<td>64</td>
+<td>Account disabled</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_ACCOUNT</code></td>
+<td>65</td>
+<td>Invalid account</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_TIMEOUT</code></td>
+<td>128</td>
+<td>Trade timeout</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_PRICE</code></td>
+<td>129</td>
+<td>Invalid price</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_STOPS</code></td>
+<td>130</td>
+<td>Invalid stops</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_TRADE_VOLUME</code></td>
+<td>131</td>
+<td>Invalid trade volume</td>
+</tr>
+<tr>
+<td><code>ERR_MARKET_CLOSED</code></td>
+<td>132</td>
+<td>Market closed</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_DISABLED</code></td>
+<td>133</td>
+<td>Trade disabled</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_ENOUGH_MONEY</code></td>
+<td>134</td>
+<td>Not enough money</td>
+</tr>
+<tr>
+<td><code>ERR_PRICE_CHANGED</code></td>
+<td>135</td>
+<td>Price changed</td>
+</tr>
+<tr>
+<td><code>ERR_OFF_QUOTES</code></td>
+<td>136</td>
+<td>Off quotes</td>
+</tr>
+<tr>
+<td><code>ERR_BROKER_BUSY</code></td>
+<td>137</td>
+<td>Broker busy</td>
+</tr>
+<tr>
+<td><code>ERR_REQUOTE</code></td>
+<td>138</td>
+<td>Requote</td>
+</tr>
+<tr>
+<td><code>ERR_ORDER_LOCKED</code></td>
+<td>139</td>
+<td>Order locked</td>
+</tr>
+<tr>
+<td><code>ERR_LONG_POSITIONS_ONLY_ALLOWED</code></td>
+<td>140</td>
+<td>Long positions only allowed</td>
+</tr>
+<tr>
+<td><code>ERR_TOO_MANY_REQUESTS</code></td>
+<td>141</td>
+<td>Too many requests</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_MODIFY_DENIED</code></td>
+<td>145</td>
+<td>Trade modify denied</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_CONTEXT_BUSY</code></td>
+<td>146</td>
+<td>Trade context busy</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_EXPIRATION_DENIED</code></td>
+<td>147</td>
+<td>Trade expiration denied</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_TOO_MANY_ORDERS</code></td>
+<td>148</td>
+<td>Too many trade orders</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_HEDGE_PROHIBITED</code></td>
+<td>149</td>
+<td>Trade hedge prohibited</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_PROHIBITED_BY_FIFO</code></td>
+<td>150</td>
+<td>Trade prohibited by FIFO</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MQLERROR</code></td>
+<td>4000</td>
+<td>No MQL error</td>
+</tr>
+<tr>
+<td><code>ERR_WRONG_FUNCTION_POINTER</code></td>
+<td>4001</td>
+<td>Wrong function pointer</td>
+</tr>
+<tr>
+<td><code>ERR_ARRAY_INDEX_OUT_OF_RANGE</code></td>
+<td>4002</td>
+<td>Array index out of range</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_CALL_STACK</code></td>
+<td>4003</td>
+<td>No memory for call stack</td>
+</tr>
+<tr>
+<td><code>ERR_RECURSIVE_STACK_OVERFLOW</code></td>
+<td>4004</td>
+<td>Recursive stack overflow</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_ENOUGH_STACK_FOR_PARAM</code></td>
+<td>4005</td>
+<td>Not enough stack for parameter</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_PARAM_STRING</code></td>
+<td>4006</td>
+<td>No memory for parameter string</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_TEMP_STRING</code></td>
+<td>4007</td>
+<td>No memory for temp string</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_INITIALIZED_STRING</code></td>
+<td>4008</td>
+<td>Not initialized string</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_INITIALIZED_ARRAYSTRING</code></td>
+<td>4009</td>
+<td>Not initialized array string</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_ARRAYSTRING</code></td>
+<td>4010</td>
+<td>No memory for array string</td>
+</tr>
+<tr>
+<td><code>ERR_TOO_LONG_STRING</code></td>
+<td>4011</td>
+<td>Too long string</td>
+</tr>
+<tr>
+<td><code>ERR_REMAINDER_FROM_ZERO_DIVIDE</code></td>
+<td>4012</td>
+<td>Remainder from zero divide</td>
+</tr>
+<tr>
+<td><code>ERR_ZERO_DIVIDE</code></td>
+<td>4013</td>
+<td>Zero divide</td>
+</tr>
+<tr>
+<td><code>ERR_UNKNOWN_COMMAND</code></td>
+<td>4014</td>
+<td>Unknown command</td>
+</tr>
+<tr>
+<td><code>ERR_WRONG_JUMP</code></td>
+<td>4015</td>
+<td>Wrong jump</td>
+</tr>
+<tr>
+<td><code>ERR_NOT_INITIALIZED_ARRAY</code></td>
+<td>4016</td>
+<td>Not initialized array</td>
+</tr>
+<tr>
+<td><code>ERR_DLL_CALLS_NOT_ALLOWED</code></td>
+<td>4017</td>
+<td>DLL calls not allowed</td>
+</tr>
+<tr>
+<td><code>ERR_CANNOT_LOAD_LIBRARY</code></td>
+<td>4018</td>
+<td>Cannot load library</td>
+</tr>
+<tr>
+<td><code>ERR_CANNOT_CALL_FUNCTION</code></td>
+<td>4019</td>
+<td>Cannot call function</td>
+</tr>
+<tr>
+<td><code>ERR_EXTERNAL_CALLS_NOT_ALLOWED</code></td>
+<td>4020</td>
+<td>External calls not allowed</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_RETURNED_STR</code></td>
+<td>4021</td>
+<td>No memory for returned string</td>
+</tr>
+<tr>
+<td><code>ERR_SYSTEM_BUSY</code></td>
+<td>4022</td>
+<td>System busy</td>
+</tr>
+<tr>
+<td><code>ERR_DLLFUNC_CRITICALERROR</code></td>
+<td>4023</td>
+<td>DLL function critical error</td>
+</tr>
+<tr>
+<td><code>ERR_INTERNAL_ERROR</code></td>
+<td>4024</td>
+<td>Internal error</td>
+</tr>
+<tr>
+<td><code>ERR_OUT_OF_MEMORY</code></td>
+<td>4025</td>
+<td>Out of memory</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_POINTER</code></td>
+<td>4026</td>
+<td>Invalid pointer</td>
+</tr>
+<tr>
+<td><code>ERR_FORMAT_TOO_MANY_FORMATTERS</code></td>
+<td>4027</td>
+<td>Too many formatters</td>
+</tr>
+<tr>
+<td><code>ERR_FORMAT_TOO_MANY_PARAMETERS</code></td>
+<td>4028</td>
+<td>Too many parameters</td>
+</tr>
+<tr>
+<td><code>ERR_ARRAY_INVALID</code></td>
+<td>4029</td>
+<td>Invalid array</td>
+</tr>
+<tr>
+<td><code>ERR_CHART_NOREPLY</code></td>
+<td>4030</td>
+<td>Chart no reply</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_FUNCTION_PARAMSCNT</code></td>
+<td>4050</td>
+<td>Invalid function parameters count</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_FUNCTION_PARAMVALUE</code></td>
+<td>4051</td>
+<td>Invalid function parameter value</td>
+</tr>
+<tr>
+<td><code>ERR_STRING_FUNCTION_INTERNAL</code></td>
+<td>4052</td>
+<td>String function internal error</td>
+</tr>
+<tr>
+<td><code>ERR_SOME_ARRAY_ERROR</code></td>
+<td>4053</td>
+<td>Some array error</td>
+</tr>
+<tr>
+<td><code>ERR_INCORRECT_SERIESARRAY_USING</code></td>
+<td>4054</td>
+<td>Incorrect series array usage</td>
+</tr>
+<tr>
+<td><code>ERR_CUSTOM_INDICATOR_ERROR</code></td>
+<td>4055</td>
+<td>Custom indicator error</td>
+</tr>
+<tr>
+<td><code>ERR_INCOMPATIBLE_ARRAYS</code></td>
+<td>4056</td>
+<td>Incompatible arrays</td>
+</tr>
+<tr>
+<td><code>ERR_GLOBAL_VARIABLES_PROCESSING</code></td>
+<td>4057</td>
+<td>Global variables processing error</td>
+</tr>
+<tr>
+<td><code>ERR_GLOBAL_VARIABLE_NOT_FOUND</code></td>
+<td>4058</td>
+<td>Global variable not found</td>
+</tr>
+<tr>
+<td><code>ERR_FUNC_NOT_ALLOWED_IN_TESTING</code></td>
+<td>4059</td>
+<td>Function not allowed in testing</td>
+</tr>
+<tr>
+<td><code>ERR_FUNCTION_NOT_CONFIRMED</code></td>
+<td>4060</td>
+<td>Function not confirmed</td>
+</tr>
+<tr>
+<td><code>ERR_SEND_MAIL_ERROR</code></td>
+<td>4061</td>
+<td>Send mail error</td>
+</tr>
+<tr>
+<td><code>ERR_STRING_PARAMETER_EXPECTED</code></td>
+<td>4062</td>
+<td>String parameter expected</td>
+</tr>
+<tr>
+<td><code>ERR_INTEGER_PARAMETER_EXPECTED</code></td>
+<td>4063</td>
+<td>Integer parameter expected</td>
+</tr>
+<tr>
+<td><code>ERR_DOUBLE_PARAMETER_EXPECTED</code></td>
+<td>4064</td>
+<td>Double parameter expected</td>
+</tr>
+<tr>
+<td><code>ERR_ARRAY_AS_PARAMETER_EXPECTED</code></td>
+<td>4065</td>
+<td>Array as parameter expected</td>
+</tr>
+<tr>
+<td><code>ERR_HISTORY_WILL_UPDATED</code></td>
+<td>4066</td>
+<td>History will be updated</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_ERROR</code></td>
+<td>4067</td>
+<td>Trade error</td>
+</tr>
+<tr>
+<td><code>ERR_RESOURCE_NOT_FOUND</code></td>
+<td>4068</td>
+<td>Resource not found</td>
+</tr>
+<tr>
+<td><code>ERR_RESOURCE_NOT_SUPPORTED</code></td>
+<td>4069</td>
+<td>Resource not supported</td>
+</tr>
+<tr>
+<td><code>ERR_RESOURCE_DUPLICATED</code></td>
+<td>4070</td>
+<td>Resource duplicated</td>
+</tr>
+<tr>
+<td><code>ERR_INDICATOR_CANNOT_INIT</code></td>
+<td>4071</td>
+<td>Indicator cannot initialize</td>
+</tr>
+<tr>
+<td><code>ERR_INDICATOR_CANNOT_LOAD</code></td>
+<td>4072</td>
+<td>Indicator cannot load</td>
+</tr>
+<tr>
+<td><code>ERR_NO_HISTORY_DATA</code></td>
+<td>4073</td>
+<td>No history data</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_HISTORY</code></td>
+<td>4074</td>
+<td>No memory for history</td>
+</tr>
+<tr>
+<td><code>ERR_NO_MEMORY_FOR_INDICATOR</code></td>
+<td>4075</td>
+<td>No memory for indicator</td>
+</tr>
+<tr>
+<td><code>ERR_END_OF_FILE</code></td>
+<td>4099</td>
+<td>End of file</td>
+</tr>
+<tr>
+<td><code>ERR_SOME_FILE_ERROR</code></td>
+<td>4100</td>
+<td>Some file error</td>
+</tr>
+<tr>
+<td><code>ERR_WRONG_FILE_NAME</code></td>
+<td>4101</td>
+<td>Wrong file name</td>
+</tr>
+<tr>
+<td><code>ERR_TOO_MANY_OPENED_FILES</code></td>
+<td>4102</td>
+<td>Too many opened files</td>
+</tr>
+<tr>
+<td><code>ERR_CANNOT_OPEN_FILE</code></td>
+<td>4103</td>
+<td>Cannot open file</td>
+</tr>
+<tr>
+<td><code>ERR_INCOMPATIBLE_FILEACCESS</code></td>
+<td>4104</td>
+<td>Incompatible file access</td>
+</tr>
+<tr>
+<td><code>ERR_NO_ORDER_SELECTED</code></td>
+<td>4105</td>
+<td>No order selected</td>
+</tr>
+<tr>
+<td><code>ERR_UNKNOWN_SYMBOL</code></td>
+<td>4106</td>
+<td>Unknown symbol</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_PRICE_PARAM</code></td>
+<td>4107</td>
+<td>Invalid price parameter</td>
+</tr>
+<tr>
+<td><code>ERR_INVALID_TICKET</code></td>
+<td>4108</td>
+<td>Invalid ticket</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_NOT_ALLOWED</code></td>
+<td>4109</td>
+<td>Trade not allowed</td>
+</tr>
+<tr>
+<td><code>ERR_LONGS_NOT_ALLOWED</code></td>
+<td>4110</td>
+<td>Longs not allowed</td>
+</tr>
+<tr>
+<td><code>ERR_SHORTS_NOT_ALLOWED</code></td>
+<td>4111</td>
+<td>Shorts not allowed</td>
+</tr>
+<tr>
+<td><code>ERR_TRADE_EXPERT_DISABLED_BY_SERVER</code></td>
+<td>4112</td>
+<td>Trade expert disabled by server</td>
+</tr>
+<tr>
+<td><code>ERR_OBJECT_ALREADY_EXISTS</code></td>
+<td>4200</td>
+<td>Object already exists</td>
+</tr>
+<tr>
+<td><code>ERR_UNKNOWN_OBJECT_PROPERTY</code></td>
+<td>4201</td>
+<td>Unknown object property</td>
+</tr>
+<tr>
+<td><code>ERR_OBJECT_DOES_NOT_EXIST</code></td>
+<td>4202</td>
+<td>Object does not exist</td>
+</tr>
+<tr>
+<td><code>ERR_UNKNOWN_OBJECT_TYPE</code></td>
+<td>4203</td>
+<td>Unknown object type</td>
+</tr>
+<tr>
+<td><code>ERR_NO_OBJECT_NAME</code></td>
+<td>4204</td>
+<td>No object name</td>
+</tr>
+<tr>
+<td><code>ERR_OBJECT_COORDINATES_ERROR</code></td>
+<td>4205</td>
+<td>Object coordinates error</td>
+</tr>
+<tr>
+<td><code>ERR_NO_SPECIFIED_SUBWINDOW</code></td>
+<td>4206</td>
+<td>No specified subwindow</td>
+</tr>
+<tr>
+<td><code>ERR_SOME_OBJECT_ERROR</code></td>
+<td>4207</td>
+<td>Some object error</td>
+</tr>
+<tr>
+<td><code>ERR_FILE_CANNOT_OPEN</code></td>
+<td>5004</td>
+<td>Cannot open file</td>
+</tr>
+</tbody>
+</table>
+<h2 id="openedordertype">OpenedOrderType<a class="headerlink" href="#openedordertype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OO_OP_BUY</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OO_OP_SELL</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OO_OP_BUYLIMIT</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OO_OP_SELLLIMIT</code></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OO_OP_BUYSTOP</code></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OO_OP_SELLSTOP</code></td>
+<td>5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="orderclosedeletemode">OrderCloseDeleteMode<a class="headerlink" href="#orderclosedeletemode" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OCD_MARKET_ORDER</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>OCD_PENDING_ORDER</code></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ordersendoperationtype">OrderSendOperationType<a class="headerlink" href="#ordersendoperationtype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OC_OP_BUY</code></td>
+<td>0</td>
+<td>Buy operation</td>
+</tr>
+<tr>
+<td><code>OC_OP_SELL</code></td>
+<td>1</td>
+<td>Sell operation</td>
+</tr>
+<tr>
+<td><code>OC_OP_BUYLIMIT</code></td>
+<td>2</td>
+<td>Buy limit pending order</td>
+</tr>
+<tr>
+<td><code>OC_OP_SELLLIMIT</code></td>
+<td>3</td>
+<td>Sell limit pending order</td>
+</tr>
+<tr>
+<td><code>OC_OP_BUYSTOP</code></td>
+<td>4</td>
+<td>Buy stop pending order</td>
+</tr>
+<tr>
+<td><code>OC_OP_SELLSTOP</code></td>
+<td>5</td>
+<td>Sell stop pending order</td>
+</tr>
+</tbody>
+</table>
+<h2 id="proxytypes">ProxyTypes<a class="headerlink" href="#proxytypes" title="Permanent link">¶</a></h2>
+<p>Specifies the type of proxy servers that an instance of the ProxySocket class can use.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>None</code></td>
+<td>0</td>
+<td>No proxy server; the ProxySocket object behaves exactly like an ordinary Socket object.</td>
+</tr>
+<tr>
+<td><code>Https</code></td>
+<td>1</td>
+<td>A HTTPS (CONNECT) proxy server.</td>
+</tr>
+<tr>
+<td><code>Socks4</code></td>
+<td>2</td>
+<td>A SOCKS4[A] proxy server.</td>
+</tr>
+<tr>
+<td><code>Socks5</code></td>
+<td>3</td>
+<td>A SOCKS5 proxy server.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quote_history_timeframe">QUOTE_HISTORY_TIMEFRAME<a class="headerlink" href="#quote_history_timeframe" title="Permanent link">¶</a></h2>
+<p>Timeframe of a bar. The value is the bar length in MINUTES - the same numbers MQL4's ENUM_TIMEFRAMES uses. These are the nine periods MT4 has. The names carry the prefix QHB_ (not QH_ as on MT5) because the older MarketInfo.QuoteHistory of MT4 already owns QH_PERIOD_M1..MN1 (ENUM_QUOTE_HISTORY_TIMEFRAME, other numbers) and enum value names are shared by the whole package.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>QHB_PERIOD_UNSPECIFIED</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_M1</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_M5</code></td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_M15</code></td>
+<td>15</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_M30</code></td>
+<td>30</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_H1</code></td>
+<td>60</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_H4</code></td>
+<td>240</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_D1</code></td>
+<td>1440</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_W1</code></td>
+<td>10080</td>
+<td></td>
+</tr>
+<tr>
+<td><code>QHB_PERIOD_MN1</code></td>
+<td>43200</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="server_timezone_source">SERVER_TIMEZONE_SOURCE<a class="headerlink" href="#server_timezone_source" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SERVER_TIMEZONE_SOURCE_UNKNOWN</code></td>
+<td>0</td>
+<td>No terminal of this broker server has read the offset yet (MT4 with the market closed); the *_utc fields stay unset.</td>
+</tr>
+<tr>
+<td><code>SERVER_TIMEZONE_SOURCE_LIVE</code></td>
+<td>1</td>
+<td>Read by this terminal itself.</td>
+</tr>
+<tr>
+<td><code>SERVER_TIMEZONE_SOURCE_LAST_VALIDATED</code></td>
+<td>2</td>
+<td>The last offset validated for this broker server, used until this terminal reads its own (MT4 with the market closed).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sp_enum_symbol_trade_execution">SP_ENUM_SYMBOL_TRADE_EXECUTION<a class="headerlink" href="#sp_enum_symbol_trade_execution" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SYMBOL_TRADE_EXECUTION_REQUEST</code></td>
+<td>0</td>
+<td>Execution by request</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_EXECUTION_INSTANT</code></td>
+<td>1</td>
+<td>Instant execution</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_EXECUTION_MARKET</code></td>
+<td>2</td>
+<td>Market execution</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_EXECUTION_EXCHANGE</code></td>
+<td>3</td>
+<td>Exchange execution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sp_enum_symbol_trade_mode">SP_ENUM_SYMBOL_TRADE_MODE<a class="headerlink" href="#sp_enum_symbol_trade_mode" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SYMBOL_TRADE_MODE_DISABLED</code></td>
+<td>0</td>
+<td>Trade is disabled for the symbol</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MODE_LONGONLY</code></td>
+<td>1</td>
+<td>Allowed only long positions</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MODE_SHORTONLY</code></td>
+<td>2</td>
+<td>Allowed only short positions</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MODE_CLOSEONLY</code></td>
+<td>3</td>
+<td>Allowed only position close operations</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MODE_FULL</code></td>
+<td>4</td>
+<td>No trade restrictions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sp_enum_trade_calc_mode">SP_ENUM_TRADE_CALC_MODE<a class="headerlink" href="#sp_enum_trade_calc_mode" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SYMBOL_TRADE_MARGINE_CALC_MODE_FOREX</code></td>
+<td>0</td>
+<td>0 - Forex;</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MARGINE_CALC_MODE_FUTURES</code></td>
+<td>1</td>
+<td>2 - Futures;</td>
+</tr>
+<tr>
+<td><code>SYMBOL_TRADE_MARGINE_CALC_MODE_CFD</code></td>
+<td>2</td>
+<td>3 - CFD for indices</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sub_order_operation_type">SUB_ORDER_OPERATION_TYPE<a class="headerlink" href="#sub_order_operation_type" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SUB_OP_BUY</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUB_OP_SELL</code></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUB_OP_BUYLIMIT</code></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUB_OP_SELLLIMIT</code></td>
+<td>3</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUB_OP_BUYSTOP</code></td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td><code>SUB_OP_SELLSTOP</code></td>
+<td>5</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminaltype">TerminalType<a class="headerlink" href="#terminaltype" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MT4</code></td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>MT5</code></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../messages/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Messages">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Messages
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024–2025 MetaRPC. MT4 is a trademark of MetaQuotes Software Corp. This documentation is community-maintained and not affiliated with MetaQuotes.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/MetaRPC/JavaMT4" target="_blank" rel="noopener" title="JavaMT4 on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/ux.js"></script>
+      
+    
+  </body>
+</html>

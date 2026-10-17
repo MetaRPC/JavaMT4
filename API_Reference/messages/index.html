@@ -1,0 +1,6232 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Complete Java SDK for MetaTrader 4 trading automation via gRPC">
+      
+      
+      
+        <link rel="canonical" href="https://metarpc.github.io/JavaMT4/API_Reference/messages/">
+      
+      
+        <link rel="prev" href="../methods/">
+      
+      
+        <link rel="next" href="../enums/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Messages - JavaMT4 SDK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#messages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JavaMT4 SDK Documentation" class="md-header__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JavaMT4 SDK Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Messages
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MetaRPC/JavaMT4" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MetaRPC/JavaMT4
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JavaMT4 SDK Documentation" class="md-nav__button md-logo" aria-label="JavaMT4 SDK Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.5 6.08s-6.84 1.71-3.56 5.48c.97 1.11-.25 2.11-.25 2.11s2.45-1.25 1.31-2.85c-1.06-1.47-1.86-2.2 2.5-4.74m-4.47 1.2C16.08 4.08 14 2 14 2c.84 3.3-2.96 4.3-4.33 6.36-.94 1.4.46 2.91 2.33 4.64-.71-1.7-3.22-3.16.03-5.72M9.37 17.47c-3.08.86 1.88 2.63 5.79.96-.38-.15-.75-.33-1.1-.54-1.36.31-2.76.37-4.14.18-1.31-.16-.55-.6-.55-.6m5.32-1.68c-1.75.38-3.56.47-5.34.26-1.31-.13-.45-.77-.45-.77-3.4 1.13 1.88 2.4 6.6 1.02-.29-.11-.57-.3-.81-.51m3.42 3.3s.57.47-.61.83c-2.28.68-9.43.89-11.41.03-.71-.31.63-.74 1.05-.83.23-.06.46-.08.69-.08-.79-.54-5.13 1.1-2.19 1.56 7.97 1.3 14.54-.6 12.47-1.51m-2.74-4.86c.29-.19.6-.35.92-.49 0 0-1.51.26-3.02.4-1.6.16-3.21.18-4.81.06-2.35-.31 1.29-1.2 1.29-1.2-1.1 0-2.18.26-3.16.75-2.05 1 5.1 1.45 8.78.48m.9 2.42c-.02.04-.04.07-.08.1 5.01-1.31 3.17-4.64.77-3.81-.13.06-.24.14-.31.25.14-.05.28-.09.43-.12 1.2-.24 2.92 1.63-.81 3.58m.13 4.61c-3.01.52-6.09.56-9.12.14 0 0 .46.38 2.81.53 3.6.23 9.13-.13 9.26-1.83.03.01-.23.65-2.95 1.16"/></svg>
+
+    </a>
+    JavaMT4 SDK Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MetaRPC/JavaMT4" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MetaRPC/JavaMT4
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/GETTING_STARTED/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/Your_First_Project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Your First Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../connection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Connection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../account/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../trading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quotes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quotes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/STREAMS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Streams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../All_Guides/ERRORS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Errors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MT4Account
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Messages
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Messages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accountsummarydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountSummaryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountslistdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountsListData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountslistitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountsListItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#averagepipsusddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AveragePipsUsdData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CheckConnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectproxydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectProxyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectstatedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectStateData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectstreamevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectStreamEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectionstatusdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectionStatusData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DisconnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equityhistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EquityHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equitypointdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EquityPointData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errorproperty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ErrorProperty
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expectancydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExpectancyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expertadviser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExpertAdviser
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedatabrokerresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData.BrokerResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedatabrokerserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData.BrokerServer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getiddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetIdData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getterminaljournaldata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetTerminalJournalData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guidemoopenaccountreply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GuiDemoOpenAccountReply
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historyorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HistoryOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historyquote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HistoryQuote
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logfileinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LogFileInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markettradecountdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketTradeCountData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oneventaccountinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnEventAccountInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersprofitdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersProfitData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersprofitorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersProfitOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersticketsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersTicketsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onsymbolmqltickinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnSymbolMqlTickInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onsymboltickdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnSymbolTickData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontadeeventdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTadeEventData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradeorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradeupdatedorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeUpdatedOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordersdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrdersData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordersticketsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrdersTicketsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosebydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseByData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosedeletedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseDeleteData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordermodifydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderModifyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordersenddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderSendData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordershistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrdersHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profitdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProfitData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profitabilitydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProfitabilityData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorybar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryBar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorybarsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryBarsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotemanydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteManyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReconnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screenshotdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScreenshotData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servertimezonedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ServerTimezoneData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statswithchartsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsWithChartsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolnameinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolNameInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolparamsmanydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolParamsManyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolparamsmanyinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolParamsManyInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolselectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolSelectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symboltickvaluewithsizeinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolTickValueWithSizeInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminalhealthcheck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalHealthCheck
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminaljournalrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalJournalRow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tickvaluewithsizedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TickValueWithSizeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradehistoryitemdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeHistoryItemData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradesummarydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeSummaryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradeunrealizedextremadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeUnrealizedExtremaData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradeunrealizedpldata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeUnrealizedPLData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wondata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WonData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zscoredata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ZScoreData
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enums/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enums
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accountsummarydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountSummaryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountslistdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountsListData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accountslistitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountsListItem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#averagepipsusddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AveragePipsUsdData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CheckConnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectproxydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectProxyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectstatedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectStateData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectstreamevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectStreamEvent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connectionstatusdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ConnectionStatusData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DisconnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equityhistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EquityHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equitypointdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EquityPointData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#errorproperty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ErrorProperty
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expectancydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExpectancyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expertadviser" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ExpertAdviser
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedatabrokerresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData.BrokerResult
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getbrokerserversbybrokernamedatabrokerserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetBrokerServersByBrokerNameData.BrokerServer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getiddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetIdData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getterminaljournaldata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GetTerminalJournalData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guidemoopenaccountreply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GuiDemoOpenAccountReply
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historyorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HistoryOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historyquote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HistoryQuote
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logfileinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LogFileInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markettradecountdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MarketTradeCountData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oneventaccountinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnEventAccountInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersprofitdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersProfitData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersprofitorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersProfitOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onopenedordersticketsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnOpenedOrdersTicketsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onsymbolmqltickinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnSymbolMqlTickInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#onsymboltickdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnSymbolTickData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontadeeventdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTadeEventData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradeorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ontradeupdatedorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OnTradeUpdatedOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedorderinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrderInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordersdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrdersData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openedordersticketsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenedOrdersTicketsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosebydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseByData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orderclosedeletedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderCloseDeleteData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordermodifydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderModifyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordersenddata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrderSendData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ordershistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OrdersHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profitdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProfitData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profitabilitydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ProfitabilityData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorybar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryBar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorybarsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryBarsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotehistorydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteHistoryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quotemanydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QuoteManyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconnectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ReconnectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screenshotdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ScreenshotData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#servertimezonedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ServerTimezoneData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statswithchartsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        StatsWithChartsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolnameinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolNameInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolparamsmanydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolParamsManyData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolparamsmanyinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolParamsManyInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolselectdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolSelectData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symboltickvaluewithsizeinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolTickValueWithSizeInfo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#symbolsdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SymbolsData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminalhealthcheck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalHealthCheck
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminaljournalrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TerminalJournalRow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tickvaluewithsizedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TickValueWithSizeData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradehistoryitemdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeHistoryItemData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradesummarydata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeSummaryData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradeunrealizedextremadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeUnrealizedExtremaData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tradeunrealizedpldata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TradeUnrealizedPLData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wondata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WonData
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zscoredata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ZScoreData
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">¶</a></h1>
+<p>The messages of the <a href="../methods/">API methods</a> (package <code>mt4_term_api</code>), generated from the protos.</p>
+<h2 id="accountsummarydata">AccountSummaryData<a class="headerlink" href="#accountsummarydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>account_login</code></td>
+<td><code>getAccountLogin()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_balance</code></td>
+<td><code>getAccountBalance()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_equity</code></td>
+<td><code>getAccountEquity()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_user_name</code></td>
+<td><code>getAccountUserName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_leverage</code></td>
+<td><code>getAccountLeverage()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_trade_mode</code></td>
+<td><code>getAccountTradeMode()</code></td>
+<td><a href="../enums/#enumaccounttrademode">EnumAccountTradeMode</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_company_name</code></td>
+<td><code>getAccountCompanyName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_currency</code></td>
+<td><code>getAccountCurrency()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server_time</code></td>
+<td><code>getServerTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>The server's current time at the moment of the call (broker server time). Unset while the account is not connected yet and no offset is known.</td>
+</tr>
+<tr>
+<td><code>server_time_utc</code></td>
+<td><code>getServerTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>server_time in UTC (the same moment; server_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>account_credit</code></td>
+<td><code>getAccountCredit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_investor</code></td>
+<td><code>getIsInvestor()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>utc_server_time_shift_minutes</code></td>
+<td><code>getUtcServerTimeShiftMinutes()</code></td>
+<td><code>int32</code></td>
+<td>The broker server's offset from UTC in whole minutes (server_utc_offset_seconds / 60), a multiple of 15. Information, never converted. 0 while the account is not connected yet.</td>
+</tr>
+<tr>
+<td><code>server_utc_offset_seconds</code></td>
+<td><code>getServerUtcOffsetSeconds()</code></td>
+<td><code>int32</code></td>
+<td>The broker server's offset from UTC in seconds, positive = ahead of UTC: validated by the terminal (a multiple of 15 minutes). Information, never converted; it is the offset behind every *_utc field of this API. ABSENT (has_server_utc_offset_seconds is false) while it is not known yet: the account is not connected, or it is connected but the market is closed and no price quote has arrived since the terminal started - MT4 learns the offset from a live quote. Absent never means UTC+0 (a UTC+0 broker sends 0 and has it present). The *_utc fields stay unset until it is known. A connected terminal whose computer clock is provably wrong answers SERVER_TIMEZONE_UNDETERMINED instead of data. The current offset is applied to every value, so history from before the broker's last daylight-saving change is off by the daylight-saving step (usually 3600 s).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accountslistdata">AccountsListData<a class="headerlink" href="#accountslistdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accounts</code></td>
+<td><code>getAccountsList()</code></td>
+<td>repeated <a href="./#accountslistitem">AccountsListItem</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>next_page_token</code></td>
+<td><code>getNextPageToken()</code></td>
+<td><code>string</code></td>
+<td>Pass back as page_token for the next page; empty when this was the last page.</td>
+</tr>
+<tr>
+<td><code>total_count</code></td>
+<td><code>getTotalCount()</code></td>
+<td><code>int32</code></td>
+<td>Accounts matching the filters over all pages, at the moment of the call.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accountslistitem">AccountsListItem<a class="headerlink" href="#accountslistitem" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terminal_id</code></td>
+<td><code>getTerminalId()</code></td>
+<td><code>string</code></td>
+<td>The terminal id to send as the "id" header of every other call, in the form the API itself returns it: mt4_live_&lt;32 hex&gt;.</td>
+</tr>
+<tr>
+<td><code>terminal_guid</code></td>
+<td><code>getTerminalGuid()</code></td>
+<td><code>string</code></td>
+<td>The same identity as a hyphenated GUID. The API accepts either form in the "id" header.</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td><code>getPlatform()</code></td>
+<td><code>string</code></td>
+<td>"MT4".</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>getLogin()</code></td>
+<td><code>uint64</code></td>
+<td>Account (login) number.</td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td><code>getServer()</code></td>
+<td><code>string</code></td>
+<td>Broker server name, as given to ConnectEx.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>getName()</code></td>
+<td><code>string</code></td>
+<td>Name given to the terminal when it was started; may be empty.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>getState()</code></td>
+<td><code>string</code></td>
+<td>Current state of the account's terminal: Queued, Starting, Authorizing, Syncing, Connected, WrongPassword, Unreachable, Suspended, Expired or Stopped (see ConnectState). It is the state the cluster publishes for the terminal right now; a running terminal whose published state has not been refreshed for over a minute reads Unreachable. Only when nothing is published is the last stored state returned. "Unknown" appears for a record that has never had a state.</td>
+</tr>
+<tr>
+<td><code>is_connected</code></td>
+<td><code>getIsConnected()</code></td>
+<td><code>bool</code></td>
+<td>state == "Connected".</td>
+</tr>
+<tr>
+<td><code>started_utc</code></td>
+<td><code>getStartedUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>When the account was first started (UTC; a platform time, not a broker time); a restart does not change it. Unset when the record has no start time.</td>
+</tr>
+<tr>
+<td><code>stopped_utc</code></td>
+<td><code>getStoppedUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>When it last stopped (UTC; a platform time, not a broker time). Unset while it is running.</td>
+</tr>
+<tr>
+<td><code>stop_reason</code></td>
+<td><code>getStopReason()</code></td>
+<td><code>string</code></td>
+<td>Why it stopped or is not running (for example "ByApi", "InvalidLogin", "Unreachable:StartupTimeout"); may be empty. Empty while the account is queued, starting or running.</td>
+</tr>
+<tr>
+<td><code>error_message</code></td>
+<td><code>getErrorMessage()</code></td>
+<td><code>string</code></td>
+<td>The last error recorded for the account, when its state is a failure; may be empty.</td>
+</tr>
+<tr>
+<td><code>expires_utc</code></td>
+<td><code>getExpiresUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>When the terminal is set to expire (UTC; a platform time, not a broker time). Unset when no expiry is recorded for the account, which is the case for every account today.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="averagepipsusddata">AveragePipsUsdData<a class="headerlink" href="#averagepipsusddata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>average_pips</code></td>
+<td><code>getAveragePips()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>average_usd</code></td>
+<td><code>getAverageUsd()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="checkconnectdata">CheckConnectData<a class="headerlink" href="#checkconnectdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unique_identifier</code></td>
+<td><code>getUniqueIdentifier()</code></td>
+<td><code>string</code></td>
+<td>Connection unique identifier. Reflects value from header 'mt-sticky-session-header'</td>
+</tr>
+<tr>
+<td><code>health_check</code></td>
+<td><code>getHealthCheck()</code></td>
+<td><a href="./#terminalhealthcheck">TerminalHealthCheck</a></td>
+<td>Connection health status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connectdata">ConnectData<a class="headerlink" href="#connectdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terminal_instance_guid</code></td>
+<td><code>getTerminalInstanceGuid()</code></td>
+<td><code>string</code></td>
+<td>Connection unique identifier - use this in the 'mt-sticky-session-header' value</td>
+</tr>
+<tr>
+<td><code>terminal_type</code></td>
+<td><code>getTerminalType()</code></td>
+<td><a href="../enums/#terminaltype">TerminalType</a></td>
+<td>Terminal type MT5 or MT4 (Temporary only MT5)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connectproxydata">ConnectProxyData<a class="headerlink" href="#connectproxydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unique_identifier</code></td>
+<td><code>getUniqueIdentifier()</code></td>
+<td><code>string</code></td>
+<td>Connection unique identifier - use this in the header 'mrpc-terminal-guid' value</td>
+</tr>
+<tr>
+<td><code>terminal_type</code></td>
+<td><code>getTerminalType()</code></td>
+<td><a href="../enums/#terminaltype">TerminalType</a></td>
+<td>Terminal type MT5 or MT4 (Temporary only MT5)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connectstatedata">ConnectStateData<a class="headerlink" href="#connectstatedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>getId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>getState()</code></td>
+<td><code>string</code></td>
+<td>"Queued", "Starting", "Authorizing", "Syncing", "Connected", "WrongPassword", "Unreachable", "Stopped", "Expired"</td>
+</tr>
+<tr>
+<td><code>is_connected</code></td>
+<td><code>getIsConnected()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_alive</code></td>
+<td><code>getIsAlive()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>api_is_alive</code></td>
+<td><code>getApiIsAlive()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td><code>getServer()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td><code>getAccount()</code></td>
+<td><code>uint64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_message</code></td>
+<td><code>getErrorMessage()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>getTimestamp()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="connectstreamevent">ConnectStreamEvent<a class="headerlink" href="#connectstreamevent" title="Permanent link">¶</a></h2>
+<p>Event message streamed during ConnectStream / ConnectExStream.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>step</code></td>
+<td><code>getStep()</code></td>
+<td><code>string</code></td>
+<td>Step name: "Init", "Validation", "ColdStart-CreateInstance", "ColdStart-ReadinessCheck", "Journal", "Experts", "Complete", "Error", ...</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>getMessage()</code></td>
+<td><code>string</code></td>
+<td>Human-readable message with details (for Journal/Experts steps: the log line)</td>
+</tr>
+<tr>
+<td><code>level</code></td>
+<td><code>getLevel()</code></td>
+<td><code>string</code></td>
+<td>Log level: INFO, WARN, ERROR</td>
+</tr>
+<tr>
+<td><code>elapsed_ms</code></td>
+<td><code>getElapsedMs()</code></td>
+<td><code>int64</code></td>
+<td>Elapsed milliseconds since start</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>getTimestamp()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Timestamp of this event</td>
+</tr>
+<tr>
+<td><code>is_final</code></td>
+<td><code>getIsFinal()</code></td>
+<td><code>bool</code></td>
+<td>True only on the final event (success or error)</td>
+</tr>
+<tr>
+<td><code>connect_data</code></td>
+<td><code>getConnectData()</code></td>
+<td><a href="./#connectdata">ConnectData</a></td>
+<td>Populated only on the final success event</td>
+</tr>
+<tr>
+<td><code>error_data</code></td>
+<td><code>getErrorData()</code></td>
+<td><a href="./#error">Error</a></td>
+<td>Populated only on the final error event</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connectionstatusdata">ConnectionStatusData<a class="headerlink" href="#connectionstatusdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>getId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_connected</code></td>
+<td><code>getIsConnected()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_alive</code></td>
+<td><code>getIsAlive()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>api_is_alive</code></td>
+<td><code>getApiIsAlive()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td><code>getServer()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account</code></td>
+<td><code>getAccount()</code></td>
+<td><code>uint64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_message</code></td>
+<td><code>getErrorMessage()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>getState()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="disconnectdata">DisconnectData<a class="headerlink" href="#disconnectdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>unique_identifier</code></td>
+<td><code>getUniqueIdentifier()</code></td>
+<td><code>string</code></td>
+<td>Identifier of closed connection. Reflects value from header 'mt-sticky-session-header'</td>
+</tr>
+<tr>
+<td><code>full_life_time_seconds</code></td>
+<td><code>getFullLifeTimeSeconds()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="equityhistorydata">EquityHistoryData<a class="headerlink" href="#equityhistorydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>points</code></td>
+<td><code>getPointsList()</code></td>
+<td>repeated <a href="./#equitypointdata">EquityPointData</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="equitypointdata">EquityPointData<a class="headerlink" href="#equitypointdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td><code>getTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>time_utc</code></td>
+<td><code>getTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>time in UTC (the same moment; time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>balance</code></td>
+<td><code>getBalance()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>equity</code></td>
+<td><code>getEquity()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>balance_drawdown_raw</code></td>
+<td><code>getBalanceDrawdownRaw()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>balance_drawdown_relative</code></td>
+<td><code>getBalanceDrawdownRelative()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>equity_drawdown_raw</code></td>
+<td><code>getEquityDrawdownRaw()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>equity_drawdown_relative</code></td>
+<td><code>getEquityDrawdownRelative()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>realized_pl</code></td>
+<td><code>getRealizedPl()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unrealized_pl</code></td>
+<td><code>getUnrealizedPl()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="error">Error<a class="headerlink" href="#error" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>getType()</code></td>
+<td><a href="../enums/#errortype">ErrorType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_code</code></td>
+<td><code>getErrorCode()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_message</code></td>
+<td><code>getErrorMessage()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mql_error_code</code></td>
+<td><code>getMqlErrorCode()</code></td>
+<td><a href="../enums/#mqlerrorcode">MqlErrorCode</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mql_error_int_code</code></td>
+<td><code>getMqlErrorIntCode()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>mql_error_description</code></td>
+<td><code>getMqlErrorDescription()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stack_trace</code></td>
+<td><code>getStackTrace()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>command_type_name</code></td>
+<td><code>getCommandTypeName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commandId</code></td>
+<td><code>getCommandId()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>properties</code></td>
+<td><code>getPropertiesList()</code></td>
+<td>repeated <a href="./#errorproperty">ErrorProperty</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="errorproperty">ErrorProperty<a class="headerlink" href="#errorproperty" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error_arg_key</code></td>
+<td><code>getErrorArgKey()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>error_arg_value</code></td>
+<td><code>getErrorArgValue()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="expectancydata">ExpectancyData<a class="headerlink" href="#expectancydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pips</code></td>
+<td><code>getPips()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>dollar</code></td>
+<td><code>getDollar()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="expertadviser">ExpertAdviser<a class="headerlink" href="#expertadviser" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file_name</code></td>
+<td><code>getFileName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>file_content</code></td>
+<td><code>getFileContent()</code></td>
+<td><code>bytes</code></td>
+<td>File content as a byte array</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getbrokerserversbybrokernamedata">GetBrokerServersByBrokerNameData<a class="headerlink" href="#getbrokerserversbybrokernamedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result</code></td>
+<td><code>getResultList()</code></td>
+<td>repeated <a href="./#getbrokerserversbybrokernamedatabrokerresult">GetBrokerServersByBrokerNameData.BrokerResult</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="getbrokerserversbybrokernamedatabrokerresult">GetBrokerServersByBrokerNameData.BrokerResult<a class="headerlink" href="#getbrokerserversbybrokernamedatabrokerresult" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>company</code></td>
+<td><code>getCompany()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>results</code></td>
+<td><code>getResultsList()</code></td>
+<td>repeated <a href="./#getbrokerserversbybrokernamedatabrokerserver">GetBrokerServersByBrokerNameData.BrokerServer</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="getbrokerserversbybrokernamedatabrokerserver">GetBrokerServersByBrokerNameData.BrokerServer<a class="headerlink" href="#getbrokerserversbybrokernamedatabrokerserver" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>getName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>logo_url</code></td>
+<td><code>getLogoUrl()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>site</code></td>
+<td><code>getSite()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>access</code></td>
+<td><code>getAccessList()</code></td>
+<td>repeated <code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="getiddata">GetIdData<a class="headerlink" href="#getiddata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>getId()</code></td>
+<td><code>string</code></td>
+<td>Deterministic GUID generated from user+password</td>
+</tr>
+</tbody>
+</table>
+<h2 id="getterminaljournaldata">GetTerminalJournalData<a class="headerlink" href="#getterminaljournaldata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rows</code></td>
+<td><code>getRowsList()</code></td>
+<td>repeated <a href="./#terminaljournalrow">TerminalJournalRow</a></td>
+<td>List of log rows from the terminal tab</td>
+</tr>
+</tbody>
+</table>
+<h2 id="guidemoopenaccountreply">GuiDemoOpenAccountReply<a class="headerlink" href="#guidemoopenaccountreply" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>result_code</code></td>
+<td><code>getResultCode()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>getLogin()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><code>getPassword()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>investor</code></td>
+<td><code>getInvestor()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server</code></td>
+<td><code>getServer()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>debug_log</code></td>
+<td><code>getDebugLog()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="historyorderinfo">HistoryOrderInfo<a class="headerlink" href="#historyorderinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>comment</code></td>
+<td><code>getComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commision</code></td>
+<td><code>getCommision()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration_time</code></td>
+<td><code>getExpirationTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Expiration of a pending order (broker server time). Unset when the order has no expiration.</td>
+</tr>
+<tr>
+<td><code>expiration_time_utc</code></td>
+<td><code>getExpirationTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>magic_number</code></td>
+<td><code>getMagicNumber()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_price</code></td>
+<td><code>getOpenPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stop_loss</code></td>
+<td><code>getStopLoss()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td><code>getSwap()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>take_profit</code></td>
+<td><code>getTakeProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>position_index</code></td>
+<td><code>getPositionIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>order_type</code></td>
+<td><code>getOrderType()</code></td>
+<td><a href="../enums/#openedordertype">OpenedOrderType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_index</code></td>
+<td><code>getSortIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Open time of the order (broker server time).</td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>close_time</code></td>
+<td><code>getCloseTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Close time of the order (broker server time). Unset when the order is not closed.</td>
+</tr>
+<tr>
+<td><code>close_time_utc</code></td>
+<td><code>getCloseTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>close_time in UTC (the same moment; close_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>close_price</code></td>
+<td><code>getClosePrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_login</code></td>
+<td><code>getAccountLogin()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="historyquote">HistoryQuote<a class="headerlink" href="#historyquote" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td><code>getIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td><code>getTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Open time of the bar (broker server time).</td>
+</tr>
+<tr>
+<td><code>time_utc</code></td>
+<td><code>getTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>time in UTC (the same moment; time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td><code>getOpen()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td><code>getClose()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>high</code></td>
+<td><code>getHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>low</code></td>
+<td><code>getLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>real_volume</code></td>
+<td><code>getRealVolume()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tick_volume</code></td>
+<td><code>getTickVolume()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>spread</code></td>
+<td><code>getSpread()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="logfileinfo">LogFileInfo<a class="headerlink" href="#logfileinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log_type</code></td>
+<td><code>getLogType()</code></td>
+<td><a href="../enums/#logtype">LogType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>full_path</code></td>
+<td><code>getFullPath()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>getName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>getContent()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="markettradecountdata">MarketTradeCountData<a class="headerlink" href="#markettradecountdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>market_name</code></td>
+<td><code>getMarketName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td><code>getCount()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>win_rate</code></td>
+<td><code>getWinRate()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>won_count</code></td>
+<td><code>getWonCount()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lost_count</code></td>
+<td><code>getLostCount()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="oneventaccountinfo">OnEventAccountInfo<a class="headerlink" href="#oneventaccountinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>balance</code></td>
+<td><code>getBalance()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>credit</code></td>
+<td><code>getCredit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>equity</code></td>
+<td><code>getEquity()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>margin</code></td>
+<td><code>getMargin()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>free_margin</code></td>
+<td><code>getFreeMargin()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>margin_level</code></td>
+<td><code>getMarginLevel()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>getLogin()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="onopenedordersprofitdata">OnOpenedOrdersProfitData<a class="headerlink" href="#onopenedordersprofitdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>getType()</code></td>
+<td><a href="../enums/#mt4_sub_enum_event_group_type">MT4_SUB_ENUM_EVENT_GROUP_TYPE</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>opened_orders_with_profit_updated</code></td>
+<td><code>getOpenedOrdersWithProfitUpdatedList()</code></td>
+<td>repeated <a href="./#onopenedordersprofitorderinfo">OnOpenedOrdersProfitOrderInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_info</code></td>
+<td><code>getAccountInfo()</code></td>
+<td><a href="./#oneventaccountinfo">OnEventAccountInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_instance_guid_id</code></td>
+<td><code>getTerminalInstanceGuidId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="onopenedordersprofitorderinfo">OnOpenedOrdersProfitOrderInfo<a class="headerlink" href="#onopenedordersprofitorderinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>getIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td><code>getComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commission</code></td>
+<td><code>getCommission()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td><code>getExpiration()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration_utc</code></td>
+<td><code>getExpirationUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>expiration in UTC (the same moment; expiration is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>magic_number</code></td>
+<td><code>getMagicNumber()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_price</code></td>
+<td><code>getOpenPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>order_profit</code></td>
+<td><code>getOrderProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stop_loss</code></td>
+<td><code>getStopLoss()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td><code>getSwap()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>take_profit</code></td>
+<td><code>getTakeProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>getType()</code></td>
+<td><a href="../enums/#sub_order_operation_type">SUB_ORDER_OPERATION_TYPE</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="onopenedordersticketsdata">OnOpenedOrdersTicketsData<a class="headerlink" href="#onopenedordersticketsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position_tickets</code></td>
+<td><code>getPositionTicketsList()</code></td>
+<td>repeated <code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pending_order_tickets</code></td>
+<td><code>getPendingOrderTicketsList()</code></td>
+<td>repeated <code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server_time</code></td>
+<td><code>getServerTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>server_time_utc</code></td>
+<td><code>getServerTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>server_time in UTC (the same moment; server_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>terminal_instance_guid_id</code></td>
+<td><code>getTerminalInstanceGuidId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="onsymbolmqltickinfo">OnSymbolMqlTickInfo<a class="headerlink" href="#onsymbolmqltickinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td><code>getTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Time of the last prices update (Unix timestamp)</td>
+</tr>
+<tr>
+<td><code>time_utc</code></td>
+<td><code>getTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>time in UTC (the same moment; time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>bid</code></td>
+<td><code>getBid()</code></td>
+<td><code>double</code></td>
+<td>Current Bid price</td>
+</tr>
+<tr>
+<td><code>ask</code></td>
+<td><code>getAsk()</code></td>
+<td><code>double</code></td>
+<td>Current Ask price</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td><code>getLast()</code></td>
+<td><code>double</code></td>
+<td>Price of the last deal (Last)</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><code>getVolume()</code></td>
+<td><code>uint64</code></td>
+<td>Volume for the current Last price</td>
+</tr>
+<tr>
+<td><code>time_msc</code></td>
+<td><code>getTimeMsc()</code></td>
+<td><code>int64</code></td>
+<td>Time of a price last update in milliseconds</td>
+</tr>
+<tr>
+<td><code>time_msc_utc</code></td>
+<td><code>getTimeMscUtc()</code></td>
+<td><code>int64</code></td>
+<td>time_msc in UTC (the same moment; time_msc is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="onsymboltickdata">OnSymbolTickData<a class="headerlink" href="#onsymboltickdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol_tick</code></td>
+<td><code>getSymbolTick()</code></td>
+<td><a href="./#onsymbolmqltickinfo">OnSymbolMqlTickInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_instance_guid_id</code></td>
+<td><code>getTerminalInstanceGuidId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ontadeeventdata">OnTadeEventData<a class="headerlink" href="#ontadeeventdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>new_orders</code></td>
+<td><code>getNewOrdersList()</code></td>
+<td>repeated <a href="./#ontradeorderinfo">OnTradeOrderInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>updated_orders</code></td>
+<td><code>getUpdatedOrdersList()</code></td>
+<td>repeated <a href="./#ontradeupdatedorderinfo">OnTradeUpdatedOrderInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>removed_orders</code></td>
+<td><code>getRemovedOrdersList()</code></td>
+<td>repeated <a href="./#ontradeorderinfo">OnTradeOrderInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>new_history_orders</code></td>
+<td><code>getNewHistoryOrdersList()</code></td>
+<td>repeated <a href="./#ontradeorderinfo">OnTradeOrderInfo</a></td>
+<td>repeated OnTradeUpdatedOrderInfo updated_history_orders = 5; repeated OnTradeOrderInfo removed_history_orders = 6;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ontradedata">OnTradeData<a class="headerlink" href="#ontradedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>getType()</code></td>
+<td><a href="../enums/#mt4_sub_enum_event_group_type">MT4_SUB_ENUM_EVENT_GROUP_TYPE</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>event_data</code></td>
+<td><code>getEventData()</code></td>
+<td><a href="./#ontadeeventdata">OnTadeEventData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>account_info</code></td>
+<td><code>getAccountInfo()</code></td>
+<td><a href="./#oneventaccountinfo">OnEventAccountInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_instance_guid_id</code></td>
+<td><code>getTerminalInstanceGuidId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ontradeorderinfo">OnTradeOrderInfo<a class="headerlink" href="#ontradeorderinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>getIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_history</code></td>
+<td><code>getIsHistory()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td><code>getComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commission</code></td>
+<td><code>getCommission()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration</code></td>
+<td><code>getExpiration()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration_utc</code></td>
+<td><code>getExpirationUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>expiration in UTC (the same moment; expiration is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>magic_number</code></td>
+<td><code>getMagicNumber()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_price</code></td>
+<td><code>getOpenPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>order_profit</code></td>
+<td><code>getOrderProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stop_loss</code></td>
+<td><code>getStopLoss()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td><code>getSwap()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>take_profit</code></td>
+<td><code>getTakeProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>getType()</code></td>
+<td><a href="../enums/#sub_order_operation_type">SUB_ORDER_OPERATION_TYPE</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close_price</code></td>
+<td><code>getClosePrice()</code></td>
+<td><code>double</code></td>
+<td>Only for closed orders (history)</td>
+</tr>
+<tr>
+<td><code>close_time</code></td>
+<td><code>getCloseTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Only for closed orders (history)</td>
+</tr>
+<tr>
+<td><code>close_time_utc</code></td>
+<td><code>getCloseTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>close_time in UTC (the same moment; close_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>account_login</code></td>
+<td><code>getAccountLogin()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ontradeupdatedorderinfo">OnTradeUpdatedOrderInfo<a class="headerlink" href="#ontradeupdatedorderinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>previous</code></td>
+<td><code>getPrevious()</code></td>
+<td><a href="./#ontradeorderinfo">OnTradeOrderInfo</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>current</code></td>
+<td><code>getCurrent()</code></td>
+<td><a href="./#ontradeorderinfo">OnTradeOrderInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="openedorderinfo">OpenedOrderInfo<a class="headerlink" href="#openedorderinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>comment</code></td>
+<td><code>getComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commision</code></td>
+<td><code>getCommision()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expiration_time</code></td>
+<td><code>getExpirationTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Expiration of a pending order (broker server time). Unset when the order has no expiration.</td>
+</tr>
+<tr>
+<td><code>expiration_time_utc</code></td>
+<td><code>getExpirationTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>expiration_time in UTC (the same moment; expiration_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>magic_number</code></td>
+<td><code>getMagicNumber()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_price</code></td>
+<td><code>getOpenPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>stop_loss</code></td>
+<td><code>getStopLoss()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td><code>getSwap()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>take_profit</code></td>
+<td><code>getTakeProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>position_index</code></td>
+<td><code>getPositionIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>order_type</code></td>
+<td><code>getOrderType()</code></td>
+<td><a href="../enums/#openedordertype">OpenedOrderType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_index</code></td>
+<td><code>getSortIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Open time of the order (broker server time).</td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>account_login</code></td>
+<td><code>getAccountLogin()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="openedordersdata">OpenedOrdersData<a class="headerlink" href="#openedordersdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_infos</code></td>
+<td><code>getOrderInfosList()</code></td>
+<td>repeated <a href="./#openedorderinfo">OpenedOrderInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="openedordersticketsdata">OpenedOrdersTicketsData<a class="headerlink" href="#openedordersticketsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tickets</code></td>
+<td><code>getTicketsList()</code></td>
+<td>repeated <code>int32</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="orderclosebydata">OrderCloseByData<a class="headerlink" href="#orderclosebydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>close_price</code></td>
+<td><code>getClosePrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close_time</code></td>
+<td><code>getCloseTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Close time of the orders (broker server time). With UTC time the call is refused before the orders are closed when the offset cannot be determined (ACCOUNT_NOT_CONNECTED / SERVER_TIMEZONE_UNDETERMINED).</td>
+</tr>
+<tr>
+<td><code>close_time_utc</code></td>
+<td><code>getCloseTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>close_time in UTC (the same moment; close_time is in the broker server's time zone).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="orderclosedeletedata">OrderCloseDeleteData<a class="headerlink" href="#orderclosedeletedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mode</code></td>
+<td><code>getMode()</code></td>
+<td><a href="../enums/#orderclosedeletemode">OrderCloseDeleteMode</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>history_order_comment</code></td>
+<td><code>getHistoryOrderComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ordermodifydata">OrderModifyData<a class="headerlink" href="#ordermodifydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>order_was_modified</code></td>
+<td><code>getOrderWasModified()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="ordersenddata">OrderSendData<a class="headerlink" href="#ordersenddata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><code>getVolume()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>price</code></td>
+<td><code>getPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Open time of the order (broker server time). With UTC time the call is refused before the order is sent when the offset cannot be determined (ACCOUNT_NOT_CONNECTED / SERVER_TIMEZONE_UNDETERMINED), so an executed order always has a reply in the same time zone as its request.</td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ordershistorydata">OrdersHistoryData<a class="headerlink" href="#ordershistorydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>orders_info</code></td>
+<td><code>getOrdersInfoList()</code></td>
+<td>repeated <a href="./#historyorderinfo">HistoryOrderInfo</a></td>
+<td>Rows of this page (all rows when no paging field is set), in the order of the request's sort mode; rows with an equal sort key follow in ticket order, ascending in the ascending modes and descending in the descending modes.</td>
+</tr>
+<tr>
+<td><code>total_count</code></td>
+<td><code>getTotalCount()</code></td>
+<td><code>int32</code></td>
+<td>Number of orders in the whole selection, over all pages (at the moment of the call).</td>
+</tr>
+<tr>
+<td><code>next_page_token</code></td>
+<td><code>getNextPageToken()</code></td>
+<td><code>string</code></td>
+<td>Cursor paging: pass back as page_token for the next page; empty when this was the last page (end of history for the range).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="profitdata">ProfitData<a class="headerlink" href="#profitdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tiket</code></td>
+<td><code>getTiket()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><code>getDate()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>date_utc</code></td>
+<td><code>getDateUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>date in UTC (the same moment; date is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="profitabilitydata">ProfitabilityData<a class="headerlink" href="#profitabilitydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>won_trades</code></td>
+<td><code>getWonTrades()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>won_trades_percent</code></td>
+<td><code>getWonTradesPercent()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lost_trades</code></td>
+<td><code>getLostTrades()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lost_trades_percent</code></td>
+<td><code>getLostTradesPercent()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="quotedata">QuoteData<a class="headerlink" href="#quotedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bid</code></td>
+<td><code>getBid()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ask</code></td>
+<td><code>getAsk()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>date_time</code></td>
+<td><code>getDateTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Time of the quote (broker server time). Unset when the terminal has no quote time.</td>
+</tr>
+<tr>
+<td><code>date_time_utc</code></td>
+<td><code>getDateTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>date_time in UTC (the same moment; date_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>high</code></td>
+<td><code>getHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>low</code></td>
+<td><code>getLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="quotehistorybar">QuoteHistoryBar<a class="headerlink" href="#quotehistorybar" title="Permanent link">¶</a></h2>
+<p>One bar (candle), named as MQL4 names the fields of MqlRates.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td><code>getTime()</code></td>
+<td><code>int64</code></td>
+<td>Unix seconds (UTC), bar open</td>
+</tr>
+<tr>
+<td><code>time_utc</code></td>
+<td><code>getTimeUtc()</code></td>
+<td><code>int64</code></td>
+<td>time in UTC (the same moment; time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td><code>getOpen()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>high</code></td>
+<td><code>getHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>low</code></td>
+<td><code>getLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close</code></td>
+<td><code>getClose()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>tick_volume</code></td>
+<td><code>getTickVolume()</code></td>
+<td><code>int64</code></td>
+<td>ticks in the bar</td>
+</tr>
+<tr>
+<td><code>spread</code></td>
+<td><code>getSpread()</code></td>
+<td><code>int32</code></td>
+<td>points</td>
+</tr>
+<tr>
+<td><code>real_volume</code></td>
+<td><code>getRealVolume()</code></td>
+<td><code>int64</code></td>
+<td>0 on MT4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quotehistorybarsdata">QuoteHistoryBarsData<a class="headerlink" href="#quotehistorybarsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>timeframe</code></td>
+<td><code>getTimeframe()</code></td>
+<td><a href="../enums/#quote_history_timeframe">QUOTE_HISTORY_TIMEFRAME</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>bars</code></td>
+<td><code>getBarsList()</code></td>
+<td>repeated <a href="./#quotehistorybar">QuoteHistoryBar</a></td>
+<td>Oldest first. Empty when the range holds no bars.</td>
+</tr>
+<tr>
+<td><code>next_page_token</code></td>
+<td><code>getNextPageToken()</code></td>
+<td><code>string</code></td>
+<td>Pass back as page_token for the next page; empty when this was the last.</td>
+</tr>
+<tr>
+<td><code>server_first_time</code></td>
+<td><code>getServerFirstTime()</code></td>
+<td><code>int64</code></td>
+<td>Unix seconds of the oldest bar the terminal has for this symbol and timeframe (0 when unknown).</td>
+</tr>
+<tr>
+<td><code>server_first_time_utc</code></td>
+<td><code>getServerFirstTimeUtc()</code></td>
+<td><code>int64</code></td>
+<td>server_first_time in UTC (the same moment; server_first_time is in the broker server's time zone).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quotehistorydata">QuoteHistoryData<a class="headerlink" href="#quotehistorydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>historical_quotes</code></td>
+<td><code>getHistoricalQuotesList()</code></td>
+<td>repeated <a href="./#historyquote">HistoryQuote</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="quotemanydata">QuoteManyData<a class="headerlink" href="#quotemanydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quotes</code></td>
+<td><code>getQuotesList()</code></td>
+<td>repeated <a href="./#quotedata">QuoteData</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reconnectdata">ReconnectData<a class="headerlink" href="#reconnectdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>terminal_was_recreated</code></td>
+<td><code>getTerminalWasRecreated()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_type</code></td>
+<td><code>getTerminalType()</code></td>
+<td><a href="../enums/#terminaltype">TerminalType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_instance_guid</code></td>
+<td><code>getTerminalInstanceGuid()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>old_terminal_full_live_time_seconds</code></td>
+<td><code>getOldTerminalFullLiveTimeSeconds()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>old_log_files</code></td>
+<td><code>getOldLogFilesList()</code></td>
+<td>repeated <a href="./#logfileinfo">LogFileInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="screenshotdata">ScreenshotData<a class="headerlink" href="#screenshotdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image_data</code></td>
+<td><code>getImageData()</code></td>
+<td><code>bytes</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>display_number</code></td>
+<td><code>getDisplayNumber()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_id</code></td>
+<td><code>getTerminalId()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>content_type</code></td>
+<td><code>getContentType()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="servertimezonedata">ServerTimezoneData<a class="headerlink" href="#servertimezonedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>server</code></td>
+<td><code>getServer()</code></td>
+<td><code>string</code></td>
+<td>The broker server name of the account.</td>
+</tr>
+<tr>
+<td><code>utc_offset_seconds</code></td>
+<td><code>getUtcOffsetSeconds()</code></td>
+<td><code>int32</code></td>
+<td>Seconds east of UTC (broker server time = UTC + utc_offset_seconds), a multiple of 15 minutes. Absent when not known (source SERVER_TIMEZONE_SOURCE_UNKNOWN); a present 0 is a UTC+0 broker.</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>getSource()</code></td>
+<td><a href="../enums/#server_timezone_source">SERVER_TIMEZONE_SOURCE</a></td>
+<td>Where utc_offset_seconds came from.</td>
+</tr>
+<tr>
+<td><code>validated_utc</code></td>
+<td><code>getValidatedUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>When the offset was last validated from a fresh quote: for LIVE the latest reading of this terminal (refreshed every few seconds), for LAST_VALIDATED the latest reading of any terminal of the same broker server. Unset when UNKNOWN.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="statsdata">StatsData<a class="headerlink" href="#statsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary</code></td>
+<td><code>getSummary()</code></td>
+<td><a href="./#tradesummarydata">TradeSummaryData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_balance_drawdown_raw</code></td>
+<td><code>getMaxBalanceDrawdownRaw()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_balance_drawdown_relative</code></td>
+<td><code>getMaxBalanceDrawdownRelative()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_equity_drawdown_raw</code></td>
+<td><code>getMaxEquityDrawdownRaw()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_equity_drawdown_relative</code></td>
+<td><code>getMaxEquityDrawdownRelative()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>markets</code></td>
+<td><code>getMarketsList()</code></td>
+<td>repeated <a href="./#markettradecountdata">MarketTradeCountData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profitability</code></td>
+<td><code>getProfitability()</code></td>
+<td><a href="./#profitabilitydata">ProfitabilityData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>pips</code></td>
+<td><code>getPips()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>comissions</code></td>
+<td><code>getComissions()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>average_win</code></td>
+<td><code>getAverageWin()</code></td>
+<td><a href="./#averagepipsusddata">AveragePipsUsdData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>average_lost</code></td>
+<td><code>getAverageLost()</code></td>
+<td><a href="./#averagepipsusddata">AveragePipsUsdData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>longs_won</code></td>
+<td><code>getLongsWon()</code></td>
+<td><a href="./#wondata">WonData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>shorts_won</code></td>
+<td><code>getShortsWon()</code></td>
+<td><a href="./#wondata">WonData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>best_trade</code></td>
+<td><code>getBestTrade()</code></td>
+<td><a href="./#profitdata">ProfitData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>worst_trade</code></td>
+<td><code>getWorstTrade()</code></td>
+<td><a href="./#profitdata">ProfitData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>best_trade_pips</code></td>
+<td><code>getBestTradePips()</code></td>
+<td><a href="./#profitdata">ProfitData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>worst_trade_pips</code></td>
+<td><code>getWorstTradePips()</code></td>
+<td><a href="./#profitdata">ProfitData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>average_trade_length</code></td>
+<td><code>getAverageTradeLength()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>profit_factor</code></td>
+<td><code>getProfitFactor()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>standard_deviation</code></td>
+<td><code>getStandardDeviation()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sharpe_ratio</code></td>
+<td><code>getSharpeRatio()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>z_score</code></td>
+<td><code>getZScore()</code></td>
+<td><a href="./#zscoredata">ZScoreData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>expectancy</code></td>
+<td><code>getExpectancy()</code></td>
+<td><a href="./#expectancydata">ExpectancyData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ghpr</code></td>
+<td><code>getGhpr()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>trades</code></td>
+<td><code>getTrades()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="statswithchartsdata">StatsWithChartsData<a class="headerlink" href="#statswithchartsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stats</code></td>
+<td><code>getStats()</code></td>
+<td><a href="./#statsdata">StatsData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>charts</code></td>
+<td><code>getChartsList()</code></td>
+<td>repeated <a href="./#equitypointdata">EquityPointData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>trades</code></td>
+<td><code>getTradesList()</code></td>
+<td>repeated <a href="./#tradehistoryitemdata">TradeHistoryItemData</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_trades</code></td>
+<td><code>getOpenTradesList()</code></td>
+<td>repeated <a href="./#tradehistoryitemdata">TradeHistoryItemData</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbolnameinfo">SymbolNameInfo<a class="headerlink" href="#symbolnameinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol_name</code></td>
+<td><code>getSymbolName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol_index</code></td>
+<td><code>getSymbolIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbolparamsmanydata">SymbolParamsManyData<a class="headerlink" href="#symbolparamsmanydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>symbol_infos</code></td>
+<td><code>getSymbolInfosList()</code></td>
+<td>repeated <a href="./#symbolparamsmanyinfo">SymbolParamsManyInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbolparamsmanyinfo">SymbolParamsManyInfo<a class="headerlink" href="#symbolparamsmanyinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>is_selected</code></td>
+<td><code>getIsSelected()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td><code>getVisible()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>session_deals</code></td>
+<td><code>getSessionDeals()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>session_buy_orders</code></td>
+<td><code>getSessionBuyOrders()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>session_sell_orders</code></td>
+<td><code>getSessionSellOrders()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td><code>getVolume()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>volume_high</code></td>
+<td><code>getVolumeHigh()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VolumeLow</code></td>
+<td><code>getVolumeLow()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Time</code></td>
+<td><code>getTime()</code></td>
+<td><code>int64</code></td>
+<td>Time of the symbol's last quote, unix seconds (broker server time). 0 when there was none.</td>
+</tr>
+<tr>
+<td><code>TimeUtc</code></td>
+<td><code>getTimeUtc()</code></td>
+<td><code>int64</code></td>
+<td>Time in UTC (the same moment; Time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>Digits</code></td>
+<td><code>getDigits()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SpreadFloat</code></td>
+<td><code>getSpreadFloat()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TicksBookDepth</code></td>
+<td><code>getTicksBookDepth()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeCalcMode</code></td>
+<td><code>getTradeCalcMode()</code></td>
+<td><a href="../enums/#sp_enum_trade_calc_mode">SP_ENUM_TRADE_CALC_MODE</a></td>
+<td>MODE_MARGINCALCMODE Margin calculation mode. 0 - Forex; 1 - CFD; 2 - Futures; 3 - CFD for indices</td>
+</tr>
+<tr>
+<td><code>TradeMode</code></td>
+<td><code>getTradeMode()</code></td>
+<td><a href="../enums/#sp_enum_symbol_trade_mode">SP_ENUM_SYMBOL_TRADE_MODE</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>StartTime</code></td>
+<td><code>getStartTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Start of trading of the symbol (futures) (broker server time). Unset when the symbol has none.</td>
+</tr>
+<tr>
+<td><code>StartTimeUtc</code></td>
+<td><code>getStartTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>StartTime in UTC (the same moment; StartTime is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>ExpirationTime</code></td>
+<td><code>getExpirationTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Expiration of the symbol (futures) (broker server time). Unset when the symbol has none.</td>
+</tr>
+<tr>
+<td><code>ExpirationTimeUtc</code></td>
+<td><code>getExpirationTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>ExpirationTime in UTC (the same moment; ExpirationTime is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>TradeStopsLevel</code></td>
+<td><code>getTradeStopsLevel()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeFreezeLevel</code></td>
+<td><code>getTradeFreezeLevel()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeExeMode</code></td>
+<td><code>getTradeExeMode()</code></td>
+<td><a href="../enums/#sp_enum_symbol_trade_execution">SP_ENUM_SYMBOL_TRADE_EXECUTION</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapMode</code></td>
+<td><code>getSwapMode()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapRollover3Days</code></td>
+<td><code>getSwapRollover3Days()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TheLast</code></td>
+<td><code>getTheLast()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LastHigh</code></td>
+<td><code>getLastHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>LastLow</code></td>
+<td><code>getLastLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Point</code></td>
+<td><code>getPoint()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickValue</code></td>
+<td><code>getTradeTickValue()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickValueProfit</code></td>
+<td><code>getTradeTickValueProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickValueLoss</code></td>
+<td><code>getTradeTickValueLoss()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickSize</code></td>
+<td><code>getTradeTickSize()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeContractSize</code></td>
+<td><code>getTradeContractSize()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VolumeMin</code></td>
+<td><code>getVolumeMin()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VolumeMax</code></td>
+<td><code>getVolumeMax()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VolumeStep</code></td>
+<td><code>getVolumeStep()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>VolumeLimit</code></td>
+<td><code>getVolumeLimit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapLong</code></td>
+<td><code>getSwapLong()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapShort</code></td>
+<td><code>getSwapShort()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginInitial</code></td>
+<td><code>getMarginInitial()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginMaintenance</code></td>
+<td><code>getMarginMaintenance()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginLong</code></td>
+<td><code>getMarginLong()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginShort</code></td>
+<td><code>getMarginShort()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginLimit</code></td>
+<td><code>getMarginLimit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginStop</code></td>
+<td><code>getMarginStop()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MarginStopLimit</code></td>
+<td><code>getMarginStopLimit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionVolume</code></td>
+<td><code>getSessionVolume()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionTurnover</code></td>
+<td><code>getSessionTurnover()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionInterest</code></td>
+<td><code>getSessionInterest()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionBuyOrdersVolume</code></td>
+<td><code>getSessionBuyOrdersVolume()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionSellOrdersVolume</code></td>
+<td><code>getSessionSellOrdersVolume()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionOpen</code></td>
+<td><code>getSessionOpen()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionClose</code></td>
+<td><code>getSessionClose()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionAW</code></td>
+<td><code>getSessionAW()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionPriceSettlement</code></td>
+<td><code>getSessionPriceSettlement()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionPriceLimitMin</code></td>
+<td><code>getSessionPriceLimitMin()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SessionPriceLimitMax</code></td>
+<td><code>getSessionPriceLimitMax()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Bid</code></td>
+<td><code>getBid()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>BidHigh</code></td>
+<td><code>getBidHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>BidLow</code></td>
+<td><code>getBidLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AskHigh</code></td>
+<td><code>getAskHigh()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>AskLow</code></td>
+<td><code>getAskLow()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CurrencyBase</code></td>
+<td><code>getCurrencyBase()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CurrencyProfit</code></td>
+<td><code>getCurrencyProfit()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CurrencyMargin</code></td>
+<td><code>getCurrencyMargin()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Bank</code></td>
+<td><code>getBank()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SymDescription</code></td>
+<td><code>getSymDescription()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Isin</code></td>
+<td><code>getIsin()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Path</code></td>
+<td><code>getPath()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SymbolName</code></td>
+<td><code>getSymbolName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbolselectdata">SymbolSelectData<a class="headerlink" href="#symbolselectdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td><code>getSuccess()</code></td>
+<td><code>bool</code></td>
+<td>In case of failure returns false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="symboltickvaluewithsizeinfo">SymbolTickValueWithSizeInfo<a class="headerlink" href="#symboltickvaluewithsizeinfo" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index</code></td>
+<td><code>getIndex()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbolName</code></td>
+<td><code>getSymbolName()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickValue</code></td>
+<td><code>getTradeTickValue()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeTickSize</code></td>
+<td><code>getTradeTickSize()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TradeContractSize</code></td>
+<td><code>getTradeContractSize()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbolsdata">SymbolsData<a class="headerlink" href="#symbolsdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SymbolNameInfos</code></td>
+<td><code>getSymbolNameInfosList()</code></td>
+<td>repeated <a href="./#symbolnameinfo">SymbolNameInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminalhealthcheck">TerminalHealthCheck<a class="headerlink" href="#terminalhealthcheck" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>is_alive</code></td>
+<td><code>getIsAlive()</code></td>
+<td><code>bool</code></td>
+<td>Connection is alive</td>
+</tr>
+<tr>
+<td><code>api_is_alive</code></td>
+<td><code>getApiIsAlive()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>terminal_is_connected_to_mt_server</code></td>
+<td><code>getTerminalIsConnectedToMtServer()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="terminaljournalrow">TerminalJournalRow<a class="headerlink" href="#terminaljournalrow" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>time</code></td>
+<td><code>getTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>Timestamp of the log entry</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td><code>getSource()</code></td>
+<td><code>string</code></td>
+<td>Source of the log entry (e.g. "Network", "MQL4", "Tester", EA name)</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>getMessage()</code></td>
+<td><code>string</code></td>
+<td>Log message text</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tickvaluewithsizedata">TickValueWithSizeData<a class="headerlink" href="#tickvaluewithsizedata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>infos</code></td>
+<td><code>getInfosList()</code></td>
+<td>repeated <a href="./#symboltickvaluewithsizeinfo">SymbolTickValueWithSizeInfo</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tradehistoryitemdata">TradeHistoryItemData<a class="headerlink" href="#tradehistoryitemdata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>is_buy</code></td>
+<td><code>getIsBuy()</code></td>
+<td><code>bool</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>lots</code></td>
+<td><code>getLots()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_price</code></td>
+<td><code>getOpenPrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close_price</code></td>
+<td><code>getClosePrice()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time</code></td>
+<td><code>getOpenTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_time_utc</code></td>
+<td><code>getOpenTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>open_time in UTC (the same moment; open_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>close_time</code></td>
+<td><code>getCloseTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>close_time_utc</code></td>
+<td><code>getCloseTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>close_time in UTC (the same moment; close_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>profit</code></td>
+<td><code>getProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>commission</code></td>
+<td><code>getCommission()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td><code>getSwap()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td><code>getComment()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tradesummarydata">TradeSummaryData<a class="headerlink" href="#tradesummarydata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>open_trades</code></td>
+<td><code>getOpenTrades()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>open_profit</code></td>
+<td><code>getOpenProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>day_profit</code></td>
+<td><code>getDayProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>week_profit</code></td>
+<td><code>getWeekProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>month_profit</code></td>
+<td><code>getMonthProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>total_profit</code></td>
+<td><code>getTotalProfit()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tradeunrealizedextremadata">TradeUnrealizedExtremaData<a class="headerlink" href="#tradeunrealizedextremadata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ticket</code></td>
+<td><code>getTicket()</code></td>
+<td><code>int64</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>symbol</code></td>
+<td><code>getSymbol()</code></td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_unrealized_time</code></td>
+<td><code>getMaxUnrealizedTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>max_unrealized_time_utc</code></td>
+<td><code>getMaxUnrealizedTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>max_unrealized_time in UTC (the same moment; max_unrealized_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>max_unrealized_pl</code></td>
+<td><code>getMaxUnrealizedPl()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>min_unrealized_time</code></td>
+<td><code>getMinUnrealizedTime()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>min_unrealized_time_utc</code></td>
+<td><code>getMinUnrealizedTimeUtc()</code></td>
+<td><code>google.protobuf.Timestamp</code></td>
+<td>min_unrealized_time in UTC (the same moment; min_unrealized_time is in the broker server's time zone).</td>
+</tr>
+<tr>
+<td><code>min_unrealized_pl</code></td>
+<td><code>getMinUnrealizedPl()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tradeunrealizedpldata">TradeUnrealizedPLData<a class="headerlink" href="#tradeunrealizedpldata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>extrema</code></td>
+<td><code>getExtremaList()</code></td>
+<td>repeated <a href="./#tradeunrealizedextremadata">TradeUnrealizedExtremaData</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="wondata">WonData<a class="headerlink" href="#wondata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>won_count</code></td>
+<td><code>getWonCount()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>all</code></td>
+<td><code>getAll()</code></td>
+<td><code>int32</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>won_persent</code></td>
+<td><code>getWonPersent()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="zscoredata">ZScoreData<a class="headerlink" href="#zscoredata" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Java</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>z_score_decimal</code></td>
+<td><code>getZScoreDecimal()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>z_score_probability</code></td>
+<td><code>getZScoreProbability()</code></td>
+<td><code>double</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../methods/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API methods">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                API methods
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../enums/" class="md-footer__link md-footer__link--next" aria-label="Next: Enums">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Enums
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024–2025 MetaRPC. MT4 is a trademark of MetaQuotes Software Corp. This documentation is community-maintained and not affiliated with MetaQuotes.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/MetaRPC/JavaMT4" target="_blank" rel="noopener" title="JavaMT4 on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/ux.js"></script>
+      
+    
+  </body>
+</html>
