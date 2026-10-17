@@ -2237,16 +2237,20 @@ package <code>mt4_term_api</code> on <code>mt4.mrpc.pro:443</code> and a REST ro
 path, <code>wss://mt4.mrpc.pro/...?id=...&amp;apikey=...</code>). Every reply carries either <code>data</code> (described below) or <code>error</code>
 (see <a href="../../All_Guides/ERRORS/">Errors</a>). Try them in the browser: <a href="https://mt4.mrpc.pro/apiui">https://mt4.mrpc.pro/apiui</a>.</p>
 <h2 id="calling-a-method">Calling a method<a class="headerlink" href="#calling-a-method" title="Permanent link">¶</a></h2>
-<p>Every method below is a method of the generated stub of its service (<code>mt4_term_api.{Service}Grpc</code>). Get it with the
-API key and terminal id from your <code>MT4Account</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">var</span><span class="w"> </span><span class="n">marketInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">authorized</span><span class="p">(</span><span class="n">MarketInfoGrpc</span><span class="p">.</span><span class="na">newBlockingStub</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="na">getChannel</span><span class="p">()));</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">var</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marketInfo</span><span class="p">.</span><span class="na">quote</span><span class="p">(</span><span class="n">QuoteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setSymbol</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="na">hasError</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="na">getError</span><span class="p">().</span><span class="na">getErrorMessage</span><span class="p">());</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getBid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" / "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getAsk</span><span class="p">());</span>
+<p>Every method below is a method of the generated stub of its service (<code>mt4_term_api.{Service}Grpc</code>). <code>MT4Account.authorized(stub)</code>
+adds the API key and the terminal id to its calls:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mt4_term_api.MarketInfoGrpc</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// account: a connected MT4Account</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kd">var</span><span class="w"> </span><span class="n">marketInfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="p">.</span><span class="na">authorized</span><span class="p">(</span><span class="n">MarketInfoGrpc</span><span class="p">.</span><span class="na">newBlockingStub</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="na">getChannel</span><span class="p">()));</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kd">var</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">marketInfo</span><span class="p">.</span><span class="na">quote</span><span class="p">(</span><span class="n">QuoteRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">().</span><span class="na">setSymbol</span><span class="p">(</span><span class="s">"EURUSD"</span><span class="p">).</span><span class="na">build</span><span class="p">());</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="na">hasError</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="n">reply</span><span class="p">.</span><span class="na">getError</span><span class="p">().</span><span class="na">getErrorCode</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">": "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="na">getError</span><span class="p">().</span><span class="na">getErrorMessage</span><span class="p">());</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"EURUSD "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getBid</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" / "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reply</span><span class="p">.</span><span class="na">getData</span><span class="p">().</span><span class="na">getAsk</span><span class="p">());</span>
 </code></pre></div>
-<p>Field <code>foo_bar</code> is <code>getFooBar()</code> / <code>setFooBar(value)</code> on the builder; a repeated field is <code>getFooBarList()</code> /
-<code>addFooBar(value)</code> / <code>addAllFooBar(list)</code>. A server stream is a blocking stub's <code>Iterator</code> or an async stub
-(<code>newStub</code>) with a <code>StreamObserver</code>.</p>
+<p>Field <code>foo_bar</code> is <code>getFooBar()</code> / <code>setFooBar(value)</code> on the builder (the exact getter of every field is in the tables
+below); a repeated field is <code>get...List()</code> / <code>add...(value)</code> / <code>addAll...(list)</code>. A server stream is an async stub
+(<code>newStub</code>) with a <code>StreamObserver</code>: see <a href="../../All_Guides/STREAMS/">Streams</a>.</p>
 <h2 id="accounthelper">AccountHelper<a class="headerlink" href="#accounthelper" title="Permanent link">¶</a></h2>
 <h3 id="accounthelperaccountsummary">AccountHelper.AccountSummary<a class="headerlink" href="#accounthelperaccountsummary" title="Permanent link">¶</a></h3>
 <p>Some information about account</p>
@@ -2421,7 +2425,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 <h2 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link">¶</a></h2>
 <p>============================================================================ Accounts: the MT4 accounts (terminals) that belong to your API key. This is the call to make when you need the terminal ids of accounts that already exist - started from the dashboard or by an earlier ConnectEx - so that you can send them as the "id" header of every other call. Unlike the terminal calls it needs NO "id" header: it is answered from the platform's records of the API key sent in the "APIKey" header, and it never starts, wakes or bills a terminal. Accounts are listed newest first (by started_utc, then terminal_id) and returned by page. Only accounts of THIS platform's endpoint are listed (mt5.mrpc.pro lists MT5 accounts, mt4.mrpc.pro lists MT4 accounts). ============================================================================</p>
 <h3 id="accountslist">Accounts.List<a class="headerlink" href="#accountslist" title="Permanent link">¶</a></h3>
-<p>Lists the accounts of the API key sent in the APIKey header, one page per call. Pass the next_page_token of a page back as page_token to continue; an empty next_page_token means that was the last page. [DefaultValues] { "includeStopped": "false", "pageSize": "200" }</p>
+<p>Lists the accounts of the API key sent in the APIKey header, one page per call. Pass the next_page_token of a page back as page_token to continue; an empty next_page_token means that was the last page.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Accounts/List</code> (unary)</li>
 <li>REST: <code>GET /Accounts</code></li>
@@ -2472,7 +2476,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#accountslistdata">AccountsListData</a></p>
 <h2 id="connection">Connection<a class="headerlink" href="#connection" title="Permanent link">¶</a></h2>
 <h3 id="connectionconnectex">Connection.ConnectEx<a class="headerlink" href="#connectionconnectex" title="Permanent link">¶</a></h3>
-<p>Creates terminal connection to the MT5 server by MT cluster name, waits for connection and returns Guid of it [DefaultValues] { "user": "1124213727", "password": "1tjvjck", "mtClusterName": "FreshForex-Demo" }</p>
+<p>Creates terminal connection to the MT5 server by MT cluster name, waits for connection and returns Guid of it</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Connection/ConnectEx</code> (unary)</li>
 <li>REST: <code>GET /ConnectEx</code></li>
@@ -2534,7 +2538,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#connectdata">ConnectData</a></p>
 <h3 id="connectionconnect">Connection.Connect<a class="headerlink" href="#connectionconnect" title="Permanent link">¶</a></h3>
-<p>Creates terminal connection to the MT4 server and returns Guid of it [DefaultValues] { "user": "501401178", "password": "v8gctta", "host": "mt4-demo.roboforex.com", "port": "443", "baseChartSymbol": "EURUSD", "waitForTerminalIsAlive": "true" }</p>
+<p>Creates terminal connection to the MT4 server and returns Guid of it</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Connection/Connect</code> (unary)</li>
 <li>REST: <code>GET /Connect</code></li>
@@ -2602,7 +2606,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#connectdata">ConnectData</a></p>
 <h3 id="connectionconnectproxy">Connection.ConnectProxy<a class="headerlink" href="#connectionconnectproxy" title="Permanent link">¶</a></h3>
-<p>Connect to account with user, password, host, port. [DefaultValues] { "user": "500476959", "password": "ehj4bod", "host": "mt4-demo.roboforex.com", "port": "443", "proxyUser": "ProxyUser123", "proxyPassword": "qwerty123", "proxyHost": "65.108.126.217", "proxyPort": "1080", "proxyType": "Socks5" }</p>
+<p>Connect to account with user, password, host, port.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Connection/ConnectProxy</code> (unary)</li>
 <li>REST: <code>GET /ConnectProxy</code></li>
@@ -2868,7 +2872,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#getbrokerserversbybrokernamedata">GetBrokerServersByBrokerNameData</a></p>
 <h3 id="connectiongetid">Connection.GetId<a class="headerlink" href="#connectiongetid" title="Permanent link">¶</a></h3>
-<p>Generates a deterministic GUID from user and password. The same user/password combination always produces the same GUID. Use this GUID as the 'id' header for Connect and other endpoints. [DefaultValues] { "user": "1124213727", "password": "1tjvjck" }</p>
+<p>Generates a deterministic GUID from user and password. The same user/password combination always produces the same GUID. Use this GUID as the 'id' header for Connect and other endpoints.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Connection/GetId</code> (unary)</li>
 <li>REST: <code>GET /GetId</code></li>
@@ -3037,7 +3041,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </tbody>
 </table>
 <h3 id="connectionconnectexstream">Connection.ConnectExStream<a class="headerlink" href="#connectionconnectexstream" title="Permanent link">¶</a></h3>
-<p>Same as ConnectEx but streams real-time progress events (incl. live Journal/ Experts log lines) while the connection is established. Optional 'id' header — automatically generated by the server if omitted. Swagger does not support streaming — use /connect-stream interactive viewer. [DefaultValues] { "user": "1124213727", "password": "1tjvjck", "mtClusterName": "FreshForex-Demo" }</p>
+<p>Same as ConnectEx but streams real-time progress events (incl. live Journal/ Experts log lines) while the connection is established. Optional 'id' header — automatically generated by the server if omitted. Swagger does not support streaming — use /connect-stream interactive viewer.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.Connection/ConnectExStream</code> (server stream)</li>
 <li>REST: <code>GET /ConnectExStream</code> (also a WebSocket)</li>
@@ -3199,7 +3203,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 <h2 id="demoaccount">DemoAccount<a class="headerlink" href="#demoaccount" title="Permanent link">¶</a></h2>
 <p>Demo account creation service. Automates the MT4 "Open an Account" wizard via Win32 GUI automation (proxied to the terminal's Gui service). Does NOT require 'id' header — auto-picks any available terminal.</p>
 <h3 id="demoaccountopendemoaccount">DemoAccount.OpenDemoAccount<a class="headerlink" href="#demoaccountopendemoaccount" title="Permanent link">¶</a></h3>
-<p>Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register. [DefaultValues] { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User", "email": "test@test.com", "phone": "+1234567890", "timeoutSeconds": "60" }</p>
+<p>Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.DemoAccount/OpenDemoAccount</code> (unary)</li>
 <li>REST: <code>GET /DemoAccount/Open</code></li>
@@ -3607,7 +3611,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Each message (<code>data</code>)</strong> <a href="../messages/#onopenedordersprofitdata">OnOpenedOrdersProfitData</a></p>
 <h3 id="subscriptionserviceonsymboltick">SubscriptionService.OnSymbolTick<a class="headerlink" href="#subscriptionserviceonsymboltick" title="Permanent link">¶</a></h3>
-<p>Streams real-time ticks for the given symbols. Requires 'id' header returned by Connect/ConnectEx. Swagger does not support streaming — use /subscription-stream interactive viewer. [DefaultValues] { "symbolNames": "EURUSD,BTCUSD" }</p>
+<p>Streams real-time ticks for the given symbols. Requires 'id' header returned by Connect/ConnectEx. Swagger does not support streaming — use /subscription-stream interactive viewer.</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.SubscriptionService/OnSymbolTick</code> (server stream)</li>
 <li>REST: <code>GET /OnSymbolTick</code> (also a WebSocket)</li>
@@ -3634,7 +3638,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 <p><strong>Each message (<code>data</code>)</strong> <a href="../messages/#onsymboltickdata">OnSymbolTickData</a></p>
 <h2 id="tradestats">TradeStats<a class="headerlink" href="#tradestats" title="Permanent link">¶</a></h2>
 <h3 id="tradestatstradestats">TradeStats.TradeStats<a class="headerlink" href="#tradestatstradestats" title="Permanent link">¶</a></h3>
-<p>Trading statistics calculated from order history and open orders [DefaultValues] { "from": "2024-01-01T00:00:00" }</p>
+<p>Trading statistics calculated from order history and open orders</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.TradeStats/TradeStats</code> (unary)</li>
 <li>REST: <code>GET /TradeStats</code></li>
@@ -3666,7 +3670,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#statsdata">StatsData</a></p>
 <h3 id="tradestatstradestatsequityhistory">TradeStats.TradeStatsEquityHistory<a class="headerlink" href="#tradestatstradestatsequityhistory" title="Permanent link">¶</a></h3>
-<p>Trading statistics with equity history chart points [DefaultValues] { "from": "2024-01-01T00:00:00", "excludeSameBars": true }</p>
+<p>Trading statistics with equity history chart points</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.TradeStats/TradeStatsEquityHistory</code> (unary)</li>
 <li>REST: <code>GET /TradeStatsEquityHistory</code></li>
@@ -3704,7 +3708,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#statswithchartsdata">StatsWithChartsData</a></p>
 <h3 id="tradestatsequityhistory">TradeStats.EquityHistory<a class="headerlink" href="#tradestatsequityhistory" title="Permanent link">¶</a></h3>
-<p>Equity history curve points with drawdown calculation [DefaultValues] { "from": "2024-10-01T00:00:00", "excludeSameBars": true }</p>
+<p>Equity history curve points with drawdown calculation</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.TradeStats/EquityHistory</code> (unary)</li>
 <li>REST: <code>GET /EquityHistory</code></li>
@@ -3742,7 +3746,7 @@ API key and terminal id from your <code>MT4Account</code>:</p>
 </table>
 <p><strong>Reply <code>data</code></strong> <a href="../messages/#equityhistorydata">EquityHistoryData</a></p>
 <h3 id="tradestatstradeunrealizedpl">TradeStats.TradeUnrealizedPL<a class="headerlink" href="#tradestatstradeunrealizedpl" title="Permanent link">¶</a></h3>
-<p>Maximum and minimum unrealized profit/loss per trade [DefaultValues] { "from": "2024-01-01T00:00:00" }</p>
+<p>Maximum and minimum unrealized profit/loss per trade</p>
 <ul>
 <li>gRPC: <code>mt4_term_api.TradeStats/TradeUnrealizedPL</code> (unary)</li>
 <li>REST: <code>GET /TradeUnrealizedPL</code></li>
