@@ -9,15 +9,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * Does NOT require 'id' header — auto-picks any available terminal.
  * </pre>
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-demo-account.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class DemoAccountGrpc {
 
   private DemoAccountGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.DemoAccount";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.DemoAccount";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
@@ -97,6 +94,21 @@ public final class DemoAccountGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static DemoAccountBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<DemoAccountBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<DemoAccountBlockingV2Stub>() {
+        @java.lang.Override
+        public DemoAccountBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new DemoAccountBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return DemoAccountBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static DemoAccountBlockingStub newBlockingStub(
@@ -133,7 +145,7 @@ public final class DemoAccountGrpc {
    * Does NOT require 'id' header — auto-picks any available terminal.
    * </pre>
    */
-  public static abstract class DemoAccountImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
@@ -143,7 +155,7 @@ public final class DemoAccountGrpc {
      *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
      * </pre>
      */
-    public void openDemoAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
+    default void openDemoAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOpenDemoAccountMethod(), responseObserver);
     }
@@ -154,39 +166,38 @@ public final class DemoAccountGrpc {
      * Bidirectional streaming session: search company -&gt; select -&gt; form schema -&gt; submit -&gt; 2FA (if any) -&gt; completed.
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
+    default io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getDemoOpenAccountInteractiveMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getOpenDemoAccountMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
-                mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>(
-                  this, METHODID_OPEN_DEMO_ACCOUNT)))
-          .addMethod(
-            getDemoOpenAccountInteractiveMethod(),
-            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
-                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>(
-                  this, METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service DemoAccount.
    * <pre>
    * Demo account creation service. Automates the MT4 "Open an Account" wizard via
    * Win32 GUI automation (proxied to the terminal's Gui service).
    * Does NOT require 'id' header — auto-picks any available terminal.
    * </pre>
    */
-  public static final class DemoAccountStub extends io.grpc.stub.AbstractAsyncStub<DemoAccountStub> {
+  public static abstract class DemoAccountImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return DemoAccountGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service DemoAccount.
+   * <pre>
+   * Demo account creation service. Automates the MT4 "Open an Account" wizard via
+   * Win32 GUI automation (proxied to the terminal's Gui service).
+   * Does NOT require 'id' header — auto-picks any available terminal.
+   * </pre>
+   */
+  public static final class DemoAccountStub
+      extends io.grpc.stub.AbstractAsyncStub<DemoAccountStub> {
     private DemoAccountStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -226,13 +237,63 @@ public final class DemoAccountGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service DemoAccount.
    * <pre>
    * Demo account creation service. Automates the MT4 "Open an Account" wizard via
    * Win32 GUI automation (proxied to the terminal's Gui service).
    * Does NOT require 'id' header — auto-picks any available terminal.
    * </pre>
    */
-  public static final class DemoAccountBlockingStub extends io.grpc.stub.AbstractBlockingStub<DemoAccountBlockingStub> {
+  public static final class DemoAccountBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<DemoAccountBlockingV2Stub> {
+    private DemoAccountBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected DemoAccountBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new DemoAccountBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.
+     * [DefaultValues]
+     * { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User",
+     *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply openDemoAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOpenDemoAccountMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Interactive step-by-step demo account opening wizard.
+     * Bidirectional streaming session: search company -&gt; select -&gt; form schema -&gt; submit -&gt; 2FA (if any) -&gt; completed.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage, mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>
+        demoOpenAccountInteractive() {
+      return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
+          getChannel(), getDemoOpenAccountInteractiveMethod(), getCallOptions());
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service DemoAccount.
+   * <pre>
+   * Demo account creation service. Automates the MT4 "Open an Account" wizard via
+   * Win32 GUI automation (proxied to the terminal's Gui service).
+   * Does NOT require 'id' header — auto-picks any available terminal.
+   * </pre>
+   */
+  public static final class DemoAccountBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<DemoAccountBlockingStub> {
     private DemoAccountBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -259,13 +320,15 @@ public final class DemoAccountGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service DemoAccount.
    * <pre>
    * Demo account creation service. Automates the MT4 "Open an Account" wizard via
    * Win32 GUI automation (proxied to the terminal's Gui service).
    * Does NOT require 'id' header — auto-picks any available terminal.
    * </pre>
    */
-  public static final class DemoAccountFutureStub extends io.grpc.stub.AbstractFutureStub<DemoAccountFutureStub> {
+  public static final class DemoAccountFutureStub
+      extends io.grpc.stub.AbstractFutureStub<DemoAccountFutureStub> {
     private DemoAccountFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -300,10 +363,10 @@ public final class DemoAccountGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final DemoAccountImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(DemoAccountImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -335,6 +398,25 @@ public final class DemoAccountGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getOpenDemoAccountMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
+              mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>(
+                service, METHODID_OPEN_DEMO_ACCOUNT)))
+        .addMethod(
+          getDemoOpenAccountInteractiveMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
+              mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>(
+                service, METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE)))
+        .build();
+  }
+
   private static abstract class DemoAccountBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     DemoAccountBaseDescriptorSupplier() {}
@@ -358,9 +440,9 @@ public final class DemoAccountGrpc {
   private static final class DemoAccountMethodDescriptorSupplier
       extends DemoAccountBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    DemoAccountMethodDescriptorSupplier(String methodName) {
+    DemoAccountMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

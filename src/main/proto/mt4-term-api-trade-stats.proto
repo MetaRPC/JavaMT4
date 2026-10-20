@@ -1,0 +1,213 @@
+syntax = "proto3";
+option csharp_namespace = "mt4_term_api";
+import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "mrpc-mt4-error.proto";
+
+package mt4_term_api;
+option go_package = "git.mtapi.io/root/mrpc-proto.git/mt4/libraries/go";
+
+service TradeStats {
+  // Trading statistics calculated from order history and open orders
+  // [DefaultValues]
+  // {
+  //   "from": "2024-01-01T00:00:00"
+  // }
+  rpc TradeStats (TradeStatsRequest) returns (TradeStatsReply) {
+    option (google.api.http) = {
+      get: "/TradeStats"
+    };
+  }
+
+  // Trading statistics with equity history chart points
+  // [DefaultValues]
+  // {
+  //   "from": "2024-01-01T00:00:00",
+  //   "excludeSameBars": true
+  // }
+  rpc TradeStatsEquityHistory (TradeStatsEquityHistoryRequest) returns (TradeStatsEquityHistoryReply) {
+    option (google.api.http) = {
+      get: "/TradeStatsEquityHistory"
+    };
+  }
+
+  // Equity history curve points with drawdown calculation
+  // [DefaultValues]
+  // {
+  //   "from": "2024-10-01T00:00:00",
+  //   "excludeSameBars": true
+  // }
+  rpc EquityHistory (EquityHistoryRequest) returns (EquityHistoryReply) {
+    option (google.api.http) = {
+      get: "/EquityHistory"
+    };
+  }
+
+  // Maximum and minimum unrealized profit/loss per trade
+  // [DefaultValues]
+  // {
+  //   "from": "2024-01-01T00:00:00"
+  // }
+  rpc TradeUnrealizedPL (TradeUnrealizedPLRequest) returns (TradeUnrealizedPLReply) {
+    option (google.api.http) = {
+      get: "/TradeUnrealizedPL"
+    };
+  }
+}
+
+message TradeStatsRequest {
+  optional string from = 1; // From datetime in format: yyyy-MM-ddTHH:mm:ss
+}
+
+message TradeStatsReply {
+  oneof response {
+    StatsData data = 1;
+    Error error = 2;
+  }
+}
+
+message TradeStatsEquityHistoryRequest {
+  optional string from = 1; // From datetime in format: yyyy-MM-ddTHH:mm:ss
+  optional bool exclude_same_bars = 2; // Return short version without equal bars
+}
+
+message TradeStatsEquityHistoryReply {
+  oneof response {
+    StatsWithChartsData data = 1;
+    Error error = 2;
+  }
+}
+
+message EquityHistoryRequest {
+  optional string from = 1; // From datetime in format: yyyy-MM-ddTHH:mm:ss
+  optional bool exclude_same_bars = 2; // Return short version without equal bars
+}
+
+message EquityHistoryReply {
+  oneof response {
+    EquityHistoryData data = 1;
+    Error error = 2;
+  }
+}
+
+message TradeUnrealizedPLRequest {
+  optional string from = 1; // From datetime in format: yyyy-MM-ddTHH:mm:ss
+}
+
+message TradeUnrealizedPLReply {
+  oneof response {
+    TradeUnrealizedPLData data = 1;
+    Error error = 2;
+  }
+}
+
+message StatsData {
+  TradeSummaryData summary = 1;
+  double max_balance_drawdown_raw = 2;
+  double max_balance_drawdown_relative = 3;
+  double max_equity_drawdown_raw = 4;
+  double max_equity_drawdown_relative = 5;
+  repeated MarketTradeCountData markets = 6;
+  ProfitabilityData profitability = 7;
+  double pips = 8;
+  double lots = 9;
+  double comissions = 10;
+  AveragePipsUsdData average_win = 11;
+  AveragePipsUsdData average_lost = 12;
+  WonData longs_won = 13;
+  WonData shorts_won = 14;
+  ProfitData best_trade = 15;
+  ProfitData worst_trade = 16;
+  ProfitData best_trade_pips = 17;
+  ProfitData worst_trade_pips = 18;
+  string average_trade_length = 19;
+  double profit_factor = 20;
+  double standard_deviation = 21;
+  double sharpe_ratio = 22;
+  ZScoreData z_score = 23;
+  ExpectancyData expectancy = 24;
+  double ghpr = 25;
+  int64 trades = 26;
+}
+
+message TradeSummaryData {
+  int32 open_trades = 1;
+  double open_profit = 2;
+  double day_profit = 3;
+  double week_profit = 4;
+  double month_profit = 5;
+  double total_profit = 6;
+}
+
+message MarketTradeCountData {
+  string market_name = 1;
+  int32 count = 2;
+}
+
+message ProfitabilityData {
+  int64 won_trades = 1;
+  double won_trades_percent = 2;
+  int64 lost_trades = 3;
+  double lost_trades_percent = 4;
+}
+
+message AveragePipsUsdData {
+  double average_pips = 1;
+  double average_usd = 2;
+}
+
+message WonData {
+  int32 won_count = 1;
+  int32 all = 2;
+  double won_persent = 3;
+}
+
+message ProfitData {
+  int64 tiket = 1;
+  google.protobuf.Timestamp date = 2;
+  double profit = 3;
+}
+
+message ZScoreData {
+  double z_score_decimal = 1;
+  double z_score_probability = 2;
+}
+
+message ExpectancyData {
+  double pips = 1;
+  double dollar = 2;
+}
+
+message StatsWithChartsData {
+  StatsData stats = 1;
+  repeated EquityPointData charts = 2;
+}
+
+message EquityHistoryData {
+  repeated EquityPointData points = 1;
+}
+
+message EquityPointData {
+  google.protobuf.Timestamp time = 1;
+  double balance = 2;
+  double equity = 3;
+  double balance_drawdown_raw = 4;
+  double balance_drawdown_relative = 5;
+  double equity_drawdown_raw = 6;
+  double equity_drawdown_relative = 7;
+  double realized_pl = 8;
+  double unrealized_pl = 9;
+}
+
+message TradeUnrealizedPLData {
+  repeated TradeUnrealizedExtremaData extrema = 1;
+}
+
+message TradeUnrealizedExtremaData {
+  int64 ticket = 1;
+  string symbol = 2;
+  google.protobuf.Timestamp max_unrealized_time = 3;
+  double max_unrealized_pl = 4;
+  google.protobuf.Timestamp min_unrealized_time = 5;
+  double min_unrealized_pl = 6;
+}

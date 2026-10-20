@@ -4,15 +4,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-account-helper.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class AccountHelperGrpc {
 
   private AccountHelperGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.AccountHelper";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.AccountHelper";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest,
@@ -216,6 +213,21 @@ public final class AccountHelperGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static AccountHelperBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<AccountHelperBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<AccountHelperBlockingV2Stub>() {
+        @java.lang.Override
+        public AccountHelperBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new AccountHelperBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return AccountHelperBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static AccountHelperBlockingStub newBlockingStub(
@@ -247,14 +259,14 @@ public final class AccountHelperGrpc {
 
   /**
    */
-  public static abstract class AccountHelperImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
      * Some information about account
      * </pre>
      */
-    public void accountSummary(mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest request,
+    default void accountSummary(mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAccountSummaryMethod(), responseObserver);
     }
@@ -264,7 +276,7 @@ public final class AccountHelperGrpc {
      * List of opened orders
      * </pre>
      */
-    public void openedOrders(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersRequest request,
+    default void openedOrders(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOpenedOrdersMethod(), responseObserver);
     }
@@ -274,7 +286,7 @@ public final class AccountHelperGrpc {
      * List of opened orders tickets
      * </pre>
      */
-    public void openedOrdersTickets(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsRequest request,
+    default void openedOrdersTickets(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOpenedOrdersTicketsMethod(), responseObserver);
     }
@@ -284,7 +296,7 @@ public final class AccountHelperGrpc {
      * Orders history with pagination and open date filters
      * </pre>
      */
-    public void ordersHistory(mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryRequest request,
+    default void ordersHistory(mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOrdersHistoryMethod(), responseObserver);
     }
@@ -294,69 +306,35 @@ public final class AccountHelperGrpc {
      * Full information about exact symbol, or all symbols
      * </pre>
      */
-    public void symbolParamsMany(mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyRequest request,
+    default void symbolParamsMany(mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSymbolParamsManyMethod(), responseObserver);
     }
 
     /**
      */
-    public void tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request,
+    default void tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTickValueWithSizeMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getAccountSummaryMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryReply>(
-                  this, METHODID_ACCOUNT_SUMMARY)))
-          .addMethod(
-            getOpenedOrdersMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersReply>(
-                  this, METHODID_OPENED_ORDERS)))
-          .addMethod(
-            getOpenedOrdersTicketsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsReply>(
-                  this, METHODID_OPENED_ORDERS_TICKETS)))
-          .addMethod(
-            getOrdersHistoryMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryReply>(
-                  this, METHODID_ORDERS_HISTORY)))
-          .addMethod(
-            getSymbolParamsManyMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyReply>(
-                  this, METHODID_SYMBOL_PARAMS_MANY)))
-          .addMethod(
-            getTickValueWithSizeMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest,
-                mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply>(
-                  this, METHODID_TICK_VALUE_WITH_SIZE)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service AccountHelper.
    */
-  public static final class AccountHelperStub extends io.grpc.stub.AbstractAsyncStub<AccountHelperStub> {
+  public static abstract class AccountHelperImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return AccountHelperGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service AccountHelper.
+   */
+  public static final class AccountHelperStub
+      extends io.grpc.stub.AbstractAsyncStub<AccountHelperStub> {
     private AccountHelperStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -433,8 +411,84 @@ public final class AccountHelperGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service AccountHelper.
    */
-  public static final class AccountHelperBlockingStub extends io.grpc.stub.AbstractBlockingStub<AccountHelperBlockingStub> {
+  public static final class AccountHelperBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<AccountHelperBlockingV2Stub> {
+    private AccountHelperBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected AccountHelperBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new AccountHelperBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Some information about account
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryReply accountSummary(mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getAccountSummaryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * List of opened orders
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersReply openedOrders(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOpenedOrdersMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * List of opened orders tickets
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsReply openedOrdersTickets(mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOpenedOrdersTicketsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Orders history with pagination and open date filters
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryReply ordersHistory(mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOrdersHistoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Full information about exact symbol, or all symbols
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyReply symbolParamsMany(mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getSymbolParamsManyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply tickValueWithSize(mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getTickValueWithSizeMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service AccountHelper.
+   */
+  public static final class AccountHelperBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<AccountHelperBlockingStub> {
     private AccountHelperBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -505,8 +559,10 @@ public final class AccountHelperGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service AccountHelper.
    */
-  public static final class AccountHelperFutureStub extends io.grpc.stub.AbstractFutureStub<AccountHelperFutureStub> {
+  public static final class AccountHelperFutureStub
+      extends io.grpc.stub.AbstractFutureStub<AccountHelperFutureStub> {
     private AccountHelperFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -594,10 +650,10 @@ public final class AccountHelperGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AccountHelperImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AccountHelperImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -646,6 +702,53 @@ public final class AccountHelperGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getAccountSummaryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryReply>(
+                service, METHODID_ACCOUNT_SUMMARY)))
+        .addMethod(
+          getOpenedOrdersMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersReply>(
+                service, METHODID_OPENED_ORDERS)))
+        .addMethod(
+          getOpenedOrdersTicketsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.OpenedOrdersTicketsReply>(
+                service, METHODID_OPENED_ORDERS_TICKETS)))
+        .addMethod(
+          getOrdersHistoryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.OrdersHistoryReply>(
+                service, METHODID_ORDERS_HISTORY)))
+        .addMethod(
+          getSymbolParamsManyMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.SymbolParamsManyReply>(
+                service, METHODID_SYMBOL_PARAMS_MANY)))
+        .addMethod(
+          getTickValueWithSizeMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeRequest,
+              mt4_term_api.Mt4TermApiAccountHelper.TickValueWithSizeReply>(
+                service, METHODID_TICK_VALUE_WITH_SIZE)))
+        .build();
+  }
+
   private static abstract class AccountHelperBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     AccountHelperBaseDescriptorSupplier() {}
@@ -669,9 +772,9 @@ public final class AccountHelperGrpc {
   private static final class AccountHelperMethodDescriptorSupplier
       extends AccountHelperBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    AccountHelperMethodDescriptorSupplier(String methodName) {
+    AccountHelperMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

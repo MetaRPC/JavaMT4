@@ -1,0 +1,255 @@
+syntax = "proto3";
+option csharp_namespace = "mt4_term_api";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "mrpc-mt4-error.proto";
+
+package mt4_term_api;
+option go_package = "git.mtapi.io/root/mrpc-proto.git/mt4/libraries/go";
+
+service Charts {
+  rpc GetEaParams (GetEaParamsRequest) returns (GetEaParamsReply) {
+    option (google.api.http) = {
+      get: "/GetEaParams"
+    };
+  }
+  rpc OpenTerminalChartWithEa (OpenTerminalChartWithEaRequest) returns (OpenTerminalChartWithEaReply) {
+    option (google.api.http) = {
+      get: "/OpenTerminalChartWithEa"
+    };
+  }
+  rpc AttachEa (AttachEaRequest) returns (AttachEaReply) {
+    option (google.api.http) = {
+      post: "/Charts/AttachEa"
+      body: "*"
+    };
+  }
+  rpc GetRunningEas (GetRunningEasRequest) returns (GetRunningEasReply) {
+    option (google.api.http) = {
+      get: "/Charts/GetRunningEas"
+    };
+  }
+  rpc GetEaLogs (GetEaLogsRequest) returns (GetEaLogsReply) {
+    option (google.api.http) = {
+      get: "/Charts/GetEaLogs"
+    };
+  }
+  rpc StopEa (StopEaRequest) returns (StopEaReply) {
+    option (google.api.http) = {
+      post: "/Charts/StopEa"
+      body: "*"
+    };
+  }
+  rpc StartEa (StartEaRequest) returns (StartEaReply) {
+    option (google.api.http) = {
+      post: "/Charts/StartEa"
+      body: "*"
+    };
+  }
+}
+
+message GetEaParamsRequest {
+  string ea_file_name = 1;
+}
+message GetEaParamsReply {
+  oneof response {
+    GetEaParamsData data = 1;
+    Error error = 2;
+  }
+}
+message GetEaParamsData {
+  string ea_name = 1;
+  bool ea_found = 2;
+  bool ea_has_params = 3;
+  repeated EaParam parameters = 4;
+}
+message EaParam {
+  string name = 1;
+  EA_PARAM_TYPE type = 2;
+}
+enum EA_PARAM_TYPE {
+  EA_PARAM_TYPE_UNDEFINED = 0;
+  EA_PARAM_TYPE_STRING = 1;
+  EA_PARAM_TYPE_INTEGER = 2;
+  EA_PARAM_TYPE_DOUBLE = 3;
+  EA_PARAM_TYPE_BOOLEAN = 4;
+}
+
+message OpenTerminalChartWithEaRequest {
+  string symbol_name = 1;
+  string ea_file_name = 2;
+  EnumOpenTerminalChartWithEaChatPeriod chart_period = 3;
+  repeated OpenTerminalChartWithEaParameter ea_parameters = 4;
+}
+message OpenTerminalChartWithEaParameter {
+  int32 index = 1;
+  EnumOpenTerminalChartWithEaParameterType type = 2;
+  optional int32 int_param_value = 3;
+  optional int64 long_param_value = 4;
+  optional bool bool_param_value = 5;
+  optional string string_param_value = 6;
+  optional double double_param_value = 7;
+  string name = 8;
+}
+enum EnumOpenTerminalChartWithEaParameterType {
+  MRPC_EA_PARAM_INT = 0;
+  MRPC_EA_PARAM_LONG = 1;
+  MRPC_EA_PARAM_BOOL = 2;
+  MRPC_EA_PARAM_STRING = 3;
+  MRPC_EA_PARAM_DOUBLE = 4;
+}
+message OpenTerminalChartWithEaReply {
+  oneof response {
+    OpenTerminalChartWithEaData data = 1;
+    Error error = 2;
+  }
+}
+message OpenTerminalChartWithEaData {
+  int64 chart_id = 1;
+}
+enum EnumOpenTerminalChartWithEaChatPeriod {
+  MRPC_EA_CHART_PERIOD_CURRENT = 0;
+  MRPC_EA_CHART_PERIOD_M1 = 1;
+  MRPC_EA_CHART_PERIOD_M2 = 2;
+  MRPC_EA_CHART_PERIOD_M3 = 3;
+  MRPC_EA_CHART_PERIOD_M4 = 4;
+  MRPC_EA_CHART_PERIOD_M5 = 5;
+  MRPC_EA_CHART_PERIOD_M6 = 6;
+  MRPC_EA_CHART_PERIOD_M10 = 7;
+  MRPC_EA_CHART_PERIOD_M12 = 8;
+  MRPC_EA_CHART_PERIOD_M15 = 9;
+  MRPC_EA_CHART_PERIOD_M20 = 10;
+  MRPC_EA_CHART_PERIOD_M30 = 11;
+  MRPC_EA_CHART_PERIOD_H1 = 12;
+  MRPC_EA_CHART_PERIOD_H2 = 13;
+  MRPC_EA_CHART_PERIOD_H3 = 14;
+  MRPC_EA_CHART_PERIOD_H4 = 15;
+  MRPC_EA_CHART_PERIOD_H6 = 16;
+  MRPC_EA_CHART_PERIOD_H8 = 17;
+  MRPC_EA_CHART_PERIOD_H12 = 18;
+  MRPC_EA_CHART_PERIOD_D1 = 19;
+  MRPC_EA_CHART_PERIOD_W1 = 20;
+  MRPC_EA_CHART_PERIOD_MN1 = 21;
+}
+
+message AttachEaRequest {
+  string session_id = 1;
+  string ea_file_name = 2;
+  string symbol_name = 3;
+  EnumOpenTerminalChartWithEaChatPeriod chart_period = 4;
+  repeated OpenTerminalChartWithEaParameter ea_parameters = 5;
+  optional bytes ea_file_content = 6;
+  optional double max_cpu_percent = 7;
+  optional int64 max_ram_bytes = 8;
+}
+
+message AttachEaReply {
+  oneof response {
+    AttachEaData data = 1;
+    Error error = 2;
+  }
+}
+
+message AttachEaData {
+  string ea_id = 1;
+  string ea_terminal_id = 2;
+  string parent_session_id = 3;
+  string ea_name = 4;
+  string state = 5;
+  int32 process_id = 6;
+}
+
+message GetRunningEasRequest {
+  optional string session_id = 1;
+  optional string ea_id = 2;
+}
+
+message GetRunningEasReply {
+  oneof response {
+    GetRunningEasData data = 1;
+    Error error = 2;
+  }
+}
+
+message GetRunningEasData {
+  repeated RunningEaInfo eas = 1;
+}
+
+message RunningEaInfo {
+  string ea_id = 1;
+  string ea_name = 2;
+  string parent_session_id = 3;
+  string ea_terminal_id = 4;
+  int32 process_id = 5;
+  string symbol = 6;
+  string period = 7;
+  string state = 8;
+  google.protobuf.Timestamp started_at = 9;
+  double ea_cpu_percent = 10;
+  double ref_cpu_percent = 11;
+  double cpu_ratio = 12;
+  int64 ea_ram_bytes = 13;
+  int64 ref_ram_bytes = 14;
+  double ram_ratio = 15;
+  double resource_multiplier = 16;
+  double metered_hours = 17;
+  double charged_amount = 18;
+  google.protobuf.Timestamp stopped_at = 19;
+}
+
+message GetEaLogsRequest {
+  string ea_id = 1;
+  optional string log_type = 2;
+}
+
+message GetEaLogsReply {
+  oneof response {
+    GetEaLogsData data = 1;
+    Error error = 2;
+  }
+}
+
+message GetEaLogsData {
+  repeated EaLogRow rows = 1;
+}
+
+message EaLogRow {
+  google.protobuf.Timestamp time = 1;
+  string source = 2;
+  string message = 3;
+}
+
+message StopEaRequest {
+  string ea_id = 1;
+  optional string reason = 2;
+}
+
+message StopEaReply {
+  oneof response {
+    StopEaData data = 1;
+    Error error = 2;
+  }
+}
+
+message StopEaData {
+  bool success = 1;
+  string ea_id = 2;
+  string message = 3;
+}
+
+message StartEaRequest {
+  string ea_id = 1;
+}
+
+message StartEaReply {
+  oneof response {
+    StartEaData data = 1;
+    Error error = 2;
+  }
+}
+
+message StartEaData {
+  bool success = 1;
+  string ea_id = 2;
+  string message = 3;
+}

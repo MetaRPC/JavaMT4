@@ -4,15 +4,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-health-check.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class HealthServiceGrpc {
 
   private HealthServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.HealthService";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.HealthService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest,
@@ -92,6 +89,21 @@ public final class HealthServiceGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static HealthServiceBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<HealthServiceBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<HealthServiceBlockingV2Stub>() {
+        @java.lang.Override
+        public HealthServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new HealthServiceBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return HealthServiceBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static HealthServiceBlockingStub newBlockingStub(
@@ -123,45 +135,39 @@ public final class HealthServiceGrpc {
 
   /**
    */
-  public static abstract class HealthServiceImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void healthCheck(mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest request,
+    default void healthCheck(mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
     }
 
     /**
      */
-    public void closeTerminal(mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalRequest request,
+    default void closeTerminal(mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCloseTerminalMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getHealthCheckMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest,
-                mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply>(
-                  this, METHODID_HEALTH_CHECK)))
-          .addMethod(
-            getCloseTerminalMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalRequest,
-                mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalReply>(
-                  this, METHODID_CLOSE_TERMINAL)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service HealthService.
    */
-  public static final class HealthServiceStub extends io.grpc.stub.AbstractAsyncStub<HealthServiceStub> {
+  public static abstract class HealthServiceImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return HealthServiceGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service HealthService.
+   */
+  public static final class HealthServiceStub
+      extends io.grpc.stub.AbstractAsyncStub<HealthServiceStub> {
     private HealthServiceStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -191,8 +197,41 @@ public final class HealthServiceGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service HealthService.
    */
-  public static final class HealthServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<HealthServiceBlockingStub> {
+  public static final class HealthServiceBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<HealthServiceBlockingV2Stub> {
+    private HealthServiceBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected HealthServiceBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new HealthServiceBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply healthCheck(mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalReply closeTerminal(mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getCloseTerminalMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service HealthService.
+   */
+  public static final class HealthServiceBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<HealthServiceBlockingStub> {
     private HealthServiceBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -220,8 +259,10 @@ public final class HealthServiceGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service HealthService.
    */
-  public static final class HealthServiceFutureStub extends io.grpc.stub.AbstractFutureStub<HealthServiceFutureStub> {
+  public static final class HealthServiceFutureStub
+      extends io.grpc.stub.AbstractFutureStub<HealthServiceFutureStub> {
     private HealthServiceFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -258,10 +299,10 @@ public final class HealthServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final HealthServiceImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(HealthServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -294,6 +335,25 @@ public final class HealthServiceGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiHealthCheck.HealthCheckRequest,
+              mt4_term_api.Mt4TermApiHealthCheck.HealthCheckReply>(
+                service, METHODID_HEALTH_CHECK)))
+        .addMethod(
+          getCloseTerminalMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalRequest,
+              mt4_term_api.Mt4TermApiHealthCheck.CloseTerminalReply>(
+                service, METHODID_CLOSE_TERMINAL)))
+        .build();
+  }
+
   private static abstract class HealthServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     HealthServiceBaseDescriptorSupplier() {}
@@ -317,9 +377,9 @@ public final class HealthServiceGrpc {
   private static final class HealthServiceMethodDescriptorSupplier
       extends HealthServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    HealthServiceMethodDescriptorSupplier(String methodName) {
+    HealthServiceMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

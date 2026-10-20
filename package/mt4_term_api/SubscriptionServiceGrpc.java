@@ -4,15 +4,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-subscriptions.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class SubscriptionServiceGrpc {
 
   private SubscriptionServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.SubscriptionService";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.SubscriptionService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest,
@@ -154,6 +151,21 @@ public final class SubscriptionServiceGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static SubscriptionServiceBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<SubscriptionServiceBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<SubscriptionServiceBlockingV2Stub>() {
+        @java.lang.Override
+        public SubscriptionServiceBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new SubscriptionServiceBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return SubscriptionServiceBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static SubscriptionServiceBlockingStub newBlockingStub(
@@ -185,7 +197,7 @@ public final class SubscriptionServiceGrpc {
 
   /**
    */
-  public static abstract class SubscriptionServiceImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
@@ -194,7 +206,7 @@ public final class SubscriptionServiceGrpc {
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
-    public void onTrade(mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest request,
+    default void onTrade(mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiSubscriptions.OnTradeReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnTradeMethod(), responseObserver);
     }
@@ -206,7 +218,7 @@ public final class SubscriptionServiceGrpc {
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
-    public void onOpenedOrdersTickets(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsRequest request,
+    default void onOpenedOrdersTickets(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnOpenedOrdersTicketsMethod(), responseObserver);
     }
@@ -218,7 +230,7 @@ public final class SubscriptionServiceGrpc {
      * Swagger does not support streaming — use /subscription-stream interactive viewer.
      * </pre>
      */
-    public void onOpenedOrdersProfit(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest request,
+    default void onOpenedOrdersProfit(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnOpenedOrdersProfitMethod(), responseObserver);
     }
@@ -234,48 +246,28 @@ public final class SubscriptionServiceGrpc {
      * }
      * </pre>
      */
-    public void onSymbolTick(mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickRequest request,
+    default void onSymbolTick(mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnSymbolTickMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getOnTradeMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest,
-                mt4_term_api.Mt4TermApiSubscriptions.OnTradeReply>(
-                  this, METHODID_ON_TRADE)))
-          .addMethod(
-            getOnOpenedOrdersTicketsMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsRequest,
-                mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsReply>(
-                  this, METHODID_ON_OPENED_ORDERS_TICKETS)))
-          .addMethod(
-            getOnOpenedOrdersProfitMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest,
-                mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitReply>(
-                  this, METHODID_ON_OPENED_ORDERS_PROFIT)))
-          .addMethod(
-            getOnSymbolTickMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickRequest,
-                mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickReply>(
-                  this, METHODID_ON_SYMBOL_TICK)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service SubscriptionService.
    */
-  public static final class SubscriptionServiceStub extends io.grpc.stub.AbstractAsyncStub<SubscriptionServiceStub> {
+  public static abstract class SubscriptionServiceImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return SubscriptionServiceGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service SubscriptionService.
+   */
+  public static final class SubscriptionServiceStub
+      extends io.grpc.stub.AbstractAsyncStub<SubscriptionServiceStub> {
     private SubscriptionServiceStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -345,8 +337,87 @@ public final class SubscriptionServiceGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service SubscriptionService.
    */
-  public static final class SubscriptionServiceBlockingStub extends io.grpc.stub.AbstractBlockingStub<SubscriptionServiceBlockingStub> {
+  public static final class SubscriptionServiceBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<SubscriptionServiceBlockingV2Stub> {
+    private SubscriptionServiceBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected SubscriptionServiceBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new SubscriptionServiceBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Streams real-time order/trade events.
+     * Requires 'id' header returned by Connect/ConnectEx.
+     * Swagger does not support streaming — use /subscription-stream interactive viewer.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiSubscriptions.OnTradeReply>
+        onTrade(mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnTradeMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Streams the tickets of currently opened orders as they change.
+     * Requires 'id' header returned by Connect/ConnectEx.
+     * Swagger does not support streaming — use /subscription-stream interactive viewer.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsReply>
+        onOpenedOrdersTickets(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnOpenedOrdersTicketsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Streams the live profit of currently opened orders.
+     * Requires 'id' header returned by Connect/ConnectEx.
+     * Swagger does not support streaming — use /subscription-stream interactive viewer.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitReply>
+        onOpenedOrdersProfit(mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnOpenedOrdersProfitMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Streams real-time ticks for the given symbols.
+     * Requires 'id' header returned by Connect/ConnectEx.
+     * Swagger does not support streaming — use /subscription-stream interactive viewer.
+     * [DefaultValues]
+     * {
+     *   "symbolNames": "EURUSD,BTCUSD"
+     * }
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickReply>
+        onSymbolTick(mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnSymbolTickMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service SubscriptionService.
+   */
+  public static final class SubscriptionServiceBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<SubscriptionServiceBlockingStub> {
     private SubscriptionServiceBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -416,8 +487,10 @@ public final class SubscriptionServiceGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service SubscriptionService.
    */
-  public static final class SubscriptionServiceFutureStub extends io.grpc.stub.AbstractFutureStub<SubscriptionServiceFutureStub> {
+  public static final class SubscriptionServiceFutureStub
+      extends io.grpc.stub.AbstractFutureStub<SubscriptionServiceFutureStub> {
     private SubscriptionServiceFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -440,10 +513,10 @@ public final class SubscriptionServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final SubscriptionServiceImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(SubscriptionServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -484,6 +557,39 @@ public final class SubscriptionServiceGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getOnTradeMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiSubscriptions.OnTradeRequest,
+              mt4_term_api.Mt4TermApiSubscriptions.OnTradeReply>(
+                service, METHODID_ON_TRADE)))
+        .addMethod(
+          getOnOpenedOrdersTicketsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsRequest,
+              mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersTicketsReply>(
+                service, METHODID_ON_OPENED_ORDERS_TICKETS)))
+        .addMethod(
+          getOnOpenedOrdersProfitMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest,
+              mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitReply>(
+                service, METHODID_ON_OPENED_ORDERS_PROFIT)))
+        .addMethod(
+          getOnSymbolTickMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickRequest,
+              mt4_term_api.Mt4TermApiSubscriptions.OnSymbolTickReply>(
+                service, METHODID_ON_SYMBOL_TICK)))
+        .build();
+  }
+
   private static abstract class SubscriptionServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     SubscriptionServiceBaseDescriptorSupplier() {}
@@ -507,9 +613,9 @@ public final class SubscriptionServiceGrpc {
   private static final class SubscriptionServiceMethodDescriptorSupplier
       extends SubscriptionServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    SubscriptionServiceMethodDescriptorSupplier(String methodName) {
+    SubscriptionServiceMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

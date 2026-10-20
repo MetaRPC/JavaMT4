@@ -4,15 +4,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-charts.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class ChartsGrpc {
 
   private ChartsGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.Charts";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.Charts";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest,
@@ -247,6 +244,21 @@ public final class ChartsGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static ChartsBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<ChartsBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<ChartsBlockingV2Stub>() {
+        @java.lang.Override
+        public ChartsBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new ChartsBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return ChartsBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static ChartsBlockingStub newBlockingStub(
@@ -278,115 +290,74 @@ public final class ChartsGrpc {
 
   /**
    */
-  public static abstract class ChartsImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void getEaParams(mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest request,
+    default void getEaParams(mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetEaParamsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetEaParamsMethod(), responseObserver);
     }
 
     /**
      */
-    public void openTerminalChartWithEa(mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest request,
+    default void openTerminalChartWithEa(mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOpenTerminalChartWithEaMethod(), responseObserver);
     }
 
     /**
      */
-    public void attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request,
+    default void attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.AttachEaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAttachEaMethod(), responseObserver);
     }
 
     /**
      */
-    public void getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request,
+    default void getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetRunningEasReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRunningEasMethod(), responseObserver);
     }
 
     /**
      */
-    public void getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request,
+    default void getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.GetEaLogsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetEaLogsMethod(), responseObserver);
     }
 
     /**
      */
-    public void stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request,
+    default void stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StopEaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStopEaMethod(), responseObserver);
     }
 
     /**
      */
-    public void startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request,
+    default void startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiCharts.StartEaReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStartEaMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getGetEaParamsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest,
-                mt4_term_api.Mt4TermApiCharts.GetEaParamsReply>(
-                  this, METHODID_GET_EA_PARAMS)))
-          .addMethod(
-            getOpenTerminalChartWithEaMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest,
-                mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply>(
-                  this, METHODID_OPEN_TERMINAL_CHART_WITH_EA)))
-          .addMethod(
-            getAttachEaMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.AttachEaRequest,
-                mt4_term_api.Mt4TermApiCharts.AttachEaReply>(
-                  this, METHODID_ATTACH_EA)))
-          .addMethod(
-            getGetRunningEasMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest,
-                mt4_term_api.Mt4TermApiCharts.GetRunningEasReply>(
-                  this, METHODID_GET_RUNNING_EAS)))
-          .addMethod(
-            getGetEaLogsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest,
-                mt4_term_api.Mt4TermApiCharts.GetEaLogsReply>(
-                  this, METHODID_GET_EA_LOGS)))
-          .addMethod(
-            getStopEaMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.StopEaRequest,
-                mt4_term_api.Mt4TermApiCharts.StopEaReply>(
-                  this, METHODID_STOP_EA)))
-          .addMethod(
-            getStartEaMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiCharts.StartEaRequest,
-                mt4_term_api.Mt4TermApiCharts.StartEaReply>(
-                  this, METHODID_START_EA)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service Charts.
    */
-  public static final class ChartsStub extends io.grpc.stub.AbstractAsyncStub<ChartsStub> {
+  public static abstract class ChartsImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return ChartsGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service Charts.
+   */
+  public static final class ChartsStub
+      extends io.grpc.stub.AbstractAsyncStub<ChartsStub> {
     private ChartsStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -456,8 +427,76 @@ public final class ChartsGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service Charts.
    */
-  public static final class ChartsBlockingStub extends io.grpc.stub.AbstractBlockingStub<ChartsBlockingStub> {
+  public static final class ChartsBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<ChartsBlockingV2Stub> {
+    private ChartsBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected ChartsBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new ChartsBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.GetEaParamsReply getEaParams(mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetEaParamsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply openTerminalChartWithEa(mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOpenTerminalChartWithEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.AttachEaReply attachEa(mt4_term_api.Mt4TermApiCharts.AttachEaRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getAttachEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.GetRunningEasReply getRunningEas(mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetRunningEasMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.GetEaLogsReply getEaLogs(mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetEaLogsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.StopEaReply stopEa(mt4_term_api.Mt4TermApiCharts.StopEaRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getStopEaMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiCharts.StartEaReply startEa(mt4_term_api.Mt4TermApiCharts.StartEaRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getStartEaMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service Charts.
+   */
+  public static final class ChartsBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<ChartsBlockingStub> {
     private ChartsBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -520,8 +559,10 @@ public final class ChartsGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service Charts.
    */
-  public static final class ChartsFutureStub extends io.grpc.stub.AbstractFutureStub<ChartsFutureStub> {
+  public static final class ChartsFutureStub
+      extends io.grpc.stub.AbstractFutureStub<ChartsFutureStub> {
     private ChartsFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -603,10 +644,10 @@ public final class ChartsGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final ChartsImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(ChartsImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -659,6 +700,60 @@ public final class ChartsGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getGetEaParamsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.GetEaParamsRequest,
+              mt4_term_api.Mt4TermApiCharts.GetEaParamsReply>(
+                service, METHODID_GET_EA_PARAMS)))
+        .addMethod(
+          getOpenTerminalChartWithEaMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaRequest,
+              mt4_term_api.Mt4TermApiCharts.OpenTerminalChartWithEaReply>(
+                service, METHODID_OPEN_TERMINAL_CHART_WITH_EA)))
+        .addMethod(
+          getAttachEaMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.AttachEaRequest,
+              mt4_term_api.Mt4TermApiCharts.AttachEaReply>(
+                service, METHODID_ATTACH_EA)))
+        .addMethod(
+          getGetRunningEasMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.GetRunningEasRequest,
+              mt4_term_api.Mt4TermApiCharts.GetRunningEasReply>(
+                service, METHODID_GET_RUNNING_EAS)))
+        .addMethod(
+          getGetEaLogsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.GetEaLogsRequest,
+              mt4_term_api.Mt4TermApiCharts.GetEaLogsReply>(
+                service, METHODID_GET_EA_LOGS)))
+        .addMethod(
+          getStopEaMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.StopEaRequest,
+              mt4_term_api.Mt4TermApiCharts.StopEaReply>(
+                service, METHODID_STOP_EA)))
+        .addMethod(
+          getStartEaMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiCharts.StartEaRequest,
+              mt4_term_api.Mt4TermApiCharts.StartEaReply>(
+                service, METHODID_START_EA)))
+        .build();
+  }
+
   private static abstract class ChartsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     ChartsBaseDescriptorSupplier() {}
@@ -682,9 +777,9 @@ public final class ChartsGrpc {
   private static final class ChartsMethodDescriptorSupplier
       extends ChartsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    ChartsMethodDescriptorSupplier(String methodName) {
+    ChartsMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

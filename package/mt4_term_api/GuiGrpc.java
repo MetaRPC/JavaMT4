@@ -8,15 +8,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
  * </pre>
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-gui.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class GuiGrpc {
 
   private GuiGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.Gui";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.Gui";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
@@ -96,6 +93,21 @@ public final class GuiGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static GuiBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<GuiBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<GuiBlockingV2Stub>() {
+        @java.lang.Override
+        public GuiBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new GuiBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return GuiBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static GuiBlockingStub newBlockingStub(
@@ -131,49 +143,47 @@ public final class GuiGrpc {
    * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
    * </pre>
    */
-  public static abstract class GuiImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
+    default void demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDemoOpenAccountMethod(), responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
+    default io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage> demoOpenAccountInteractive(
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getDemoOpenAccountInteractiveMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getDemoOpenAccountMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
-                mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>(
-                  this, METHODID_DEMO_OPEN_ACCOUNT)))
-          .addMethod(
-            getDemoOpenAccountInteractiveMethod(),
-            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
-                mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>(
-                  this, METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service Gui.
    * <pre>
    * Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
    * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
    * </pre>
    */
-  public static final class GuiStub extends io.grpc.stub.AbstractAsyncStub<GuiStub> {
+  public static abstract class GuiImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return GuiGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service Gui.
+   * <pre>
+   * Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
+   * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
+   * </pre>
+   */
+  public static final class GuiStub
+      extends io.grpc.stub.AbstractAsyncStub<GuiStub> {
     private GuiStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -203,12 +213,51 @@ public final class GuiGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service Gui.
    * <pre>
    * Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
    * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
    * </pre>
    */
-  public static final class GuiBlockingStub extends io.grpc.stub.AbstractBlockingStub<GuiBlockingStub> {
+  public static final class GuiBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<GuiBlockingV2Stub> {
+    private GuiBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected GuiBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new GuiBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     */
+    public mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply demoOpenAccount(mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getDemoOpenAccountMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage, mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>
+        demoOpenAccountInteractive() {
+      return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
+          getChannel(), getDemoOpenAccountInteractiveMethod(), getCallOptions());
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service Gui.
+   * <pre>
+   * Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
+   * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
+   * </pre>
+   */
+  public static final class GuiBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<GuiBlockingStub> {
     private GuiBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -229,12 +278,14 @@ public final class GuiGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service Gui.
    * <pre>
    * Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
    * P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
    * </pre>
    */
-  public static final class GuiFutureStub extends io.grpc.stub.AbstractFutureStub<GuiFutureStub> {
+  public static final class GuiFutureStub
+      extends io.grpc.stub.AbstractFutureStub<GuiFutureStub> {
     private GuiFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -263,10 +314,10 @@ public final class GuiGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final GuiImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(GuiImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -298,6 +349,25 @@ public final class GuiGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getDemoOpenAccountMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
+              mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>(
+                service, METHODID_DEMO_OPEN_ACCOUNT)))
+        .addMethod(
+          getDemoOpenAccountInteractiveMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveClientMessage,
+              mt4_term_api.Mt4TermApiGui.GuiDemoInteractiveServerMessage>(
+                service, METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE)))
+        .build();
+  }
+
   private static abstract class GuiBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     GuiBaseDescriptorSupplier() {}
@@ -321,9 +391,9 @@ public final class GuiGrpc {
   private static final class GuiMethodDescriptorSupplier
       extends GuiBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    GuiMethodDescriptorSupplier(String methodName) {
+    GuiMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

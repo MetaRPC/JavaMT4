@@ -4,15 +4,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-trading-helper.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class TradingHelperGrpc {
 
   private TradingHelperGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.TradingHelper";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.TradingHelper";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest,
@@ -154,6 +151,21 @@ public final class TradingHelperGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static TradingHelperBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<TradingHelperBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<TradingHelperBlockingV2Stub>() {
+        @java.lang.Override
+        public TradingHelperBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new TradingHelperBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return TradingHelperBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static TradingHelperBlockingStub newBlockingStub(
@@ -185,14 +197,14 @@ public final class TradingHelperGrpc {
 
   /**
    */
-  public static abstract class TradingHelperImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
      * Send market or pending order
      * </pre>
      */
-    public void orderSend(mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest request,
+    default void orderSend(mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradingHelper.OrderSendReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOrderSendMethod(), responseObserver);
     }
@@ -202,7 +214,7 @@ public final class TradingHelperGrpc {
      * Modify market or pending order
      * </pre>
      */
-    public void orderModify(mt4_term_api.Mt4TermApiTradingHelper.OrderModifyRequest request,
+    default void orderModify(mt4_term_api.Mt4TermApiTradingHelper.OrderModifyRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradingHelper.OrderModifyReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOrderModifyMethod(), responseObserver);
     }
@@ -212,7 +224,7 @@ public final class TradingHelperGrpc {
      * Close market or pending order
      * </pre>
      */
-    public void orderCloseDelete(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteRequest request,
+    default void orderCloseDelete(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOrderCloseDeleteMethod(), responseObserver);
     }
@@ -222,48 +234,28 @@ public final class TradingHelperGrpc {
      * Close market order with opposite market order
      * </pre>
      */
-    public void orderCloseBy(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByRequest request,
+    default void orderCloseBy(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOrderCloseByMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getOrderSendMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest,
-                mt4_term_api.Mt4TermApiTradingHelper.OrderSendReply>(
-                  this, METHODID_ORDER_SEND)))
-          .addMethod(
-            getOrderModifyMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiTradingHelper.OrderModifyRequest,
-                mt4_term_api.Mt4TermApiTradingHelper.OrderModifyReply>(
-                  this, METHODID_ORDER_MODIFY)))
-          .addMethod(
-            getOrderCloseDeleteMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteRequest,
-                mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteReply>(
-                  this, METHODID_ORDER_CLOSE_DELETE)))
-          .addMethod(
-            getOrderCloseByMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByRequest,
-                mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByReply>(
-                  this, METHODID_ORDER_CLOSE_BY)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service TradingHelper.
    */
-  public static final class TradingHelperStub extends io.grpc.stub.AbstractAsyncStub<TradingHelperStub> {
+  public static abstract class TradingHelperImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return TradingHelperGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service TradingHelper.
+   */
+  public static final class TradingHelperStub
+      extends io.grpc.stub.AbstractAsyncStub<TradingHelperStub> {
     private TradingHelperStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -321,8 +313,67 @@ public final class TradingHelperGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service TradingHelper.
    */
-  public static final class TradingHelperBlockingStub extends io.grpc.stub.AbstractBlockingStub<TradingHelperBlockingStub> {
+  public static final class TradingHelperBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<TradingHelperBlockingV2Stub> {
+    private TradingHelperBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected TradingHelperBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new TradingHelperBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Send market or pending order
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiTradingHelper.OrderSendReply orderSend(mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOrderSendMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Modify market or pending order
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiTradingHelper.OrderModifyReply orderModify(mt4_term_api.Mt4TermApiTradingHelper.OrderModifyRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOrderModifyMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Close market or pending order
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteReply orderCloseDelete(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOrderCloseDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Close market order with opposite market order
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByReply orderCloseBy(mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getOrderCloseByMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service TradingHelper.
+   */
+  public static final class TradingHelperBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<TradingHelperBlockingStub> {
     private TradingHelperBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -376,8 +427,10 @@ public final class TradingHelperGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service TradingHelper.
    */
-  public static final class TradingHelperFutureStub extends io.grpc.stub.AbstractFutureStub<TradingHelperFutureStub> {
+  public static final class TradingHelperFutureStub
+      extends io.grpc.stub.AbstractFutureStub<TradingHelperFutureStub> {
     private TradingHelperFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -444,10 +497,10 @@ public final class TradingHelperGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final TradingHelperImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(TradingHelperImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -488,6 +541,39 @@ public final class TradingHelperGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getOrderSendMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiTradingHelper.OrderSendRequest,
+              mt4_term_api.Mt4TermApiTradingHelper.OrderSendReply>(
+                service, METHODID_ORDER_SEND)))
+        .addMethod(
+          getOrderModifyMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiTradingHelper.OrderModifyRequest,
+              mt4_term_api.Mt4TermApiTradingHelper.OrderModifyReply>(
+                service, METHODID_ORDER_MODIFY)))
+        .addMethod(
+          getOrderCloseDeleteMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteRequest,
+              mt4_term_api.Mt4TermApiTradingHelper.OrderCloseDeleteReply>(
+                service, METHODID_ORDER_CLOSE_DELETE)))
+        .addMethod(
+          getOrderCloseByMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByRequest,
+              mt4_term_api.Mt4TermApiTradingHelper.OrderCloseByReply>(
+                service, METHODID_ORDER_CLOSE_BY)))
+        .build();
+  }
+
   private static abstract class TradingHelperBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     TradingHelperBaseDescriptorSupplier() {}
@@ -511,9 +597,9 @@ public final class TradingHelperGrpc {
   private static final class TradingHelperMethodDescriptorSupplier
       extends TradingHelperBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    TradingHelperMethodDescriptorSupplier(String methodName) {
+    TradingHelperMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 

@@ -1,0 +1,181 @@
+syntax = "proto3";
+option csharp_namespace = "mt4_term_api";
+
+package mt4_term_api;
+option go_package = "git.mtapi.io/root/mrpc-proto.git/mt4/libraries/go";
+
+// Terminal-side GUI-automation service (implemented by mt4-framework-grpc, which
+// P/Invokes mt4-term-gui.dll). The manager's DemoAccount service proxies to these.
+service Gui {
+  rpc DemoOpenAccount (GuiDemoOpenAccountRequest) returns (GuiDemoOpenAccountReply);
+  rpc DemoOpenAccountInteractive (stream GuiDemoInteractiveClientMessage) returns (stream GuiDemoInteractiveServerMessage);
+}
+
+message GuiDemoOpenAccountRequest {
+  string company = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string phone = 5;
+  string server = 6;
+  string account_type = 7;
+  int32 timeout_seconds = 8;
+}
+message GuiDemoOpenAccountReply {
+  int32 result_code = 1;
+  string login = 2;
+  string password = 3;
+  string investor = 4;
+  string server = 5;
+  string debug_log = 6;
+}
+
+message GuiDemoInteractiveClientMessage {
+  string session_id = 1;
+  oneof payload {
+    GuiDemoInteractiveSearchCompany search_company = 2;
+    GuiDemoInteractiveSelectCompany select_company = 3;
+    GuiDemoInteractiveSubmitForm submit_form = 4;
+    GuiDemoInteractiveSubmitTwoFactor submit_two_factor = 5;
+    GuiDemoInteractiveCancelSession cancel_session = 6;
+    GuiDemoInteractiveRequestScreenshot request_screenshot = 7;
+  }
+}
+
+message GuiDemoInteractiveSearchCompany {
+  string search_query = 1;
+  int32 timeout_seconds = 2;
+}
+
+message GuiDemoInteractiveSelectCompany {
+  int32 company_index = 1;
+  string company_name = 2;
+  string server_name = 3;
+  int32 account_mode = 4; // 0 = Demo (default), 1 = Real, 2 = Existing
+}
+
+message GuiDemoInteractiveSubmitForm {
+  map<string, string> fields = 1; // "first_name", "last_name", "email", "phone", "address", "city", "zip", "country"
+  map<string, string> dropdown_selections = 2; // "server", "account_type", "deposit", "currency", "leverage"
+  bool agree_to_terms = 3;
+}
+
+message GuiDemoInteractiveSubmitTwoFactor {
+  string code = 1;
+}
+
+message GuiDemoInteractiveCancelSession {
+  string reason = 1;
+}
+
+message GuiDemoInteractiveRequestScreenshot {
+  string tag = 1;
+}
+
+message GuiDemoInteractiveServerMessage {
+  string session_id = 1;
+  int64 timestamp_ms = 2;
+  oneof payload {
+    GuiDemoInteractiveCompanyList company_list = 3;
+    GuiDemoInteractiveFormSchema form_schema = 4;
+    GuiDemoInteractiveTwoFactorChallenge two_factor_challenge = 5;
+    GuiDemoInteractiveCompleted completed = 6;
+    GuiDemoInteractiveProgress progress = 7;
+    GuiDemoInteractiveError error = 8;
+    GuiDemoInteractiveScreenshot screenshot = 9;
+  }
+}
+
+message GuiDemoInteractiveCompanyItem {
+  int32 index = 1;
+  string company_name = 2;
+  string server_name = 3;
+  int32 ping_ms = 4;
+}
+
+message GuiDemoInteractiveCompanyList {
+  repeated GuiDemoInteractiveCompanyItem companies = 1;
+  string current_query = 2;
+  bool can_proceed = 3;
+}
+
+enum GuiFormFieldType {
+  FIELD_TYPE_TEXT = 0;
+  FIELD_TYPE_EMAIL = 1;
+  FIELD_TYPE_PHONE = 2;
+  FIELD_TYPE_NUMBER = 3;
+  FIELD_TYPE_CHECKBOX = 4;
+  FIELD_TYPE_PASSWORD = 5;
+}
+
+message GuiDemoInteractiveFormField {
+  int32 control_id = 1;
+  string field_name = 2;
+  string label = 3;
+  string current_value = 4;
+  bool is_required = 5;
+  GuiFormFieldType field_type = 6;
+}
+
+message GuiDemoInteractiveDropdown {
+  int32 control_id = 1;
+  string dropdown_name = 2;
+  string label = 3;
+  int32 selected_index = 4;
+  string selected_value = 5;
+  repeated string options = 6;
+}
+
+message GuiDemoInteractiveFormSchema {
+  string page_title = 1;
+  int32 page_index = 2;
+  repeated GuiDemoInteractiveFormField fields = 3;
+  repeated GuiDemoInteractiveDropdown dropdowns = 4;
+  bool has_terms_agreement = 5;
+  bool terms_agreed = 6;
+  string prompt_message = 7;
+}
+
+enum GuiTwoFactorType {
+  TWO_FACTOR_UNKNOWN = 0;
+  TWO_FACTOR_EMAIL = 1;
+  TWO_FACTOR_SMS = 2;
+  TWO_FACTOR_APP_AUTHENTICATOR = 3;
+}
+
+message GuiDemoInteractiveTwoFactorChallenge {
+  GuiTwoFactorType type = 1;
+  string prompt_text = 2;
+  string destination_masked = 3;
+  int32 code_length = 4;
+  int32 timeout_seconds = 5;
+  int32 remaining_attempts = 6;
+}
+
+message GuiDemoInteractiveCompleted {
+  int64 login = 1;
+  string password = 2;
+  string investor_password = 3;
+  string server = 4;
+  bool is_live_verified = 5;
+  string trade_server_message = 6;
+}
+
+message GuiDemoInteractiveProgress {
+  string step_name = 1;
+  string message = 2;
+  int32 progress_percentage = 3;
+}
+
+message GuiDemoInteractiveError {
+  int32 error_code = 1;
+  string error_message = 2;
+  string current_step = 3;
+  bool is_recoverable = 4;
+}
+
+message GuiDemoInteractiveScreenshot {
+  string tag = 1;
+  bytes image_data = 2;
+  string mime_type = 3;
+}

@@ -9,15 +9,12 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * Requires 'id' header with the terminal connection GUID returned by Connect.
  * </pre>
  */
-@javax.annotation.Generated(
-    value = "by gRPC proto compiler",
-    comments = "Source: mt4-term-api-connection.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class LogsGrpc {
 
   private LogsGrpc() {}
 
-  public static final String SERVICE_NAME = "mt4_term_api.Logs";
+  public static final java.lang.String SERVICE_NAME = "mt4_term_api.Logs";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiConnection.JournalRequest,
@@ -159,6 +156,21 @@ public final class LogsGrpc {
   }
 
   /**
+   * Creates a new blocking-style stub that supports all types of calls on the service
+   */
+  public static LogsBlockingV2Stub newBlockingV2Stub(
+      io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<LogsBlockingV2Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<LogsBlockingV2Stub>() {
+        @java.lang.Override
+        public LogsBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new LogsBlockingV2Stub(channel, callOptions);
+        }
+      };
+    return LogsBlockingV2Stub.newStub(factory, channel);
+  }
+
+  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static LogsBlockingStub newBlockingStub(
@@ -195,7 +207,7 @@ public final class LogsGrpc {
    * Requires 'id' header with the terminal connection GUID returned by Connect.
    * </pre>
    */
-  public static abstract class LogsImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
@@ -205,7 +217,7 @@ public final class LogsGrpc {
      * Works regardless of which tab is currently active in the terminal UI.
      * </pre>
      */
-    public void journal(mt4_term_api.Mt4TermApiConnection.JournalRequest request,
+    default void journal(mt4_term_api.Mt4TermApiConnection.JournalRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.JournalReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getJournalMethod(), responseObserver);
     }
@@ -216,7 +228,7 @@ public final class LogsGrpc {
      * Requires 'id' header with the terminal connection GUID returned by Connect.
      * </pre>
      */
-    public void onJournal(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request,
+    default void onJournal(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.OnJournalReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnJournalMethod(), responseObserver);
     }
@@ -229,7 +241,7 @@ public final class LogsGrpc {
      * Works regardless of which tab is currently active in the terminal UI.
      * </pre>
      */
-    public void experts(mt4_term_api.Mt4TermApiConnection.JournalRequest request,
+    default void experts(mt4_term_api.Mt4TermApiConnection.JournalRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.JournalReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExpertsMethod(), responseObserver);
     }
@@ -240,53 +252,38 @@ public final class LogsGrpc {
      * Requires 'id' header with the terminal connection GUID returned by Connect.
      * </pre>
      */
-    public void onExperts(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request,
+    default void onExperts(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.OnJournalReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnExpertsMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getJournalMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiConnection.JournalRequest,
-                mt4_term_api.Mt4TermApiConnection.JournalReply>(
-                  this, METHODID_JOURNAL)))
-          .addMethod(
-            getOnJournalMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiConnection.OnJournalRequest,
-                mt4_term_api.Mt4TermApiConnection.OnJournalReply>(
-                  this, METHODID_ON_JOURNAL)))
-          .addMethod(
-            getExpertsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiConnection.JournalRequest,
-                mt4_term_api.Mt4TermApiConnection.JournalReply>(
-                  this, METHODID_EXPERTS)))
-          .addMethod(
-            getOnExpertsMethod(),
-            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-              new MethodHandlers<
-                mt4_term_api.Mt4TermApiConnection.OnJournalRequest,
-                mt4_term_api.Mt4TermApiConnection.OnJournalReply>(
-                  this, METHODID_ON_EXPERTS)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service Logs.
    * <pre>
    * Provides access to terminal log content (Journal and Experts tabs).
    * Reads log entries directly from the MT4 terminal GUI.
    * Requires 'id' header with the terminal connection GUID returned by Connect.
    * </pre>
    */
-  public static final class LogsStub extends io.grpc.stub.AbstractAsyncStub<LogsStub> {
+  public static abstract class LogsImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return LogsGrpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service Logs.
+   * <pre>
+   * Provides access to terminal log content (Journal and Experts tabs).
+   * Reads log entries directly from the MT4 terminal GUI.
+   * Requires 'id' header with the terminal connection GUID returned by Connect.
+   * </pre>
+   */
+  public static final class LogsStub
+      extends io.grpc.stub.AbstractAsyncStub<LogsStub> {
     private LogsStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -352,13 +349,89 @@ public final class LogsGrpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service Logs.
    * <pre>
    * Provides access to terminal log content (Journal and Experts tabs).
    * Reads log entries directly from the MT4 terminal GUI.
    * Requires 'id' header with the terminal connection GUID returned by Connect.
    * </pre>
    */
-  public static final class LogsBlockingStub extends io.grpc.stub.AbstractBlockingStub<LogsBlockingStub> {
+  public static final class LogsBlockingV2Stub
+      extends io.grpc.stub.AbstractBlockingStub<LogsBlockingV2Stub> {
+    private LogsBlockingV2Stub(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      super(channel, callOptions);
+    }
+
+    @java.lang.Override
+    protected LogsBlockingV2Stub build(
+        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+      return new LogsBlockingV2Stub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Returns log entries from the terminal Journal tab.
+     * The Journal tab contains system messages about terminal connection status,
+     * network activity, server synchronization and other internal events.
+     * Works regardless of which tab is currently active in the terminal UI.
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiConnection.JournalReply journal(mt4_term_api.Mt4TermApiConnection.JournalRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getJournalMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Streams log entries from the terminal Journal tab in real-time.
+     * Requires 'id' header with the terminal connection GUID returned by Connect.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiConnection.OnJournalReply>
+        onJournal(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnJournalMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Returns log entries from the terminal Experts tab.
+     * The Experts tab contains messages from Expert Advisors (EAs), scripts and indicators
+     * including Print() output, initialization/deinitialization events and runtime errors.
+     * Works regardless of which tab is currently active in the terminal UI.
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiConnection.JournalReply experts(mt4_term_api.Mt4TermApiConnection.JournalRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getExpertsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Streams log entries from the terminal Experts tab in real-time.
+     * Requires 'id' header with the terminal connection GUID returned by Connect.
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiConnection.OnJournalReply>
+        onExperts(mt4_term_api.Mt4TermApiConnection.OnJournalRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getOnExpertsMethod(), getCallOptions(), request);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do limited synchronous rpc calls to service Logs.
+   * <pre>
+   * Provides access to terminal log content (Journal and Experts tabs).
+   * Reads log entries directly from the MT4 terminal GUI.
+   * Requires 'id' header with the terminal connection GUID returned by Connect.
+   * </pre>
+   */
+  public static final class LogsBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<LogsBlockingStub> {
     private LogsBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -422,13 +495,15 @@ public final class LogsGrpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service Logs.
    * <pre>
    * Provides access to terminal log content (Journal and Experts tabs).
    * Reads log entries directly from the MT4 terminal GUI.
    * Requires 'id' header with the terminal connection GUID returned by Connect.
    * </pre>
    */
-  public static final class LogsFutureStub extends io.grpc.stub.AbstractFutureStub<LogsFutureStub> {
+  public static final class LogsFutureStub
+      extends io.grpc.stub.AbstractFutureStub<LogsFutureStub> {
     private LogsFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -479,10 +554,10 @@ public final class LogsGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final LogsImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(LogsImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -523,6 +598,39 @@ public final class LogsGrpc {
     }
   }
 
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getJournalMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiConnection.JournalRequest,
+              mt4_term_api.Mt4TermApiConnection.JournalReply>(
+                service, METHODID_JOURNAL)))
+        .addMethod(
+          getOnJournalMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiConnection.OnJournalRequest,
+              mt4_term_api.Mt4TermApiConnection.OnJournalReply>(
+                service, METHODID_ON_JOURNAL)))
+        .addMethod(
+          getExpertsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiConnection.JournalRequest,
+              mt4_term_api.Mt4TermApiConnection.JournalReply>(
+                service, METHODID_EXPERTS)))
+        .addMethod(
+          getOnExpertsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              mt4_term_api.Mt4TermApiConnection.OnJournalRequest,
+              mt4_term_api.Mt4TermApiConnection.OnJournalReply>(
+                service, METHODID_ON_EXPERTS)))
+        .build();
+  }
+
   private static abstract class LogsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     LogsBaseDescriptorSupplier() {}
@@ -546,9 +654,9 @@ public final class LogsGrpc {
   private static final class LogsMethodDescriptorSupplier
       extends LogsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final String methodName;
+    private final java.lang.String methodName;
 
-    LogsMethodDescriptorSupplier(String methodName) {
+    LogsMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 
