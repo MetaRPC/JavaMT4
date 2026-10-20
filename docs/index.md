@@ -1,56 +1,49 @@
 # JavaMT4 SDK Documentation
 
-> ℹ️ **Account ID / Session ID**: When connecting via `Connect` / `ConnectEx`, MetaRPC automatically generates a terminal session GUID and returns it in `terminalInstanceGuid`. There is no need to call `GetId` or supply an `id` header prior to connecting. Subsequent calls (such as subscriptions or order requests) use this session ID automatically.
-
-
-**Complete Java SDK for MetaTrader 4 trading automation via gRPC**
+**The Java client of the MRPC MetaTrader 4 API (`mt4.mrpc.pro:443`, gRPC).**
 
 <div class="home-grid">
 
-<!-- Top Card (0) - Quick Start - Red-Orange -->
 <a href="All_Guides/Your_First_Project/" class="card card-0">
   <span class="material-symbols-rounded">rocket_launch</span>
-  <h3>Quick Start</h3>
-  <p>Your first project from scratch in 10 minutes</p>
+  <h3>Your First Project</h3>
+  <p>A working program in 10 minutes</p>
 </a>
 
-<!-- Wide Card (1) - Getting Started - Yellow-Orange-Pink -->
 <a href="All_Guides/GETTING_STARTED/" class="card card-1 card-wide">
   <span class="material-symbols-rounded">bolt</span>
   <h3>Getting Started</h3>
-  <p>New here? Start with setup and overview</p>
+  <p>Install, API key, the first calls</p>
 </a>
 
-<!-- Middle Row (2-3) - Yellow-Blue & Purple -->
-<a href="All_Guides/PROJECT_MAP/" class="card card-2">
-  <span class="material-symbols-rounded">map</span>
-  <h3>Project Map</h3>
-  <p>Architecture overview</p>
-</a>
-
-<a href="All_Guides/GLOSSARY/" class="card card-3">
-  <span class="material-symbols-rounded">menu_book</span>
-  <h3>Glossary</h3>
-  <p>MT4 terms and concepts</p>
-</a>
-
-<!-- Bottom Row (4-5-6) - Teal, Mint, Green -->
-<a href="API_Reference/MT4Service/" class="card card-4">
-  <span class="material-symbols-rounded">build</span>
-  <h3>MT4Service</h3>
-  <p>Wrapper methods layer</p>
-</a>
-
-<a href="API_Reference/MT4Account/" class="card card-5">
-  <span class="material-symbols-rounded">settings</span>
+<a href="api/" class="card card-2">
+  <span class="material-symbols-rounded">code</span>
   <h3>MT4Account</h3>
-  <p>Low-level gRPC protocol layer</p>
+  <p>Connect, account, orders, ticks</p>
 </a>
 
-<a href="API_Reference/MT4Sugar/" class="card card-6">
-  <span class="material-symbols-rounded">auto_awesome</span>
-  <h3>MT4Sugar</h3>
-  <p>High-level convenience API</p>
+<a href="All_Guides/STREAMS/" class="card card-3">
+  <span class="material-symbols-rounded">stream</span>
+  <h3>Streams</h3>
+  <p>Ticks, trades, profit, states</p>
+</a>
+
+<a href="All_Guides/ERRORS/" class="card card-4">
+  <span class="material-symbols-rounded">error</span>
+  <h3>Errors</h3>
+  <p>What a refused call looks like</p>
+</a>
+
+<a href="API_Reference/methods/" class="card card-5">
+  <span class="material-symbols-rounded">list</span>
+  <h3>API methods</h3>
+  <p>Every method, generated from the protos</p>
+</a>
+
+<a href="API_Reference/enums/" class="card card-6">
+  <span class="material-symbols-rounded">tune</span>
+  <h3>Enums</h3>
+  <p>Order types, error codes and the rest</p>
 </a>
 
 </div>

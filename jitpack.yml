@@ -1,0 +1,3 @@
+# JitPack (https://jitpack.io) builds this repository on request; the build needs JDK 17+.
+jdk:
+  - openjdk17

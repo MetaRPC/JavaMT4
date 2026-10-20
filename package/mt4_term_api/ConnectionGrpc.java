@@ -4,12 +4,15 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler",
+    comments = "Source: mt4-term-api-connection.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class ConnectionGrpc {
 
   private ConnectionGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "mt4_term_api.Connection";
+  public static final String SERVICE_NAME = "mt4_term_api.Connection";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiConnection.ConnectExRequest,
@@ -492,21 +495,6 @@ public final class ConnectionGrpc {
   }
 
   /**
-   * Creates a new blocking-style stub that supports all types of calls on the service
-   */
-  public static ConnectionBlockingV2Stub newBlockingV2Stub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<ConnectionBlockingV2Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<ConnectionBlockingV2Stub>() {
-        @java.lang.Override
-        public ConnectionBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new ConnectionBlockingV2Stub(channel, callOptions);
-        }
-      };
-    return ConnectionBlockingV2Stub.newStub(factory, channel);
-  }
-
-  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static ConnectionBlockingStub newBlockingStub(
@@ -538,7 +526,7 @@ public final class ConnectionGrpc {
 
   /**
    */
-  public interface AsyncService {
+  public static abstract class ConnectionImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
@@ -551,7 +539,7 @@ public final class ConnectionGrpc {
      * }  
      * </pre>
      */
-    default void connectEx(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request,
+    public void connectEx(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectExReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectExMethod(), responseObserver);
     }
@@ -570,7 +558,7 @@ public final class ConnectionGrpc {
      * }
      * </pre>
      */
-    default void connect(mt4_term_api.Mt4TermApiConnection.ConnectRequest request,
+    public void connect(mt4_term_api.Mt4TermApiConnection.ConnectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectMethod(), responseObserver);
     }
@@ -584,15 +572,15 @@ public final class ConnectionGrpc {
      *  "password": "ehj4bod", 
      *  "host": "mt4-demo.roboforex.com", 
      *  "port": "443",
-     *  "proxyUser": "ProxyUser123", 
-     *  "proxyPassword": "qwerty123", 
-     *  "proxyHost": "65.108.126.217", 
+     *  "proxyUser": "proxy-user", 
+     *  "proxyPassword": "proxy-password", 
+     *  "proxyHost": "proxy.example.com", 
      *  "proxyPort": "1080", 
      *  "proxyType": "Socks5" 
      * }
      * </pre>
      */
-    default void connectProxy(mt4_term_api.Mt4TermApiConnection.ConnectProxyRequest request,
+    public void connectProxy(mt4_term_api.Mt4TermApiConnection.ConnectProxyRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectProxyReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectProxyMethod(), responseObserver);
     }
@@ -602,7 +590,7 @@ public final class ConnectionGrpc {
      * Checks if terminal connection to MT4 server is alive
      * </pre>
      */
-    default void checkConnect(mt4_term_api.Mt4TermApiConnection.CheckConnectRequest request,
+    public void checkConnect(mt4_term_api.Mt4TermApiConnection.CheckConnectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.CheckConnectReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckConnectMethod(), responseObserver);
     }
@@ -612,7 +600,7 @@ public final class ConnectionGrpc {
      * Returns detailed live connection state of this terminal instance
      * </pre>
      */
-    default void connectState(mt4_term_api.Mt4TermApiConnection.ConnectStateRequest request,
+    public void connectState(mt4_term_api.Mt4TermApiConnection.ConnectStateRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectStateReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectStateMethod(), responseObserver);
     }
@@ -622,7 +610,7 @@ public final class ConnectionGrpc {
      * Streams real-time connection state changes for specified or visible terminals
      * </pre>
      */
-    default void onConnectState(mt4_term_api.Mt4TermApiConnection.OnConnectStateRequest request,
+    public void onConnectState(mt4_term_api.Mt4TermApiConnection.OnConnectStateRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.OnConnectStateReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getOnConnectStateMethod(), responseObserver);
     }
@@ -632,7 +620,7 @@ public final class ConnectionGrpc {
      * Deprecated alias for ConnectState
      * </pre>
      */
-    default void connectionStatus(mt4_term_api.Mt4TermApiConnection.ConnectionStatusRequest request,
+    public void connectionStatus(mt4_term_api.Mt4TermApiConnection.ConnectionStatusRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectionStatusReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectionStatusMethod(), responseObserver);
     }
@@ -642,7 +630,7 @@ public final class ConnectionGrpc {
      * Close terminal connection to MT4 server
      * </pre>
      */
-    default void disconnect(mt4_term_api.Mt4TermApiConnection.DisconnectRequest request,
+    public void disconnect(mt4_term_api.Mt4TermApiConnection.DisconnectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.DisconnectReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDisconnectMethod(), responseObserver);
     }
@@ -652,7 +640,7 @@ public final class ConnectionGrpc {
      * If you need to recreate terminal instance with the same id
      * </pre>
      */
-    default void reconnect(mt4_term_api.Mt4TermApiConnection.ReconnectRequest request,
+    public void reconnect(mt4_term_api.Mt4TermApiConnection.ReconnectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ReconnectReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReconnectMethod(), responseObserver);
     }
@@ -665,14 +653,14 @@ public final class ConnectionGrpc {
      * reply as ConnectEx so callers do not need a separate result path.
      * </pre>
      */
-    default void connectByToken(mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest request,
+    public void connectByToken(mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectExReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectByTokenMethod(), responseObserver);
     }
 
     /**
      */
-    default void getBrokerServersByBrokerName(mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameRequest request,
+    public void getBrokerServersByBrokerName(mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBrokerServersByBrokerNameMethod(), responseObserver);
     }
@@ -689,7 +677,7 @@ public final class ConnectionGrpc {
      * }
      * </pre>
      */
-    default void getId(mt4_term_api.Mt4TermApiConnection.GetIdRequest request,
+    public void getId(mt4_term_api.Mt4TermApiConnection.GetIdRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.GetIdReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetIdMethod(), responseObserver);
     }
@@ -701,7 +689,7 @@ public final class ConnectionGrpc {
      * MT4 window and the manager returns the image. Requires 'id' header.
      * </pre>
      */
-    default void screenshot(mt4_term_api.Mt4TermApiConnection.ScreenshotRequest request,
+    public void screenshot(mt4_term_api.Mt4TermApiConnection.ScreenshotRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ScreenshotReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getScreenshotMethod(), responseObserver);
     }
@@ -714,7 +702,7 @@ public final class ConnectionGrpc {
      * Swagger does not support streaming — use /connect-stream interactive viewer.
      * </pre>
      */
-    default void connectStream(mt4_term_api.Mt4TermApiConnection.ConnectRequest request,
+    public void connectStream(mt4_term_api.Mt4TermApiConnection.ConnectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectStreamMethod(), responseObserver);
     }
@@ -733,28 +721,125 @@ public final class ConnectionGrpc {
      * }
      * </pre>
      */
-    default void connectExStream(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request,
+    public void connectExStream(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getConnectExStreamMethod(), responseObserver);
     }
-  }
-
-  /**
-   * Base class for the server implementation of the service Connection.
-   */
-  public static abstract class ConnectionImplBase
-      implements io.grpc.BindableService, AsyncService {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return ConnectionGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getConnectExMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectExRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectExReply>(
+                  this, METHODID_CONNECT_EX)))
+          .addMethod(
+            getConnectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectReply>(
+                  this, METHODID_CONNECT)))
+          .addMethod(
+            getConnectProxyMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectProxyRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectProxyReply>(
+                  this, METHODID_CONNECT_PROXY)))
+          .addMethod(
+            getCheckConnectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.CheckConnectRequest,
+                mt4_term_api.Mt4TermApiConnection.CheckConnectReply>(
+                  this, METHODID_CHECK_CONNECT)))
+          .addMethod(
+            getConnectStateMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectStateRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectStateReply>(
+                  this, METHODID_CONNECT_STATE)))
+          .addMethod(
+            getOnConnectStateMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.OnConnectStateRequest,
+                mt4_term_api.Mt4TermApiConnection.OnConnectStateReply>(
+                  this, METHODID_ON_CONNECT_STATE)))
+          .addMethod(
+            getConnectionStatusMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectionStatusRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectionStatusReply>(
+                  this, METHODID_CONNECTION_STATUS)))
+          .addMethod(
+            getDisconnectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.DisconnectRequest,
+                mt4_term_api.Mt4TermApiConnection.DisconnectReply>(
+                  this, METHODID_DISCONNECT)))
+          .addMethod(
+            getReconnectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ReconnectRequest,
+                mt4_term_api.Mt4TermApiConnection.ReconnectReply>(
+                  this, METHODID_RECONNECT)))
+          .addMethod(
+            getConnectByTokenMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectExReply>(
+                  this, METHODID_CONNECT_BY_TOKEN)))
+          .addMethod(
+            getGetBrokerServersByBrokerNameMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameRequest,
+                mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameReply>(
+                  this, METHODID_GET_BROKER_SERVERS_BY_BROKER_NAME)))
+          .addMethod(
+            getGetIdMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.GetIdRequest,
+                mt4_term_api.Mt4TermApiConnection.GetIdReply>(
+                  this, METHODID_GET_ID)))
+          .addMethod(
+            getScreenshotMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ScreenshotRequest,
+                mt4_term_api.Mt4TermApiConnection.ScreenshotReply>(
+                  this, METHODID_SCREENSHOT)))
+          .addMethod(
+            getConnectStreamMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>(
+                  this, METHODID_CONNECT_STREAM)))
+          .addMethod(
+            getConnectExStreamMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiConnection.ConnectExRequest,
+                mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>(
+                  this, METHODID_CONNECT_EX_STREAM)))
+          .build();
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service Connection.
    */
-  public static final class ConnectionStub
-      extends io.grpc.stub.AbstractAsyncStub<ConnectionStub> {
+  public static final class ConnectionStub extends io.grpc.stub.AbstractAsyncStub<ConnectionStub> {
     private ConnectionStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -812,9 +897,9 @@ public final class ConnectionGrpc {
      *  "password": "ehj4bod", 
      *  "host": "mt4-demo.roboforex.com", 
      *  "port": "443",
-     *  "proxyUser": "ProxyUser123", 
-     *  "proxyPassword": "qwerty123", 
-     *  "proxyHost": "65.108.126.217", 
+     *  "proxyUser": "proxy-user", 
+     *  "proxyPassword": "proxy-password", 
+     *  "proxyHost": "proxy.example.com", 
      *  "proxyPort": "1080", 
      *  "proxyType": "Socks5" 
      * }
@@ -981,231 +1066,8 @@ public final class ConnectionGrpc {
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service Connection.
    */
-  public static final class ConnectionBlockingV2Stub
-      extends io.grpc.stub.AbstractBlockingStub<ConnectionBlockingV2Stub> {
-    private ConnectionBlockingV2Stub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected ConnectionBlockingV2Stub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new ConnectionBlockingV2Stub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Creates terminal connection to the MT5 server by MT cluster name, waits for connection and returns Guid of it 
-     * [DefaultValues]
-     * {
-     *   "user": "1124213727",
-     *   "password": "1tjvjck",
-     *   "mtClusterName": "FreshForex-Demo"
-     * }  
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectExReply connectEx(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectExMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Creates terminal connection to the MT4 server and returns Guid of it
-     * [DefaultValues]
-     * {
-     *   "user": "501401178",
-     *   "password": "v8gctta",
-     *   "host": "mt4-demo.roboforex.com",
-     *   "port": "443",
-     *   "baseChartSymbol": "EURUSD",  
-     *   "waitForTerminalIsAlive": "true"
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectReply connect(mt4_term_api.Mt4TermApiConnection.ConnectRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Connect to account with user, password, host, port.
-     * [DefaultValues] 
-     * { 
-     *  "user": "500476959", 
-     *  "password": "ehj4bod", 
-     *  "host": "mt4-demo.roboforex.com", 
-     *  "port": "443",
-     *  "proxyUser": "ProxyUser123", 
-     *  "proxyPassword": "qwerty123", 
-     *  "proxyHost": "65.108.126.217", 
-     *  "proxyPort": "1080", 
-     *  "proxyType": "Socks5" 
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectProxyReply connectProxy(mt4_term_api.Mt4TermApiConnection.ConnectProxyRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectProxyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Checks if terminal connection to MT4 server is alive
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.CheckConnectReply checkConnect(mt4_term_api.Mt4TermApiConnection.CheckConnectRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCheckConnectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Returns detailed live connection state of this terminal instance
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectStateReply connectState(mt4_term_api.Mt4TermApiConnection.ConnectStateRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectStateMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Streams real-time connection state changes for specified or visible terminals
-     * </pre>
-     */
-    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiConnection.OnConnectStateReply>
-        onConnectState(mt4_term_api.Mt4TermApiConnection.OnConnectStateRequest request) {
-      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
-          getChannel(), getOnConnectStateMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Deprecated alias for ConnectState
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectionStatusReply connectionStatus(mt4_term_api.Mt4TermApiConnection.ConnectionStatusRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectionStatusMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Close terminal connection to MT4 server
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.DisconnectReply disconnect(mt4_term_api.Mt4TermApiConnection.DisconnectRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getDisconnectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * If you need to recreate terminal instance with the same id
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ReconnectReply reconnect(mt4_term_api.Mt4TermApiConnection.ReconnectRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getReconnectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Rebuild a terminal instance from a previously-saved token_details_mt4 row. The id header
-     * names the terminal to bring back; every credential (User/Password/Server or Host+Port,
-     * proxy settings, servers.dat bytes, PfxFile, HardwareId, Build) is read from the DB. Same
-     * reply as ConnectEx so callers do not need a separate result path.
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ConnectExReply connectByToken(mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getConnectByTokenMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameReply getBrokerServersByBrokerName(mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetBrokerServersByBrokerNameMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Generates a deterministic GUID from user and password.
-     * The same user/password combination always produces the same GUID.
-     * Use this GUID as the 'id' header for Connect and other endpoints.
-     * [DefaultValues]
-     * {
-     *   "user": "1124213727",
-     *   "password": "1tjvjck"
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.GetIdReply getId(mt4_term_api.Mt4TermApiConnection.GetIdRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetIdMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Captures a screenshot of the terminal instance window.
-     * Handled by Terminal Manager: the per-terminal in-process responder grabs the
-     * MT4 window and the manager returns the image. Requires 'id' header.
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiConnection.ScreenshotReply screenshot(mt4_term_api.Mt4TermApiConnection.ScreenshotRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getScreenshotMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Same as Connect but streams real-time progress events (incl. live Journal/
-     * Experts log lines) while the connection is established.
-     * Optional 'id' header — automatically generated by the server if omitted.
-     * Swagger does not support streaming — use /connect-stream interactive viewer.
-     * </pre>
-     */
-    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>
-        connectStream(mt4_term_api.Mt4TermApiConnection.ConnectRequest request) {
-      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
-          getChannel(), getConnectStreamMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Same as ConnectEx but streams real-time progress events (incl. live Journal/
-     * Experts log lines) while the connection is established.
-     * Optional 'id' header — automatically generated by the server if omitted.
-     * Swagger does not support streaming — use /connect-stream interactive viewer.
-     * [DefaultValues]
-     * {
-     *   "user": "1124213727",
-     *   "password": "1tjvjck",
-     *   "mtClusterName": "FreshForex-Demo"
-     * }
-     * </pre>
-     */
-    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<?, mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>
-        connectExStream(mt4_term_api.Mt4TermApiConnection.ConnectExRequest request) {
-      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
-          getChannel(), getConnectExStreamMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   * A stub to allow clients to do limited synchronous rpc calls to service Connection.
-   */
-  public static final class ConnectionBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<ConnectionBlockingStub> {
+  public static final class ConnectionBlockingStub extends io.grpc.stub.AbstractBlockingStub<ConnectionBlockingStub> {
     private ConnectionBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -1261,9 +1123,9 @@ public final class ConnectionGrpc {
      *  "password": "ehj4bod", 
      *  "host": "mt4-demo.roboforex.com", 
      *  "port": "443",
-     *  "proxyUser": "ProxyUser123", 
-     *  "proxyPassword": "qwerty123", 
-     *  "proxyHost": "65.108.126.217", 
+     *  "proxyUser": "proxy-user", 
+     *  "proxyPassword": "proxy-password", 
+     *  "proxyHost": "proxy.example.com", 
      *  "proxyPort": "1080", 
      *  "proxyType": "Socks5" 
      * }
@@ -1420,10 +1282,8 @@ public final class ConnectionGrpc {
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service Connection.
    */
-  public static final class ConnectionFutureStub
-      extends io.grpc.stub.AbstractFutureStub<ConnectionFutureStub> {
+  public static final class ConnectionFutureStub extends io.grpc.stub.AbstractFutureStub<ConnectionFutureStub> {
     private ConnectionFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -1481,9 +1341,9 @@ public final class ConnectionGrpc {
      *  "password": "ehj4bod", 
      *  "host": "mt4-demo.roboforex.com", 
      *  "port": "443",
-     *  "proxyUser": "ProxyUser123", 
-     *  "proxyPassword": "qwerty123", 
-     *  "proxyHost": "65.108.126.217", 
+     *  "proxyUser": "proxy-user", 
+     *  "proxyPassword": "proxy-password", 
+     *  "proxyHost": "proxy.example.com", 
      *  "proxyPort": "1080", 
      *  "proxyType": "Socks5" 
      * }
@@ -1625,10 +1485,10 @@ public final class ConnectionGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AsyncService serviceImpl;
+    private final ConnectionImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AsyncService serviceImpl, int methodId) {
+    MethodHandlers(ConnectionImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -1713,116 +1573,6 @@ public final class ConnectionGrpc {
     }
   }
 
-  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getConnectExMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectExRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectExReply>(
-                service, METHODID_CONNECT_EX)))
-        .addMethod(
-          getConnectMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectReply>(
-                service, METHODID_CONNECT)))
-        .addMethod(
-          getConnectProxyMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectProxyRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectProxyReply>(
-                service, METHODID_CONNECT_PROXY)))
-        .addMethod(
-          getCheckConnectMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.CheckConnectRequest,
-              mt4_term_api.Mt4TermApiConnection.CheckConnectReply>(
-                service, METHODID_CHECK_CONNECT)))
-        .addMethod(
-          getConnectStateMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectStateRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectStateReply>(
-                service, METHODID_CONNECT_STATE)))
-        .addMethod(
-          getOnConnectStateMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.OnConnectStateRequest,
-              mt4_term_api.Mt4TermApiConnection.OnConnectStateReply>(
-                service, METHODID_ON_CONNECT_STATE)))
-        .addMethod(
-          getConnectionStatusMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectionStatusRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectionStatusReply>(
-                service, METHODID_CONNECTION_STATUS)))
-        .addMethod(
-          getDisconnectMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.DisconnectRequest,
-              mt4_term_api.Mt4TermApiConnection.DisconnectReply>(
-                service, METHODID_DISCONNECT)))
-        .addMethod(
-          getReconnectMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ReconnectRequest,
-              mt4_term_api.Mt4TermApiConnection.ReconnectReply>(
-                service, METHODID_RECONNECT)))
-        .addMethod(
-          getConnectByTokenMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectByTokenRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectExReply>(
-                service, METHODID_CONNECT_BY_TOKEN)))
-        .addMethod(
-          getGetBrokerServersByBrokerNameMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameRequest,
-              mt4_term_api.Mt4TermApiConnection.GetBrokerServersByBrokerNameReply>(
-                service, METHODID_GET_BROKER_SERVERS_BY_BROKER_NAME)))
-        .addMethod(
-          getGetIdMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.GetIdRequest,
-              mt4_term_api.Mt4TermApiConnection.GetIdReply>(
-                service, METHODID_GET_ID)))
-        .addMethod(
-          getScreenshotMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ScreenshotRequest,
-              mt4_term_api.Mt4TermApiConnection.ScreenshotReply>(
-                service, METHODID_SCREENSHOT)))
-        .addMethod(
-          getConnectStreamMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>(
-                service, METHODID_CONNECT_STREAM)))
-        .addMethod(
-          getConnectExStreamMethod(),
-          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiConnection.ConnectExRequest,
-              mt4_term_api.Mt4TermApiConnection.ConnectStreamEvent>(
-                service, METHODID_CONNECT_EX_STREAM)))
-        .build();
-  }
-
   private static abstract class ConnectionBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     ConnectionBaseDescriptorSupplier() {}
@@ -1846,9 +1596,9 @@ public final class ConnectionGrpc {
   private static final class ConnectionMethodDescriptorSupplier
       extends ConnectionBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final java.lang.String methodName;
+    private final String methodName;
 
-    ConnectionMethodDescriptorSupplier(java.lang.String methodName) {
+    ConnectionMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 

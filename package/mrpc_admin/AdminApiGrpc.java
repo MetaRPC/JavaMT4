@@ -16,12 +16,15 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  * ============================================================
  * </pre>
  */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler",
+    comments = "Source: mt4-term-api-admin.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class AdminApiGrpc {
 
   private AdminApiGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "mrpc_admin.AdminApi";
+  public static final String SERVICE_NAME = "mrpc_admin.AdminApi";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
@@ -489,6 +492,68 @@ public final class AdminApiGrpc {
     return getKillAllTrialTerminalsLocalMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.DrainRequest,
+      mrpc_admin.Mt4TermApiAdmin.DrainReply> getDrainMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Drain",
+      requestType = mrpc_admin.Mt4TermApiAdmin.DrainRequest.class,
+      responseType = mrpc_admin.Mt4TermApiAdmin.DrainReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.DrainRequest,
+      mrpc_admin.Mt4TermApiAdmin.DrainReply> getDrainMethod() {
+    io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.DrainRequest, mrpc_admin.Mt4TermApiAdmin.DrainReply> getDrainMethod;
+    if ((getDrainMethod = AdminApiGrpc.getDrainMethod) == null) {
+      synchronized (AdminApiGrpc.class) {
+        if ((getDrainMethod = AdminApiGrpc.getDrainMethod) == null) {
+          AdminApiGrpc.getDrainMethod = getDrainMethod =
+              io.grpc.MethodDescriptor.<mrpc_admin.Mt4TermApiAdmin.DrainRequest, mrpc_admin.Mt4TermApiAdmin.DrainReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Drain"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.DrainRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.DrainReply.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminApiMethodDescriptorSupplier("Drain"))
+              .build();
+        }
+      }
+    }
+    return getDrainMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest,
+      mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> getStopTerminalLocalMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "StopTerminalLocal",
+      requestType = mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest.class,
+      responseType = mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest,
+      mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> getStopTerminalLocalMethod() {
+    io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest, mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> getStopTerminalLocalMethod;
+    if ((getStopTerminalLocalMethod = AdminApiGrpc.getStopTerminalLocalMethod) == null) {
+      synchronized (AdminApiGrpc.class) {
+        if ((getStopTerminalLocalMethod = AdminApiGrpc.getStopTerminalLocalMethod) == null) {
+          AdminApiGrpc.getStopTerminalLocalMethod = getStopTerminalLocalMethod =
+              io.grpc.MethodDescriptor.<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest, mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StopTerminalLocal"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminApiMethodDescriptorSupplier("StopTerminalLocal"))
+              .build();
+        }
+      }
+    }
+    return getStopTerminalLocalMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -501,21 +566,6 @@ public final class AdminApiGrpc {
         }
       };
     return AdminApiStub.newStub(factory, channel);
-  }
-
-  /**
-   * Creates a new blocking-style stub that supports all types of calls on the service
-   */
-  public static AdminApiBlockingV2Stub newBlockingV2Stub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<AdminApiBlockingV2Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<AdminApiBlockingV2Stub>() {
-        @java.lang.Override
-        public AdminApiBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new AdminApiBlockingV2Stub(channel, callOptions);
-        }
-      };
-    return AdminApiBlockingV2Stub.newStub(factory, channel);
   }
 
   /**
@@ -562,14 +612,14 @@ public final class AdminApiGrpc {
    * ============================================================
    * </pre>
    */
-  public interface AsyncService {
+  public static abstract class AdminApiImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
      * Active terminals running on THIS pod.
      * </pre>
      */
-    default void activeTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void activeTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getActiveTerminalsMethod(), responseObserver);
     }
@@ -580,7 +630,7 @@ public final class AdminApiGrpc {
      * Lists peer pods via the Kubernetes API, then calls ActiveTerminals on each.
      * </pre>
      */
-    default void activeTerminalsCluster(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void activeTerminalsCluster(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsClusterReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getActiveTerminalsClusterMethod(), responseObserver);
     }
@@ -590,7 +640,7 @@ public final class AdminApiGrpc {
      * Whole-machine CPU % and physical RAM (current + short history) for THIS pod.
      * </pre>
      */
-    default void systemUsage(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void systemUsage(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.SystemUsageReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSystemUsageMethod(), responseObserver);
     }
@@ -602,7 +652,7 @@ public final class AdminApiGrpc {
      * postStart hook tails into "kubectl logs", readable here without cluster/kubectl access.
      * </pre>
      */
-    default void listLogFiles(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void listLogFiles(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.ListLogFilesReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListLogFilesMethod(), responseObserver);
     }
@@ -613,7 +663,7 @@ public final class AdminApiGrpc {
      * LAST max_bytes bytes if larger (0 = server default, 256 KiB).
      * </pre>
      */
-    default void getLogFile(mrpc_admin.Mt4TermApiAdmin.GetLogFileRequest request,
+    public void getLogFile(mrpc_admin.Mt4TermApiAdmin.GetLogFileRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetLogFileReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetLogFileMethod(), responseObserver);
     }
@@ -625,7 +675,7 @@ public final class AdminApiGrpc {
      * service state change, available here without waiting for that trigger.
      * </pre>
      */
-    default void getEventLogEntries(mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesRequest request,
+    public void getEventLogEntries(mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetEventLogEntriesMethod(), responseObserver);
     }
@@ -637,7 +687,7 @@ public final class AdminApiGrpc {
      * session, the one startup.bat runs in.
      * </pre>
      */
-    default void captureSessionScreenshot(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotRequest request,
+    public void captureSessionScreenshot(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCaptureSessionScreenshotMethod(), responseObserver);
     }
@@ -650,7 +700,7 @@ public final class AdminApiGrpc {
      * pod it's connected to relay the request.
      * </pre>
      */
-    default void captureSessionScreenshotOnPod(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotOnPodRequest request,
+    public void captureSessionScreenshotOnPod(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotOnPodRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCaptureSessionScreenshotOnPodMethod(), responseObserver);
     }
@@ -665,7 +715,7 @@ public final class AdminApiGrpc {
      * on that trigger or requiring interactive guest access.
      * </pre>
      */
-    default void refreshMrpcRest(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void refreshMrpcRest(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.RefreshMrpcRestReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRefreshMrpcRestMethod(), responseObserver);
     }
@@ -677,7 +727,7 @@ public final class AdminApiGrpc {
      * transcodes GET /version-tm onto this (its own build is at GET /version).
      * </pre>
      */
-    default void getVersion(mrpc_admin.Mt4TermApiAdmin.VersionRequest request,
+    public void getVersion(mrpc_admin.Mt4TermApiAdmin.VersionRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.VersionReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetVersionMethod(), responseObserver);
     }
@@ -689,7 +739,7 @@ public final class AdminApiGrpc {
      * mt5 admin proto for the canonical definition (this copy exists for the mt4 client libs).
      * </pre>
      */
-    default void getAllLogs(mrpc_admin.Mt4TermApiAdmin.GetAllLogsRequest request,
+    public void getAllLogs(mrpc_admin.Mt4TermApiAdmin.GetAllLogsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetAllLogsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllLogsMethod(), responseObserver);
     }
@@ -699,7 +749,7 @@ public final class AdminApiGrpc {
      * Session restore logs for the latest startup sequence on a pod (stored in MongoDB session_restore_logs).
      * </pre>
      */
-    default void getSessionRestoreLogs(mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsRequest request,
+    public void getSessionRestoreLogs(mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetSessionRestoreLogsMethod(), responseObserver);
     }
@@ -709,7 +759,7 @@ public final class AdminApiGrpc {
      * Session restore watcher status (terminals loaded, queue count, state, diagnostics) for THIS pod.
      * </pre>
      */
-    default void getSessionRestoreStatus(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void getSessionRestoreStatus(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetSessionRestoreStatusMethod(), responseObserver);
     }
@@ -720,7 +770,7 @@ public final class AdminApiGrpc {
      * and marks them stopped in database.
      * </pre>
      */
-    default void killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getKillAllTrialTerminalsMethod(), responseObserver);
     }
@@ -730,37 +780,163 @@ public final class AdminApiGrpc {
      * Kills all active trial terminals on THIS pod.
      * </pre>
      */
-    default void killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
+    public void killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request,
         io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getKillAllTrialTerminalsLocalMethod(), responseObserver);
     }
-  }
 
-  /**
-   * Base class for the server implementation of the service AdminApi.
-   * <pre>
-   * ============================================================
-   * Admin / diagnostics service (terminal-agnostic — identical to the mt5 copy).
-   * Auth via admin_key (matched against the ADMIN_KEY env setting).
-   * HTTP-transcoded for the /admin HTML page + cross-pod fan-out, but HIDDEN from
-   * Swagger (excluded in SwaggerGen DocInclusionPredicate in Program.cs).
-   * NOTE: this file exists ONLY so the mt4 client libraries (create-grpc-libs,
-   * proto/mt4) include the admin API, matching mt5. The Terminal Manager binary
-   * compiles the single shared mrpc_admin proto from proto/mt5 (see the csproj) —
-   * do NOT add this file to the csproj or mrpc_admin.* would be defined twice.
-   * ============================================================
-   * </pre>
-   */
-  public static abstract class AdminApiImplBase
-      implements io.grpc.BindableService, AsyncService {
+    /**
+     * <pre>
+     * Puts THIS pod into the draining state ahead of shutdown (StatefulSet preStop hook). While draining the
+     * pod stops renewing its terminal ownership leases, suppresses crash persistence for terminals ending with
+     * the VM, and starts no new work; peers restore its terminals once the leases expire. One-way for the
+     * lifetime of the process; calling it again reports already_draining.
+     * </pre>
+     */
+    public void drain(mrpc_admin.Mt4TermApiAdmin.DrainRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.DrainReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDrainMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Stops THIS pod's local copy of one terminal (pod-to-pod: user-stop fan-out, duplicate prune, rebalance
+     * migration). Local only: never forwarded to another pod and never persisted to UserTerminals (the caller
+     * records any stop intent). cause is a StopCause name; only customer/API/admin/delete/test stops and
+     * InternalReap are accepted. Callers must check reply.error.
+     * </pre>
+     */
+    public void stopTerminalLocal(mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStopTerminalLocalMethod(), responseObserver);
+    }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return AdminApiGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getActiveTerminalsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsReply>(
+                  this, METHODID_ACTIVE_TERMINALS)))
+          .addMethod(
+            getActiveTerminalsClusterMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsClusterReply>(
+                  this, METHODID_ACTIVE_TERMINALS_CLUSTER)))
+          .addMethod(
+            getSystemUsageMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.SystemUsageReply>(
+                  this, METHODID_SYSTEM_USAGE)))
+          .addMethod(
+            getListLogFilesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.ListLogFilesReply>(
+                  this, METHODID_LIST_LOG_FILES)))
+          .addMethod(
+            getGetLogFileMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.GetLogFileRequest,
+                mrpc_admin.Mt4TermApiAdmin.GetLogFileReply>(
+                  this, METHODID_GET_LOG_FILE)))
+          .addMethod(
+            getGetEventLogEntriesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesRequest,
+                mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesReply>(
+                  this, METHODID_GET_EVENT_LOG_ENTRIES)))
+          .addMethod(
+            getCaptureSessionScreenshotMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotRequest,
+                mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply>(
+                  this, METHODID_CAPTURE_SESSION_SCREENSHOT)))
+          .addMethod(
+            getCaptureSessionScreenshotOnPodMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotOnPodRequest,
+                mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply>(
+                  this, METHODID_CAPTURE_SESSION_SCREENSHOT_ON_POD)))
+          .addMethod(
+            getRefreshMrpcRestMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.RefreshMrpcRestReply>(
+                  this, METHODID_REFRESH_MRPC_REST)))
+          .addMethod(
+            getGetVersionMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.VersionRequest,
+                mrpc_admin.Mt4TermApiAdmin.VersionReply>(
+                  this, METHODID_GET_VERSION)))
+          .addMethod(
+            getGetAllLogsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.GetAllLogsRequest,
+                mrpc_admin.Mt4TermApiAdmin.GetAllLogsReply>(
+                  this, METHODID_GET_ALL_LOGS)))
+          .addMethod(
+            getGetSessionRestoreLogsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsRequest,
+                mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsReply>(
+                  this, METHODID_GET_SESSION_RESTORE_LOGS)))
+          .addMethod(
+            getGetSessionRestoreStatusMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply>(
+                  this, METHODID_GET_SESSION_RESTORE_STATUS)))
+          .addMethod(
+            getKillAllTrialTerminalsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
+                  this, METHODID_KILL_ALL_TRIAL_TERMINALS)))
+          .addMethod(
+            getKillAllTrialTerminalsLocalMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
+                mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
+                  this, METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL)))
+          .addMethod(
+            getDrainMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.DrainRequest,
+                mrpc_admin.Mt4TermApiAdmin.DrainReply>(
+                  this, METHODID_DRAIN)))
+          .addMethod(
+            getStopTerminalLocalMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest,
+                mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply>(
+                  this, METHODID_STOP_TERMINAL_LOCAL)))
+          .build();
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service AdminApi.
    * <pre>
    * ============================================================
    * Admin / diagnostics service (terminal-agnostic — identical to the mt5 copy).
@@ -774,8 +950,7 @@ public final class AdminApiGrpc {
    * ============================================================
    * </pre>
    */
-  public static final class AdminApiStub
-      extends io.grpc.stub.AbstractAsyncStub<AdminApiStub> {
+  public static final class AdminApiStub extends io.grpc.stub.AbstractAsyncStub<AdminApiStub> {
     private AdminApiStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -972,10 +1147,37 @@ public final class AdminApiGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getKillAllTrialTerminalsLocalMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Puts THIS pod into the draining state ahead of shutdown (StatefulSet preStop hook). While draining the
+     * pod stops renewing its terminal ownership leases, suppresses crash persistence for terminals ending with
+     * the VM, and starts no new work; peers restore its terminals once the leases expire. One-way for the
+     * lifetime of the process; calling it again reports already_draining.
+     * </pre>
+     */
+    public void drain(mrpc_admin.Mt4TermApiAdmin.DrainRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.DrainReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDrainMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Stops THIS pod's local copy of one terminal (pod-to-pod: user-stop fan-out, duplicate prune, rebalance
+     * migration). Local only: never forwarded to another pod and never persisted to UserTerminals (the caller
+     * records any stop intent). cause is a StopCause name; only customer/API/admin/delete/test stops and
+     * InternalReap are accepted. Callers must check reply.error.
+     * </pre>
+     */
+    public void stopTerminalLocal(mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getStopTerminalLocalMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service AdminApi.
    * <pre>
    * ============================================================
    * Admin / diagnostics service (terminal-agnostic — identical to the mt5 copy).
@@ -989,208 +1191,7 @@ public final class AdminApiGrpc {
    * ============================================================
    * </pre>
    */
-  public static final class AdminApiBlockingV2Stub
-      extends io.grpc.stub.AbstractBlockingStub<AdminApiBlockingV2Stub> {
-    private AdminApiBlockingV2Stub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected AdminApiBlockingV2Stub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new AdminApiBlockingV2Stub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Active terminals running on THIS pod.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsReply activeTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getActiveTerminalsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Active terminals across ALL pods of this StatefulSet/Deployment.
-     * Lists peer pods via the Kubernetes API, then calls ActiveTerminals on each.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsClusterReply activeTerminalsCluster(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getActiveTerminalsClusterMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Whole-machine CPU % and physical RAM (current + short history) for THIS pod.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.SystemUsageReply systemUsage(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getSystemUsageMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Lists the diagnostic log files on &#92;&#92;host.lan&#92;Data&#92;logs (mrpc.log, startup.log,
-     * install.log, boot-diag.log, and any future additions) - the exact files the container's
-     * postStart hook tails into "kubectl logs", readable here without cluster/kubectl access.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.ListLogFilesReply listLogFiles(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getListLogFilesMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Content of one log file from &#92;&#92;host.lan&#92;Data&#92;logs (see ListLogFiles). Truncated to the
-     * LAST max_bytes bytes if larger (0 = server default, 256 KiB).
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.GetLogFileReply getLogFile(mrpc_admin.Mt4TermApiAdmin.GetLogFileRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetLogFileMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * On-demand dump of recent Windows Event Log entries (Service Control Manager events,
-     * shutdown/restart events, Application errors) - the same data boot-diag.bat captures on a
-     * service state change, available here without waiting for that trigger.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesReply getEventLogEntries(mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetEventLogEntriesMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Screenshot of a Windows interactive session's whole desktop - a specific
-     * MrpcTerminalUser&lt;N&gt; session, or (if session_user_name is empty) the pod's main/autologon
-     * session, the one startup.bat runs in.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply captureSessionScreenshot(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCaptureSessionScreenshotMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Same as CaptureSessionScreenshot, but fanned out from THIS pod to a DIFFERENT pod by IP
-     * (mirroring the ActiveTerminalsCluster fan-out) - a browser can only reach the pod that is
-     * currently serving it, not other pods' ClusterIPs, so the cluster admin view asks whichever
-     * pod it's connected to relay the request.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply captureSessionScreenshotOnPod(mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotOnPodRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCaptureSessionScreenshotOnPodMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Runs, in-process (LocalSystem, no guest logon/SSH needed), the same refresh
-     * startup.bat performs on a successful ONLOGON boot: robocopy published-app (including
-     * mrpc-rest) from the host share, then create/start MrpcRestService. Exists because
-     * ONLOGON is unreliable (autologon-dependent) - this lets a stuck deploy be repaired
-     * through the Terminal Manager's own already-running gRPC/HTTP API instead of waiting
-     * on that trigger or requiring interactive guest access.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.RefreshMrpcRestReply refreshMrpcRest(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getRefreshMrpcRestMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Build/version identity of the Terminal Manager running on THIS pod, so a deploy can be
-     * VERIFIED rather than guessed. No admin_key required - it exposes no secrets. mrpc-rest
-     * transcodes GET /version-tm onto this (its own build is at GET /version).
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.VersionReply getVersion(mrpc_admin.Mt4TermApiAdmin.VersionRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetVersionMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * One-shot bundle of EVERY diagnostic log available on this pod: every *.log file on the
-     * shared Data folder AND in C:&#92;OEM, plus the Windows Application + System event logs. See the
-     * mt5 admin proto for the canonical definition (this copy exists for the mt4 client libs).
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.GetAllLogsReply getAllLogs(mrpc_admin.Mt4TermApiAdmin.GetAllLogsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetAllLogsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Session restore logs for the latest startup sequence on a pod (stored in MongoDB session_restore_logs).
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsReply getSessionRestoreLogs(mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetSessionRestoreLogsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Session restore watcher status (terminals loaded, queue count, state, diagnostics) for THIS pod.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply getSessionRestoreStatus(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetSessionRestoreStatusMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Kills all active trial terminals across ALL pods of this StatefulSet/Deployment
-     * and marks them stopped in database.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply killAllTrialTerminals(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getKillAllTrialTerminalsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Kills all active trial terminals on THIS pod.
-     * </pre>
-     */
-    public mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply killAllTrialTerminalsLocal(mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getKillAllTrialTerminalsLocalMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   * A stub to allow clients to do limited synchronous rpc calls to service AdminApi.
-   * <pre>
-   * ============================================================
-   * Admin / diagnostics service (terminal-agnostic — identical to the mt5 copy).
-   * Auth via admin_key (matched against the ADMIN_KEY env setting).
-   * HTTP-transcoded for the /admin HTML page + cross-pod fan-out, but HIDDEN from
-   * Swagger (excluded in SwaggerGen DocInclusionPredicate in Program.cs).
-   * NOTE: this file exists ONLY so the mt4 client libraries (create-grpc-libs,
-   * proto/mt4) include the admin API, matching mt5. The Terminal Manager binary
-   * compiles the single shared mrpc_admin proto from proto/mt5 (see the csproj) —
-   * do NOT add this file to the csproj or mrpc_admin.* would be defined twice.
-   * ============================================================
-   * </pre>
-   */
-  public static final class AdminApiBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<AdminApiBlockingStub> {
+  public static final class AdminApiBlockingStub extends io.grpc.stub.AbstractBlockingStub<AdminApiBlockingStub> {
     private AdminApiBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -1372,10 +1373,35 @@ public final class AdminApiGrpc {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getKillAllTrialTerminalsLocalMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Puts THIS pod into the draining state ahead of shutdown (StatefulSet preStop hook). While draining the
+     * pod stops renewing its terminal ownership leases, suppresses crash persistence for terminals ending with
+     * the VM, and starts no new work; peers restore its terminals once the leases expire. One-way for the
+     * lifetime of the process; calling it again reports already_draining.
+     * </pre>
+     */
+    public mrpc_admin.Mt4TermApiAdmin.DrainReply drain(mrpc_admin.Mt4TermApiAdmin.DrainRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDrainMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Stops THIS pod's local copy of one terminal (pod-to-pod: user-stop fan-out, duplicate prune, rebalance
+     * migration). Local only: never forwarded to another pod and never persisted to UserTerminals (the caller
+     * records any stop intent). cause is a StopCause name; only customer/API/admin/delete/test stops and
+     * InternalReap are accepted. Callers must check reply.error.
+     * </pre>
+     */
+    public mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply stopTerminalLocal(mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getStopTerminalLocalMethod(), getCallOptions(), request);
+    }
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service AdminApi.
    * <pre>
    * ============================================================
    * Admin / diagnostics service (terminal-agnostic — identical to the mt5 copy).
@@ -1389,8 +1415,7 @@ public final class AdminApiGrpc {
    * ============================================================
    * </pre>
    */
-  public static final class AdminApiFutureStub
-      extends io.grpc.stub.AbstractFutureStub<AdminApiFutureStub> {
+  public static final class AdminApiFutureStub extends io.grpc.stub.AbstractFutureStub<AdminApiFutureStub> {
     private AdminApiFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -1587,6 +1612,34 @@ public final class AdminApiGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getKillAllTrialTerminalsLocalMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Puts THIS pod into the draining state ahead of shutdown (StatefulSet preStop hook). While draining the
+     * pod stops renewing its terminal ownership leases, suppresses crash persistence for terminals ending with
+     * the VM, and starts no new work; peers restore its terminals once the leases expire. One-way for the
+     * lifetime of the process; calling it again reports already_draining.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mrpc_admin.Mt4TermApiAdmin.DrainReply> drain(
+        mrpc_admin.Mt4TermApiAdmin.DrainRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDrainMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Stops THIS pod's local copy of one terminal (pod-to-pod: user-stop fan-out, duplicate prune, rebalance
+     * migration). Local only: never forwarded to another pod and never persisted to UserTerminals (the caller
+     * records any stop intent). cause is a StopCause name; only customer/API/admin/delete/test stops and
+     * InternalReap are accepted. Callers must check reply.error.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply> stopTerminalLocal(
+        mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getStopTerminalLocalMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ACTIVE_TERMINALS = 0;
@@ -1604,16 +1657,18 @@ public final class AdminApiGrpc {
   private static final int METHODID_GET_SESSION_RESTORE_STATUS = 12;
   private static final int METHODID_KILL_ALL_TRIAL_TERMINALS = 13;
   private static final int METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL = 14;
+  private static final int METHODID_DRAIN = 15;
+  private static final int METHODID_STOP_TERMINAL_LOCAL = 16;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AsyncService serviceImpl;
+    private final AdminApiImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AsyncService serviceImpl, int methodId) {
+    MethodHandlers(AdminApiImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -1682,6 +1737,14 @@ public final class AdminApiGrpc {
           serviceImpl.killAllTrialTerminalsLocal((mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest) request,
               (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>) responseObserver);
           break;
+        case METHODID_DRAIN:
+          serviceImpl.drain((mrpc_admin.Mt4TermApiAdmin.DrainRequest) request,
+              (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.DrainReply>) responseObserver);
+          break;
+        case METHODID_STOP_TERMINAL_LOCAL:
+          serviceImpl.stopTerminalLocal((mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest) request,
+              (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1696,116 +1759,6 @@ public final class AdminApiGrpc {
           throw new AssertionError();
       }
     }
-  }
-
-  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getActiveTerminalsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsReply>(
-                service, METHODID_ACTIVE_TERMINALS)))
-        .addMethod(
-          getActiveTerminalsClusterMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsClusterReply>(
-                service, METHODID_ACTIVE_TERMINALS_CLUSTER)))
-        .addMethod(
-          getSystemUsageMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.SystemUsageReply>(
-                service, METHODID_SYSTEM_USAGE)))
-        .addMethod(
-          getListLogFilesMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.ListLogFilesReply>(
-                service, METHODID_LIST_LOG_FILES)))
-        .addMethod(
-          getGetLogFileMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.GetLogFileRequest,
-              mrpc_admin.Mt4TermApiAdmin.GetLogFileReply>(
-                service, METHODID_GET_LOG_FILE)))
-        .addMethod(
-          getGetEventLogEntriesMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesRequest,
-              mrpc_admin.Mt4TermApiAdmin.GetEventLogEntriesReply>(
-                service, METHODID_GET_EVENT_LOG_ENTRIES)))
-        .addMethod(
-          getCaptureSessionScreenshotMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotRequest,
-              mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply>(
-                service, METHODID_CAPTURE_SESSION_SCREENSHOT)))
-        .addMethod(
-          getCaptureSessionScreenshotOnPodMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotOnPodRequest,
-              mrpc_admin.Mt4TermApiAdmin.CaptureSessionScreenshotReply>(
-                service, METHODID_CAPTURE_SESSION_SCREENSHOT_ON_POD)))
-        .addMethod(
-          getRefreshMrpcRestMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.RefreshMrpcRestReply>(
-                service, METHODID_REFRESH_MRPC_REST)))
-        .addMethod(
-          getGetVersionMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.VersionRequest,
-              mrpc_admin.Mt4TermApiAdmin.VersionReply>(
-                service, METHODID_GET_VERSION)))
-        .addMethod(
-          getGetAllLogsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.GetAllLogsRequest,
-              mrpc_admin.Mt4TermApiAdmin.GetAllLogsReply>(
-                service, METHODID_GET_ALL_LOGS)))
-        .addMethod(
-          getGetSessionRestoreLogsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsRequest,
-              mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreLogsReply>(
-                service, METHODID_GET_SESSION_RESTORE_LOGS)))
-        .addMethod(
-          getGetSessionRestoreStatusMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.GetSessionRestoreStatusReply>(
-                service, METHODID_GET_SESSION_RESTORE_STATUS)))
-        .addMethod(
-          getKillAllTrialTerminalsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
-                service, METHODID_KILL_ALL_TRIAL_TERMINALS)))
-        .addMethod(
-          getKillAllTrialTerminalsLocalMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mrpc_admin.Mt4TermApiAdmin.ActiveTerminalsRequest,
-              mrpc_admin.Mt4TermApiAdmin.KillAllTrialTerminalsReply>(
-                service, METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL)))
-        .build();
   }
 
   private static abstract class AdminApiBaseDescriptorSupplier
@@ -1831,9 +1784,9 @@ public final class AdminApiGrpc {
   private static final class AdminApiMethodDescriptorSupplier
       extends AdminApiBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final java.lang.String methodName;
+    private final String methodName;
 
-    AdminApiMethodDescriptorSupplier(java.lang.String methodName) {
+    AdminApiMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -1868,6 +1821,8 @@ public final class AdminApiGrpc {
               .addMethod(getGetSessionRestoreStatusMethod())
               .addMethod(getKillAllTrialTerminalsMethod())
               .addMethod(getKillAllTrialTerminalsLocalMethod())
+              .addMethod(getDrainMethod())
+              .addMethod(getStopTerminalLocalMethod())
               .build();
         }
       }

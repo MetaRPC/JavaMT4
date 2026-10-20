@@ -4,12 +4,15 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler",
+    comments = "Source: mt4-term-api-internal-charts.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class InternalChartsGrpc {
 
   private InternalChartsGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "mt4_term_api.InternalCharts";
+  public static final String SERVICE_NAME = "mt4_term_api.InternalCharts";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest,
@@ -182,21 +185,6 @@ public final class InternalChartsGrpc {
   }
 
   /**
-   * Creates a new blocking-style stub that supports all types of calls on the service
-   */
-  public static InternalChartsBlockingV2Stub newBlockingV2Stub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<InternalChartsBlockingV2Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<InternalChartsBlockingV2Stub>() {
-        @java.lang.Override
-        public InternalChartsBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new InternalChartsBlockingV2Stub(channel, callOptions);
-        }
-      };
-    return InternalChartsBlockingV2Stub.newStub(factory, channel);
-  }
-
-  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static InternalChartsBlockingStub newBlockingStub(
@@ -228,60 +216,87 @@ public final class InternalChartsGrpc {
 
   /**
    */
-  public interface AsyncService {
+  public static abstract class InternalChartsImplBase implements io.grpc.BindableService {
 
     /**
      */
-    default void chartOpen(mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest request,
+    public void chartOpen(mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiInternalCharts.ChartOpenReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getChartOpenMethod(), responseObserver);
     }
 
     /**
      */
-    default void chartClose(mt4_term_api.Mt4TermApiInternalCharts.ChartCloseRequest request,
+    public void chartClose(mt4_term_api.Mt4TermApiInternalCharts.ChartCloseRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiInternalCharts.ChartCloseReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getChartCloseMethod(), responseObserver);
     }
 
     /**
      */
-    default void customChartOpen(mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenRequest request,
+    public void customChartOpen(mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCustomChartOpenMethod(), responseObserver);
     }
 
     /**
      */
-    default void customChartSaveTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateRequest request,
+    public void customChartSaveTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCustomChartSaveTemplateMethod(), responseObserver);
     }
 
     /**
      */
-    default void customChartApplyTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateRequest request,
+    public void customChartApplyTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCustomChartApplyTemplateMethod(), responseObserver);
     }
-  }
-
-  /**
-   * Base class for the server implementation of the service InternalCharts.
-   */
-  public static abstract class InternalChartsImplBase
-      implements io.grpc.BindableService, AsyncService {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return InternalChartsGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getChartOpenMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest,
+                mt4_term_api.Mt4TermApiInternalCharts.ChartOpenReply>(
+                  this, METHODID_CHART_OPEN)))
+          .addMethod(
+            getChartCloseMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiInternalCharts.ChartCloseRequest,
+                mt4_term_api.Mt4TermApiInternalCharts.ChartCloseReply>(
+                  this, METHODID_CHART_CLOSE)))
+          .addMethod(
+            getCustomChartOpenMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenRequest,
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenReply>(
+                  this, METHODID_CUSTOM_CHART_OPEN)))
+          .addMethod(
+            getCustomChartSaveTemplateMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateRequest,
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateReply>(
+                  this, METHODID_CUSTOM_CHART_SAVE_TEMPLATE)))
+          .addMethod(
+            getCustomChartApplyTemplateMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateRequest,
+                mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateReply>(
+                  this, METHODID_CUSTOM_CHART_APPLY_TEMPLATE)))
+          .build();
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service InternalCharts.
    */
-  public static final class InternalChartsStub
-      extends io.grpc.stub.AbstractAsyncStub<InternalChartsStub> {
+  public static final class InternalChartsStub extends io.grpc.stub.AbstractAsyncStub<InternalChartsStub> {
     private InternalChartsStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -335,62 +350,8 @@ public final class InternalChartsGrpc {
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service InternalCharts.
    */
-  public static final class InternalChartsBlockingV2Stub
-      extends io.grpc.stub.AbstractBlockingStub<InternalChartsBlockingV2Stub> {
-    private InternalChartsBlockingV2Stub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected InternalChartsBlockingV2Stub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new InternalChartsBlockingV2Stub(channel, callOptions);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiInternalCharts.ChartOpenReply chartOpen(mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getChartOpenMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiInternalCharts.ChartCloseReply chartClose(mt4_term_api.Mt4TermApiInternalCharts.ChartCloseRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getChartCloseMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenReply customChartOpen(mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCustomChartOpenMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateReply customChartSaveTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCustomChartSaveTemplateMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateReply customChartApplyTemplate(mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCustomChartApplyTemplateMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   * A stub to allow clients to do limited synchronous rpc calls to service InternalCharts.
-   */
-  public static final class InternalChartsBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<InternalChartsBlockingStub> {
+  public static final class InternalChartsBlockingStub extends io.grpc.stub.AbstractBlockingStub<InternalChartsBlockingStub> {
     private InternalChartsBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -439,10 +400,8 @@ public final class InternalChartsGrpc {
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service InternalCharts.
    */
-  public static final class InternalChartsFutureStub
-      extends io.grpc.stub.AbstractFutureStub<InternalChartsFutureStub> {
+  public static final class InternalChartsFutureStub extends io.grpc.stub.AbstractFutureStub<InternalChartsFutureStub> {
     private InternalChartsFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -506,10 +465,10 @@ public final class InternalChartsGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AsyncService serviceImpl;
+    private final InternalChartsImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AsyncService serviceImpl, int methodId) {
+    MethodHandlers(InternalChartsImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -554,46 +513,6 @@ public final class InternalChartsGrpc {
     }
   }
 
-  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getChartOpenMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiInternalCharts.ChartOpenRequest,
-              mt4_term_api.Mt4TermApiInternalCharts.ChartOpenReply>(
-                service, METHODID_CHART_OPEN)))
-        .addMethod(
-          getChartCloseMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiInternalCharts.ChartCloseRequest,
-              mt4_term_api.Mt4TermApiInternalCharts.ChartCloseReply>(
-                service, METHODID_CHART_CLOSE)))
-        .addMethod(
-          getCustomChartOpenMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenRequest,
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartOpenReply>(
-                service, METHODID_CUSTOM_CHART_OPEN)))
-        .addMethod(
-          getCustomChartSaveTemplateMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateRequest,
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartSaveTemplateReply>(
-                service, METHODID_CUSTOM_CHART_SAVE_TEMPLATE)))
-        .addMethod(
-          getCustomChartApplyTemplateMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateRequest,
-              mt4_term_api.Mt4TermApiInternalCharts.CustomChartApplyTemplateReply>(
-                service, METHODID_CUSTOM_CHART_APPLY_TEMPLATE)))
-        .build();
-  }
-
   private static abstract class InternalChartsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     InternalChartsBaseDescriptorSupplier() {}
@@ -617,9 +536,9 @@ public final class InternalChartsGrpc {
   private static final class InternalChartsMethodDescriptorSupplier
       extends InternalChartsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final java.lang.String methodName;
+    private final String methodName;
 
-    InternalChartsMethodDescriptorSupplier(java.lang.String methodName) {
+    InternalChartsMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 

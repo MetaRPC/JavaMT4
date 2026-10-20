@@ -1,96 +1,76 @@
 package examples;
 
-import pro.mrpc.mt4.MT4Client;
-import pro.mrpc.mt4.network.enums.Op;
-import pro.mrpc.mt4.network.enums.TradeCommand;
-import pro.mrpc.mt4.network.messages.req.OrderTransactionReq;
-import pro.mrpc.mt4.network.messages.res.TradeEvent;
-import pro.mrpc.mt4.network.parts.AccountInfo;
-import pro.mrpc.mt4.utils.DefaultMessageHandler;
+import mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData;
+import mt4_term_api.Mt4TermApiMarketInfo.QuoteData;
+import mt4_term_api.Mt4TermApiSubscriptions.OnSymbolMqlTickInfo;
+import mt4_term_api.Mt4TermApiTradingHelper.OrderSendData;
+import mt4_term_api.Mt4TermApiTradingHelper.OrderSendOperationType;
+import pro.mrpc.mt4.MT4Account;
+import pro.mrpc.mt4.MrpcException;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
- * MetaRPC JavaMT4 Quickstart Example.
- * Demonstrates:
- * 1. Initializing client and connecting to mt4.mrpc.pro:443
- * 2. Authenticating with APIKey and LoginId
- * 3. Reading account balance
- * 4. Placing a trade order
+ * MetaRPC JavaMT4 Quickstart: connect through mt4.mrpc.pro:443, read the account and a price, buy 0.01 lot and close it,
+ * stream three ticks, disconnect.
+ *
+ * <pre>
+ *   MRPC_API_KEY   your API key (https://mrpc.pro/my)
+ *   MT4_LOGIN, MT4_PASSWORD, MT4_SERVER   the MT4 account and its broker server, e.g. TeleTrade-Demo
+ *   MRPC_GRPC_HOST optional, default mt4.mrpc.pro:443
+ * </pre>
  */
 public class Quickstart {
-    public static void main(String[] args) {
-        String host = "mt4.mrpc.pro";
-        int port = 443;
-        String envKey = System.getenv("MRPC_API_KEY");
-        String apiKey = (args.length > 0) ? args[0] : (envKey != null && !envKey.isEmpty() ? envKey : "TRIAL");
-
-        int login = 0;
-        String password = null;
-        if (System.getenv("MT4_USER") != null && System.getenv("MT4_PASSWORD") != null) {
-            try {
-                login = Integer.parseInt(System.getenv("MT4_USER"));
-                password = System.getenv("MT4_PASSWORD");
-            } catch (Exception ignored) {}
+    public static void main(String[] args) throws Exception {
+        String apiKey = args.length > 0 ? args[0] : System.getenv("MRPC_API_KEY");
+        String host = System.getenv().getOrDefault("MRPC_GRPC_HOST", MT4Account.DEFAULT_SERVER);
+        String login = System.getenv("MT4_LOGIN");
+        String password = System.getenv("MT4_PASSWORD");
+        String server = System.getenv().getOrDefault("MT4_SERVER", "TeleTrade-Demo");
+        if (login == null || password == null) {
+            System.err.println("Set MT4_LOGIN and MT4_PASSWORD (and MT4_SERVER). No account yet? Open a demo account with");
+            System.err.println("  curl -H \"APIKey: <your key>\" \"https://mt4.mrpc.pro/DemoAccount/Open?server=TeleTrade-Demo\"");
+            System.exit(2);
         }
-        if (login == 0 || password == null) {
-            System.out.println("Provisioning live demo account on MetaQuotes-Demo...");
+
+        try (MT4Account account = new MT4Account(host, apiKey)) {
+            System.out.println("Connecting to " + host + " ...");
+            String terminal = account.connect(Long.parseLong(login), password, server, 120);
+            System.out.println("Connected, terminal " + terminal);
             try {
-                java.net.http.HttpClient httpClient = java.net.http.HttpClient.newHttpClient();
-                java.net.http.HttpRequest httpReq = java.net.http.HttpRequest.newBuilder()
-                        .uri(java.net.URI.create("https://mt4.mrpc.pro/DemoAccount/Open?server=MetaQuotes-Demo"))
-                        .header("APIKey", apiKey)
-                        .timeout(java.time.Duration.ofSeconds(30))
-                        .GET()
-                        .build();
-                java.net.http.HttpResponse<String> httpResp = httpClient.send(httpReq, java.net.http.HttpResponse.BodyHandlers.ofString());
-                if (httpResp.statusCode() == 200) {
-                    String body = httpResp.body();
-                    String loginStr = body.split("\"login\":\\s*\"?")[1].split("\"?[,}]")[0];
-                    login = Integer.parseInt(loginStr);
-                    password = body.split("\"password\":\\s*\"")[1].split("\"")[0];
-                    System.out.println("Demo Account Provisioned: #" + login);
+                AccountSummaryData summary = account.accountSummary();
+                System.out.printf(Locale.ROOT, "Account %d (%s): balance %.2f %s, equity %.2f, leverage 1:%d%n", summary.getAccountLogin(),
+                        summary.getAccountUserName(), summary.getAccountBalance(), summary.getAccountCurrency(),
+                        summary.getAccountEquity(), summary.getAccountLeverage());
+
+                QuoteData quote = account.quote("EURUSD");
+                System.out.printf(Locale.ROOT, "EURUSD bid %s ask %s%n", quote.getBid(), quote.getAsk());
+
+                OrderSendData order = account.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.01);
+                System.out.printf(Locale.ROOT, "Bought 0.01 lot: ticket #%d at %s%n", order.getTicket(), order.getPrice());
+                account.orderClose(order.getTicket());
+                System.out.println("Closed ticket #" + order.getTicket());
+
+                List<OnSymbolMqlTickInfo> ticks = new CopyOnWriteArrayList<>();
+                CompletableFuture<Void> done = new CompletableFuture<>();
+                try (MT4Account.Subscription sub = account.onSymbolTick(List.of("EURUSD", "GBPUSD"), tick -> {
+                    ticks.add(tick);
+                    if (ticks.size() == 3) done.complete(null);
+                }, done::completeExceptionally)) {
+                    done.get(60, TimeUnit.SECONDS);
                 }
-            } catch (Exception e) {
-                System.out.println("Auto-provision fallback failed: " + e.getMessage());
+                for (OnSymbolMqlTickInfo t : ticks.subList(0, 3)) System.out.printf(Locale.ROOT, "Tick %s %s/%s%n", t.getSymbol(), t.getBid(), t.getAsk());
+            } finally {
+                account.disconnect(false);
+                System.out.println("Disconnected.");
             }
-        }
-
-        System.out.println("Connecting to MetaRPC MT4 (" + host + ":" + port + ")...");
-        MT4Client client = new MT4Client(host, port, new DefaultMessageHandler(), apiKey);
-        try {
-            client.connect(login, password);
-            System.out.println("Successfully connected!");
-
-            AccountInfo info = client.getAccountInfo();
-            if (info != null) {
-                System.out.printf("Account: %d, Balance: %.2f %s, Leverage: 1:%d%n",
-                        login, info.balance, info.currency, info.leverage);
-            }
-
-            // Place demo order
-            OrderTransactionReq orderReq = new OrderTransactionReq();
-            orderReq.symbol = "EURUSD";
-            orderReq.orderType = Op.Buy;
-            orderReq.tradeCommand = TradeCommand.Market;
-            orderReq.lots = 1; // 0.01 lot
-            orderReq.comment = "MetaRPC Quickstart";
-
-            System.out.println("Submitting order...");
-            TradeEvent tradeEvent = (TradeEvent) client.sendRequest(orderReq);
-            if (tradeEvent != null) {
-                System.out.println("Order result ticket: " + tradeEvent.ticket);
-            }
-        } catch (Exception e) {
-            // Previously this branch printed a fabricated balance and ticket, which made every failed
-            // run look like a success. Report the failure honestly instead.
-            System.out.println("FAILED: " + e);
-            System.out.println("Note: MT4Client speaks the raw MT4 wire protocol to a broker server; it cannot talk to the");
-            System.out.println("MetaRPC gateway at mt4.mrpc.pro:443. Use pro.mrpc.mt4.grpc.MT4Account for the gateway.");
+        } catch (MrpcException e) {
+            System.err.println("Failed: " + e.getMessage());
             System.exit(1);
-        } finally {
-            try {
-                client.disconnect(true);
-            } catch (Exception ignored) {}
-            System.out.println("Disconnected.");
         }
     }
 }

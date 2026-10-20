@@ -4,12 +4,15 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler",
+    comments = "Source: mt4-term-api-trade-stats.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class TradeStatsGrpc {
 
   private TradeStatsGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "mt4_term_api.TradeStats";
+  public static final String SERVICE_NAME = "mt4_term_api.TradeStats";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest,
@@ -151,21 +154,6 @@ public final class TradeStatsGrpc {
   }
 
   /**
-   * Creates a new blocking-style stub that supports all types of calls on the service
-   */
-  public static TradeStatsBlockingV2Stub newBlockingV2Stub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<TradeStatsBlockingV2Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<TradeStatsBlockingV2Stub>() {
-        @java.lang.Override
-        public TradeStatsBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new TradeStatsBlockingV2Stub(channel, callOptions);
-        }
-      };
-    return TradeStatsBlockingV2Stub.newStub(factory, channel);
-  }
-
-  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static TradeStatsBlockingStub newBlockingStub(
@@ -197,7 +185,7 @@ public final class TradeStatsGrpc {
 
   /**
    */
-  public interface AsyncService {
+  public static abstract class TradeStatsImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
@@ -208,7 +196,7 @@ public final class TradeStatsGrpc {
      * }
      * </pre>
      */
-    default void tradeStats(mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest request,
+    public void tradeStats(mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradeStats.TradeStatsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTradeStatsMethod(), responseObserver);
     }
@@ -223,7 +211,7 @@ public final class TradeStatsGrpc {
      * }
      * </pre>
      */
-    default void tradeStatsEquityHistory(mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryRequest request,
+    public void tradeStatsEquityHistory(mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTradeStatsEquityHistoryMethod(), responseObserver);
     }
@@ -238,7 +226,7 @@ public final class TradeStatsGrpc {
      * }
      * </pre>
      */
-    default void equityHistory(mt4_term_api.Mt4TermApiTradeStats.EquityHistoryRequest request,
+    public void equityHistory(mt4_term_api.Mt4TermApiTradeStats.EquityHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradeStats.EquityHistoryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getEquityHistoryMethod(), responseObserver);
     }
@@ -252,28 +240,48 @@ public final class TradeStatsGrpc {
      * }
      * </pre>
      */
-    default void tradeUnrealizedPL(mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLRequest request,
+    public void tradeUnrealizedPL(mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTradeUnrealizedPLMethod(), responseObserver);
     }
-  }
-
-  /**
-   * Base class for the server implementation of the service TradeStats.
-   */
-  public static abstract class TradeStatsImplBase
-      implements io.grpc.BindableService, AsyncService {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return TradeStatsGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getTradeStatsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest,
+                mt4_term_api.Mt4TermApiTradeStats.TradeStatsReply>(
+                  this, METHODID_TRADE_STATS)))
+          .addMethod(
+            getTradeStatsEquityHistoryMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryRequest,
+                mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryReply>(
+                  this, METHODID_TRADE_STATS_EQUITY_HISTORY)))
+          .addMethod(
+            getEquityHistoryMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiTradeStats.EquityHistoryRequest,
+                mt4_term_api.Mt4TermApiTradeStats.EquityHistoryReply>(
+                  this, METHODID_EQUITY_HISTORY)))
+          .addMethod(
+            getTradeUnrealizedPLMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLRequest,
+                mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLReply>(
+                  this, METHODID_TRADE_UNREALIZED_PL)))
+          .build();
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service TradeStats.
    */
-  public static final class TradeStatsStub
-      extends io.grpc.stub.AbstractAsyncStub<TradeStatsStub> {
+  public static final class TradeStatsStub extends io.grpc.stub.AbstractAsyncStub<TradeStatsStub> {
     private TradeStatsStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -349,85 +357,8 @@ public final class TradeStatsGrpc {
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service TradeStats.
    */
-  public static final class TradeStatsBlockingV2Stub
-      extends io.grpc.stub.AbstractBlockingStub<TradeStatsBlockingV2Stub> {
-    private TradeStatsBlockingV2Stub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected TradeStatsBlockingV2Stub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new TradeStatsBlockingV2Stub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Trading statistics calculated from order history and open orders
-     * [DefaultValues]
-     * {
-     *   "from": "2024-01-01T00:00:00"
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiTradeStats.TradeStatsReply tradeStats(mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getTradeStatsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Trading statistics with equity history chart points
-     * [DefaultValues]
-     * {
-     *   "from": "2024-01-01T00:00:00",
-     *   "excludeSameBars": true
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryReply tradeStatsEquityHistory(mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getTradeStatsEquityHistoryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Equity history curve points with drawdown calculation
-     * [DefaultValues]
-     * {
-     *   "from": "2024-10-01T00:00:00",
-     *   "excludeSameBars": true
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiTradeStats.EquityHistoryReply equityHistory(mt4_term_api.Mt4TermApiTradeStats.EquityHistoryRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getEquityHistoryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Maximum and minimum unrealized profit/loss per trade
-     * [DefaultValues]
-     * {
-     *   "from": "2024-01-01T00:00:00"
-     * }
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLReply tradeUnrealizedPL(mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getTradeUnrealizedPLMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   * A stub to allow clients to do limited synchronous rpc calls to service TradeStats.
-   */
-  public static final class TradeStatsBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<TradeStatsBlockingStub> {
+  public static final class TradeStatsBlockingStub extends io.grpc.stub.AbstractBlockingStub<TradeStatsBlockingStub> {
     private TradeStatsBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -499,10 +430,8 @@ public final class TradeStatsGrpc {
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service TradeStats.
    */
-  public static final class TradeStatsFutureStub
-      extends io.grpc.stub.AbstractFutureStub<TradeStatsFutureStub> {
+  public static final class TradeStatsFutureStub extends io.grpc.stub.AbstractFutureStub<TradeStatsFutureStub> {
     private TradeStatsFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -587,10 +516,10 @@ public final class TradeStatsGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AsyncService serviceImpl;
+    private final TradeStatsImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AsyncService serviceImpl, int methodId) {
+    MethodHandlers(TradeStatsImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -631,39 +560,6 @@ public final class TradeStatsGrpc {
     }
   }
 
-  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getTradeStatsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiTradeStats.TradeStatsRequest,
-              mt4_term_api.Mt4TermApiTradeStats.TradeStatsReply>(
-                service, METHODID_TRADE_STATS)))
-        .addMethod(
-          getTradeStatsEquityHistoryMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryRequest,
-              mt4_term_api.Mt4TermApiTradeStats.TradeStatsEquityHistoryReply>(
-                service, METHODID_TRADE_STATS_EQUITY_HISTORY)))
-        .addMethod(
-          getEquityHistoryMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiTradeStats.EquityHistoryRequest,
-              mt4_term_api.Mt4TermApiTradeStats.EquityHistoryReply>(
-                service, METHODID_EQUITY_HISTORY)))
-        .addMethod(
-          getTradeUnrealizedPLMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLRequest,
-              mt4_term_api.Mt4TermApiTradeStats.TradeUnrealizedPLReply>(
-                service, METHODID_TRADE_UNREALIZED_PL)))
-        .build();
-  }
-
   private static abstract class TradeStatsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     TradeStatsBaseDescriptorSupplier() {}
@@ -687,9 +583,9 @@ public final class TradeStatsGrpc {
   private static final class TradeStatsMethodDescriptorSupplier
       extends TradeStatsBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final java.lang.String methodName;
+    private final String methodName;
 
-    TradeStatsMethodDescriptorSupplier(java.lang.String methodName) {
+    TradeStatsMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 

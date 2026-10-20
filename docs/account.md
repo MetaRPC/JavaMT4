@@ -1,8 +1,28 @@
 # Account Information
 
-The `MT4Client` provides continuous access to account balance, equity, margin requirements, open orders, and closed trades history.
+## MT4Account (MRPC)
 
-## Reading Account Summary
+```java
+AccountSummaryData summary = account.accountSummary();
+System.out.printf("%d %s: balance %s %s, equity %s, credit %s, leverage 1:%d%n", summary.getAccountLogin(),
+        summary.getAccountUserName(), summary.getAccountBalance(), summary.getAccountCurrency(),
+        summary.getAccountEquity(), summary.getAccountCredit(), summary.getAccountLeverage());
+```
+
+MT4's `AccountSummary` has no margin values. They come with the `OnOpenedOrdersProfit` stream
+(`SubscriptionServiceGrpc`): its `account_info` has `margin`, `free_margin` and `margin_level`, every
+`timer_period_milliseconds`. Open orders and history: `OpenedOrders` and `OrdersHistory` of `AccountHelperGrpc`, through
+`account.authorized(AccountHelperGrpc.newBlockingStub(account.getChannel()))`.
+
+## MT4Client (MT4 server protocol, no MRPC)
+
+> **`MT4Client` is a different client.** It speaks the MT4 server protocol straight to a broker's MT4 server (the
+> broker's access point host and port), without MRPC and without an API key. It cannot connect to `mt4.mrpc.pro`; for the
+> MRPC API use `MT4Account`.
+
+`MT4Client` keeps the account, the open orders and the closed trades it receives from the MT4 server.
+
+### Reading Account Summary
 
 ```java
 import pro.mrpc.mt4.network.parts.AccountInfo;
@@ -19,7 +39,7 @@ System.out.println("Account Group:  " + info.group);
 System.out.println("Is Investor:    " + info.isInvestor());
 ```
 
-## Shortcut Methods
+### Shortcut Methods
 
 ```java
 double balance = client.getBalance();
@@ -28,7 +48,7 @@ String currency = client.getAccountCurrency();
 String company = client.getCompany();
 ```
 
-## Viewing Open Positions & Orders
+### Viewing Open Positions & Orders
 
 The client keeps an in-memory concurrent map of open positions and orders:
 
@@ -49,7 +69,7 @@ for (OrderUpdateEvent order : openOrders.values()) {
 }
 ```
 
-## Downloading Closed Order History
+### Downloading Closed Order History
 
 You can download closed trades over a specific time window:
 

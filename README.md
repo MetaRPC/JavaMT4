@@ -11,54 +11,45 @@
 
 ## 📦 Installation
 
-```bash
-implementation 'mrpc.pro:mt4:1.0.0'
+Gradle, from [JitPack](https://jitpack.io/#MetaRPC/JavaMT4) (built from this repository on request):
+
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.MetaRPC:JavaMT4:fa9acfb453'   // a commit of this repository; main-SNAPSHOT = the latest
+}
 ```
+
+Maven: add the repository `https://jitpack.io` and the dependency `com.github.MetaRPC` / `JavaMT4` / `fa9acfb453`.
+The jar brings gRPC and the generated `mt4_term_api` stubs along; Java 17+. It is not on Maven Central.
+
+Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd JavaMT4 && ./gradlew publishToMavenLocal` installs
+`pro.mrpc:mt4:1.0.0` into your local Maven repository (`mavenLocal()`).
+
+The jar holds the gRPC stubs generated from the current MT4 protos (`mt4_term_api`, synced into `package/` on every release).
 
 ---
 
-## 🏃 How to Run Examples
+## 🏃 How to Run the Example
 
-### 1. Clone & Build
+[`examples/Quickstart.java`](src/main/java/examples/Quickstart.java) connects through `mt4.mrpc.pro:443` with `MT4Account`,
+reads the account and EURUSD, buys 0.01 lot and closes it, streams three ticks and disconnects.
+
 ```bash
 git clone https://github.com/MetaRPC/JavaMT4.git
 cd JavaMT4
-./gradlew build
+export MRPC_API_KEY="<YOUR_API_KEY>" MT4_LOGIN="<login>" MT4_PASSWORD="<password>" MT4_SERVER="TeleTrade-Demo"
+./gradlew run                        # Windows: .\gradlew.bat run (set the variables with $env:NAME="..." first)
 ```
 
-### 2. Run with Default TRIAL Key
-```bash
-# Using Gradle wrapper
-./gradlew run
+No MT4 account yet? `curl -H "APIKey: <YOUR_API_KEY>" "https://mt4.mrpc.pro/DemoAccount/Open?server=TeleTrade-Demo"`
+opens a demo account and returns its login and password.
 
-# On Windows cmd / PowerShell:
-.\gradlew.bat run
-```
-
-### 3. Run with Your Own API Key
-
-Pass your API key directly as an argument:
-```bash
-./gradlew run --args="<YOUR_API_KEY>"
-
-# Windows:
-.\gradlew.bat run --args="<YOUR_API_KEY>"
-```
-
-Or set the `MRPC_API_KEY` environment variable:
-```bash
-# Linux / macOS
-export MRPC_API_KEY="<YOUR_API_KEY>"
-./gradlew run
-
-# Windows PowerShell
-$env:MRPC_API_KEY="<YOUR_API_KEY>"
-.\gradlew.bat run
-
-# Windows CMD
-set MRPC_API_KEY=<YOUR_API_KEY>
-gradlew.bat run
-```
+`MT4Client` in this package is a different client: it speaks the MT4 server protocol straight to a broker's MT4 server,
+without MRPC.
 
 ---
 
@@ -80,7 +71,7 @@ Connecting to MetaRPC production endpoints (`mt4.mrpc.pro:443`) requires an API 
 MetaRPC endpoints route calls using a terminal session identifier (`id`):
 - When connecting via `Connect` / `ConnectEx`, the server automatically generates and returns a session GUID (`terminalInstanceGuid`).
 - The SDK automatically captures this session ID and attaches both the `id` and `APIKey` headers on all subsequent calls (`AccountSummary`, `OrderSend`, streaming, etc.) — no manual `GetId` or `curl` calls required.
-- Pass your API key directly to the Account/Client constructor or via the `MRPC_API_KEY` environment variable.
+- Pass your API key to `new MT4Account(apiKey)` or set the `MRPC_API_KEY` environment variable.
 
 ## 🌐 Production Endpoints
 

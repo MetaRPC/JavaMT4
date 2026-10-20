@@ -7,7 +7,7 @@
       mvn -q -DskipTests -f lib/JavaMT4/pom.xml install
 
   Source sets: src/main/java (raw MT4 wire-protocol client + examples) and package/ (pre-generated
-  MetaRPC gRPC stubs, mt4_term_api.* / mrpc_admin.*, protobuf gencode 4.31.1).
+  MetaRPC gRPC stubs, mt4_term_api.* / mrpc_admin.*, protobuf 3.x gencode synced by the MetaRPC CI).
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -23,8 +23,8 @@
     <properties>
         <maven.compiler.release>17</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <grpc.version>1.75.0</grpc.version>
-        <protobuf.version>4.31.1</protobuf.version>
+        <grpc.version>1.70.0</grpc.version>
+        <protobuf.version>3.25.5</protobuf.version>   <!-- the version grpc-protobuf ${grpc.version} ships; package/ is protobuf 3.x gencode -->
     </properties>
 
     <dependencyManagement>
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>com.google.api.grpc</groupId>
             <artifactId>proto-google-common-protos</artifactId>
-            <version>2.59.0</version>
+            <version>2.50.0</version>
         </dependency>
         <dependency>
             <groupId>javax.annotation</groupId>
@@ -86,6 +86,11 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-inprocess</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

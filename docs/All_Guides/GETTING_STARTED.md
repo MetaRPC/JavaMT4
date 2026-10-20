@@ -1,72 +1,91 @@
 # Getting Started with JavaMT4
 
-> **Quick Setup & Overview** - Start automating your trading with JavaMT4 (Java for MetaTrader 4) in minutes.
+> **Quick Setup & Overview** - Connect to MetaTrader 4 from Java in a few minutes.
 
 ---
 
-## 🎯 What is JavaMT4?
+## What is JavaMT4?
 
-**JavaMT4** is an industrial-grade, type-safe Java client library for interacting with **MetaTrader 4** terminals via high-performance **gRPC**. It eliminates complex C++ DLL wrappers and provides direct, reliable programmatic trading.
+**JavaMT4** is the Java client of the MRPC MT4 API (`mt4.mrpc.pro:443`, gRPC over TLS):
 
-### 🌟 Key Advantages
-- 🚀 **High Throughput**: Native gRPC streaming for sub-millisecond price ticks and trade execution.
-- 🛡️ **Three-Layer Architecture**: Low-level gRPC (`MT4Account`), typed wrapper methods (`MT4Service`), and high-level convenience (`MT4Sugar`).
-- 🔄 **Resilient Connection**: Auto-reconnect, exponential backoff, and transparent channel healing.
-- 💼 **Production Ready**: Fully verified across institutional accounts, hedge fund systems, and automated retail bots.
+- **`MT4Account`**: connect, account, quotes, orders, tick stream, disconnect (see [API Reference](../api.md)).
+- **The generated gRPC stubs** of the whole API (`mt4_term_api.*Grpc`), for everything else, with
+  `account.authorized(stub)` adding the API key and terminal id.
+
+The package also has `MT4Client`, a client of the MT4 server protocol that connects straight to a broker's MT4 server
+(no MRPC). The other pages of these guides describe the API itself (methods, enums, return codes, streams); some of their
+code samples are in Python, the calls and messages are the same from Java.
 
 ---
 
-## 📦 Installation
+## Installation
 
-Install JavaMT4 via your standard Java package manager:
+Gradle, from [JitPack](https://jitpack.io/#MetaRPC/JavaMT4) (built from this repository on request):
 
-```bash
-implementation 'pro.mrpc:mt4:1.0.0'
+```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation 'com.github.MetaRPC:JavaMT4:fa9acfb453'   // a commit of this repository; main-SNAPSHOT = the latest
+}
+```
+
+Maven: add the repository `https://jitpack.io` and the dependency `com.github.MetaRPC` / `JavaMT4` / `fa9acfb453`.
+The jar brings gRPC and the generated `mt4_term_api` stubs along; Java 17+. It is not on Maven Central.
+
+Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd JavaMT4 && ./gradlew publishToMavenLocal` installs
+`pro.mrpc:mt4:1.0.0` into your local Maven repository (`mavenLocal()`).
+
+---
+
+## API key
+
+1. **Sign up** free at [https://mrpc.pro/signup](https://mrpc.pro/signup).
+2. **Create a key** at [https://mrpc.pro/my](https://mrpc.pro/my) under **API Keys**.
+3. Pass it to `new MT4Account(apiKey)` or set `MRPC_API_KEY`.
+
+---
+
+## API key and terminal id
+
+- **API key**: from [https://mrpc.pro/my](https://mrpc.pro/my) (sign up free at [https://mrpc.pro/signup](https://mrpc.pro/signup)).
+  Pass it to `new MT4Account(apiKey)` or set `MRPC_API_KEY`; without one the client sends `TRIAL`.
+- **Terminal id**: `connect()` receives it from the server, keeps it (`getTerminalId()`) and sends it with every later call
+  and stream. `attach(id)` uses a terminal that is already connected.
+
+## Minimal example
+
+```java
+import mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData;
+import mt4_term_api.Mt4TermApiTradingHelper.OrderSendData;
+import mt4_term_api.Mt4TermApiTradingHelper.OrderSendOperationType;
+import pro.mrpc.mt4.MT4Account;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        try (MT4Account account = new MT4Account(System.getenv("MRPC_API_KEY"))) {      // mt4.mrpc.pro:443
+            account.connect(Long.parseLong(System.getenv("MT4_LOGIN")), System.getenv("MT4_PASSWORD"), "TeleTrade-Demo", 120);
+            try {
+                AccountSummaryData summary = account.accountSummary();
+                System.out.println("Balance: " + summary.getAccountBalance() + " " + summary.getAccountCurrency());
+
+                OrderSendData order = account.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.01);
+                System.out.println("Ticket #" + order.getTicket() + " at " + order.getPrice());
+            } finally {
+                account.disconnect(false);   // true also deletes the terminal
+            }
+        }
+    }
+}
 ```
 
 ---
 
-## 🔑 API Key & Authentication
+## Reading order
 
-Connecting to MetaRPC production endpoints (`mt4.mrpc.pro:443`) requires an API key:
-
-1. **Sign Up**: Create an account for free at [https://mrpc.pro/signup](https://mrpc.pro/signup).
-2. **Generate API Key**: In your MetaRPC Portal dashboard at [https://mrpc.pro/my](https://mrpc.pro/my), go to **API Keys** to generate and copy your personal API token.
-3. **Configure Connection**: Pass your API key / token along with the server address (`mt4.mrpc.pro:443`) in your connection settings.
-
----
-
-
----
-
-## 🆔 Automatic Account ID & Authentication
-
-MetaRPC endpoints require authentication and session management:
-1. **`APIKey`**: Your personal authentication token from [https://mrpc.pro/my](https://mrpc.pro/my) (obtained by registering at [https://mrpc.pro/signup](https://mrpc.pro/signup)). Sent in the `APIKey` header.
-2. **`id`**: A terminal session GUID returned by `Connect` / `ConnectEx` (`terminalInstanceGuid`).
-
-> 💡 **Seamless Automation**: You do not need to call `GetId` or provide an `id` header when connecting. The server automatically generates a session GUID upon connection and returns it to the caller. The SDK automatically captures this session ID and attaches it alongside your `APIKey` to all subsequent requests and streaming subscriptions.
-
-## 🔌 Minimal Connection Example
-
-Here is how easy it is to initialize `MT4Account`, connect to your MetaTrader terminal, and retrieve your account balance:
-
-```
-MT4Account account = new MT4Account(user, password, grpcServer);
-account.connectByServerNameAsync(serverName, "EURUSD", 30).get();
-AccountSummary summary = account.accountSummaryAsync().get();
-System.out.println("Balance: " + summary.getAccountBalance());
-```
-
----
-
-## 🗺️ Documentation Road Map
-
-To get the most out of JavaMT4, follow this suggested reading order:
-
-1. 🚀 **[Your First Project](Your_First_Project.md)** - Build and run a working project in 10 minutes.
-2. 🗺️ **[Project Map](PROJECT_MAP.md)** - Understand the 3 architectural layers and interaction flow.
-3. 📖 **[Glossary](GLOSSARY.md)** - Essential MetaTrader 4 and algorithmic trading terminology.
-4. 🐣 **[MT4 for Beginners](MT4_For_Beginners.md)** - Step-by-step terminal setup and demo account guide.
-5. 📡 **[gRPC Streaming](GRPC_STREAM_MANAGEMENT.md)** - Subscribe to ticks, trades, DOM, and position updates.
-6. 📊 **[Return Codes](RETURN_CODES_REFERENCE.md)** - Complete reference of broker and gateway return codes.
+1. **[Your First Project](Your_First_Project.md)** - a working project in 10 minutes.
+2. **[API Reference](../api.md)** - what `MT4Account` does, and how to call the rest of the API.
+3. **[Streams](STREAMS.md)** - ticks, trades, profit and the other streams.
+4. **[Errors](ERRORS.md)** - what a refused call looks like, and its codes.

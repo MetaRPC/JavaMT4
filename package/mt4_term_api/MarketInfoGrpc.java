@@ -4,12 +4,15 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  */
+@javax.annotation.Generated(
+    value = "by gRPC proto compiler",
+    comments = "Source: mt4-term-api-market-info.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class MarketInfoGrpc {
 
   private MarketInfoGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "mt4_term_api.MarketInfo";
+  public static final String SERVICE_NAME = "mt4_term_api.MarketInfo";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest,
@@ -182,21 +185,6 @@ public final class MarketInfoGrpc {
   }
 
   /**
-   * Creates a new blocking-style stub that supports all types of calls on the service
-   */
-  public static MarketInfoBlockingV2Stub newBlockingV2Stub(
-      io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<MarketInfoBlockingV2Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<MarketInfoBlockingV2Stub>() {
-        @java.lang.Override
-        public MarketInfoBlockingV2Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new MarketInfoBlockingV2Stub(channel, callOptions);
-        }
-      };
-    return MarketInfoBlockingV2Stub.newStub(factory, channel);
-  }
-
-  /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
   public static MarketInfoBlockingStub newBlockingStub(
@@ -228,14 +216,14 @@ public final class MarketInfoGrpc {
 
   /**
    */
-  public interface AsyncService {
+  public static abstract class MarketInfoImplBase implements io.grpc.BindableService {
 
     /**
      * <pre>
      * Get quote
      * </pre>
      */
-    default void quote(mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest request,
+    public void quote(mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQuoteMethod(), responseObserver);
     }
@@ -245,21 +233,25 @@ public final class MarketInfoGrpc {
      * Latest quote for the specified symbol
      * </pre>
      */
-    default void quoteMany(mt4_term_api.Mt4TermApiMarketInfo.QuoteManyRequest request,
+    public void quoteMany(mt4_term_api.Mt4TermApiMarketInfo.QuoteManyRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteManyReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQuoteManyMethod(), responseObserver);
     }
 
     /**
      */
-    default void symbols(mt4_term_api.Mt4TermApiMarketInfo.SymbolsRequest request,
+    public void symbols(mt4_term_api.Mt4TermApiMarketInfo.SymbolsRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.SymbolsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSymbolsMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
-    default void quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request,
+    @java.lang.Deprecated
+    public void quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getQuoteHistoryMethod(), responseObserver);
     }
@@ -270,28 +262,55 @@ public final class MarketInfoGrpc {
      * https://docs.mql4.com/marketinformation/symbolselect
      * </pre>
      */
-    default void symbolSelect(mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectRequest request,
+    public void symbolSelect(mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSymbolSelectMethod(), responseObserver);
     }
-  }
-
-  /**
-   * Base class for the server implementation of the service MarketInfo.
-   */
-  public static abstract class MarketInfoImplBase
-      implements io.grpc.BindableService, AsyncService {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return MarketInfoGrpc.bindService(this);
+      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getQuoteMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest,
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteReply>(
+                  this, METHODID_QUOTE)))
+          .addMethod(
+            getQuoteManyMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteManyRequest,
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteManyReply>(
+                  this, METHODID_QUOTE_MANY)))
+          .addMethod(
+            getSymbolsMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiMarketInfo.SymbolsRequest,
+                mt4_term_api.Mt4TermApiMarketInfo.SymbolsReply>(
+                  this, METHODID_SYMBOLS)))
+          .addMethod(
+            getQuoteHistoryMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest,
+                mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply>(
+                  this, METHODID_QUOTE_HISTORY)))
+          .addMethod(
+            getSymbolSelectMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectRequest,
+                mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectReply>(
+                  this, METHODID_SYMBOL_SELECT)))
+          .build();
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service MarketInfo.
    */
-  public static final class MarketInfoStub
-      extends io.grpc.stub.AbstractAsyncStub<MarketInfoStub> {
+  public static final class MarketInfoStub extends io.grpc.stub.AbstractAsyncStub<MarketInfoStub> {
     private MarketInfoStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -334,7 +353,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public void quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request,
         io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -355,72 +378,8 @@ public final class MarketInfoGrpc {
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service MarketInfo.
    */
-  public static final class MarketInfoBlockingV2Stub
-      extends io.grpc.stub.AbstractBlockingStub<MarketInfoBlockingV2Stub> {
-    private MarketInfoBlockingV2Stub(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      super(channel, callOptions);
-    }
-
-    @java.lang.Override
-    protected MarketInfoBlockingV2Stub build(
-        io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new MarketInfoBlockingV2Stub(channel, callOptions);
-    }
-
-    /**
-     * <pre>
-     * Get quote
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiMarketInfo.QuoteReply quote(mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getQuoteMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Latest quote for the specified symbol
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiMarketInfo.QuoteManyReply quoteMany(mt4_term_api.Mt4TermApiMarketInfo.QuoteManyRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getQuoteManyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiMarketInfo.SymbolsReply symbols(mt4_term_api.Mt4TermApiMarketInfo.SymbolsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getSymbolsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getQuoteHistoryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Selects a symbol in the Market Watch window or removes a symbol from the window
-     * https://docs.mql4.com/marketinformation/symbolselect
-     * </pre>
-     */
-    public mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectReply symbolSelect(mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getSymbolSelectMethod(), getCallOptions(), request);
-    }
-  }
-
-  /**
-   * A stub to allow clients to do limited synchronous rpc calls to service MarketInfo.
-   */
-  public static final class MarketInfoBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<MarketInfoBlockingStub> {
+  public static final class MarketInfoBlockingStub extends io.grpc.stub.AbstractBlockingStub<MarketInfoBlockingStub> {
     private MarketInfoBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -460,7 +419,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply quoteHistory(mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getQuoteHistoryMethod(), getCallOptions(), request);
@@ -479,10 +442,8 @@ public final class MarketInfoGrpc {
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service MarketInfo.
    */
-  public static final class MarketInfoFutureStub
-      extends io.grpc.stub.AbstractFutureStub<MarketInfoFutureStub> {
+  public static final class MarketInfoFutureStub extends io.grpc.stub.AbstractFutureStub<MarketInfoFutureStub> {
     private MarketInfoFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -525,7 +486,11 @@ public final class MarketInfoGrpc {
     }
 
     /**
+     * <pre>
+     * DEPRECATED: use QuoteHistory.Bars (mt4-term-api-quote-history.proto): paged, bounded, oldest first.
+     * </pre>
      */
+    @java.lang.Deprecated
     public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply> quoteHistory(
         mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -556,10 +521,10 @@ public final class MarketInfoGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final AsyncService serviceImpl;
+    private final MarketInfoImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(AsyncService serviceImpl, int methodId) {
+    MethodHandlers(MarketInfoImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -604,46 +569,6 @@ public final class MarketInfoGrpc {
     }
   }
 
-  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
-    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-        .addMethod(
-          getQuoteMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteRequest,
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteReply>(
-                service, METHODID_QUOTE)))
-        .addMethod(
-          getQuoteManyMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteManyRequest,
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteManyReply>(
-                service, METHODID_QUOTE_MANY)))
-        .addMethod(
-          getSymbolsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiMarketInfo.SymbolsRequest,
-              mt4_term_api.Mt4TermApiMarketInfo.SymbolsReply>(
-                service, METHODID_SYMBOLS)))
-        .addMethod(
-          getQuoteHistoryMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryRequest,
-              mt4_term_api.Mt4TermApiMarketInfo.QuoteHistoryReply>(
-                service, METHODID_QUOTE_HISTORY)))
-        .addMethod(
-          getSymbolSelectMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectRequest,
-              mt4_term_api.Mt4TermApiMarketInfo.SymbolSelectReply>(
-                service, METHODID_SYMBOL_SELECT)))
-        .build();
-  }
-
   private static abstract class MarketInfoBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
     MarketInfoBaseDescriptorSupplier() {}
@@ -667,9 +592,9 @@ public final class MarketInfoGrpc {
   private static final class MarketInfoMethodDescriptorSupplier
       extends MarketInfoBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
-    private final java.lang.String methodName;
+    private final String methodName;
 
-    MarketInfoMethodDescriptorSupplier(java.lang.String methodName) {
+    MarketInfoMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
