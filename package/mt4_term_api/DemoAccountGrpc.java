@@ -20,6 +20,68 @@ public final class DemoAccountGrpc {
   public static final String SERVICE_NAME = "mt4_term_api.DemoAccount";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
+      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getFindCompaniesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "FindCompanies",
+      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.class,
+      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
+      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getFindCompaniesMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> getFindCompaniesMethod;
+    if ((getFindCompaniesMethod = DemoAccountGrpc.getFindCompaniesMethod) == null) {
+      synchronized (DemoAccountGrpc.class) {
+        if ((getFindCompaniesMethod = DemoAccountGrpc.getFindCompaniesMethod) == null) {
+          DemoAccountGrpc.getFindCompaniesMethod = getFindCompaniesMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FindCompanies"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.getDefaultInstance()))
+              .setSchemaDescriptor(new DemoAccountMethodDescriptorSupplier("FindCompanies"))
+              .build();
+        }
+      }
+    }
+    return getFindCompaniesMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
+      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getServersAndAccountTypesMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ServersAndAccountTypes",
+      requestType = mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.class,
+      responseType = mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
+      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getServersAndAccountTypesMethod() {
+    io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> getServersAndAccountTypesMethod;
+    if ((getServersAndAccountTypesMethod = DemoAccountGrpc.getServersAndAccountTypesMethod) == null) {
+      synchronized (DemoAccountGrpc.class) {
+        if ((getServersAndAccountTypesMethod = DemoAccountGrpc.getServersAndAccountTypesMethod) == null) {
+          DemoAccountGrpc.getServersAndAccountTypesMethod = getServersAndAccountTypesMethod =
+              io.grpc.MethodDescriptor.<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ServersAndAccountTypes"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.getDefaultInstance()))
+              .setSchemaDescriptor(new DemoAccountMethodDescriptorSupplier("ServersAndAccountTypes"))
+              .build();
+        }
+      }
+    }
+    return getServersAndAccountTypesMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest,
       mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply> getOpenDemoAccountMethod;
 
@@ -137,7 +199,33 @@ public final class DemoAccountGrpc {
 
     /**
      * <pre>
-     * Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.
+     * Search for broker companies by name (reads the wizard's broker ListView).
+     * [DefaultValues]
+     * { "searchText": "MetaQuotes" }
+     * </pre>
+     */
+    public void findCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getFindCompaniesMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Get available servers and account types for a company.
+     * [DefaultValues]
+     * { "companyName": "MetaQuotes Ltd." }
+     * </pre>
+     */
+    public void serversAndAccountTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getServersAndAccountTypesMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Open a demo account. The wire protocol is tried first; when the trade server does not
+     * accept it, the terminal's "Open an Account" wizard is driven instead, bounded by
+     * timeoutSeconds (default 90). debugLog names the path that produced the account.
      * [DefaultValues]
      * { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User",
      *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
@@ -161,6 +249,20 @@ public final class DemoAccountGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getFindCompaniesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest,
+                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>(
+                  this, METHODID_FIND_COMPANIES)))
+          .addMethod(
+            getServersAndAccountTypesMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest,
+                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>(
+                  this, METHODID_SERVERS_AND_ACCOUNT_TYPES)))
           .addMethod(
             getOpenDemoAccountMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -200,7 +302,35 @@ public final class DemoAccountGrpc {
 
     /**
      * <pre>
-     * Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.
+     * Search for broker companies by name (reads the wizard's broker ListView).
+     * [DefaultValues]
+     * { "searchText": "MetaQuotes" }
+     * </pre>
+     */
+    public void findCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getFindCompaniesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Get available servers and account types for a company.
+     * [DefaultValues]
+     * { "companyName": "MetaQuotes Ltd." }
+     * </pre>
+     */
+    public void serversAndAccountTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request,
+        io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getServersAndAccountTypesMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Open a demo account. The wire protocol is tried first; when the trade server does not
+     * accept it, the terminal's "Open an Account" wizard is driven instead, bounded by
+     * timeoutSeconds (default 90). debugLog names the path that produced the account.
      * [DefaultValues]
      * { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User",
      *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
@@ -246,7 +376,33 @@ public final class DemoAccountGrpc {
 
     /**
      * <pre>
-     * Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.
+     * Search for broker companies by name (reads the wizard's broker ListView).
+     * [DefaultValues]
+     * { "searchText": "MetaQuotes" }
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply findCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getFindCompaniesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Get available servers and account types for a company.
+     * [DefaultValues]
+     * { "companyName": "MetaQuotes Ltd." }
+     * </pre>
+     */
+    public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply serversAndAccountTypes(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getServersAndAccountTypesMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Open a demo account. The wire protocol is tried first; when the trade server does not
+     * accept it, the terminal's "Open an Account" wizard is driven instead, bounded by
+     * timeoutSeconds (default 90). debugLog names the path that produced the account.
      * [DefaultValues]
      * { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User",
      *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
@@ -279,7 +435,35 @@ public final class DemoAccountGrpc {
 
     /**
      * <pre>
-     * Open a demo account. Full wizard flow: search -&gt; select -&gt; fill form -&gt; register.
+     * Search for broker companies by name (reads the wizard's broker ListView).
+     * [DefaultValues]
+     * { "searchText": "MetaQuotes" }
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply> findCompanies(
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getFindCompaniesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Get available servers and account types for a company.
+     * [DefaultValues]
+     * { "companyName": "MetaQuotes Ltd." }
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply> serversAndAccountTypes(
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getServersAndAccountTypesMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Open a demo account. The wire protocol is tried first; when the trade server does not
+     * accept it, the terminal's "Open an Account" wizard is driven instead, bounded by
+     * timeoutSeconds (default 90). debugLog names the path that produced the account.
      * [DefaultValues]
      * { "company": "MetaQuotes Ltd.", "firstName": "Test", "lastName": "User",
      *   "email": "test&#64;test.com", "phone": "+1234567890", "timeoutSeconds": "60" }
@@ -292,8 +476,10 @@ public final class DemoAccountGrpc {
     }
   }
 
-  private static final int METHODID_OPEN_DEMO_ACCOUNT = 0;
-  private static final int METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE = 1;
+  private static final int METHODID_FIND_COMPANIES = 0;
+  private static final int METHODID_SERVERS_AND_ACCOUNT_TYPES = 1;
+  private static final int METHODID_OPEN_DEMO_ACCOUNT = 2;
+  private static final int METHODID_DEMO_OPEN_ACCOUNT_INTERACTIVE = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -312,6 +498,14 @@ public final class DemoAccountGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_FIND_COMPANIES:
+          serviceImpl.findCompanies((mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply>) responseObserver);
+          break;
+        case METHODID_SERVERS_AND_ACCOUNT_TYPES:
+          serviceImpl.serversAndAccountTypes((mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest) request,
+              (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply>) responseObserver);
+          break;
         case METHODID_OPEN_DEMO_ACCOUNT:
           serviceImpl.openDemoAccount((mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountRequest) request,
               (io.grpc.stub.StreamObserver<mt4_term_api.Mt4TermApiGui.GuiDemoOpenAccountReply>) responseObserver);
@@ -380,6 +574,8 @@ public final class DemoAccountGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new DemoAccountFileDescriptorSupplier())
+              .addMethod(getFindCompaniesMethod())
+              .addMethod(getServersAndAccountTypesMethod())
               .addMethod(getOpenDemoAccountMethod())
               .addMethod(getDemoOpenAccountInteractiveMethod())
               .build();

@@ -15,6 +15,127 @@ public final class Mt4TermApiAccountHelper {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
+   * <pre>
+   * Margin calculation mode of the account. MT4 accounts are always hedging; the other values exist for parity with MT5.
+   * </pre>
+   *
+   * Protobuf enum {@code mt4_term_api.EnumAccountMarginMode}
+   */
+  public enum EnumAccountMarginMode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_RETAIL_NETTING = 0;</code>
+     */
+    ACCOUNT_MARGIN_MODE_RETAIL_NETTING(0),
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_EXCHANGE = 1;</code>
+     */
+    ACCOUNT_MARGIN_MODE_EXCHANGE(1),
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_RETAIL_HEDGING = 2;</code>
+     */
+    ACCOUNT_MARGIN_MODE_RETAIL_HEDGING(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_RETAIL_NETTING = 0;</code>
+     */
+    public static final int ACCOUNT_MARGIN_MODE_RETAIL_NETTING_VALUE = 0;
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_EXCHANGE = 1;</code>
+     */
+    public static final int ACCOUNT_MARGIN_MODE_EXCHANGE_VALUE = 1;
+    /**
+     * <code>ACCOUNT_MARGIN_MODE_RETAIL_HEDGING = 2;</code>
+     */
+    public static final int ACCOUNT_MARGIN_MODE_RETAIL_HEDGING_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static EnumAccountMarginMode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static EnumAccountMarginMode forNumber(int value) {
+      switch (value) {
+        case 0: return ACCOUNT_MARGIN_MODE_RETAIL_NETTING;
+        case 1: return ACCOUNT_MARGIN_MODE_EXCHANGE;
+        case 2: return ACCOUNT_MARGIN_MODE_RETAIL_HEDGING;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<EnumAccountMarginMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        EnumAccountMarginMode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<EnumAccountMarginMode>() {
+            public EnumAccountMarginMode findValueByNumber(int number) {
+              return EnumAccountMarginMode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final EnumAccountMarginMode[] VALUES = values();
+
+    public static EnumAccountMarginMode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private EnumAccountMarginMode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:mt4_term_api.EnumAccountMarginMode)
+  }
+
+  /**
    * Protobuf enum {@code mt4_term_api.EnumAccountTradeMode}
    */
   public enum EnumAccountTradeMode
@@ -105,7 +226,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(0);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final EnumAccountTradeMode[] VALUES = values();
@@ -231,7 +352,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(1);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final EnumOpenedOrderSortType[] VALUES = values();
@@ -286,6 +407,22 @@ public final class Mt4TermApiAccountHelper {
      * <code>OO_OP_SELLSTOP = 5;</code>
      */
     OO_OP_SELLSTOP(5),
+    /**
+     * <pre>
+     * OrdersHistory only: account operations of the history (MT4 records types 6 and 7). The amount is in profit, the text in comment.
+     * </pre>
+     *
+     * <code>OO_OP_BALANCE = 6;</code>
+     */
+    OO_OP_BALANCE(6),
+    /**
+     * <pre>
+     * Credit given or taken
+     * </pre>
+     *
+     * <code>OO_OP_CREDIT = 7;</code>
+     */
+    OO_OP_CREDIT(7),
     UNRECOGNIZED(-1),
     ;
 
@@ -313,6 +450,22 @@ public final class Mt4TermApiAccountHelper {
      * <code>OO_OP_SELLSTOP = 5;</code>
      */
     public static final int OO_OP_SELLSTOP_VALUE = 5;
+    /**
+     * <pre>
+     * OrdersHistory only: account operations of the history (MT4 records types 6 and 7). The amount is in profit, the text in comment.
+     * </pre>
+     *
+     * <code>OO_OP_BALANCE = 6;</code>
+     */
+    public static final int OO_OP_BALANCE_VALUE = 6;
+    /**
+     * <pre>
+     * Credit given or taken
+     * </pre>
+     *
+     * <code>OO_OP_CREDIT = 7;</code>
+     */
+    public static final int OO_OP_CREDIT_VALUE = 7;
 
 
     public final int getNumber() {
@@ -345,6 +498,8 @@ public final class Mt4TermApiAccountHelper {
         case 3: return OO_OP_SELLLIMIT;
         case 4: return OO_OP_BUYSTOP;
         case 5: return OO_OP_SELLSTOP;
+        case 6: return OO_OP_BALANCE;
+        case 7: return OO_OP_CREDIT;
         default: return null;
       }
     }
@@ -375,7 +530,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(2);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(3);
     }
 
     private static final OpenedOrderType[] VALUES = values();
@@ -519,7 +674,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(3);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(4);
     }
 
     private static final EnumOrderHistorySortType[] VALUES = values();
@@ -694,7 +849,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(4);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(5);
     }
 
     private static final SP_ENUM_SYMBOL_TRADE_MODE[] VALUES = values();
@@ -852,7 +1007,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(5);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(6);
     }
 
     private static final SP_ENUM_SYMBOL_TRADE_EXECUTION[] VALUES = values();
@@ -993,7 +1148,7 @@ public final class Mt4TermApiAccountHelper {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(6);
+      return mt4_term_api.Mt4TermApiAccountHelper.getDescriptor().getEnumTypes().get(7);
     }
 
     private static final SP_ENUM_TRADE_CALC_MODE[] VALUES = values();
@@ -2572,6 +2727,76 @@ public final class Mt4TermApiAccountHelper {
      * @return The serverUtcOffsetSeconds.
      */
     int getServerUtcOffsetSeconds();
+
+    /**
+     * <pre>
+     * Money state and permissions, read by the terminal in the same AccountSummary round trip (no separate AccountInfoDouble /
+     * AccountInfoInteger calls needed). All are 0/false while the account is not connected. One AccountSummary call is one counted read.
+     * </pre>
+     *
+     * <code>double account_margin = 13;</code>
+     * @return The accountMargin.
+     */
+    double getAccountMargin();
+
+    /**
+     * <pre>
+     * Free margin for new positions (ACCOUNT_MARGIN_FREE), account currency.
+     * </pre>
+     *
+     * <code>double account_margin_free = 16;</code>
+     * @return The accountMarginFree.
+     */
+    double getAccountMarginFree();
+
+    /**
+     * <pre>
+     * Margin level in percent, equity / margin * 100 (ACCOUNT_MARGIN_LEVEL); 0 when no margin is used.
+     * </pre>
+     *
+     * <code>double account_margin_level = 17;</code>
+     * @return The accountMarginLevel.
+     */
+    double getAccountMarginLevel();
+
+    /**
+     * <pre>
+     * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+     * </pre>
+     *
+     * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+     * @return The enum numeric value on the wire for accountMarginMode.
+     */
+    int getAccountMarginModeValue();
+    /**
+     * <pre>
+     * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+     * </pre>
+     *
+     * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+     * @return The accountMarginMode.
+     */
+    mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode getAccountMarginMode();
+
+    /**
+     * <pre>
+     * The account may trade (ACCOUNT_TRADE_ALLOWED); is_investor is its negation.
+     * </pre>
+     *
+     * <code>bool account_trade_allowed = 19;</code>
+     * @return The accountTradeAllowed.
+     */
+    boolean getAccountTradeAllowed();
+
+    /**
+     * <pre>
+     * Automated (Expert Advisor / API) trading is allowed for the account (ACCOUNT_TRADE_EXPERT).
+     * </pre>
+     *
+     * <code>bool account_trade_expert = 20;</code>
+     * @return The accountTradeExpert.
+     */
+    boolean getAccountTradeExpert();
   }
   /**
    * Protobuf type {@code mt4_term_api.AccountSummaryData}
@@ -2590,6 +2815,7 @@ public final class Mt4TermApiAccountHelper {
       accountTradeMode_ = 0;
       accountCompanyName_ = "";
       accountCurrency_ = "";
+      accountMarginMode_ = 0;
     }
 
     @java.lang.Override
@@ -2695,6 +2921,11 @@ public final class Mt4TermApiAccountHelper {
               utcServerTimeShiftMinutes_ = input.readInt32();
               break;
             }
+            case 105: {
+
+              accountMargin_ = input.readDouble();
+              break;
+            }
             case 112: {
               bitField0_ |= 0x00000001;
               serverUtcOffsetSeconds_ = input.readInt32();
@@ -2711,6 +2942,32 @@ public final class Mt4TermApiAccountHelper {
                 serverTimeUtc_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 129: {
+
+              accountMarginFree_ = input.readDouble();
+              break;
+            }
+            case 137: {
+
+              accountMarginLevel_ = input.readDouble();
+              break;
+            }
+            case 144: {
+              int rawValue = input.readEnum();
+
+              accountMarginMode_ = rawValue;
+              break;
+            }
+            case 152: {
+
+              accountTradeAllowed_ = input.readBool();
+              break;
+            }
+            case 160: {
+
+              accountTradeExpert_ = input.readBool();
               break;
             }
             default: {
@@ -3078,6 +3335,109 @@ public final class Mt4TermApiAccountHelper {
       return serverUtcOffsetSeconds_;
     }
 
+    public static final int ACCOUNT_MARGIN_FIELD_NUMBER = 13;
+    private double accountMargin_;
+    /**
+     * <pre>
+     * Money state and permissions, read by the terminal in the same AccountSummary round trip (no separate AccountInfoDouble /
+     * AccountInfoInteger calls needed). All are 0/false while the account is not connected. One AccountSummary call is one counted read.
+     * </pre>
+     *
+     * <code>double account_margin = 13;</code>
+     * @return The accountMargin.
+     */
+    @java.lang.Override
+    public double getAccountMargin() {
+      return accountMargin_;
+    }
+
+    public static final int ACCOUNT_MARGIN_FREE_FIELD_NUMBER = 16;
+    private double accountMarginFree_;
+    /**
+     * <pre>
+     * Free margin for new positions (ACCOUNT_MARGIN_FREE), account currency.
+     * </pre>
+     *
+     * <code>double account_margin_free = 16;</code>
+     * @return The accountMarginFree.
+     */
+    @java.lang.Override
+    public double getAccountMarginFree() {
+      return accountMarginFree_;
+    }
+
+    public static final int ACCOUNT_MARGIN_LEVEL_FIELD_NUMBER = 17;
+    private double accountMarginLevel_;
+    /**
+     * <pre>
+     * Margin level in percent, equity / margin * 100 (ACCOUNT_MARGIN_LEVEL); 0 when no margin is used.
+     * </pre>
+     *
+     * <code>double account_margin_level = 17;</code>
+     * @return The accountMarginLevel.
+     */
+    @java.lang.Override
+    public double getAccountMarginLevel() {
+      return accountMarginLevel_;
+    }
+
+    public static final int ACCOUNT_MARGIN_MODE_FIELD_NUMBER = 18;
+    private int accountMarginMode_;
+    /**
+     * <pre>
+     * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+     * </pre>
+     *
+     * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+     * @return The enum numeric value on the wire for accountMarginMode.
+     */
+    @java.lang.Override public int getAccountMarginModeValue() {
+      return accountMarginMode_;
+    }
+    /**
+     * <pre>
+     * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+     * </pre>
+     *
+     * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+     * @return The accountMarginMode.
+     */
+    @java.lang.Override public mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode getAccountMarginMode() {
+      @SuppressWarnings("deprecation")
+      mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode result = mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.valueOf(accountMarginMode_);
+      return result == null ? mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.UNRECOGNIZED : result;
+    }
+
+    public static final int ACCOUNT_TRADE_ALLOWED_FIELD_NUMBER = 19;
+    private boolean accountTradeAllowed_;
+    /**
+     * <pre>
+     * The account may trade (ACCOUNT_TRADE_ALLOWED); is_investor is its negation.
+     * </pre>
+     *
+     * <code>bool account_trade_allowed = 19;</code>
+     * @return The accountTradeAllowed.
+     */
+    @java.lang.Override
+    public boolean getAccountTradeAllowed() {
+      return accountTradeAllowed_;
+    }
+
+    public static final int ACCOUNT_TRADE_EXPERT_FIELD_NUMBER = 20;
+    private boolean accountTradeExpert_;
+    /**
+     * <pre>
+     * Automated (Expert Advisor / API) trading is allowed for the account (ACCOUNT_TRADE_EXPERT).
+     * </pre>
+     *
+     * <code>bool account_trade_expert = 20;</code>
+     * @return The accountTradeExpert.
+     */
+    @java.lang.Override
+    public boolean getAccountTradeExpert() {
+      return accountTradeExpert_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3128,11 +3488,29 @@ public final class Mt4TermApiAccountHelper {
       if (utcServerTimeShiftMinutes_ != 0) {
         output.writeInt32(12, utcServerTimeShiftMinutes_);
       }
+      if (java.lang.Double.doubleToRawLongBits(accountMargin_) != 0) {
+        output.writeDouble(13, accountMargin_);
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
         output.writeInt32(14, serverUtcOffsetSeconds_);
       }
       if (serverTimeUtc_ != null) {
         output.writeMessage(15, getServerTimeUtc());
+      }
+      if (java.lang.Double.doubleToRawLongBits(accountMarginFree_) != 0) {
+        output.writeDouble(16, accountMarginFree_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(accountMarginLevel_) != 0) {
+        output.writeDouble(17, accountMarginLevel_);
+      }
+      if (accountMarginMode_ != mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.ACCOUNT_MARGIN_MODE_RETAIL_NETTING.getNumber()) {
+        output.writeEnum(18, accountMarginMode_);
+      }
+      if (accountTradeAllowed_ != false) {
+        output.writeBool(19, accountTradeAllowed_);
+      }
+      if (accountTradeExpert_ != false) {
+        output.writeBool(20, accountTradeExpert_);
       }
       unknownFields.writeTo(output);
     }
@@ -3188,6 +3566,10 @@ public final class Mt4TermApiAccountHelper {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(12, utcServerTimeShiftMinutes_);
       }
+      if (java.lang.Double.doubleToRawLongBits(accountMargin_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(13, accountMargin_);
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(14, serverUtcOffsetSeconds_);
@@ -3195,6 +3577,26 @@ public final class Mt4TermApiAccountHelper {
       if (serverTimeUtc_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, getServerTimeUtc());
+      }
+      if (java.lang.Double.doubleToRawLongBits(accountMarginFree_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(16, accountMarginFree_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(accountMarginLevel_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(17, accountMarginLevel_);
+      }
+      if (accountMarginMode_ != mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.ACCOUNT_MARGIN_MODE_RETAIL_NETTING.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(18, accountMarginMode_);
+      }
+      if (accountTradeAllowed_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(19, accountTradeAllowed_);
+      }
+      if (accountTradeExpert_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(20, accountTradeExpert_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3250,6 +3652,20 @@ public final class Mt4TermApiAccountHelper {
         if (getServerUtcOffsetSeconds()
             != other.getServerUtcOffsetSeconds()) return false;
       }
+      if (java.lang.Double.doubleToLongBits(getAccountMargin())
+          != java.lang.Double.doubleToLongBits(
+              other.getAccountMargin())) return false;
+      if (java.lang.Double.doubleToLongBits(getAccountMarginFree())
+          != java.lang.Double.doubleToLongBits(
+              other.getAccountMarginFree())) return false;
+      if (java.lang.Double.doubleToLongBits(getAccountMarginLevel())
+          != java.lang.Double.doubleToLongBits(
+              other.getAccountMarginLevel())) return false;
+      if (accountMarginMode_ != other.accountMarginMode_) return false;
+      if (getAccountTradeAllowed()
+          != other.getAccountTradeAllowed()) return false;
+      if (getAccountTradeExpert()
+          != other.getAccountTradeExpert()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3301,6 +3717,23 @@ public final class Mt4TermApiAccountHelper {
         hash = (37 * hash) + SERVER_UTC_OFFSET_SECONDS_FIELD_NUMBER;
         hash = (53 * hash) + getServerUtcOffsetSeconds();
       }
+      hash = (37 * hash) + ACCOUNT_MARGIN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAccountMargin()));
+      hash = (37 * hash) + ACCOUNT_MARGIN_FREE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAccountMarginFree()));
+      hash = (37 * hash) + ACCOUNT_MARGIN_LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getAccountMarginLevel()));
+      hash = (37 * hash) + ACCOUNT_MARGIN_MODE_FIELD_NUMBER;
+      hash = (53 * hash) + accountMarginMode_;
+      hash = (37 * hash) + ACCOUNT_TRADE_ALLOWED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getAccountTradeAllowed());
+      hash = (37 * hash) + ACCOUNT_TRADE_EXPERT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getAccountTradeExpert());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3470,6 +3903,18 @@ public final class Mt4TermApiAccountHelper {
 
         serverUtcOffsetSeconds_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        accountMargin_ = 0D;
+
+        accountMarginFree_ = 0D;
+
+        accountMarginLevel_ = 0D;
+
+        accountMarginMode_ = 0;
+
+        accountTradeAllowed_ = false;
+
+        accountTradeExpert_ = false;
+
         return this;
       }
 
@@ -3523,6 +3968,12 @@ public final class Mt4TermApiAccountHelper {
           result.serverUtcOffsetSeconds_ = serverUtcOffsetSeconds_;
           to_bitField0_ |= 0x00000001;
         }
+        result.accountMargin_ = accountMargin_;
+        result.accountMarginFree_ = accountMarginFree_;
+        result.accountMarginLevel_ = accountMarginLevel_;
+        result.accountMarginMode_ = accountMarginMode_;
+        result.accountTradeAllowed_ = accountTradeAllowed_;
+        result.accountTradeExpert_ = accountTradeExpert_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3616,6 +4067,24 @@ public final class Mt4TermApiAccountHelper {
         }
         if (other.hasServerUtcOffsetSeconds()) {
           setServerUtcOffsetSeconds(other.getServerUtcOffsetSeconds());
+        }
+        if (other.getAccountMargin() != 0D) {
+          setAccountMargin(other.getAccountMargin());
+        }
+        if (other.getAccountMarginFree() != 0D) {
+          setAccountMarginFree(other.getAccountMarginFree());
+        }
+        if (other.getAccountMarginLevel() != 0D) {
+          setAccountMarginLevel(other.getAccountMarginLevel());
+        }
+        if (other.accountMarginMode_ != 0) {
+          setAccountMarginModeValue(other.getAccountMarginModeValue());
+        }
+        if (other.getAccountTradeAllowed() != false) {
+          setAccountTradeAllowed(other.getAccountTradeAllowed());
+        }
+        if (other.getAccountTradeExpert() != false) {
+          setAccountTradeExpert(other.getAccountTradeExpert());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4546,6 +5015,298 @@ public final class Mt4TermApiAccountHelper {
       public Builder clearServerUtcOffsetSeconds() {
         bitField0_ = (bitField0_ & ~0x00000001);
         serverUtcOffsetSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double accountMargin_ ;
+      /**
+       * <pre>
+       * Money state and permissions, read by the terminal in the same AccountSummary round trip (no separate AccountInfoDouble /
+       * AccountInfoInteger calls needed). All are 0/false while the account is not connected. One AccountSummary call is one counted read.
+       * </pre>
+       *
+       * <code>double account_margin = 13;</code>
+       * @return The accountMargin.
+       */
+      @java.lang.Override
+      public double getAccountMargin() {
+        return accountMargin_;
+      }
+      /**
+       * <pre>
+       * Money state and permissions, read by the terminal in the same AccountSummary round trip (no separate AccountInfoDouble /
+       * AccountInfoInteger calls needed). All are 0/false while the account is not connected. One AccountSummary call is one counted read.
+       * </pre>
+       *
+       * <code>double account_margin = 13;</code>
+       * @param value The accountMargin to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountMargin(double value) {
+        
+        accountMargin_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Money state and permissions, read by the terminal in the same AccountSummary round trip (no separate AccountInfoDouble /
+       * AccountInfoInteger calls needed). All are 0/false while the account is not connected. One AccountSummary call is one counted read.
+       * </pre>
+       *
+       * <code>double account_margin = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountMargin() {
+        
+        accountMargin_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double accountMarginFree_ ;
+      /**
+       * <pre>
+       * Free margin for new positions (ACCOUNT_MARGIN_FREE), account currency.
+       * </pre>
+       *
+       * <code>double account_margin_free = 16;</code>
+       * @return The accountMarginFree.
+       */
+      @java.lang.Override
+      public double getAccountMarginFree() {
+        return accountMarginFree_;
+      }
+      /**
+       * <pre>
+       * Free margin for new positions (ACCOUNT_MARGIN_FREE), account currency.
+       * </pre>
+       *
+       * <code>double account_margin_free = 16;</code>
+       * @param value The accountMarginFree to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountMarginFree(double value) {
+        
+        accountMarginFree_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Free margin for new positions (ACCOUNT_MARGIN_FREE), account currency.
+       * </pre>
+       *
+       * <code>double account_margin_free = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountMarginFree() {
+        
+        accountMarginFree_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double accountMarginLevel_ ;
+      /**
+       * <pre>
+       * Margin level in percent, equity / margin * 100 (ACCOUNT_MARGIN_LEVEL); 0 when no margin is used.
+       * </pre>
+       *
+       * <code>double account_margin_level = 17;</code>
+       * @return The accountMarginLevel.
+       */
+      @java.lang.Override
+      public double getAccountMarginLevel() {
+        return accountMarginLevel_;
+      }
+      /**
+       * <pre>
+       * Margin level in percent, equity / margin * 100 (ACCOUNT_MARGIN_LEVEL); 0 when no margin is used.
+       * </pre>
+       *
+       * <code>double account_margin_level = 17;</code>
+       * @param value The accountMarginLevel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountMarginLevel(double value) {
+        
+        accountMarginLevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Margin level in percent, equity / margin * 100 (ACCOUNT_MARGIN_LEVEL); 0 when no margin is used.
+       * </pre>
+       *
+       * <code>double account_margin_level = 17;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountMarginLevel() {
+        
+        accountMarginLevel_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int accountMarginMode_ = 0;
+      /**
+       * <pre>
+       * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+       * </pre>
+       *
+       * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+       * @return The enum numeric value on the wire for accountMarginMode.
+       */
+      @java.lang.Override public int getAccountMarginModeValue() {
+        return accountMarginMode_;
+      }
+      /**
+       * <pre>
+       * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+       * </pre>
+       *
+       * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+       * @param value The enum numeric value on the wire for accountMarginMode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountMarginModeValue(int value) {
+        
+        accountMarginMode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+       * </pre>
+       *
+       * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+       * @return The accountMarginMode.
+       */
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode getAccountMarginMode() {
+        @SuppressWarnings("deprecation")
+        mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode result = mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.valueOf(accountMarginMode_);
+        return result == null ? mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+       * </pre>
+       *
+       * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+       * @param value The accountMarginMode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountMarginMode(mt4_term_api.Mt4TermApiAccountHelper.EnumAccountMarginMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        accountMarginMode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Always hedging on MT4 (several positions per symbol); present for parity with MT5.
+       * </pre>
+       *
+       * <code>.mt4_term_api.EnumAccountMarginMode account_margin_mode = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountMarginMode() {
+        
+        accountMarginMode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean accountTradeAllowed_ ;
+      /**
+       * <pre>
+       * The account may trade (ACCOUNT_TRADE_ALLOWED); is_investor is its negation.
+       * </pre>
+       *
+       * <code>bool account_trade_allowed = 19;</code>
+       * @return The accountTradeAllowed.
+       */
+      @java.lang.Override
+      public boolean getAccountTradeAllowed() {
+        return accountTradeAllowed_;
+      }
+      /**
+       * <pre>
+       * The account may trade (ACCOUNT_TRADE_ALLOWED); is_investor is its negation.
+       * </pre>
+       *
+       * <code>bool account_trade_allowed = 19;</code>
+       * @param value The accountTradeAllowed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountTradeAllowed(boolean value) {
+        
+        accountTradeAllowed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The account may trade (ACCOUNT_TRADE_ALLOWED); is_investor is its negation.
+       * </pre>
+       *
+       * <code>bool account_trade_allowed = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountTradeAllowed() {
+        
+        accountTradeAllowed_ = false;
+        onChanged();
+        return this;
+      }
+
+      private boolean accountTradeExpert_ ;
+      /**
+       * <pre>
+       * Automated (Expert Advisor / API) trading is allowed for the account (ACCOUNT_TRADE_EXPERT).
+       * </pre>
+       *
+       * <code>bool account_trade_expert = 20;</code>
+       * @return The accountTradeExpert.
+       */
+      @java.lang.Override
+      public boolean getAccountTradeExpert() {
+        return accountTradeExpert_;
+      }
+      /**
+       * <pre>
+       * Automated (Expert Advisor / API) trading is allowed for the account (ACCOUNT_TRADE_EXPERT).
+       * </pre>
+       *
+       * <code>bool account_trade_expert = 20;</code>
+       * @param value The accountTradeExpert to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountTradeExpert(boolean value) {
+        
+        accountTradeExpert_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Automated (Expert Advisor / API) trading is allowed for the account (ACCOUNT_TRADE_EXPERT).
+       * </pre>
+       *
+       * <code>bool account_trade_expert = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountTradeExpert() {
+        
+        accountTradeExpert_ = false;
         onChanged();
         return this;
       }
@@ -32147,7 +32908,7 @@ public final class Mt4TermApiAccountHelper {
       "y\n\023AccountSummaryReply\0220\n\004data\030\001 \001(\0132 .m" +
       "t4_term_api.AccountSummaryDataH\000\022$\n\005erro" +
       "r\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010respon" +
-      "se\"\211\004\n\022AccountSummaryData\022\025\n\raccount_log" +
+      "se\"\333\005\n\022AccountSummaryData\022\025\n\raccount_log" +
       "in\030\001 \001(\003\022\027\n\017account_balance\030\002 \001(\001\022\026\n\016acc" +
       "ount_equity\030\003 \001(\001\022\031\n\021account_user_name\030\004" +
       " \001(\t\022\030\n\020account_leverage\030\005 \001(\003\022>\n\022accoun" +
@@ -32159,18 +32920,48 @@ public final class Mt4TermApiAccountHelper {
       "uf.Timestamp\022\026\n\016account_credit\030\n \001(\001\022\023\n\013" +
       "is_investor\030\013 \001(\010\022%\n\035utc_server_time_shi" +
       "ft_minutes\030\014 \001(\005\022&\n\031server_utc_offset_se" +
-      "conds\030\016 \001(\005H\000\210\001\001B\034\n\032_server_utc_offset_s" +
-      "econds\"O\n\023OpenedOrdersRequest\0228\n\tsort_ty" +
-      "pe\030\001 \001(\0162%.mt4_term_api.EnumOpenedOrderS" +
-      "ortType\"u\n\021OpenedOrdersReply\022.\n\004data\030\001 \001" +
-      "(\0132\036.mt4_term_api.OpenedOrdersDataH\000\022$\n\005" +
-      "error\030\002 \001(\0132\023.mt4_term_api.ErrorH\000B\n\n\010re" +
-      "sponse\"F\n\020OpenedOrdersData\0222\n\013order_info" +
-      "s\030\001 \003(\0132\035.mt4_term_api.OpenedOrderInfo\"\231" +
-      "\004\n\017OpenedOrderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tc" +
+      "conds\030\016 \001(\005H\000\210\001\001\022\026\n\016account_margin\030\r \001(\001" +
+      "\022\033\n\023account_margin_free\030\020 \001(\001\022\034\n\024account" +
+      "_margin_level\030\021 \001(\001\022@\n\023account_margin_mo" +
+      "de\030\022 \001(\0162#.mt4_term_api.EnumAccountMargi" +
+      "nMode\022\035\n\025account_trade_allowed\030\023 \001(\010\022\034\n\024" +
+      "account_trade_expert\030\024 \001(\010B\034\n\032_server_ut" +
+      "c_offset_seconds\"O\n\023OpenedOrdersRequest\022" +
+      "8\n\tsort_type\030\001 \001(\0162%.mt4_term_api.EnumOp" +
+      "enedOrderSortType\"u\n\021OpenedOrdersReply\022." +
+      "\n\004data\030\001 \001(\0132\036.mt4_term_api.OpenedOrders" +
+      "DataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.Err" +
+      "orH\000B\n\n\010response\"F\n\020OpenedOrdersData\0222\n\013" +
+      "order_infos\030\001 \003(\0132\035.mt4_term_api.OpenedO" +
+      "rderInfo\"\231\004\n\017OpenedOrderInfo\022\017\n\007comment\030" +
+      "\001 \001(\t\022\021\n\tcommision\030\002 \001(\001\0223\n\017expiration_t" +
+      "ime\030\003 \001(\0132\032.google.protobuf.Timestamp\0227\n" +
+      "\023expiration_time_utc\030\022 \001(\0132\032.google.prot" +
+      "obuf.Timestamp\022\014\n\004lots\030\004 \001(\001\022\024\n\014magic_nu" +
+      "mber\030\005 \001(\005\022\022\n\nopen_price\030\006 \001(\001\022\016\n\006profit" +
+      "\030\007 \001(\001\022\021\n\tstop_loss\030\010 \001(\001\022\014\n\004swap\030\t \001(\001\022" +
+      "\016\n\006symbol\030\n \001(\t\022\023\n\013take_profit\030\013 \001(\001\022\016\n\006" +
+      "ticket\030\014 \001(\005\022\026\n\016position_index\030\r \001(\005\0221\n\n" +
+      "order_type\030\016 \001(\0162\035.mt4_term_api.OpenedOr" +
+      "derType\022\022\n\nsort_index\030\017 \001(\005\022-\n\topen_time" +
+      "\030\020 \001(\0132\032.google.protobuf.Timestamp\0221\n\rop" +
+      "en_time_utc\030\023 \001(\0132\032.google.protobuf.Time" +
+      "stamp\022\025\n\raccount_login\030\021 \001(\003\"\034\n\032OpenedOr" +
+      "dersTicketsRequest\"\203\001\n\030OpenedOrdersTicke" +
+      "tsReply\0225\n\004data\030\001 \001(\0132%.mt4_term_api.Ope" +
+      "nedOrdersTicketsDataH\000\022$\n\005error\030\002 \001(\0132\023." +
+      "mt4_term_api.ErrorH\000B\n\n\010response\"*\n\027Open" +
+      "edOrdersTicketsData\022\017\n\007tickets\030\001 \003(\005\"w\n\022" +
+      "OrdersHistoryReply\022/\n\004data\030\001 \001(\0132\037.mt4_t" +
+      "erm_api.OrdersHistoryDataH\000\022$\n\005error\030\002 \001" +
+      "(\0132\023.mt4_term_api.ErrorH\000B\n\n\010response\"v\n" +
+      "\021OrdersHistoryData\0223\n\013orders_info\030\001 \003(\0132" +
+      "\036.mt4_term_api.HistoryOrderInfo\022\023\n\013total" +
+      "_count\030\002 \001(\005\022\027\n\017next_page_token\030\003 \001(\t\"\223\005" +
+      "\n\020HistoryOrderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tc" +
       "ommision\030\002 \001(\001\0223\n\017expiration_time\030\003 \001(\0132" +
       "\032.google.protobuf.Timestamp\0227\n\023expiratio" +
-      "n_time_utc\030\022 \001(\0132\032.google.protobuf.Times" +
+      "n_time_utc\030\024 \001(\0132\032.google.protobuf.Times" +
       "tamp\022\014\n\004lots\030\004 \001(\001\022\024\n\014magic_number\030\005 \001(\005" +
       "\022\022\n\nopen_price\030\006 \001(\001\022\016\n\006profit\030\007 \001(\001\022\021\n\t" +
       "stop_loss\030\010 \001(\001\022\014\n\004swap\030\t \001(\001\022\016\n\006symbol\030" +
@@ -32179,159 +32970,139 @@ public final class Mt4TermApiAccountHelper {
       "\030\016 \001(\0162\035.mt4_term_api.OpenedOrderType\022\022\n" +
       "\nsort_index\030\017 \001(\005\022-\n\topen_time\030\020 \001(\0132\032.g" +
       "oogle.protobuf.Timestamp\0221\n\ropen_time_ut" +
-      "c\030\023 \001(\0132\032.google.protobuf.Timestamp\022\025\n\ra" +
-      "ccount_login\030\021 \001(\003\"\034\n\032OpenedOrdersTicket" +
-      "sRequest\"\203\001\n\030OpenedOrdersTicketsReply\0225\n" +
-      "\004data\030\001 \001(\0132%.mt4_term_api.OpenedOrdersT" +
-      "icketsDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_a" +
-      "pi.ErrorH\000B\n\n\010response\"*\n\027OpenedOrdersTi" +
-      "cketsData\022\017\n\007tickets\030\001 \003(\005\"w\n\022OrdersHist" +
-      "oryReply\022/\n\004data\030\001 \001(\0132\037.mt4_term_api.Or" +
-      "dersHistoryDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_t" +
-      "erm_api.ErrorH\000B\n\n\010response\"v\n\021OrdersHis" +
-      "toryData\0223\n\013orders_info\030\001 \003(\0132\036.mt4_term" +
-      "_api.HistoryOrderInfo\022\023\n\013total_count\030\002 \001" +
-      "(\005\022\027\n\017next_page_token\030\003 \001(\t\"\223\005\n\020HistoryO" +
-      "rderInfo\022\017\n\007comment\030\001 \001(\t\022\021\n\tcommision\030\002" +
-      " \001(\001\0223\n\017expiration_time\030\003 \001(\0132\032.google.p" +
-      "rotobuf.Timestamp\0227\n\023expiration_time_utc" +
-      "\030\024 \001(\0132\032.google.protobuf.Timestamp\022\014\n\004lo" +
-      "ts\030\004 \001(\001\022\024\n\014magic_number\030\005 \001(\005\022\022\n\nopen_p" +
-      "rice\030\006 \001(\001\022\016\n\006profit\030\007 \001(\001\022\021\n\tstop_loss\030" +
-      "\010 \001(\001\022\014\n\004swap\030\t \001(\001\022\016\n\006symbol\030\n \001(\t\022\023\n\013t" +
-      "ake_profit\030\013 \001(\001\022\016\n\006ticket\030\014 \001(\005\022\026\n\016posi" +
-      "tion_index\030\r \001(\005\0221\n\norder_type\030\016 \001(\0162\035.m" +
-      "t4_term_api.OpenedOrderType\022\022\n\nsort_inde" +
-      "x\030\017 \001(\005\022-\n\topen_time\030\020 \001(\0132\032.google.prot" +
-      "obuf.Timestamp\0221\n\ropen_time_utc\030\025 \001(\0132\032." +
-      "google.protobuf.Timestamp\022.\n\nclose_time\030" +
-      "\021 \001(\0132\032.google.protobuf.Timestamp\0222\n\016clo" +
-      "se_time_utc\030\026 \001(\0132\032.google.protobuf.Time" +
-      "stamp\022\023\n\013close_price\030\022 \001(\001\022\025\n\raccount_lo" +
-      "gin\030\023 \001(\003\"\360\003\n\024OrdersHistoryRequest\022?\n\017in" +
-      "put_sort_mode\030\001 \001(\0162&.mt4_term_api.EnumO" +
-      "rderHistorySortType\0223\n\ninput_from\030\002 \001(\0132" +
-      "\032.google.protobuf.TimestampH\000\210\001\001\0227\n\016inpu" +
-      "t_from_utc\030\010 \001(\0132\032.google.protobuf.Times" +
-      "tampH\001\210\001\001\0221\n\010input_to\030\003 \001(\0132\032.google.pro" +
-      "tobuf.TimestampH\002\210\001\001\0225\n\014input_to_utc\030\t \001" +
-      "(\0132\032.google.protobuf.TimestampH\003\210\001\001\022\030\n\013p" +
-      "age_number\030\004 \001(\005H\004\210\001\001\022\033\n\016items_per_page\030" +
-      "\005 \001(\005H\005\210\001\001\022\022\n\npage_token\030\006 \001(\t\022\021\n\tpage_s" +
-      "ize\030\007 \001(\005B\r\n\013_input_fromB\021\n\017_input_from_" +
-      "utcB\013\n\t_input_toB\017\n\r_input_to_utcB\016\n\014_pa" +
-      "ge_numberB\021\n\017_items_per_page\"C\n\027SymbolPa" +
-      "ramsManyRequest\022\030\n\013symbol_name\030\001 \001(\tH\000\210\001" +
-      "\001B\016\n\014_symbol_name\"}\n\025SymbolParamsManyRep" +
-      "ly\0222\n\004data\030\001 \001(\0132\".mt4_term_api.SymbolPa" +
-      "ramsManyDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term" +
-      "_api.ErrorH\000B\n\n\010response\"P\n\024SymbolParams" +
-      "ManyData\0228\n\014symbol_infos\030\001 \003(\0132\".mt4_ter" +
-      "m_api.SymbolParamsManyInfo\"\361\r\n\024SymbolPar" +
-      "amsManyInfo\022\023\n\013is_selected\030\001 \001(\010\022\017\n\007visi" +
-      "ble\030\002 \001(\010\022\025\n\rsession_deals\030\003 \001(\003\022\032\n\022sess" +
-      "ion_buy_orders\030\004 \001(\003\022\033\n\023session_sell_ord" +
-      "ers\030\005 \001(\003\022\016\n\006volume\030\006 \001(\003\022\023\n\013volume_high" +
-      "\030\007 \001(\003\022\021\n\tVolumeLow\030\010 \001(\003\022\014\n\004Time\030\t \001(\003\022" +
-      "\017\n\007TimeUtc\030D \001(\003\022\016\n\006Digits\030\n \001(\005\022\023\n\013Spre" +
-      "adFloat\030\013 \001(\010\022\026\n\016TicksBookDepth\030\014 \001(\005\022<\n" +
-      "\rTradeCalcMode\030\r \001(\0162%.mt4_term_api.SP_E" +
-      "NUM_TRADE_CALC_MODE\022:\n\tTradeMode\030\016 \001(\0162\'" +
-      ".mt4_term_api.SP_ENUM_SYMBOL_TRADE_MODE\022" +
-      "-\n\tStartTime\030\017 \001(\0132\032.google.protobuf.Tim" +
-      "estamp\0220\n\014StartTimeUtc\030E \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\0222\n\016ExpirationTime\030\020 \001(\013" +
-      "2\032.google.protobuf.Timestamp\0225\n\021Expirati" +
-      "onTimeUtc\030F \001(\0132\032.google.protobuf.Timest" +
-      "amp\022\027\n\017TradeStopsLevel\030\021 \001(\005\022\030\n\020TradeFre" +
-      "ezeLevel\030\022 \001(\005\022B\n\014TradeExeMode\030\023 \001(\0162,.m" +
-      "t4_term_api.SP_ENUM_SYMBOL_TRADE_EXECUTI" +
-      "ON\022\020\n\010SwapMode\030\024 \001(\005\022\031\n\021SwapRollover3Day" +
-      "s\030\025 \001(\005\022\017\n\007TheLast\030\026 \001(\001\022\020\n\010LastHigh\030\027 \001" +
-      "(\001\022\017\n\007LastLow\030\030 \001(\001\022\r\n\005Point\030\031 \001(\001\022\026\n\016Tr" +
-      "adeTickValue\030\032 \001(\001\022\034\n\024TradeTickValueProf" +
-      "it\030\033 \001(\001\022\032\n\022TradeTickValueLoss\030\034 \001(\001\022\025\n\r" +
-      "TradeTickSize\030\035 \001(\001\022\031\n\021TradeContractSize" +
-      "\030\036 \001(\001\022\021\n\tVolumeMin\030\037 \001(\001\022\021\n\tVolumeMax\030 " +
-      " \001(\001\022\022\n\nVolumeStep\030! \001(\001\022\023\n\013VolumeLimit\030" +
-      "\" \001(\001\022\020\n\010SwapLong\030# \001(\001\022\021\n\tSwapShort\030$ \001" +
-      "(\001\022\025\n\rMarginInitial\030% \001(\001\022\031\n\021MarginMaint" +
-      "enance\030& \001(\001\022\022\n\nMarginLong\030\' \001(\001\022\023\n\013Marg" +
-      "inShort\030( \001(\001\022\023\n\013MarginLimit\030) \001(\001\022\022\n\nMa" +
-      "rginStop\030* \001(\001\022\027\n\017MarginStopLimit\030+ \001(\001\022" +
-      "\025\n\rSessionVolume\030, \001(\001\022\027\n\017SessionTurnove" +
-      "r\030- \001(\001\022\027\n\017SessionInterest\030. \001(\001\022\036\n\026Sess" +
-      "ionBuyOrdersVolume\030/ \001(\001\022\037\n\027SessionSellO" +
-      "rdersVolume\0300 \001(\001\022\023\n\013SessionOpen\0301 \001(\001\022\024" +
-      "\n\014SessionClose\0302 \001(\001\022\021\n\tSessionAW\0303 \001(\001\022" +
-      "\036\n\026SessionPriceSettlement\0304 \001(\001\022\034\n\024Sessi" +
-      "onPriceLimitMin\0305 \001(\001\022\034\n\024SessionPriceLim" +
-      "itMax\0306 \001(\001\022\013\n\003Bid\0307 \001(\001\022\017\n\007BidHigh\0308 \001(" +
-      "\001\022\016\n\006BidLow\0309 \001(\001\022\017\n\007AskHigh\030: \001(\001\022\016\n\006As" +
-      "kLow\030; \001(\001\022\024\n\014CurrencyBase\030< \001(\t\022\026\n\016Curr" +
-      "encyProfit\030= \001(\t\022\026\n\016CurrencyMargin\030> \001(\t" +
-      "\022\014\n\004Bank\030? \001(\t\022\026\n\016SymDescription\030@ \001(\t\022\014" +
-      "\n\004Isin\030A \001(\t\022\014\n\004Path\030B \001(\t\022\022\n\nSymbolName" +
-      "\030C \001(\t\"0\n\030TickValueWithSizeRequest\022\024\n\014sy" +
-      "mbol_names\030\001 \003(\t\"\177\n\026TickValueWithSizeRep" +
-      "ly\0223\n\004data\030\001 \001(\0132#.mt4_term_api.TickValu" +
-      "eWithSizeDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_ter" +
-      "m_api.ErrorH\000B\n\n\010response\"Q\n\025TickValueWi" +
-      "thSizeData\0228\n\005infos\030\001 \003(\0132).mt4_term_api" +
-      ".SymbolTickValueWithSizeInfo\"\212\001\n\033SymbolT" +
-      "ickValueWithSizeInfo\022\r\n\005index\030\001 \001(\005\022\022\n\ns" +
-      "ymbolName\030\002 \001(\t\022\026\n\016TradeTickValue\030\003 \001(\001\022" +
-      "\025\n\rTradeTickSize\030\004 \001(\001\022\031\n\021TradeContractS" +
-      "ize\030\005 \001(\001*p\n\024EnumAccountTradeMode\022\033\n\027ACC" +
-      "OUNT_TRADE_MODE_DEMO\020\000\022\036\n\032ACCOUNT_TRADE_" +
-      "MODE_CONTEST\020\001\022\033\n\027ACCOUNT_TRADE_MODE_REA" +
-      "L\020\002*\223\001\n\027EnumOpenedOrderSortType\022\031\n\025SORT_" +
-      "BY_OPEN_TIME_ASC\020\000\022\032\n\026SORT_BY_OPEN_TIME_" +
-      "DESC\020\001\022\037\n\033SORT_BY_ORDER_TICKET_ID_ASC\020\002\022" +
-      " \n\034SORT_BY_ORDER_TICKET_ID_DESC\020\003*\200\001\n\017Op" +
-      "enedOrderType\022\r\n\tOO_OP_BUY\020\000\022\016\n\nOO_OP_SE" +
-      "LL\020\001\022\022\n\016OO_OP_BUYLIMIT\020\002\022\023\n\017OO_OP_SELLLI" +
-      "MIT\020\003\022\021\n\rOO_OP_BUYSTOP\020\004\022\022\n\016OO_OP_SELLST" +
-      "OP\020\005*\375\001\n\030EnumOrderHistorySortType\022!\n\035HIS" +
-      "TORY_SORT_BY_OPEN_TIME_ASC\020\000\022\"\n\036HISTORY_" +
-      "SORT_BY_OPEN_TIME_DESC\020\001\022\"\n\036HISTORY_SORT" +
-      "_BY_CLOSE_TIME_ASC\020\002\022#\n\037HISTORY_SORT_BY_" +
-      "CLOSE_TIME_DESC\020\003\022\'\n#HISTORY_SORT_BY_ORD" +
-      "ER_TICKET_ID_ASC\020\004\022(\n$HISTORY_SORT_BY_OR" +
-      "DER_TICKET_ID_DESC\020\005*\271\001\n\031SP_ENUM_SYMBOL_" +
-      "TRADE_MODE\022\036\n\032SYMBOL_TRADE_MODE_DISABLED" +
-      "\020\000\022\036\n\032SYMBOL_TRADE_MODE_LONGONLY\020\001\022\037\n\033SY" +
-      "MBOL_TRADE_MODE_SHORTONLY\020\002\022\037\n\033SYMBOL_TR" +
-      "ADE_MODE_CLOSEONLY\020\003\022\032\n\026SYMBOL_TRADE_MOD" +
-      "E_FULL\020\004*\260\001\n\036SP_ENUM_SYMBOL_TRADE_EXECUT" +
-      "ION\022\"\n\036SYMBOL_TRADE_EXECUTION_REQUEST\020\000\022" +
-      "\"\n\036SYMBOL_TRADE_EXECUTION_INSTANT\020\001\022!\n\035S" +
-      "YMBOL_TRADE_EXECUTION_MARKET\020\002\022#\n\037SYMBOL" +
-      "_TRADE_EXECUTION_EXCHANGE\020\003*\227\001\n\027SP_ENUM_" +
-      "TRADE_CALC_MODE\022(\n$SYMBOL_TRADE_MARGINE_" +
-      "CALC_MODE_FOREX\020\000\022*\n&SYMBOL_TRADE_MARGIN" +
-      "E_CALC_MODE_FUTURES\020\001\022&\n\"SYMBOL_TRADE_MA" +
-      "RGINE_CALC_MODE_CFD\020\0022\336\005\n\rAccountHelper\022" +
-      "q\n\016AccountSummary\022#.mt4_term_api.Account" +
-      "SummaryRequest\032!.mt4_term_api.AccountSum" +
-      "maryReply\"\027\202\323\344\223\002\021\022\017/AccountSummary\022i\n\014Op" +
-      "enedOrders\022!.mt4_term_api.OpenedOrdersRe" +
-      "quest\032\037.mt4_term_api.OpenedOrdersReply\"\025" +
-      "\202\323\344\223\002\017\022\r/OpenedOrders\022\205\001\n\023OpenedOrdersTi" +
-      "ckets\022(.mt4_term_api.OpenedOrdersTickets" +
-      "Request\032&.mt4_term_api.OpenedOrdersTicke" +
-      "tsReply\"\034\202\323\344\223\002\026\022\024/OpenedOrdersTickets\022m\n" +
-      "\rOrdersHistory\022\".mt4_term_api.OrdersHist" +
-      "oryRequest\032 .mt4_term_api.OrdersHistoryR" +
-      "eply\"\026\202\323\344\223\002\020\022\016/OrdersHistory\022y\n\020SymbolPa" +
-      "ramsMany\022%.mt4_term_api.SymbolParamsMany" +
-      "Request\032#.mt4_term_api.SymbolParamsManyR" +
-      "eply\"\031\202\323\344\223\002\023\022\021/SymbolParamsMany\022}\n\021TickV" +
-      "alueWithSize\022&.mt4_term_api.TickValueWit" +
-      "hSizeRequest\032$.mt4_term_api.TickValueWit" +
-      "hSizeReply\"\032\202\323\344\223\002\024\022\022/TickValueWithSizeBB" +
-      "Z1git.mtapi.io/root/mrpc-proto.git/mt4/l" +
-      "ibraries/go\252\002\014mt4_term_apib\006proto3"
+      "c\030\025 \001(\0132\032.google.protobuf.Timestamp\022.\n\nc" +
+      "lose_time\030\021 \001(\0132\032.google.protobuf.Timest" +
+      "amp\0222\n\016close_time_utc\030\026 \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\022\023\n\013close_price\030\022 \001(\001\022\025\n\r" +
+      "account_login\030\023 \001(\003\"\360\003\n\024OrdersHistoryReq" +
+      "uest\022?\n\017input_sort_mode\030\001 \001(\0162&.mt4_term" +
+      "_api.EnumOrderHistorySortType\0223\n\ninput_f" +
+      "rom\030\002 \001(\0132\032.google.protobuf.TimestampH\000\210" +
+      "\001\001\0227\n\016input_from_utc\030\010 \001(\0132\032.google.prot" +
+      "obuf.TimestampH\001\210\001\001\0221\n\010input_to\030\003 \001(\0132\032." +
+      "google.protobuf.TimestampH\002\210\001\001\0225\n\014input_" +
+      "to_utc\030\t \001(\0132\032.google.protobuf.Timestamp" +
+      "H\003\210\001\001\022\030\n\013page_number\030\004 \001(\005H\004\210\001\001\022\033\n\016items" +
+      "_per_page\030\005 \001(\005H\005\210\001\001\022\022\n\npage_token\030\006 \001(\t" +
+      "\022\021\n\tpage_size\030\007 \001(\005B\r\n\013_input_fromB\021\n\017_i" +
+      "nput_from_utcB\013\n\t_input_toB\017\n\r_input_to_" +
+      "utcB\016\n\014_page_numberB\021\n\017_items_per_page\"C" +
+      "\n\027SymbolParamsManyRequest\022\030\n\013symbol_name" +
+      "\030\001 \001(\tH\000\210\001\001B\016\n\014_symbol_name\"}\n\025SymbolPar" +
+      "amsManyReply\0222\n\004data\030\001 \001(\0132\".mt4_term_ap" +
+      "i.SymbolParamsManyDataH\000\022$\n\005error\030\002 \001(\0132" +
+      "\023.mt4_term_api.ErrorH\000B\n\n\010response\"P\n\024Sy" +
+      "mbolParamsManyData\0228\n\014symbol_infos\030\001 \003(\013" +
+      "2\".mt4_term_api.SymbolParamsManyInfo\"\361\r\n" +
+      "\024SymbolParamsManyInfo\022\023\n\013is_selected\030\001 \001" +
+      "(\010\022\017\n\007visible\030\002 \001(\010\022\025\n\rsession_deals\030\003 \001" +
+      "(\003\022\032\n\022session_buy_orders\030\004 \001(\003\022\033\n\023sessio" +
+      "n_sell_orders\030\005 \001(\003\022\016\n\006volume\030\006 \001(\003\022\023\n\013v" +
+      "olume_high\030\007 \001(\003\022\021\n\tVolumeLow\030\010 \001(\003\022\014\n\004T" +
+      "ime\030\t \001(\003\022\017\n\007TimeUtc\030D \001(\003\022\016\n\006Digits\030\n \001" +
+      "(\005\022\023\n\013SpreadFloat\030\013 \001(\010\022\026\n\016TicksBookDept" +
+      "h\030\014 \001(\005\022<\n\rTradeCalcMode\030\r \001(\0162%.mt4_ter" +
+      "m_api.SP_ENUM_TRADE_CALC_MODE\022:\n\tTradeMo" +
+      "de\030\016 \001(\0162\'.mt4_term_api.SP_ENUM_SYMBOL_T" +
+      "RADE_MODE\022-\n\tStartTime\030\017 \001(\0132\032.google.pr" +
+      "otobuf.Timestamp\0220\n\014StartTimeUtc\030E \001(\0132\032" +
+      ".google.protobuf.Timestamp\0222\n\016Expiration" +
+      "Time\030\020 \001(\0132\032.google.protobuf.Timestamp\0225" +
+      "\n\021ExpirationTimeUtc\030F \001(\0132\032.google.proto" +
+      "buf.Timestamp\022\027\n\017TradeStopsLevel\030\021 \001(\005\022\030" +
+      "\n\020TradeFreezeLevel\030\022 \001(\005\022B\n\014TradeExeMode" +
+      "\030\023 \001(\0162,.mt4_term_api.SP_ENUM_SYMBOL_TRA" +
+      "DE_EXECUTION\022\020\n\010SwapMode\030\024 \001(\005\022\031\n\021SwapRo" +
+      "llover3Days\030\025 \001(\005\022\017\n\007TheLast\030\026 \001(\001\022\020\n\010La" +
+      "stHigh\030\027 \001(\001\022\017\n\007LastLow\030\030 \001(\001\022\r\n\005Point\030\031" +
+      " \001(\001\022\026\n\016TradeTickValue\030\032 \001(\001\022\034\n\024TradeTic" +
+      "kValueProfit\030\033 \001(\001\022\032\n\022TradeTickValueLoss" +
+      "\030\034 \001(\001\022\025\n\rTradeTickSize\030\035 \001(\001\022\031\n\021TradeCo" +
+      "ntractSize\030\036 \001(\001\022\021\n\tVolumeMin\030\037 \001(\001\022\021\n\tV" +
+      "olumeMax\030  \001(\001\022\022\n\nVolumeStep\030! \001(\001\022\023\n\013Vo" +
+      "lumeLimit\030\" \001(\001\022\020\n\010SwapLong\030# \001(\001\022\021\n\tSwa" +
+      "pShort\030$ \001(\001\022\025\n\rMarginInitial\030% \001(\001\022\031\n\021M" +
+      "arginMaintenance\030& \001(\001\022\022\n\nMarginLong\030\' \001" +
+      "(\001\022\023\n\013MarginShort\030( \001(\001\022\023\n\013MarginLimit\030)" +
+      " \001(\001\022\022\n\nMarginStop\030* \001(\001\022\027\n\017MarginStopLi" +
+      "mit\030+ \001(\001\022\025\n\rSessionVolume\030, \001(\001\022\027\n\017Sess" +
+      "ionTurnover\030- \001(\001\022\027\n\017SessionInterest\030. \001" +
+      "(\001\022\036\n\026SessionBuyOrdersVolume\030/ \001(\001\022\037\n\027Se" +
+      "ssionSellOrdersVolume\0300 \001(\001\022\023\n\013SessionOp" +
+      "en\0301 \001(\001\022\024\n\014SessionClose\0302 \001(\001\022\021\n\tSessio" +
+      "nAW\0303 \001(\001\022\036\n\026SessionPriceSettlement\0304 \001(" +
+      "\001\022\034\n\024SessionPriceLimitMin\0305 \001(\001\022\034\n\024Sessi" +
+      "onPriceLimitMax\0306 \001(\001\022\013\n\003Bid\0307 \001(\001\022\017\n\007Bi" +
+      "dHigh\0308 \001(\001\022\016\n\006BidLow\0309 \001(\001\022\017\n\007AskHigh\030:" +
+      " \001(\001\022\016\n\006AskLow\030; \001(\001\022\024\n\014CurrencyBase\030< \001" +
+      "(\t\022\026\n\016CurrencyProfit\030= \001(\t\022\026\n\016CurrencyMa" +
+      "rgin\030> \001(\t\022\014\n\004Bank\030? \001(\t\022\026\n\016SymDescripti" +
+      "on\030@ \001(\t\022\014\n\004Isin\030A \001(\t\022\014\n\004Path\030B \001(\t\022\022\n\n" +
+      "SymbolName\030C \001(\t\"0\n\030TickValueWithSizeReq" +
+      "uest\022\024\n\014symbol_names\030\001 \003(\t\"\177\n\026TickValueW" +
+      "ithSizeReply\0223\n\004data\030\001 \001(\0132#.mt4_term_ap" +
+      "i.TickValueWithSizeDataH\000\022$\n\005error\030\002 \001(\013" +
+      "2\023.mt4_term_api.ErrorH\000B\n\n\010response\"Q\n\025T" +
+      "ickValueWithSizeData\0228\n\005infos\030\001 \003(\0132).mt" +
+      "4_term_api.SymbolTickValueWithSizeInfo\"\212" +
+      "\001\n\033SymbolTickValueWithSizeInfo\022\r\n\005index\030" +
+      "\001 \001(\005\022\022\n\nsymbolName\030\002 \001(\t\022\026\n\016TradeTickVa" +
+      "lue\030\003 \001(\001\022\025\n\rTradeTickSize\030\004 \001(\001\022\031\n\021Trad" +
+      "eContractSize\030\005 \001(\001*\211\001\n\025EnumAccountMargi" +
+      "nMode\022&\n\"ACCOUNT_MARGIN_MODE_RETAIL_NETT" +
+      "ING\020\000\022 \n\034ACCOUNT_MARGIN_MODE_EXCHANGE\020\001\022" +
+      "&\n\"ACCOUNT_MARGIN_MODE_RETAIL_HEDGING\020\002*" +
+      "p\n\024EnumAccountTradeMode\022\033\n\027ACCOUNT_TRADE" +
+      "_MODE_DEMO\020\000\022\036\n\032ACCOUNT_TRADE_MODE_CONTE" +
+      "ST\020\001\022\033\n\027ACCOUNT_TRADE_MODE_REAL\020\002*\223\001\n\027En" +
+      "umOpenedOrderSortType\022\031\n\025SORT_BY_OPEN_TI" +
+      "ME_ASC\020\000\022\032\n\026SORT_BY_OPEN_TIME_DESC\020\001\022\037\n\033" +
+      "SORT_BY_ORDER_TICKET_ID_ASC\020\002\022 \n\034SORT_BY" +
+      "_ORDER_TICKET_ID_DESC\020\003*\245\001\n\017OpenedOrderT" +
+      "ype\022\r\n\tOO_OP_BUY\020\000\022\016\n\nOO_OP_SELL\020\001\022\022\n\016OO" +
+      "_OP_BUYLIMIT\020\002\022\023\n\017OO_OP_SELLLIMIT\020\003\022\021\n\rO" +
+      "O_OP_BUYSTOP\020\004\022\022\n\016OO_OP_SELLSTOP\020\005\022\021\n\rOO" +
+      "_OP_BALANCE\020\006\022\020\n\014OO_OP_CREDIT\020\007*\375\001\n\030Enum" +
+      "OrderHistorySortType\022!\n\035HISTORY_SORT_BY_" +
+      "OPEN_TIME_ASC\020\000\022\"\n\036HISTORY_SORT_BY_OPEN_" +
+      "TIME_DESC\020\001\022\"\n\036HISTORY_SORT_BY_CLOSE_TIM" +
+      "E_ASC\020\002\022#\n\037HISTORY_SORT_BY_CLOSE_TIME_DE" +
+      "SC\020\003\022\'\n#HISTORY_SORT_BY_ORDER_TICKET_ID_" +
+      "ASC\020\004\022(\n$HISTORY_SORT_BY_ORDER_TICKET_ID" +
+      "_DESC\020\005*\271\001\n\031SP_ENUM_SYMBOL_TRADE_MODE\022\036\n" +
+      "\032SYMBOL_TRADE_MODE_DISABLED\020\000\022\036\n\032SYMBOL_" +
+      "TRADE_MODE_LONGONLY\020\001\022\037\n\033SYMBOL_TRADE_MO" +
+      "DE_SHORTONLY\020\002\022\037\n\033SYMBOL_TRADE_MODE_CLOS" +
+      "EONLY\020\003\022\032\n\026SYMBOL_TRADE_MODE_FULL\020\004*\260\001\n\036" +
+      "SP_ENUM_SYMBOL_TRADE_EXECUTION\022\"\n\036SYMBOL" +
+      "_TRADE_EXECUTION_REQUEST\020\000\022\"\n\036SYMBOL_TRA" +
+      "DE_EXECUTION_INSTANT\020\001\022!\n\035SYMBOL_TRADE_E" +
+      "XECUTION_MARKET\020\002\022#\n\037SYMBOL_TRADE_EXECUT" +
+      "ION_EXCHANGE\020\003*\227\001\n\027SP_ENUM_TRADE_CALC_MO" +
+      "DE\022(\n$SYMBOL_TRADE_MARGINE_CALC_MODE_FOR" +
+      "EX\020\000\022*\n&SYMBOL_TRADE_MARGINE_CALC_MODE_F" +
+      "UTURES\020\001\022&\n\"SYMBOL_TRADE_MARGINE_CALC_MO" +
+      "DE_CFD\020\0022\336\005\n\rAccountHelper\022q\n\016AccountSum" +
+      "mary\022#.mt4_term_api.AccountSummaryReques" +
+      "t\032!.mt4_term_api.AccountSummaryReply\"\027\202\323" +
+      "\344\223\002\021\022\017/AccountSummary\022i\n\014OpenedOrders\022!." +
+      "mt4_term_api.OpenedOrdersRequest\032\037.mt4_t" +
+      "erm_api.OpenedOrdersReply\"\025\202\323\344\223\002\017\022\r/Open" +
+      "edOrders\022\205\001\n\023OpenedOrdersTickets\022(.mt4_t" +
+      "erm_api.OpenedOrdersTicketsRequest\032&.mt4" +
+      "_term_api.OpenedOrdersTicketsReply\"\034\202\323\344\223" +
+      "\002\026\022\024/OpenedOrdersTickets\022m\n\rOrdersHistor" +
+      "y\022\".mt4_term_api.OrdersHistoryRequest\032 ." +
+      "mt4_term_api.OrdersHistoryReply\"\026\202\323\344\223\002\020\022" +
+      "\016/OrdersHistory\022y\n\020SymbolParamsMany\022%.mt" +
+      "4_term_api.SymbolParamsManyRequest\032#.mt4" +
+      "_term_api.SymbolParamsManyReply\"\031\202\323\344\223\002\023\022" +
+      "\021/SymbolParamsMany\022}\n\021TickValueWithSize\022" +
+      "&.mt4_term_api.TickValueWithSizeRequest\032" +
+      "$.mt4_term_api.TickValueWithSizeReply\"\032\202" +
+      "\323\344\223\002\024\022\022/TickValueWithSizeBBZ1git.mtapi.i" +
+      "o/root/mrpc-proto.git/mt4/libraries/go\252\002" +
+      "\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -32357,7 +33128,7 @@ public final class Mt4TermApiAccountHelper {
     internal_static_mt4_term_api_AccountSummaryData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_AccountSummaryData_descriptor,
-        new java.lang.String[] { "AccountLogin", "AccountBalance", "AccountEquity", "AccountUserName", "AccountLeverage", "AccountTradeMode", "AccountCompanyName", "AccountCurrency", "ServerTime", "ServerTimeUtc", "AccountCredit", "IsInvestor", "UtcServerTimeShiftMinutes", "ServerUtcOffsetSeconds", "ServerUtcOffsetSeconds", });
+        new java.lang.String[] { "AccountLogin", "AccountBalance", "AccountEquity", "AccountUserName", "AccountLeverage", "AccountTradeMode", "AccountCompanyName", "AccountCurrency", "ServerTime", "ServerTimeUtc", "AccountCredit", "IsInvestor", "UtcServerTimeShiftMinutes", "ServerUtcOffsetSeconds", "AccountMargin", "AccountMarginFree", "AccountMarginLevel", "AccountMarginMode", "AccountTradeAllowed", "AccountTradeExpert", "ServerUtcOffsetSeconds", });
     internal_static_mt4_term_api_OpenedOrdersRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_mt4_term_api_OpenedOrdersRequest_fieldAccessorTable = new

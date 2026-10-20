@@ -284,6 +284,4540 @@ public final class Mt4TermApiGui {
     // @@protoc_insertion_point(enum_scope:mt4_term_api.GuiTwoFactorType)
   }
 
+  public interface GuiDemoFindCompaniesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoFindCompaniesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string search_text = 1;</code>
+     * @return The searchText.
+     */
+    java.lang.String getSearchText();
+    /**
+     * <code>string search_text = 1;</code>
+     * @return The bytes for searchText.
+     */
+    com.google.protobuf.ByteString
+        getSearchTextBytes();
+
+    /**
+     * <code>int32 timeout_seconds = 2;</code>
+     * @return The timeoutSeconds.
+     */
+    int getTimeoutSeconds();
+  }
+  /**
+   * <pre>
+   * Field numbers match mt4-term-native/Protos (the terminal side).
+   * </pre>
+   *
+   * Protobuf type {@code mt4_term_api.GuiDemoFindCompaniesRequest}
+   */
+  public static final class GuiDemoFindCompaniesRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.GuiDemoFindCompaniesRequest)
+      GuiDemoFindCompaniesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GuiDemoFindCompaniesRequest.newBuilder() to construct.
+    private GuiDemoFindCompaniesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GuiDemoFindCompaniesRequest() {
+      searchText_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GuiDemoFindCompaniesRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GuiDemoFindCompaniesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              searchText_ = s;
+              break;
+            }
+            case 16: {
+
+              timeoutSeconds_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.class, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.Builder.class);
+    }
+
+    public static final int SEARCH_TEXT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object searchText_;
+    /**
+     * <code>string search_text = 1;</code>
+     * @return The searchText.
+     */
+    @java.lang.Override
+    public java.lang.String getSearchText() {
+      java.lang.Object ref = searchText_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        searchText_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string search_text = 1;</code>
+     * @return The bytes for searchText.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSearchTextBytes() {
+      java.lang.Object ref = searchText_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        searchText_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMEOUT_SECONDS_FIELD_NUMBER = 2;
+    private int timeoutSeconds_;
+    /**
+     * <code>int32 timeout_seconds = 2;</code>
+     * @return The timeoutSeconds.
+     */
+    @java.lang.Override
+    public int getTimeoutSeconds() {
+      return timeoutSeconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(searchText_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, searchText_);
+      }
+      if (timeoutSeconds_ != 0) {
+        output.writeInt32(2, timeoutSeconds_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(searchText_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, searchText_);
+      }
+      if (timeoutSeconds_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, timeoutSeconds_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest other = (mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest) obj;
+
+      if (!getSearchText()
+          .equals(other.getSearchText())) return false;
+      if (getTimeoutSeconds()
+          != other.getTimeoutSeconds()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SEARCH_TEXT_FIELD_NUMBER;
+      hash = (53 * hash) + getSearchText().hashCode();
+      hash = (37 * hash) + TIMEOUT_SECONDS_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeoutSeconds();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Field numbers match mt4-term-native/Protos (the terminal side).
+     * </pre>
+     *
+     * Protobuf type {@code mt4_term_api.GuiDemoFindCompaniesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.GuiDemoFindCompaniesRequest)
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.class, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        searchText_ = "";
+
+        timeoutSeconds_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest build() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest buildPartial() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest result = new mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest(this);
+        result.searchText_ = searchText_;
+        result.timeoutSeconds_ = timeoutSeconds_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest) {
+          return mergeFrom((mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest other) {
+        if (other == mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest.getDefaultInstance()) return this;
+        if (!other.getSearchText().isEmpty()) {
+          searchText_ = other.searchText_;
+          onChanged();
+        }
+        if (other.getTimeoutSeconds() != 0) {
+          setTimeoutSeconds(other.getTimeoutSeconds());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object searchText_ = "";
+      /**
+       * <code>string search_text = 1;</code>
+       * @return The searchText.
+       */
+      public java.lang.String getSearchText() {
+        java.lang.Object ref = searchText_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          searchText_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string search_text = 1;</code>
+       * @return The bytes for searchText.
+       */
+      public com.google.protobuf.ByteString
+          getSearchTextBytes() {
+        java.lang.Object ref = searchText_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          searchText_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string search_text = 1;</code>
+       * @param value The searchText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSearchText(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        searchText_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string search_text = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSearchText() {
+        
+        searchText_ = getDefaultInstance().getSearchText();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string search_text = 1;</code>
+       * @param value The bytes for searchText to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSearchTextBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        searchText_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int timeoutSeconds_ ;
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @return The timeoutSeconds.
+       */
+      @java.lang.Override
+      public int getTimeoutSeconds() {
+        return timeoutSeconds_;
+      }
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @param value The timeoutSeconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeoutSeconds(int value) {
+        
+        timeoutSeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeoutSeconds() {
+        
+        timeoutSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.GuiDemoFindCompaniesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.GuiDemoFindCompaniesRequest)
+    private static final mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest();
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GuiDemoFindCompaniesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GuiDemoFindCompaniesRequest>() {
+      @java.lang.Override
+      public GuiDemoFindCompaniesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GuiDemoFindCompaniesRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GuiDemoFindCompaniesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GuiDemoFindCompaniesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GuiDemoFindCompaniesReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoFindCompaniesReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 result_code = 1;</code>
+     * @return The resultCode.
+     */
+    int getResultCode();
+
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany> 
+        getCompaniesList();
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    mt4_term_api.Mt4TermApiGui.GuiDemoCompany getCompanies(int index);
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    int getCompaniesCount();
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    java.util.List<? extends mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder> 
+        getCompaniesOrBuilderList();
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder getCompaniesOrBuilder(
+        int index);
+
+    /**
+     * <code>string debug_log = 3;</code>
+     * @return The debugLog.
+     */
+    java.lang.String getDebugLog();
+    /**
+     * <code>string debug_log = 3;</code>
+     * @return The bytes for debugLog.
+     */
+    com.google.protobuf.ByteString
+        getDebugLogBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.GuiDemoFindCompaniesReply}
+   */
+  public static final class GuiDemoFindCompaniesReply extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.GuiDemoFindCompaniesReply)
+      GuiDemoFindCompaniesReplyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GuiDemoFindCompaniesReply.newBuilder() to construct.
+    private GuiDemoFindCompaniesReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GuiDemoFindCompaniesReply() {
+      companies_ = java.util.Collections.emptyList();
+      debugLog_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GuiDemoFindCompaniesReply();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GuiDemoFindCompaniesReply(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              resultCode_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                companies_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiGui.GuiDemoCompany>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              companies_.add(
+                  input.readMessage(mt4_term_api.Mt4TermApiGui.GuiDemoCompany.parser(), extensionRegistry));
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              debugLog_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          companies_ = java.util.Collections.unmodifiableList(companies_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesReply_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.class, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.Builder.class);
+    }
+
+    public static final int RESULT_CODE_FIELD_NUMBER = 1;
+    private int resultCode_;
+    /**
+     * <code>int32 result_code = 1;</code>
+     * @return The resultCode.
+     */
+    @java.lang.Override
+    public int getResultCode() {
+      return resultCode_;
+    }
+
+    public static final int COMPANIES_FIELD_NUMBER = 2;
+    private java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany> companies_;
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany> getCompaniesList() {
+      return companies_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder> 
+        getCompaniesOrBuilderList() {
+      return companies_;
+    }
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    @java.lang.Override
+    public int getCompaniesCount() {
+      return companies_.size();
+    }
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoCompany getCompanies(int index) {
+      return companies_.get(index);
+    }
+    /**
+     * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+     */
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder getCompaniesOrBuilder(
+        int index) {
+      return companies_.get(index);
+    }
+
+    public static final int DEBUG_LOG_FIELD_NUMBER = 3;
+    private volatile java.lang.Object debugLog_;
+    /**
+     * <code>string debug_log = 3;</code>
+     * @return The debugLog.
+     */
+    @java.lang.Override
+    public java.lang.String getDebugLog() {
+      java.lang.Object ref = debugLog_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        debugLog_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string debug_log = 3;</code>
+     * @return The bytes for debugLog.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDebugLogBytes() {
+      java.lang.Object ref = debugLog_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        debugLog_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (resultCode_ != 0) {
+        output.writeInt32(1, resultCode_);
+      }
+      for (int i = 0; i < companies_.size(); i++) {
+        output.writeMessage(2, companies_.get(i));
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(debugLog_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, debugLog_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (resultCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, resultCode_);
+      }
+      for (int i = 0; i < companies_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, companies_.get(i));
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(debugLog_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, debugLog_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply other = (mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply) obj;
+
+      if (getResultCode()
+          != other.getResultCode()) return false;
+      if (!getCompaniesList()
+          .equals(other.getCompaniesList())) return false;
+      if (!getDebugLog()
+          .equals(other.getDebugLog())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESULT_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getResultCode();
+      if (getCompaniesCount() > 0) {
+        hash = (37 * hash) + COMPANIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCompaniesList().hashCode();
+      }
+      hash = (37 * hash) + DEBUG_LOG_FIELD_NUMBER;
+      hash = (53 * hash) + getDebugLog().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.GuiDemoFindCompaniesReply}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.GuiDemoFindCompaniesReply)
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesReply_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.class, mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getCompaniesFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        resultCode_ = 0;
+
+        if (companiesBuilder_ == null) {
+          companies_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          companiesBuilder_.clear();
+        }
+        debugLog_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply build() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply buildPartial() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply result = new mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply(this);
+        int from_bitField0_ = bitField0_;
+        result.resultCode_ = resultCode_;
+        if (companiesBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            companies_ = java.util.Collections.unmodifiableList(companies_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.companies_ = companies_;
+        } else {
+          result.companies_ = companiesBuilder_.build();
+        }
+        result.debugLog_ = debugLog_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply) {
+          return mergeFrom((mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply other) {
+        if (other == mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply.getDefaultInstance()) return this;
+        if (other.getResultCode() != 0) {
+          setResultCode(other.getResultCode());
+        }
+        if (companiesBuilder_ == null) {
+          if (!other.companies_.isEmpty()) {
+            if (companies_.isEmpty()) {
+              companies_ = other.companies_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureCompaniesIsMutable();
+              companies_.addAll(other.companies_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.companies_.isEmpty()) {
+            if (companiesBuilder_.isEmpty()) {
+              companiesBuilder_.dispose();
+              companiesBuilder_ = null;
+              companies_ = other.companies_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              companiesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCompaniesFieldBuilder() : null;
+            } else {
+              companiesBuilder_.addAllMessages(other.companies_);
+            }
+          }
+        }
+        if (!other.getDebugLog().isEmpty()) {
+          debugLog_ = other.debugLog_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int resultCode_ ;
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @return The resultCode.
+       */
+      @java.lang.Override
+      public int getResultCode() {
+        return resultCode_;
+      }
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @param value The resultCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResultCode(int value) {
+        
+        resultCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResultCode() {
+        
+        resultCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany> companies_ =
+        java.util.Collections.emptyList();
+      private void ensureCompaniesIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          companies_ = new java.util.ArrayList<mt4_term_api.Mt4TermApiGui.GuiDemoCompany>(companies_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiGui.GuiDemoCompany, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder, mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder> companiesBuilder_;
+
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany> getCompaniesList() {
+        if (companiesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(companies_);
+        } else {
+          return companiesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public int getCompaniesCount() {
+        if (companiesBuilder_ == null) {
+          return companies_.size();
+        } else {
+          return companiesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany getCompanies(int index) {
+        if (companiesBuilder_ == null) {
+          return companies_.get(index);
+        } else {
+          return companiesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder setCompanies(
+          int index, mt4_term_api.Mt4TermApiGui.GuiDemoCompany value) {
+        if (companiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompaniesIsMutable();
+          companies_.set(index, value);
+          onChanged();
+        } else {
+          companiesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder setCompanies(
+          int index, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder builderForValue) {
+        if (companiesBuilder_ == null) {
+          ensureCompaniesIsMutable();
+          companies_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          companiesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder addCompanies(mt4_term_api.Mt4TermApiGui.GuiDemoCompany value) {
+        if (companiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompaniesIsMutable();
+          companies_.add(value);
+          onChanged();
+        } else {
+          companiesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder addCompanies(
+          int index, mt4_term_api.Mt4TermApiGui.GuiDemoCompany value) {
+        if (companiesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCompaniesIsMutable();
+          companies_.add(index, value);
+          onChanged();
+        } else {
+          companiesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder addCompanies(
+          mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder builderForValue) {
+        if (companiesBuilder_ == null) {
+          ensureCompaniesIsMutable();
+          companies_.add(builderForValue.build());
+          onChanged();
+        } else {
+          companiesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder addCompanies(
+          int index, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder builderForValue) {
+        if (companiesBuilder_ == null) {
+          ensureCompaniesIsMutable();
+          companies_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          companiesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder addAllCompanies(
+          java.lang.Iterable<? extends mt4_term_api.Mt4TermApiGui.GuiDemoCompany> values) {
+        if (companiesBuilder_ == null) {
+          ensureCompaniesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, companies_);
+          onChanged();
+        } else {
+          companiesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder clearCompanies() {
+        if (companiesBuilder_ == null) {
+          companies_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          companiesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public Builder removeCompanies(int index) {
+        if (companiesBuilder_ == null) {
+          ensureCompaniesIsMutable();
+          companies_.remove(index);
+          onChanged();
+        } else {
+          companiesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder getCompaniesBuilder(
+          int index) {
+        return getCompaniesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder getCompaniesOrBuilder(
+          int index) {
+        if (companiesBuilder_ == null) {
+          return companies_.get(index);  } else {
+          return companiesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public java.util.List<? extends mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder> 
+           getCompaniesOrBuilderList() {
+        if (companiesBuilder_ != null) {
+          return companiesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(companies_);
+        }
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder addCompaniesBuilder() {
+        return getCompaniesFieldBuilder().addBuilder(
+            mt4_term_api.Mt4TermApiGui.GuiDemoCompany.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder addCompaniesBuilder(
+          int index) {
+        return getCompaniesFieldBuilder().addBuilder(
+            index, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .mt4_term_api.GuiDemoCompany companies = 2;</code>
+       */
+      public java.util.List<mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder> 
+           getCompaniesBuilderList() {
+        return getCompaniesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          mt4_term_api.Mt4TermApiGui.GuiDemoCompany, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder, mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder> 
+          getCompaniesFieldBuilder() {
+        if (companiesBuilder_ == null) {
+          companiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              mt4_term_api.Mt4TermApiGui.GuiDemoCompany, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder, mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder>(
+                  companies_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          companies_ = null;
+        }
+        return companiesBuilder_;
+      }
+
+      private java.lang.Object debugLog_ = "";
+      /**
+       * <code>string debug_log = 3;</code>
+       * @return The debugLog.
+       */
+      public java.lang.String getDebugLog() {
+        java.lang.Object ref = debugLog_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          debugLog_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string debug_log = 3;</code>
+       * @return The bytes for debugLog.
+       */
+      public com.google.protobuf.ByteString
+          getDebugLogBytes() {
+        java.lang.Object ref = debugLog_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          debugLog_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string debug_log = 3;</code>
+       * @param value The debugLog to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDebugLog(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        debugLog_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string debug_log = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDebugLog() {
+        
+        debugLog_ = getDefaultInstance().getDebugLog();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string debug_log = 3;</code>
+       * @param value The bytes for debugLog to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDebugLogBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        debugLog_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.GuiDemoFindCompaniesReply)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.GuiDemoFindCompaniesReply)
+    private static final mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply();
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GuiDemoFindCompaniesReply>
+        PARSER = new com.google.protobuf.AbstractParser<GuiDemoFindCompaniesReply>() {
+      @java.lang.Override
+      public GuiDemoFindCompaniesReply parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GuiDemoFindCompaniesReply(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GuiDemoFindCompaniesReply> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GuiDemoFindCompaniesReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoFindCompaniesReply getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GuiDemoCompanyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoCompany)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string short_name = 2;</code>
+     * @return The shortName.
+     */
+    java.lang.String getShortName();
+    /**
+     * <code>string short_name = 2;</code>
+     * @return The bytes for shortName.
+     */
+    com.google.protobuf.ByteString
+        getShortNameBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.GuiDemoCompany}
+   */
+  public static final class GuiDemoCompany extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.GuiDemoCompany)
+      GuiDemoCompanyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GuiDemoCompany.newBuilder() to construct.
+    private GuiDemoCompany(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GuiDemoCompany() {
+      name_ = "";
+      shortName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GuiDemoCompany();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GuiDemoCompany(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              shortName_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoCompany_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoCompany_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiGui.GuiDemoCompany.class, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder.class);
+    }
+
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    @java.lang.Override
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SHORT_NAME_FIELD_NUMBER = 2;
+    private volatile java.lang.Object shortName_;
+    /**
+     * <code>string short_name = 2;</code>
+     * @return The shortName.
+     */
+    @java.lang.Override
+    public java.lang.String getShortName() {
+      java.lang.Object ref = shortName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        shortName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string short_name = 2;</code>
+     * @return The bytes for shortName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getShortNameBytes() {
+      java.lang.Object ref = shortName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        shortName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(shortName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, shortName_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(shortName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, shortName_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiGui.GuiDemoCompany)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiGui.GuiDemoCompany other = (mt4_term_api.Mt4TermApiGui.GuiDemoCompany) obj;
+
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getShortName()
+          .equals(other.getShortName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + SHORT_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getShortName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiGui.GuiDemoCompany prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.GuiDemoCompany}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.GuiDemoCompany)
+        mt4_term_api.Mt4TermApiGui.GuiDemoCompanyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoCompany_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoCompany_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiGui.GuiDemoCompany.class, mt4_term_api.Mt4TermApiGui.GuiDemoCompany.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiGui.GuiDemoCompany.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        name_ = "";
+
+        shortName_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoCompany_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiGui.GuiDemoCompany.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany build() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoCompany result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoCompany buildPartial() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoCompany result = new mt4_term_api.Mt4TermApiGui.GuiDemoCompany(this);
+        result.name_ = name_;
+        result.shortName_ = shortName_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiGui.GuiDemoCompany) {
+          return mergeFrom((mt4_term_api.Mt4TermApiGui.GuiDemoCompany)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiGui.GuiDemoCompany other) {
+        if (other == mt4_term_api.Mt4TermApiGui.GuiDemoCompany.getDefaultInstance()) return this;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getShortName().isEmpty()) {
+          shortName_ = other.shortName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiGui.GuiDemoCompany parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiGui.GuiDemoCompany) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 1;</code>
+       * @return The name.
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return The bytes for name.
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 1;</code>
+       * @param value The bytes for name to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object shortName_ = "";
+      /**
+       * <code>string short_name = 2;</code>
+       * @return The shortName.
+       */
+      public java.lang.String getShortName() {
+        java.lang.Object ref = shortName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          shortName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string short_name = 2;</code>
+       * @return The bytes for shortName.
+       */
+      public com.google.protobuf.ByteString
+          getShortNameBytes() {
+        java.lang.Object ref = shortName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          shortName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string short_name = 2;</code>
+       * @param value The shortName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setShortName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        shortName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string short_name = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearShortName() {
+        
+        shortName_ = getDefaultInstance().getShortName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string short_name = 2;</code>
+       * @param value The bytes for shortName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setShortNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        shortName_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.GuiDemoCompany)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.GuiDemoCompany)
+    private static final mt4_term_api.Mt4TermApiGui.GuiDemoCompany DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiGui.GuiDemoCompany();
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoCompany getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GuiDemoCompany>
+        PARSER = new com.google.protobuf.AbstractParser<GuiDemoCompany>() {
+      @java.lang.Override
+      public GuiDemoCompany parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GuiDemoCompany(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GuiDemoCompany> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GuiDemoCompany> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoCompany getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GuiDemoServersAndTypesRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoServersAndTypesRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string company_name = 1;</code>
+     * @return The companyName.
+     */
+    java.lang.String getCompanyName();
+    /**
+     * <code>string company_name = 1;</code>
+     * @return The bytes for companyName.
+     */
+    com.google.protobuf.ByteString
+        getCompanyNameBytes();
+
+    /**
+     * <code>int32 timeout_seconds = 2;</code>
+     * @return The timeoutSeconds.
+     */
+    int getTimeoutSeconds();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.GuiDemoServersAndTypesRequest}
+   */
+  public static final class GuiDemoServersAndTypesRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.GuiDemoServersAndTypesRequest)
+      GuiDemoServersAndTypesRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GuiDemoServersAndTypesRequest.newBuilder() to construct.
+    private GuiDemoServersAndTypesRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GuiDemoServersAndTypesRequest() {
+      companyName_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GuiDemoServersAndTypesRequest();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GuiDemoServersAndTypesRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              companyName_ = s;
+              break;
+            }
+            case 16: {
+
+              timeoutSeconds_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.class, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.Builder.class);
+    }
+
+    public static final int COMPANY_NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object companyName_;
+    /**
+     * <code>string company_name = 1;</code>
+     * @return The companyName.
+     */
+    @java.lang.Override
+    public java.lang.String getCompanyName() {
+      java.lang.Object ref = companyName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        companyName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string company_name = 1;</code>
+     * @return The bytes for companyName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCompanyNameBytes() {
+      java.lang.Object ref = companyName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        companyName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMEOUT_SECONDS_FIELD_NUMBER = 2;
+    private int timeoutSeconds_;
+    /**
+     * <code>int32 timeout_seconds = 2;</code>
+     * @return The timeoutSeconds.
+     */
+    @java.lang.Override
+    public int getTimeoutSeconds() {
+      return timeoutSeconds_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(companyName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, companyName_);
+      }
+      if (timeoutSeconds_ != 0) {
+        output.writeInt32(2, timeoutSeconds_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(companyName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, companyName_);
+      }
+      if (timeoutSeconds_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, timeoutSeconds_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest other = (mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest) obj;
+
+      if (!getCompanyName()
+          .equals(other.getCompanyName())) return false;
+      if (getTimeoutSeconds()
+          != other.getTimeoutSeconds()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + COMPANY_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getCompanyName().hashCode();
+      hash = (37 * hash) + TIMEOUT_SECONDS_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeoutSeconds();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.GuiDemoServersAndTypesRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.GuiDemoServersAndTypesRequest)
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.class, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        companyName_ = "";
+
+        timeoutSeconds_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest build() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest buildPartial() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest result = new mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest(this);
+        result.companyName_ = companyName_;
+        result.timeoutSeconds_ = timeoutSeconds_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest) {
+          return mergeFrom((mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest other) {
+        if (other == mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest.getDefaultInstance()) return this;
+        if (!other.getCompanyName().isEmpty()) {
+          companyName_ = other.companyName_;
+          onChanged();
+        }
+        if (other.getTimeoutSeconds() != 0) {
+          setTimeoutSeconds(other.getTimeoutSeconds());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object companyName_ = "";
+      /**
+       * <code>string company_name = 1;</code>
+       * @return The companyName.
+       */
+      public java.lang.String getCompanyName() {
+        java.lang.Object ref = companyName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          companyName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string company_name = 1;</code>
+       * @return The bytes for companyName.
+       */
+      public com.google.protobuf.ByteString
+          getCompanyNameBytes() {
+        java.lang.Object ref = companyName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          companyName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string company_name = 1;</code>
+       * @param value The companyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCompanyName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        companyName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string company_name = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCompanyName() {
+        
+        companyName_ = getDefaultInstance().getCompanyName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string company_name = 1;</code>
+       * @param value The bytes for companyName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCompanyNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        companyName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int timeoutSeconds_ ;
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @return The timeoutSeconds.
+       */
+      @java.lang.Override
+      public int getTimeoutSeconds() {
+        return timeoutSeconds_;
+      }
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @param value The timeoutSeconds to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeoutSeconds(int value) {
+        
+        timeoutSeconds_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 timeout_seconds = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeoutSeconds() {
+        
+        timeoutSeconds_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.GuiDemoServersAndTypesRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.GuiDemoServersAndTypesRequest)
+    private static final mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest();
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GuiDemoServersAndTypesRequest>
+        PARSER = new com.google.protobuf.AbstractParser<GuiDemoServersAndTypesRequest>() {
+      @java.lang.Override
+      public GuiDemoServersAndTypesRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GuiDemoServersAndTypesRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GuiDemoServersAndTypesRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GuiDemoServersAndTypesRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface GuiDemoServersAndTypesReplyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoServersAndTypesReply)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 result_code = 1;</code>
+     * @return The resultCode.
+     */
+    int getResultCode();
+
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @return A list containing the servers.
+     */
+    java.util.List<java.lang.String>
+        getServersList();
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @return The count of servers.
+     */
+    int getServersCount();
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @param index The index of the element to return.
+     * @return The servers at the given index.
+     */
+    java.lang.String getServers(int index);
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the servers at the given index.
+     */
+    com.google.protobuf.ByteString
+        getServersBytes(int index);
+
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @return A list containing the accountTypes.
+     */
+    java.util.List<java.lang.String>
+        getAccountTypesList();
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @return The count of accountTypes.
+     */
+    int getAccountTypesCount();
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @param index The index of the element to return.
+     * @return The accountTypes at the given index.
+     */
+    java.lang.String getAccountTypes(int index);
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the accountTypes at the given index.
+     */
+    com.google.protobuf.ByteString
+        getAccountTypesBytes(int index);
+
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @return A list containing the deposits.
+     */
+    java.util.List<java.lang.String>
+        getDepositsList();
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @return The count of deposits.
+     */
+    int getDepositsCount();
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @param index The index of the element to return.
+     * @return The deposits at the given index.
+     */
+    java.lang.String getDeposits(int index);
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deposits at the given index.
+     */
+    com.google.protobuf.ByteString
+        getDepositsBytes(int index);
+
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @return A list containing the leverages.
+     */
+    java.util.List<java.lang.String>
+        getLeveragesList();
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @return The count of leverages.
+     */
+    int getLeveragesCount();
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @param index The index of the element to return.
+     * @return The leverages at the given index.
+     */
+    java.lang.String getLeverages(int index);
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the leverages at the given index.
+     */
+    com.google.protobuf.ByteString
+        getLeveragesBytes(int index);
+
+    /**
+     * <code>string debug_log = 6;</code>
+     * @return The debugLog.
+     */
+    java.lang.String getDebugLog();
+    /**
+     * <code>string debug_log = 6;</code>
+     * @return The bytes for debugLog.
+     */
+    com.google.protobuf.ByteString
+        getDebugLogBytes();
+  }
+  /**
+   * Protobuf type {@code mt4_term_api.GuiDemoServersAndTypesReply}
+   */
+  public static final class GuiDemoServersAndTypesReply extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:mt4_term_api.GuiDemoServersAndTypesReply)
+      GuiDemoServersAndTypesReplyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GuiDemoServersAndTypesReply.newBuilder() to construct.
+    private GuiDemoServersAndTypesReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GuiDemoServersAndTypesReply() {
+      servers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      accountTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      deposits_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      leverages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      debugLog_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new GuiDemoServersAndTypesReply();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GuiDemoServersAndTypesReply(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              resultCode_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                servers_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              servers_.add(s);
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                accountTypes_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              accountTypes_.add(s);
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                deposits_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              deposits_.add(s);
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+                leverages_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              leverages_.add(s);
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              debugLog_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          servers_ = servers_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          accountTypes_ = accountTypes_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+          deposits_ = deposits_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000008) != 0)) {
+          leverages_ = leverages_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesReply_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.class, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.Builder.class);
+    }
+
+    public static final int RESULT_CODE_FIELD_NUMBER = 1;
+    private int resultCode_;
+    /**
+     * <code>int32 result_code = 1;</code>
+     * @return The resultCode.
+     */
+    @java.lang.Override
+    public int getResultCode() {
+      return resultCode_;
+    }
+
+    public static final int SERVERS_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList servers_;
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @return A list containing the servers.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getServersList() {
+      return servers_;
+    }
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @return The count of servers.
+     */
+    public int getServersCount() {
+      return servers_.size();
+    }
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @param index The index of the element to return.
+     * @return The servers at the given index.
+     */
+    public java.lang.String getServers(int index) {
+      return servers_.get(index);
+    }
+    /**
+     * <code>repeated string servers = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the servers at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getServersBytes(int index) {
+      return servers_.getByteString(index);
+    }
+
+    public static final int ACCOUNT_TYPES_FIELD_NUMBER = 3;
+    private com.google.protobuf.LazyStringList accountTypes_;
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @return A list containing the accountTypes.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getAccountTypesList() {
+      return accountTypes_;
+    }
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @return The count of accountTypes.
+     */
+    public int getAccountTypesCount() {
+      return accountTypes_.size();
+    }
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @param index The index of the element to return.
+     * @return The accountTypes at the given index.
+     */
+    public java.lang.String getAccountTypes(int index) {
+      return accountTypes_.get(index);
+    }
+    /**
+     * <code>repeated string account_types = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the accountTypes at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getAccountTypesBytes(int index) {
+      return accountTypes_.getByteString(index);
+    }
+
+    public static final int DEPOSITS_FIELD_NUMBER = 4;
+    private com.google.protobuf.LazyStringList deposits_;
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @return A list containing the deposits.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getDepositsList() {
+      return deposits_;
+    }
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @return The count of deposits.
+     */
+    public int getDepositsCount() {
+      return deposits_.size();
+    }
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @param index The index of the element to return.
+     * @return The deposits at the given index.
+     */
+    public java.lang.String getDeposits(int index) {
+      return deposits_.get(index);
+    }
+    /**
+     * <code>repeated string deposits = 4;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the deposits at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getDepositsBytes(int index) {
+      return deposits_.getByteString(index);
+    }
+
+    public static final int LEVERAGES_FIELD_NUMBER = 5;
+    private com.google.protobuf.LazyStringList leverages_;
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @return A list containing the leverages.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getLeveragesList() {
+      return leverages_;
+    }
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @return The count of leverages.
+     */
+    public int getLeveragesCount() {
+      return leverages_.size();
+    }
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @param index The index of the element to return.
+     * @return The leverages at the given index.
+     */
+    public java.lang.String getLeverages(int index) {
+      return leverages_.get(index);
+    }
+    /**
+     * <code>repeated string leverages = 5;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the leverages at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getLeveragesBytes(int index) {
+      return leverages_.getByteString(index);
+    }
+
+    public static final int DEBUG_LOG_FIELD_NUMBER = 6;
+    private volatile java.lang.Object debugLog_;
+    /**
+     * <code>string debug_log = 6;</code>
+     * @return The debugLog.
+     */
+    @java.lang.Override
+    public java.lang.String getDebugLog() {
+      java.lang.Object ref = debugLog_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        debugLog_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string debug_log = 6;</code>
+     * @return The bytes for debugLog.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDebugLogBytes() {
+      java.lang.Object ref = debugLog_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        debugLog_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (resultCode_ != 0) {
+        output.writeInt32(1, resultCode_);
+      }
+      for (int i = 0; i < servers_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, servers_.getRaw(i));
+      }
+      for (int i = 0; i < accountTypes_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accountTypes_.getRaw(i));
+      }
+      for (int i = 0; i < deposits_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, deposits_.getRaw(i));
+      }
+      for (int i = 0; i < leverages_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, leverages_.getRaw(i));
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(debugLog_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, debugLog_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (resultCode_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, resultCode_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < servers_.size(); i++) {
+          dataSize += computeStringSizeNoTag(servers_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getServersList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < accountTypes_.size(); i++) {
+          dataSize += computeStringSizeNoTag(accountTypes_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getAccountTypesList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < deposits_.size(); i++) {
+          dataSize += computeStringSizeNoTag(deposits_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getDepositsList().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < leverages_.size(); i++) {
+          dataSize += computeStringSizeNoTag(leverages_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getLeveragesList().size();
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(debugLog_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, debugLog_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply)) {
+        return super.equals(obj);
+      }
+      mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply other = (mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply) obj;
+
+      if (getResultCode()
+          != other.getResultCode()) return false;
+      if (!getServersList()
+          .equals(other.getServersList())) return false;
+      if (!getAccountTypesList()
+          .equals(other.getAccountTypesList())) return false;
+      if (!getDepositsList()
+          .equals(other.getDepositsList())) return false;
+      if (!getLeveragesList()
+          .equals(other.getLeveragesList())) return false;
+      if (!getDebugLog()
+          .equals(other.getDebugLog())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RESULT_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getResultCode();
+      if (getServersCount() > 0) {
+        hash = (37 * hash) + SERVERS_FIELD_NUMBER;
+        hash = (53 * hash) + getServersList().hashCode();
+      }
+      if (getAccountTypesCount() > 0) {
+        hash = (37 * hash) + ACCOUNT_TYPES_FIELD_NUMBER;
+        hash = (53 * hash) + getAccountTypesList().hashCode();
+      }
+      if (getDepositsCount() > 0) {
+        hash = (37 * hash) + DEPOSITS_FIELD_NUMBER;
+        hash = (53 * hash) + getDepositsList().hashCode();
+      }
+      if (getLeveragesCount() > 0) {
+        hash = (37 * hash) + LEVERAGES_FIELD_NUMBER;
+        hash = (53 * hash) + getLeveragesList().hashCode();
+      }
+      hash = (37 * hash) + DEBUG_LOG_FIELD_NUMBER;
+      hash = (53 * hash) + getDebugLog().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code mt4_term_api.GuiDemoServersAndTypesReply}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:mt4_term_api.GuiDemoServersAndTypesReply)
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesReply_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.class, mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.Builder.class);
+      }
+
+      // Construct using mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        resultCode_ = 0;
+
+        servers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        accountTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        deposits_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        leverages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        debugLog_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return mt4_term_api.Mt4TermApiGui.internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply getDefaultInstanceForType() {
+        return mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply build() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply buildPartial() {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply result = new mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply(this);
+        int from_bitField0_ = bitField0_;
+        result.resultCode_ = resultCode_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          servers_ = servers_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.servers_ = servers_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          accountTypes_ = accountTypes_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.accountTypes_ = accountTypes_;
+        if (((bitField0_ & 0x00000004) != 0)) {
+          deposits_ = deposits_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.deposits_ = deposits_;
+        if (((bitField0_ & 0x00000008) != 0)) {
+          leverages_ = leverages_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.leverages_ = leverages_;
+        result.debugLog_ = debugLog_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply) {
+          return mergeFrom((mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply other) {
+        if (other == mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply.getDefaultInstance()) return this;
+        if (other.getResultCode() != 0) {
+          setResultCode(other.getResultCode());
+        }
+        if (!other.servers_.isEmpty()) {
+          if (servers_.isEmpty()) {
+            servers_ = other.servers_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureServersIsMutable();
+            servers_.addAll(other.servers_);
+          }
+          onChanged();
+        }
+        if (!other.accountTypes_.isEmpty()) {
+          if (accountTypes_.isEmpty()) {
+            accountTypes_ = other.accountTypes_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureAccountTypesIsMutable();
+            accountTypes_.addAll(other.accountTypes_);
+          }
+          onChanged();
+        }
+        if (!other.deposits_.isEmpty()) {
+          if (deposits_.isEmpty()) {
+            deposits_ = other.deposits_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureDepositsIsMutable();
+            deposits_.addAll(other.deposits_);
+          }
+          onChanged();
+        }
+        if (!other.leverages_.isEmpty()) {
+          if (leverages_.isEmpty()) {
+            leverages_ = other.leverages_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureLeveragesIsMutable();
+            leverages_.addAll(other.leverages_);
+          }
+          onChanged();
+        }
+        if (!other.getDebugLog().isEmpty()) {
+          debugLog_ = other.debugLog_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int resultCode_ ;
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @return The resultCode.
+       */
+      @java.lang.Override
+      public int getResultCode() {
+        return resultCode_;
+      }
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @param value The resultCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResultCode(int value) {
+        
+        resultCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 result_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResultCode() {
+        
+        resultCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList servers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureServersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          servers_ = new com.google.protobuf.LazyStringArrayList(servers_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @return A list containing the servers.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getServersList() {
+        return servers_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @return The count of servers.
+       */
+      public int getServersCount() {
+        return servers_.size();
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param index The index of the element to return.
+       * @return The servers at the given index.
+       */
+      public java.lang.String getServers(int index) {
+        return servers_.get(index);
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the servers at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getServersBytes(int index) {
+        return servers_.getByteString(index);
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The servers to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServers(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureServersIsMutable();
+        servers_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param value The servers to add.
+       * @return This builder for chaining.
+       */
+      public Builder addServers(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureServersIsMutable();
+        servers_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param values The servers to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllServers(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureServersIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, servers_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServers() {
+        servers_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string servers = 2;</code>
+       * @param value The bytes of the servers to add.
+       * @return This builder for chaining.
+       */
+      public Builder addServersBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureServersIsMutable();
+        servers_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList accountTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureAccountTypesIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          accountTypes_ = new com.google.protobuf.LazyStringArrayList(accountTypes_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @return A list containing the accountTypes.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getAccountTypesList() {
+        return accountTypes_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @return The count of accountTypes.
+       */
+      public int getAccountTypesCount() {
+        return accountTypes_.size();
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param index The index of the element to return.
+       * @return The accountTypes at the given index.
+       */
+      public java.lang.String getAccountTypes(int index) {
+        return accountTypes_.get(index);
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the accountTypes at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getAccountTypesBytes(int index) {
+        return accountTypes_.getByteString(index);
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The accountTypes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccountTypes(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAccountTypesIsMutable();
+        accountTypes_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param value The accountTypes to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAccountTypes(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAccountTypesIsMutable();
+        accountTypes_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param values The accountTypes to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllAccountTypes(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureAccountTypesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, accountTypes_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccountTypes() {
+        accountTypes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string account_types = 3;</code>
+       * @param value The bytes of the accountTypes to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAccountTypesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureAccountTypesIsMutable();
+        accountTypes_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList deposits_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureDepositsIsMutable() {
+        if (!((bitField0_ & 0x00000004) != 0)) {
+          deposits_ = new com.google.protobuf.LazyStringArrayList(deposits_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @return A list containing the deposits.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getDepositsList() {
+        return deposits_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @return The count of deposits.
+       */
+      public int getDepositsCount() {
+        return deposits_.size();
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param index The index of the element to return.
+       * @return The deposits at the given index.
+       */
+      public java.lang.String getDeposits(int index) {
+        return deposits_.get(index);
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the deposits at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getDepositsBytes(int index) {
+        return deposits_.getByteString(index);
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The deposits to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeposits(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDepositsIsMutable();
+        deposits_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param value The deposits to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDeposits(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureDepositsIsMutable();
+        deposits_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param values The deposits to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDeposits(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureDepositsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, deposits_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeposits() {
+        deposits_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string deposits = 4;</code>
+       * @param value The bytes of the deposits to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDepositsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureDepositsIsMutable();
+        deposits_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList leverages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureLeveragesIsMutable() {
+        if (!((bitField0_ & 0x00000008) != 0)) {
+          leverages_ = new com.google.protobuf.LazyStringArrayList(leverages_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @return A list containing the leverages.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getLeveragesList() {
+        return leverages_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @return The count of leverages.
+       */
+      public int getLeveragesCount() {
+        return leverages_.size();
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param index The index of the element to return.
+       * @return The leverages at the given index.
+       */
+      public java.lang.String getLeverages(int index) {
+        return leverages_.get(index);
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the leverages at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getLeveragesBytes(int index) {
+        return leverages_.getByteString(index);
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The leverages to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLeverages(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLeveragesIsMutable();
+        leverages_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param value The leverages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addLeverages(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLeveragesIsMutable();
+        leverages_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param values The leverages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllLeverages(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureLeveragesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, leverages_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLeverages() {
+        leverages_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string leverages = 5;</code>
+       * @param value The bytes of the leverages to add.
+       * @return This builder for chaining.
+       */
+      public Builder addLeveragesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureLeveragesIsMutable();
+        leverages_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object debugLog_ = "";
+      /**
+       * <code>string debug_log = 6;</code>
+       * @return The debugLog.
+       */
+      public java.lang.String getDebugLog() {
+        java.lang.Object ref = debugLog_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          debugLog_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string debug_log = 6;</code>
+       * @return The bytes for debugLog.
+       */
+      public com.google.protobuf.ByteString
+          getDebugLogBytes() {
+        java.lang.Object ref = debugLog_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          debugLog_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string debug_log = 6;</code>
+       * @param value The debugLog to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDebugLog(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        debugLog_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string debug_log = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDebugLog() {
+        
+        debugLog_ = getDefaultInstance().getDebugLog();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string debug_log = 6;</code>
+       * @param value The bytes for debugLog to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDebugLogBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        debugLog_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:mt4_term_api.GuiDemoServersAndTypesReply)
+    }
+
+    // @@protoc_insertion_point(class_scope:mt4_term_api.GuiDemoServersAndTypesReply)
+    private static final mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply();
+    }
+
+    public static mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GuiDemoServersAndTypesReply>
+        PARSER = new com.google.protobuf.AbstractParser<GuiDemoServersAndTypesReply>() {
+      @java.lang.Override
+      public GuiDemoServersAndTypesReply parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GuiDemoServersAndTypesReply(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GuiDemoServersAndTypesReply> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GuiDemoServersAndTypesReply> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public mt4_term_api.Mt4TermApiGui.GuiDemoServersAndTypesReply getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface GuiDemoOpenAccountRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:mt4_term_api.GuiDemoOpenAccountRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -22423,6 +26957,31 @@ java.lang.String defaultValue);
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_GuiDemoFindCompaniesReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_GuiDemoCompany_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_GuiDemoCompany_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mt4_term_api_GuiDemoServersAndTypesReply_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_mt4_term_api_GuiDemoOpenAccountRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -22541,149 +27100,196 @@ java.lang.String defaultValue);
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\026mt4-term-api-gui.proto\022\014mt4_term_api\"\260" +
-      "\001\n\031GuiDemoOpenAccountRequest\022\017\n\007company\030" +
-      "\001 \001(\t\022\022\n\nfirst_name\030\002 \001(\t\022\021\n\tlast_name\030\003" +
-      " \001(\t\022\r\n\005email\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\016\n\006se" +
-      "rver\030\006 \001(\t\022\024\n\014account_type\030\007 \001(\t\022\027\n\017time" +
-      "out_seconds\030\010 \001(\005\"\204\001\n\027GuiDemoOpenAccount" +
-      "Reply\022\023\n\013result_code\030\001 \001(\005\022\r\n\005login\030\002 \001(" +
-      "\t\022\020\n\010password\030\003 \001(\t\022\020\n\010investor\030\004 \001(\t\022\016\n" +
-      "\006server\030\005 \001(\t\022\021\n\tdebug_log\030\006 \001(\t\"\375\003\n\037Gui" +
-      "DemoInteractiveClientMessage\022\022\n\nsession_" +
-      "id\030\001 \001(\t\022G\n\016search_company\030\002 \001(\0132-.mt4_t" +
-      "erm_api.GuiDemoInteractiveSearchCompanyH" +
-      "\000\022G\n\016select_company\030\003 \001(\0132-.mt4_term_api" +
-      ".GuiDemoInteractiveSelectCompanyH\000\022A\n\013su" +
-      "bmit_form\030\004 \001(\0132*.mt4_term_api.GuiDemoIn" +
-      "teractiveSubmitFormH\000\022L\n\021submit_two_fact" +
-      "or\030\005 \001(\0132/.mt4_term_api.GuiDemoInteracti" +
-      "veSubmitTwoFactorH\000\022G\n\016cancel_session\030\006 " +
-      "\001(\0132-.mt4_term_api.GuiDemoInteractiveCan" +
-      "celSessionH\000\022O\n\022request_screenshot\030\007 \001(\013" +
-      "21.mt4_term_api.GuiDemoInteractiveReques" +
-      "tScreenshotH\000B\t\n\007payload\"P\n\037GuiDemoInter" +
-      "activeSearchCompany\022\024\n\014search_query\030\001 \001(" +
-      "\t\022\027\n\017timeout_seconds\030\002 \001(\005\"y\n\037GuiDemoInt" +
-      "eractiveSelectCompany\022\025\n\rcompany_index\030\001" +
-      " \001(\005\022\024\n\014company_name\030\002 \001(\t\022\023\n\013server_nam" +
-      "e\030\003 \001(\t\022\024\n\014account_mode\030\004 \001(\005\"\311\002\n\034GuiDem" +
-      "oInteractiveSubmitForm\022F\n\006fields\030\001 \003(\01326" +
-      ".mt4_term_api.GuiDemoInteractiveSubmitFo" +
-      "rm.FieldsEntry\022_\n\023dropdown_selections\030\002 " +
-      "\003(\0132B.mt4_term_api.GuiDemoInteractiveSub" +
-      "mitForm.DropdownSelectionsEntry\022\026\n\016agree" +
-      "_to_terms\030\003 \001(\010\032-\n\013FieldsEntry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0329\n\027DropdownSelect" +
-      "ionsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
-      "\001\"1\n!GuiDemoInteractiveSubmitTwoFactor\022\014" +
-      "\n\004code\030\001 \001(\t\"1\n\037GuiDemoInteractiveCancel" +
-      "Session\022\016\n\006reason\030\001 \001(\t\"2\n#GuiDemoIntera" +
-      "ctiveRequestScreenshot\022\013\n\003tag\030\001 \001(\t\"\252\004\n\037" +
-      "GuiDemoInteractiveServerMessage\022\022\n\nsessi" +
-      "on_id\030\001 \001(\t\022\024\n\014timestamp_ms\030\002 \001(\003\022C\n\014com" +
-      "pany_list\030\003 \001(\0132+.mt4_term_api.GuiDemoIn" +
-      "teractiveCompanyListH\000\022A\n\013form_schema\030\004 " +
-      "\001(\0132*.mt4_term_api.GuiDemoInteractiveFor" +
-      "mSchemaH\000\022R\n\024two_factor_challenge\030\005 \001(\0132" +
-      "2.mt4_term_api.GuiDemoInteractiveTwoFact" +
-      "orChallengeH\000\022>\n\tcompleted\030\006 \001(\0132).mt4_t" +
-      "erm_api.GuiDemoInteractiveCompletedH\000\022<\n" +
-      "\010progress\030\007 \001(\0132(.mt4_term_api.GuiDemoIn" +
-      "teractiveProgressH\000\0226\n\005error\030\010 \001(\0132%.mt4" +
-      "_term_api.GuiDemoInteractiveErrorH\000\022@\n\ns" +
-      "creenshot\030\t \001(\0132*.mt4_term_api.GuiDemoIn" +
-      "teractiveScreenshotH\000B\t\n\007payload\"j\n\035GuiD" +
-      "emoInteractiveCompanyItem\022\r\n\005index\030\001 \001(\005" +
+      "\n\026mt4-term-api-gui.proto\022\014mt4_term_api\"K" +
+      "\n\033GuiDemoFindCompaniesRequest\022\023\n\013search_" +
+      "text\030\001 \001(\t\022\027\n\017timeout_seconds\030\002 \001(\005\"t\n\031G" +
+      "uiDemoFindCompaniesReply\022\023\n\013result_code\030" +
+      "\001 \001(\005\022/\n\tcompanies\030\002 \003(\0132\034.mt4_term_api." +
+      "GuiDemoCompany\022\021\n\tdebug_log\030\003 \001(\t\"2\n\016Gui" +
+      "DemoCompany\022\014\n\004name\030\001 \001(\t\022\022\n\nshort_name\030" +
+      "\002 \001(\t\"N\n\035GuiDemoServersAndTypesRequest\022\024" +
+      "\n\014company_name\030\001 \001(\t\022\027\n\017timeout_seconds\030" +
+      "\002 \001(\005\"\222\001\n\033GuiDemoServersAndTypesReply\022\023\n" +
+      "\013result_code\030\001 \001(\005\022\017\n\007servers\030\002 \003(\t\022\025\n\ra" +
+      "ccount_types\030\003 \003(\t\022\020\n\010deposits\030\004 \003(\t\022\021\n\t" +
+      "leverages\030\005 \003(\t\022\021\n\tdebug_log\030\006 \001(\t\"\260\001\n\031G" +
+      "uiDemoOpenAccountRequest\022\017\n\007company\030\001 \001(" +
+      "\t\022\022\n\nfirst_name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t" +
+      "\022\r\n\005email\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\016\n\006server" +
+      "\030\006 \001(\t\022\024\n\014account_type\030\007 \001(\t\022\027\n\017timeout_" +
+      "seconds\030\010 \001(\005\"\204\001\n\027GuiDemoOpenAccountRepl" +
+      "y\022\023\n\013result_code\030\001 \001(\005\022\r\n\005login\030\002 \001(\t\022\020\n" +
+      "\010password\030\003 \001(\t\022\020\n\010investor\030\004 \001(\t\022\016\n\006ser" +
+      "ver\030\005 \001(\t\022\021\n\tdebug_log\030\006 \001(\t\"\375\003\n\037GuiDemo" +
+      "InteractiveClientMessage\022\022\n\nsession_id\030\001" +
+      " \001(\t\022G\n\016search_company\030\002 \001(\0132-.mt4_term_" +
+      "api.GuiDemoInteractiveSearchCompanyH\000\022G\n" +
+      "\016select_company\030\003 \001(\0132-.mt4_term_api.Gui" +
+      "DemoInteractiveSelectCompanyH\000\022A\n\013submit" +
+      "_form\030\004 \001(\0132*.mt4_term_api.GuiDemoIntera" +
+      "ctiveSubmitFormH\000\022L\n\021submit_two_factor\030\005" +
+      " \001(\0132/.mt4_term_api.GuiDemoInteractiveSu" +
+      "bmitTwoFactorH\000\022G\n\016cancel_session\030\006 \001(\0132" +
+      "-.mt4_term_api.GuiDemoInteractiveCancelS" +
+      "essionH\000\022O\n\022request_screenshot\030\007 \001(\01321.m" +
+      "t4_term_api.GuiDemoInteractiveRequestScr" +
+      "eenshotH\000B\t\n\007payload\"P\n\037GuiDemoInteracti" +
+      "veSearchCompany\022\024\n\014search_query\030\001 \001(\t\022\027\n" +
+      "\017timeout_seconds\030\002 \001(\005\"y\n\037GuiDemoInterac" +
+      "tiveSelectCompany\022\025\n\rcompany_index\030\001 \001(\005" +
       "\022\024\n\014company_name\030\002 \001(\t\022\023\n\013server_name\030\003 " +
-      "\001(\t\022\017\n\007ping_ms\030\004 \001(\005\"\213\001\n\035GuiDemoInteract" +
-      "iveCompanyList\022>\n\tcompanies\030\001 \003(\0132+.mt4_" +
-      "term_api.GuiDemoInteractiveCompanyItem\022\025" +
-      "\n\rcurrent_query\030\002 \001(\t\022\023\n\013can_proceed\030\003 \001" +
-      "(\010\"\264\001\n\033GuiDemoInteractiveFormField\022\022\n\nco" +
-      "ntrol_id\030\001 \001(\005\022\022\n\nfield_name\030\002 \001(\t\022\r\n\005la" +
-      "bel\030\003 \001(\t\022\025\n\rcurrent_value\030\004 \001(\t\022\023\n\013is_r" +
-      "equired\030\005 \001(\010\0222\n\nfield_type\030\006 \001(\0162\036.mt4_" +
-      "term_api.GuiFormFieldType\"\227\001\n\032GuiDemoInt" +
-      "eractiveDropdown\022\022\n\ncontrol_id\030\001 \001(\005\022\025\n\r" +
-      "dropdown_name\030\002 \001(\t\022\r\n\005label\030\003 \001(\t\022\026\n\016se" +
-      "lected_index\030\004 \001(\005\022\026\n\016selected_value\030\005 \001" +
-      "(\t\022\017\n\007options\030\006 \003(\t\"\211\002\n\034GuiDemoInteracti" +
-      "veFormSchema\022\022\n\npage_title\030\001 \001(\t\022\022\n\npage" +
-      "_index\030\002 \001(\005\0229\n\006fields\030\003 \003(\0132).mt4_term_" +
-      "api.GuiDemoInteractiveFormField\022;\n\tdropd" +
-      "owns\030\004 \003(\0132(.mt4_term_api.GuiDemoInterac" +
-      "tiveDropdown\022\033\n\023has_terms_agreement\030\005 \001(" +
-      "\010\022\024\n\014terms_agreed\030\006 \001(\010\022\026\n\016prompt_messag" +
-      "e\030\007 \001(\t\"\317\001\n$GuiDemoInteractiveTwoFactorC" +
-      "hallenge\022,\n\004type\030\001 \001(\0162\036.mt4_term_api.Gu" +
-      "iTwoFactorType\022\023\n\013prompt_text\030\002 \001(\t\022\032\n\022d" +
-      "estination_masked\030\003 \001(\t\022\023\n\013code_length\030\004" +
-      " \001(\005\022\027\n\017timeout_seconds\030\005 \001(\005\022\032\n\022remaini" +
-      "ng_attempts\030\006 \001(\005\"\241\001\n\033GuiDemoInteractive" +
-      "Completed\022\r\n\005login\030\001 \001(\003\022\020\n\010password\030\002 \001" +
-      "(\t\022\031\n\021investor_password\030\003 \001(\t\022\016\n\006server\030" +
-      "\004 \001(\t\022\030\n\020is_live_verified\030\005 \001(\010\022\034\n\024trade" +
-      "_server_message\030\006 \001(\t\"]\n\032GuiDemoInteract" +
-      "iveProgress\022\021\n\tstep_name\030\001 \001(\t\022\017\n\007messag" +
-      "e\030\002 \001(\t\022\033\n\023progress_percentage\030\003 \001(\005\"r\n\027" +
-      "GuiDemoInteractiveError\022\022\n\nerror_code\030\001 " +
-      "\001(\005\022\025\n\rerror_message\030\002 \001(\t\022\024\n\014current_st" +
-      "ep\030\003 \001(\t\022\026\n\016is_recoverable\030\004 \001(\010\"R\n\034GuiD" +
-      "emoInteractiveScreenshot\022\013\n\003tag\030\001 \001(\t\022\022\n" +
-      "\nimage_data\030\002 \001(\014\022\021\n\tmime_type\030\003 \001(\t*\234\001\n" +
-      "\020GuiFormFieldType\022\023\n\017FIELD_TYPE_TEXT\020\000\022\024" +
-      "\n\020FIELD_TYPE_EMAIL\020\001\022\024\n\020FIELD_TYPE_PHONE" +
-      "\020\002\022\025\n\021FIELD_TYPE_NUMBER\020\003\022\027\n\023FIELD_TYPE_" +
-      "CHECKBOX\020\004\022\027\n\023FIELD_TYPE_PASSWORD\020\005*v\n\020G" +
-      "uiTwoFactorType\022\026\n\022TWO_FACTOR_UNKNOWN\020\000\022" +
-      "\024\n\020TWO_FACTOR_EMAIL\020\001\022\022\n\016TWO_FACTOR_SMS\020" +
-      "\002\022 \n\034TWO_FACTOR_APP_AUTHENTICATOR\020\0032\350\001\n\003" +
-      "Gui\022a\n\017DemoOpenAccount\022\'.mt4_term_api.Gu" +
-      "iDemoOpenAccountRequest\032%.mt4_term_api.G" +
-      "uiDemoOpenAccountReply\022~\n\032DemoOpenAccoun" +
-      "tInteractive\022-.mt4_term_api.GuiDemoInter" +
-      "activeClientMessage\032-.mt4_term_api.GuiDe" +
-      "moInteractiveServerMessage(\0010\001BBZ1git.mt" +
-      "api.io/root/mrpc-proto.git/mt4/libraries" +
-      "/go\252\002\014mt4_term_apib\006proto3"
+      "\001(\t\022\024\n\014account_mode\030\004 \001(\005\"\311\002\n\034GuiDemoInt" +
+      "eractiveSubmitForm\022F\n\006fields\030\001 \003(\01326.mt4" +
+      "_term_api.GuiDemoInteractiveSubmitForm.F" +
+      "ieldsEntry\022_\n\023dropdown_selections\030\002 \003(\0132" +
+      "B.mt4_term_api.GuiDemoInteractiveSubmitF" +
+      "orm.DropdownSelectionsEntry\022\026\n\016agree_to_" +
+      "terms\030\003 \001(\010\032-\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\t:\0028\001\0329\n\027DropdownSelections" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"1\n" +
+      "!GuiDemoInteractiveSubmitTwoFactor\022\014\n\004co" +
+      "de\030\001 \001(\t\"1\n\037GuiDemoInteractiveCancelSess" +
+      "ion\022\016\n\006reason\030\001 \001(\t\"2\n#GuiDemoInteractiv" +
+      "eRequestScreenshot\022\013\n\003tag\030\001 \001(\t\"\252\004\n\037GuiD" +
+      "emoInteractiveServerMessage\022\022\n\nsession_i" +
+      "d\030\001 \001(\t\022\024\n\014timestamp_ms\030\002 \001(\003\022C\n\014company" +
+      "_list\030\003 \001(\0132+.mt4_term_api.GuiDemoIntera" +
+      "ctiveCompanyListH\000\022A\n\013form_schema\030\004 \001(\0132" +
+      "*.mt4_term_api.GuiDemoInteractiveFormSch" +
+      "emaH\000\022R\n\024two_factor_challenge\030\005 \001(\01322.mt" +
+      "4_term_api.GuiDemoInteractiveTwoFactorCh" +
+      "allengeH\000\022>\n\tcompleted\030\006 \001(\0132).mt4_term_" +
+      "api.GuiDemoInteractiveCompletedH\000\022<\n\010pro" +
+      "gress\030\007 \001(\0132(.mt4_term_api.GuiDemoIntera" +
+      "ctiveProgressH\000\0226\n\005error\030\010 \001(\0132%.mt4_ter" +
+      "m_api.GuiDemoInteractiveErrorH\000\022@\n\nscree" +
+      "nshot\030\t \001(\0132*.mt4_term_api.GuiDemoIntera" +
+      "ctiveScreenshotH\000B\t\n\007payload\"j\n\035GuiDemoI" +
+      "nteractiveCompanyItem\022\r\n\005index\030\001 \001(\005\022\024\n\014" +
+      "company_name\030\002 \001(\t\022\023\n\013server_name\030\003 \001(\t\022" +
+      "\017\n\007ping_ms\030\004 \001(\005\"\213\001\n\035GuiDemoInteractiveC" +
+      "ompanyList\022>\n\tcompanies\030\001 \003(\0132+.mt4_term" +
+      "_api.GuiDemoInteractiveCompanyItem\022\025\n\rcu" +
+      "rrent_query\030\002 \001(\t\022\023\n\013can_proceed\030\003 \001(\010\"\264" +
+      "\001\n\033GuiDemoInteractiveFormField\022\022\n\ncontro" +
+      "l_id\030\001 \001(\005\022\022\n\nfield_name\030\002 \001(\t\022\r\n\005label\030" +
+      "\003 \001(\t\022\025\n\rcurrent_value\030\004 \001(\t\022\023\n\013is_requi" +
+      "red\030\005 \001(\010\0222\n\nfield_type\030\006 \001(\0162\036.mt4_term" +
+      "_api.GuiFormFieldType\"\227\001\n\032GuiDemoInterac" +
+      "tiveDropdown\022\022\n\ncontrol_id\030\001 \001(\005\022\025\n\rdrop" +
+      "down_name\030\002 \001(\t\022\r\n\005label\030\003 \001(\t\022\026\n\016select" +
+      "ed_index\030\004 \001(\005\022\026\n\016selected_value\030\005 \001(\t\022\017" +
+      "\n\007options\030\006 \003(\t\"\211\002\n\034GuiDemoInteractiveFo" +
+      "rmSchema\022\022\n\npage_title\030\001 \001(\t\022\022\n\npage_ind" +
+      "ex\030\002 \001(\005\0229\n\006fields\030\003 \003(\0132).mt4_term_api." +
+      "GuiDemoInteractiveFormField\022;\n\tdropdowns" +
+      "\030\004 \003(\0132(.mt4_term_api.GuiDemoInteractive" +
+      "Dropdown\022\033\n\023has_terms_agreement\030\005 \001(\010\022\024\n" +
+      "\014terms_agreed\030\006 \001(\010\022\026\n\016prompt_message\030\007 " +
+      "\001(\t\"\317\001\n$GuiDemoInteractiveTwoFactorChall" +
+      "enge\022,\n\004type\030\001 \001(\0162\036.mt4_term_api.GuiTwo" +
+      "FactorType\022\023\n\013prompt_text\030\002 \001(\t\022\032\n\022desti" +
+      "nation_masked\030\003 \001(\t\022\023\n\013code_length\030\004 \001(\005" +
+      "\022\027\n\017timeout_seconds\030\005 \001(\005\022\032\n\022remaining_a" +
+      "ttempts\030\006 \001(\005\"\241\001\n\033GuiDemoInteractiveComp" +
+      "leted\022\r\n\005login\030\001 \001(\003\022\020\n\010password\030\002 \001(\t\022\031" +
+      "\n\021investor_password\030\003 \001(\t\022\016\n\006server\030\004 \001(" +
+      "\t\022\030\n\020is_live_verified\030\005 \001(\010\022\034\n\024trade_ser" +
+      "ver_message\030\006 \001(\t\"]\n\032GuiDemoInteractiveP" +
+      "rogress\022\021\n\tstep_name\030\001 \001(\t\022\017\n\007message\030\002 " +
+      "\001(\t\022\033\n\023progress_percentage\030\003 \001(\005\"r\n\027GuiD" +
+      "emoInteractiveError\022\022\n\nerror_code\030\001 \001(\005\022" +
+      "\025\n\rerror_message\030\002 \001(\t\022\024\n\014current_step\030\003" +
+      " \001(\t\022\026\n\016is_recoverable\030\004 \001(\010\"R\n\034GuiDemoI" +
+      "nteractiveScreenshot\022\013\n\003tag\030\001 \001(\t\022\022\n\nima" +
+      "ge_data\030\002 \001(\014\022\021\n\tmime_type\030\003 \001(\t*\234\001\n\020Gui" +
+      "FormFieldType\022\023\n\017FIELD_TYPE_TEXT\020\000\022\024\n\020FI" +
+      "ELD_TYPE_EMAIL\020\001\022\024\n\020FIELD_TYPE_PHONE\020\002\022\025" +
+      "\n\021FIELD_TYPE_NUMBER\020\003\022\027\n\023FIELD_TYPE_CHEC" +
+      "KBOX\020\004\022\027\n\023FIELD_TYPE_PASSWORD\020\005*v\n\020GuiTw" +
+      "oFactorType\022\026\n\022TWO_FACTOR_UNKNOWN\020\000\022\024\n\020T" +
+      "WO_FACTOR_EMAIL\020\001\022\022\n\016TWO_FACTOR_SMS\020\002\022 \n" +
+      "\034TWO_FACTOR_APP_AUTHENTICATOR\020\0032\300\003\n\003Gui\022" +
+      "g\n\021DemoFindCompanies\022).mt4_term_api.GuiD" +
+      "emoFindCompaniesRequest\032\'.mt4_term_api.G" +
+      "uiDemoFindCompaniesReply\022m\n\023DemoServersA" +
+      "ndTypes\022+.mt4_term_api.GuiDemoServersAnd" +
+      "TypesRequest\032).mt4_term_api.GuiDemoServe" +
+      "rsAndTypesReply\022a\n\017DemoOpenAccount\022\'.mt4" +
+      "_term_api.GuiDemoOpenAccountRequest\032%.mt" +
+      "4_term_api.GuiDemoOpenAccountReply\022~\n\032De" +
+      "moOpenAccountInteractive\022-.mt4_term_api." +
+      "GuiDemoInteractiveClientMessage\032-.mt4_te" +
+      "rm_api.GuiDemoInteractiveServerMessage(\001" +
+      "0\001BBZ1git.mtapi.io/root/mrpc-proto.git/m" +
+      "t4/libraries/go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_mt4_term_api_GuiDemoOpenAccountRequest_descriptor =
+    internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_GuiDemoFindCompaniesRequest_descriptor,
+        new java.lang.String[] { "SearchText", "TimeoutSeconds", });
+    internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_mt4_term_api_GuiDemoFindCompaniesReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_GuiDemoFindCompaniesReply_descriptor,
+        new java.lang.String[] { "ResultCode", "Companies", "DebugLog", });
+    internal_static_mt4_term_api_GuiDemoCompany_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_mt4_term_api_GuiDemoCompany_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_GuiDemoCompany_descriptor,
+        new java.lang.String[] { "Name", "ShortName", });
+    internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_GuiDemoServersAndTypesRequest_descriptor,
+        new java.lang.String[] { "CompanyName", "TimeoutSeconds", });
+    internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_mt4_term_api_GuiDemoServersAndTypesReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mt4_term_api_GuiDemoServersAndTypesReply_descriptor,
+        new java.lang.String[] { "ResultCode", "Servers", "AccountTypes", "Deposits", "Leverages", "DebugLog", });
+    internal_static_mt4_term_api_GuiDemoOpenAccountRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_mt4_term_api_GuiDemoOpenAccountRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoOpenAccountRequest_descriptor,
         new java.lang.String[] { "Company", "FirstName", "LastName", "Email", "Phone", "Server", "AccountType", "TimeoutSeconds", });
     internal_static_mt4_term_api_GuiDemoOpenAccountReply_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_mt4_term_api_GuiDemoOpenAccountReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoOpenAccountReply_descriptor,
         new java.lang.String[] { "ResultCode", "Login", "Password", "Investor", "Server", "DebugLog", });
     internal_static_mt4_term_api_GuiDemoInteractiveClientMessage_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_mt4_term_api_GuiDemoInteractiveClientMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveClientMessage_descriptor,
         new java.lang.String[] { "SessionId", "SearchCompany", "SelectCompany", "SubmitForm", "SubmitTwoFactor", "CancelSession", "RequestScreenshot", "Payload", });
     internal_static_mt4_term_api_GuiDemoInteractiveSearchCompany_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_mt4_term_api_GuiDemoInteractiveSearchCompany_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveSearchCompany_descriptor,
         new java.lang.String[] { "SearchQuery", "TimeoutSeconds", });
     internal_static_mt4_term_api_GuiDemoInteractiveSelectCompany_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_mt4_term_api_GuiDemoInteractiveSelectCompany_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveSelectCompany_descriptor,
         new java.lang.String[] { "CompanyIndex", "CompanyName", "ServerName", "AccountMode", });
     internal_static_mt4_term_api_GuiDemoInteractiveSubmitForm_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_mt4_term_api_GuiDemoInteractiveSubmitForm_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveSubmitForm_descriptor,
@@ -22701,85 +27307,85 @@ java.lang.String defaultValue);
         internal_static_mt4_term_api_GuiDemoInteractiveSubmitForm_DropdownSelectionsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_mt4_term_api_GuiDemoInteractiveSubmitTwoFactor_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_mt4_term_api_GuiDemoInteractiveSubmitTwoFactor_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveSubmitTwoFactor_descriptor,
         new java.lang.String[] { "Code", });
     internal_static_mt4_term_api_GuiDemoInteractiveCancelSession_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_mt4_term_api_GuiDemoInteractiveCancelSession_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveCancelSession_descriptor,
         new java.lang.String[] { "Reason", });
     internal_static_mt4_term_api_GuiDemoInteractiveRequestScreenshot_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_mt4_term_api_GuiDemoInteractiveRequestScreenshot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveRequestScreenshot_descriptor,
         new java.lang.String[] { "Tag", });
     internal_static_mt4_term_api_GuiDemoInteractiveServerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_mt4_term_api_GuiDemoInteractiveServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveServerMessage_descriptor,
         new java.lang.String[] { "SessionId", "TimestampMs", "CompanyList", "FormSchema", "TwoFactorChallenge", "Completed", "Progress", "Error", "Screenshot", "Payload", });
     internal_static_mt4_term_api_GuiDemoInteractiveCompanyItem_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_mt4_term_api_GuiDemoInteractiveCompanyItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveCompanyItem_descriptor,
         new java.lang.String[] { "Index", "CompanyName", "ServerName", "PingMs", });
     internal_static_mt4_term_api_GuiDemoInteractiveCompanyList_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_mt4_term_api_GuiDemoInteractiveCompanyList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveCompanyList_descriptor,
         new java.lang.String[] { "Companies", "CurrentQuery", "CanProceed", });
     internal_static_mt4_term_api_GuiDemoInteractiveFormField_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_mt4_term_api_GuiDemoInteractiveFormField_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveFormField_descriptor,
         new java.lang.String[] { "ControlId", "FieldName", "Label", "CurrentValue", "IsRequired", "FieldType", });
     internal_static_mt4_term_api_GuiDemoInteractiveDropdown_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_mt4_term_api_GuiDemoInteractiveDropdown_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveDropdown_descriptor,
         new java.lang.String[] { "ControlId", "DropdownName", "Label", "SelectedIndex", "SelectedValue", "Options", });
     internal_static_mt4_term_api_GuiDemoInteractiveFormSchema_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_mt4_term_api_GuiDemoInteractiveFormSchema_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveFormSchema_descriptor,
         new java.lang.String[] { "PageTitle", "PageIndex", "Fields", "Dropdowns", "HasTermsAgreement", "TermsAgreed", "PromptMessage", });
     internal_static_mt4_term_api_GuiDemoInteractiveTwoFactorChallenge_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_mt4_term_api_GuiDemoInteractiveTwoFactorChallenge_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveTwoFactorChallenge_descriptor,
         new java.lang.String[] { "Type", "PromptText", "DestinationMasked", "CodeLength", "TimeoutSeconds", "RemainingAttempts", });
     internal_static_mt4_term_api_GuiDemoInteractiveCompleted_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_mt4_term_api_GuiDemoInteractiveCompleted_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveCompleted_descriptor,
         new java.lang.String[] { "Login", "Password", "InvestorPassword", "Server", "IsLiveVerified", "TradeServerMessage", });
     internal_static_mt4_term_api_GuiDemoInteractiveProgress_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_mt4_term_api_GuiDemoInteractiveProgress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveProgress_descriptor,
         new java.lang.String[] { "StepName", "Message", "ProgressPercentage", });
     internal_static_mt4_term_api_GuiDemoInteractiveError_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_mt4_term_api_GuiDemoInteractiveError_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveError_descriptor,
         new java.lang.String[] { "ErrorCode", "ErrorMessage", "CurrentStep", "IsRecoverable", });
     internal_static_mt4_term_api_GuiDemoInteractiveScreenshot_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_mt4_term_api_GuiDemoInteractiveScreenshot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_GuiDemoInteractiveScreenshot_descriptor,

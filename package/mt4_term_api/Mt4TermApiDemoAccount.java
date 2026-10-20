@@ -25,16 +25,23 @@ public final class Mt4TermApiDemoAccount {
     java.lang.String[] descriptorData = {
       "\n\037mt4-term-api-demo-account.proto\022\014mt4_t" +
       "erm_api\032\034google/api/annotations.proto\032\026m" +
-      "t4-term-api-gui.proto2\213\002\n\013DemoAccount\022|\n" +
-      "\017OpenDemoAccount\022\'.mt4_term_api.GuiDemoO" +
-      "penAccountRequest\032%.mt4_term_api.GuiDemo" +
-      "OpenAccountReply\"\031\202\323\344\223\002\023\022\021/DemoAccount/O" +
-      "pen\022~\n\032DemoOpenAccountInteractive\022-.mt4_" +
-      "term_api.GuiDemoInteractiveClientMessage" +
-      "\032-.mt4_term_api.GuiDemoInteractiveServer" +
-      "Message(\0010\001BBZ1git.mtapi.io/root/mrpc-pr" +
-      "oto.git/mt4/libraries/go\252\002\014mt4_term_apib" +
-      "\006proto3"
+      "t4-term-api-gui.proto2\265\004\n\013DemoAccount\022\207\001" +
+      "\n\rFindCompanies\022).mt4_term_api.GuiDemoFi" +
+      "ndCompaniesRequest\032\'.mt4_term_api.GuiDem" +
+      "oFindCompaniesReply\"\"\202\323\344\223\002\034\022\032/DemoAccoun" +
+      "t/FindCompanies\022\235\001\n\026ServersAndAccountTyp" +
+      "es\022+.mt4_term_api.GuiDemoServersAndTypes" +
+      "Request\032).mt4_term_api.GuiDemoServersAnd" +
+      "TypesReply\"+\202\323\344\223\002%\022#/DemoAccount/Servers" +
+      "AndAccountTypes\022|\n\017OpenDemoAccount\022\'.mt4" +
+      "_term_api.GuiDemoOpenAccountRequest\032%.mt" +
+      "4_term_api.GuiDemoOpenAccountReply\"\031\202\323\344\223" +
+      "\002\023\022\021/DemoAccount/Open\022~\n\032DemoOpenAccount" +
+      "Interactive\022-.mt4_term_api.GuiDemoIntera" +
+      "ctiveClientMessage\032-.mt4_term_api.GuiDem" +
+      "oInteractiveServerMessage(\0010\001BBZ1git.mta" +
+      "pi.io/root/mrpc-proto.git/mt4/libraries/" +
+      "go\252\002\014mt4_term_apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
