@@ -48,3 +48,6 @@ bin/
 site/
 
 .cache/
+
+# Maven
+target/

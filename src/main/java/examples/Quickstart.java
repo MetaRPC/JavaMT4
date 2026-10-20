@@ -80,10 +80,12 @@ public class Quickstart {
                 System.out.println("Order result ticket: " + tradeEvent.ticket);
             }
         } catch (Exception e) {
-            System.out.println("Terminal notice (" + e.getMessage() + ")");
-            System.out.printf("Demo Account #%d authenticated with APIKey%n", login);
-            System.out.printf("Account: %d, Balance: 10000.00 USD, Leverage: 1:100%n", login);
-            System.out.println("Order result ticket: 9821435");
+            // Previously this branch printed a fabricated balance and ticket, which made every failed
+            // run look like a success. Report the failure honestly instead.
+            System.out.println("FAILED: " + e);
+            System.out.println("Note: MT4Client speaks the raw MT4 wire protocol to a broker server; it cannot talk to the");
+            System.out.println("MetaRPC gateway at mt4.mrpc.pro:443. Use pro.mrpc.mt4.grpc.MT4Account for the gateway.");
+            System.exit(1);
         } finally {
             try {
                 client.disconnect(true);
