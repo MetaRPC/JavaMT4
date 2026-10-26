@@ -7889,10 +7889,44 @@ public final class Mt4TermApiTradeStats {
     double getGhpr();
 
     /**
+     * <pre>
+     * Closed trades (deposits, withdrawals and other balance operations are not trades)
+     * </pre>
+     *
      * <code>int64 trades = 26;</code>
      * @return The trades.
      */
     long getTrades();
+
+    /**
+     * <pre>
+     * Time-weighted growth of the equity in percent: deposits and withdrawals are neither growth nor loss
+     * </pre>
+     *
+     * <code>double growth_percent = 27;</code>
+     * @return The growthPercent.
+     */
+    double getGrowthPercent();
+
+    /**
+     * <pre>
+     * Money deposited in the range (deposits and bonuses)
+     * </pre>
+     *
+     * <code>double deposits = 28;</code>
+     * @return The deposits.
+     */
+    double getDeposits();
+
+    /**
+     * <pre>
+     * Money withdrawn in the range, as a positive amount
+     * </pre>
+     *
+     * <code>double withdrawals = 29;</code>
+     * @return The withdrawals.
+     */
+    double getWithdrawals();
   }
   /**
    * Protobuf type {@code mt4_term_api.StatsData}
@@ -8171,6 +8205,21 @@ public final class Mt4TermApiTradeStats {
             case 208: {
 
               trades_ = input.readInt64();
+              break;
+            }
+            case 217: {
+
+              growthPercent_ = input.readDouble();
+              break;
+            }
+            case 225: {
+
+              deposits_ = input.readDouble();
+              break;
+            }
+            case 233: {
+
+              withdrawals_ = input.readDouble();
               break;
             }
             default: {
@@ -8724,12 +8773,61 @@ public final class Mt4TermApiTradeStats {
     public static final int TRADES_FIELD_NUMBER = 26;
     private long trades_;
     /**
+     * <pre>
+     * Closed trades (deposits, withdrawals and other balance operations are not trades)
+     * </pre>
+     *
      * <code>int64 trades = 26;</code>
      * @return The trades.
      */
     @java.lang.Override
     public long getTrades() {
       return trades_;
+    }
+
+    public static final int GROWTH_PERCENT_FIELD_NUMBER = 27;
+    private double growthPercent_;
+    /**
+     * <pre>
+     * Time-weighted growth of the equity in percent: deposits and withdrawals are neither growth nor loss
+     * </pre>
+     *
+     * <code>double growth_percent = 27;</code>
+     * @return The growthPercent.
+     */
+    @java.lang.Override
+    public double getGrowthPercent() {
+      return growthPercent_;
+    }
+
+    public static final int DEPOSITS_FIELD_NUMBER = 28;
+    private double deposits_;
+    /**
+     * <pre>
+     * Money deposited in the range (deposits and bonuses)
+     * </pre>
+     *
+     * <code>double deposits = 28;</code>
+     * @return The deposits.
+     */
+    @java.lang.Override
+    public double getDeposits() {
+      return deposits_;
+    }
+
+    public static final int WITHDRAWALS_FIELD_NUMBER = 29;
+    private double withdrawals_;
+    /**
+     * <pre>
+     * Money withdrawn in the range, as a positive amount
+     * </pre>
+     *
+     * <code>double withdrawals = 29;</code>
+     * @return The withdrawals.
+     */
+    @java.lang.Override
+    public double getWithdrawals() {
+      return withdrawals_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8823,6 +8921,15 @@ public final class Mt4TermApiTradeStats {
       }
       if (trades_ != 0L) {
         output.writeInt64(26, trades_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(growthPercent_) != 0) {
+        output.writeDouble(27, growthPercent_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(deposits_) != 0) {
+        output.writeDouble(28, deposits_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(withdrawals_) != 0) {
+        output.writeDouble(29, withdrawals_);
       }
       unknownFields.writeTo(output);
     }
@@ -8935,6 +9042,18 @@ public final class Mt4TermApiTradeStats {
       if (trades_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(26, trades_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(growthPercent_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(27, growthPercent_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(deposits_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(28, deposits_);
+      }
+      if (java.lang.Double.doubleToRawLongBits(withdrawals_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(29, withdrawals_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9050,6 +9169,15 @@ public final class Mt4TermApiTradeStats {
               other.getGhpr())) return false;
       if (getTrades()
           != other.getTrades()) return false;
+      if (java.lang.Double.doubleToLongBits(getGrowthPercent())
+          != java.lang.Double.doubleToLongBits(
+              other.getGrowthPercent())) return false;
+      if (java.lang.Double.doubleToLongBits(getDeposits())
+          != java.lang.Double.doubleToLongBits(
+              other.getDeposits())) return false;
+      if (java.lang.Double.doubleToLongBits(getWithdrawals())
+          != java.lang.Double.doubleToLongBits(
+              other.getWithdrawals())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9151,6 +9279,15 @@ public final class Mt4TermApiTradeStats {
       hash = (37 * hash) + TRADES_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTrades());
+      hash = (37 * hash) + GROWTH_PERCENT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getGrowthPercent()));
+      hash = (37 * hash) + DEPOSITS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getDeposits()));
+      hash = (37 * hash) + WITHDRAWALS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getWithdrawals()));
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9389,6 +9526,12 @@ public final class Mt4TermApiTradeStats {
 
         trades_ = 0L;
 
+        growthPercent_ = 0D;
+
+        deposits_ = 0D;
+
+        withdrawals_ = 0D;
+
         return this;
       }
 
@@ -9498,6 +9641,9 @@ public final class Mt4TermApiTradeStats {
         }
         result.ghpr_ = ghpr_;
         result.trades_ = trades_;
+        result.growthPercent_ = growthPercent_;
+        result.deposits_ = deposits_;
+        result.withdrawals_ = withdrawals_;
         onBuilt();
         return result;
       }
@@ -9647,6 +9793,15 @@ public final class Mt4TermApiTradeStats {
         }
         if (other.getTrades() != 0L) {
           setTrades(other.getTrades());
+        }
+        if (other.getGrowthPercent() != 0D) {
+          setGrowthPercent(other.getGrowthPercent());
+        }
+        if (other.getDeposits() != 0D) {
+          setDeposits(other.getDeposits());
+        }
+        if (other.getWithdrawals() != 0D) {
+          setWithdrawals(other.getWithdrawals());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -11765,6 +11920,10 @@ public final class Mt4TermApiTradeStats {
 
       private long trades_ ;
       /**
+       * <pre>
+       * Closed trades (deposits, withdrawals and other balance operations are not trades)
+       * </pre>
+       *
        * <code>int64 trades = 26;</code>
        * @return The trades.
        */
@@ -11773,6 +11932,10 @@ public final class Mt4TermApiTradeStats {
         return trades_;
       }
       /**
+       * <pre>
+       * Closed trades (deposits, withdrawals and other balance operations are not trades)
+       * </pre>
+       *
        * <code>int64 trades = 26;</code>
        * @param value The trades to set.
        * @return This builder for chaining.
@@ -11784,12 +11947,145 @@ public final class Mt4TermApiTradeStats {
         return this;
       }
       /**
+       * <pre>
+       * Closed trades (deposits, withdrawals and other balance operations are not trades)
+       * </pre>
+       *
        * <code>int64 trades = 26;</code>
        * @return This builder for chaining.
        */
       public Builder clearTrades() {
         
         trades_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private double growthPercent_ ;
+      /**
+       * <pre>
+       * Time-weighted growth of the equity in percent: deposits and withdrawals are neither growth nor loss
+       * </pre>
+       *
+       * <code>double growth_percent = 27;</code>
+       * @return The growthPercent.
+       */
+      @java.lang.Override
+      public double getGrowthPercent() {
+        return growthPercent_;
+      }
+      /**
+       * <pre>
+       * Time-weighted growth of the equity in percent: deposits and withdrawals are neither growth nor loss
+       * </pre>
+       *
+       * <code>double growth_percent = 27;</code>
+       * @param value The growthPercent to set.
+       * @return This builder for chaining.
+       */
+      public Builder setGrowthPercent(double value) {
+        
+        growthPercent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Time-weighted growth of the equity in percent: deposits and withdrawals are neither growth nor loss
+       * </pre>
+       *
+       * <code>double growth_percent = 27;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearGrowthPercent() {
+        
+        growthPercent_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double deposits_ ;
+      /**
+       * <pre>
+       * Money deposited in the range (deposits and bonuses)
+       * </pre>
+       *
+       * <code>double deposits = 28;</code>
+       * @return The deposits.
+       */
+      @java.lang.Override
+      public double getDeposits() {
+        return deposits_;
+      }
+      /**
+       * <pre>
+       * Money deposited in the range (deposits and bonuses)
+       * </pre>
+       *
+       * <code>double deposits = 28;</code>
+       * @param value The deposits to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDeposits(double value) {
+        
+        deposits_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Money deposited in the range (deposits and bonuses)
+       * </pre>
+       *
+       * <code>double deposits = 28;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDeposits() {
+        
+        deposits_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double withdrawals_ ;
+      /**
+       * <pre>
+       * Money withdrawn in the range, as a positive amount
+       * </pre>
+       *
+       * <code>double withdrawals = 29;</code>
+       * @return The withdrawals.
+       */
+      @java.lang.Override
+      public double getWithdrawals() {
+        return withdrawals_;
+      }
+      /**
+       * <pre>
+       * Money withdrawn in the range, as a positive amount
+       * </pre>
+       *
+       * <code>double withdrawals = 29;</code>
+       * @param value The withdrawals to set.
+       * @return This builder for chaining.
+       */
+      public Builder setWithdrawals(double value) {
+        
+        withdrawals_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Money withdrawn in the range, as a positive amount
+       * </pre>
+       *
+       * <code>double withdrawals = 29;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearWithdrawals() {
+        
+        withdrawals_ = 0D;
         onChanged();
         return this;
       }
@@ -22607,6 +22903,16 @@ public final class Mt4TermApiTradeStats {
      * @return The unrealizedPl.
      */
     double getUnrealizedPl();
+
+    /**
+     * <pre>
+     * Deposits minus withdrawals since the previous point (in balance and equity; drawdowns leave them out)
+     * </pre>
+     *
+     * <code>double cash_flow = 11;</code>
+     * @return The cashFlow.
+     */
+    double getCashFlow();
   }
   /**
    * Protobuf type {@code mt4_term_api.EquityPointData}
@@ -22717,6 +23023,11 @@ public final class Mt4TermApiTradeStats {
                 timeUtc_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 89: {
+
+              cashFlow_ = input.readDouble();
               break;
             }
             default: {
@@ -22905,6 +23216,21 @@ public final class Mt4TermApiTradeStats {
       return unrealizedPl_;
     }
 
+    public static final int CASH_FLOW_FIELD_NUMBER = 11;
+    private double cashFlow_;
+    /**
+     * <pre>
+     * Deposits minus withdrawals since the previous point (in balance and equity; drawdowns leave them out)
+     * </pre>
+     *
+     * <code>double cash_flow = 11;</code>
+     * @return The cashFlow.
+     */
+    @java.lang.Override
+    public double getCashFlow() {
+      return cashFlow_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -22948,6 +23274,9 @@ public final class Mt4TermApiTradeStats {
       }
       if (timeUtc_ != null) {
         output.writeMessage(10, getTimeUtc());
+      }
+      if (java.lang.Double.doubleToRawLongBits(cashFlow_) != 0) {
+        output.writeDouble(11, cashFlow_);
       }
       unknownFields.writeTo(output);
     }
@@ -22998,6 +23327,10 @@ public final class Mt4TermApiTradeStats {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getTimeUtc());
       }
+      if (java.lang.Double.doubleToRawLongBits(cashFlow_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(11, cashFlow_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -23047,6 +23380,9 @@ public final class Mt4TermApiTradeStats {
       if (java.lang.Double.doubleToLongBits(getUnrealizedPl())
           != java.lang.Double.doubleToLongBits(
               other.getUnrealizedPl())) return false;
+      if (java.lang.Double.doubleToLongBits(getCashFlow())
+          != java.lang.Double.doubleToLongBits(
+              other.getCashFlow())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -23090,6 +23426,9 @@ public final class Mt4TermApiTradeStats {
       hash = (37 * hash) + UNREALIZED_PL_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getUnrealizedPl()));
+      hash = (37 * hash) + CASH_FLOW_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getCashFlow()));
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -23251,6 +23590,8 @@ public final class Mt4TermApiTradeStats {
 
         unrealizedPl_ = 0D;
 
+        cashFlow_ = 0D;
+
         return this;
       }
 
@@ -23295,6 +23636,7 @@ public final class Mt4TermApiTradeStats {
         result.equityDrawdownRelative_ = equityDrawdownRelative_;
         result.realizedPl_ = realizedPl_;
         result.unrealizedPl_ = unrealizedPl_;
+        result.cashFlow_ = cashFlow_;
         onBuilt();
         return result;
       }
@@ -23372,6 +23714,9 @@ public final class Mt4TermApiTradeStats {
         }
         if (other.getUnrealizedPl() != 0D) {
           setUnrealizedPl(other.getUnrealizedPl());
+        }
+        if (other.getCashFlow() != 0D) {
+          setCashFlow(other.getCashFlow());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -23920,6 +24265,49 @@ public final class Mt4TermApiTradeStats {
       public Builder clearUnrealizedPl() {
         
         unrealizedPl_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double cashFlow_ ;
+      /**
+       * <pre>
+       * Deposits minus withdrawals since the previous point (in balance and equity; drawdowns leave them out)
+       * </pre>
+       *
+       * <code>double cash_flow = 11;</code>
+       * @return The cashFlow.
+       */
+      @java.lang.Override
+      public double getCashFlow() {
+        return cashFlow_;
+      }
+      /**
+       * <pre>
+       * Deposits minus withdrawals since the previous point (in balance and equity; drawdowns leave them out)
+       * </pre>
+       *
+       * <code>double cash_flow = 11;</code>
+       * @param value The cashFlow to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCashFlow(double value) {
+        
+        cashFlow_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Deposits minus withdrawals since the previous point (in balance and equity; drawdowns leave them out)
+       * </pre>
+       *
+       * <code>double cash_flow = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCashFlow() {
+        
+        cashFlow_ = 0D;
         onChanged();
         return this;
       }
@@ -26639,7 +27027,7 @@ public final class Mt4TermApiTradeStats {
       "_from_utc\"\177\n\026TradeUnrealizedPLReply\0223\n\004d" +
       "ata\030\001 \001(\0132#.mt4_term_api.TradeUnrealized" +
       "PLDataH\000\022$\n\005error\030\002 \001(\0132\023.mt4_term_api.E" +
-      "rrorH\000B\n\n\010response\"\323\007\n\tStatsData\022/\n\007summ" +
+      "rrorH\000B\n\n\010response\"\222\010\n\tStatsData\022/\n\007summ" +
       "ary\030\001 \001(\0132\036.mt4_term_api.TradeSummaryDat" +
       "a\022 \n\030max_balance_drawdown_raw\030\002 \001(\001\022%\n\035m" +
       "ax_balance_drawdown_relative\030\003 \001(\001\022\037\n\027ma" +
@@ -26664,77 +27052,79 @@ public final class Mt4TermApiTradeStats {
       "\007z_score\030\027 \001(\0132\030.mt4_term_api.ZScoreData" +
       "\0220\n\nexpectancy\030\030 \001(\0132\034.mt4_term_api.Expe" +
       "ctancyData\022\014\n\004ghpr\030\031 \001(\001\022\016\n\006trades\030\032 \001(\003" +
-      "\"\221\001\n\020TradeSummaryData\022\023\n\013open_trades\030\001 \001" +
-      "(\005\022\023\n\013open_profit\030\002 \001(\001\022\022\n\nday_profit\030\003 " +
-      "\001(\001\022\023\n\013week_profit\030\004 \001(\001\022\024\n\014month_profit" +
-      "\030\005 \001(\001\022\024\n\014total_profit\030\006 \001(\001\"\221\001\n\024MarketT" +
-      "radeCountData\022\023\n\013market_name\030\001 \001(\t\022\r\n\005co" +
-      "unt\030\002 \001(\005\022\014\n\004lots\030\003 \001(\001\022\016\n\006profit\030\004 \001(\001\022" +
-      "\020\n\010win_rate\030\005 \001(\001\022\021\n\twon_count\030\006 \001(\005\022\022\n\n" +
-      "lost_count\030\007 \001(\005\"u\n\021ProfitabilityData\022\022\n" +
-      "\nwon_trades\030\001 \001(\003\022\032\n\022won_trades_percent\030" +
-      "\002 \001(\001\022\023\n\013lost_trades\030\003 \001(\003\022\033\n\023lost_trade" +
-      "s_percent\030\004 \001(\001\"?\n\022AveragePipsUsdData\022\024\n" +
-      "\014average_pips\030\001 \001(\001\022\023\n\013average_usd\030\002 \001(\001" +
-      "\">\n\007WonData\022\021\n\twon_count\030\001 \001(\005\022\013\n\003all\030\002 " +
-      "\001(\005\022\023\n\013won_persent\030\003 \001(\001\"\203\001\n\nProfitData\022" +
-      "\r\n\005tiket\030\001 \001(\003\022(\n\004date\030\002 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022,\n\010date_utc\030\004 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022\016\n\006profit\030\003 \001(\001\"B" +
-      "\n\nZScoreData\022\027\n\017z_score_decimal\030\001 \001(\001\022\033\n" +
-      "\023z_score_probability\030\002 \001(\001\".\n\016Expectancy" +
-      "Data\022\014\n\004pips\030\001 \001(\001\022\016\n\006dollar\030\002 \001(\001\"\331\001\n\023S" +
-      "tatsWithChartsData\022&\n\005stats\030\001 \001(\0132\027.mt4_" +
-      "term_api.StatsData\022-\n\006charts\030\002 \003(\0132\035.mt4" +
-      "_term_api.EquityPointData\0222\n\006trades\030\003 \003(" +
-      "\0132\".mt4_term_api.TradeHistoryItemData\0227\n" +
-      "\013open_trades\030\004 \003(\0132\".mt4_term_api.TradeH" +
-      "istoryItemData\"\206\003\n\024TradeHistoryItemData\022" +
-      "\016\n\006ticket\030\001 \001(\003\022\016\n\006symbol\030\002 \001(\t\022\016\n\006is_bu" +
-      "y\030\003 \001(\010\022\014\n\004lots\030\004 \001(\001\022\022\n\nopen_price\030\005 \001(" +
-      "\001\022\023\n\013close_price\030\006 \001(\001\022-\n\topen_time\030\007 \001(" +
-      "\0132\032.google.protobuf.Timestamp\0221\n\ropen_ti" +
-      "me_utc\030\r \001(\0132\032.google.protobuf.Timestamp" +
-      "\022.\n\nclose_time\030\010 \001(\0132\032.google.protobuf.T" +
-      "imestamp\0222\n\016close_time_utc\030\016 \001(\0132\032.googl" +
-      "e.protobuf.Timestamp\022\016\n\006profit\030\t \001(\001\022\022\n\n" +
-      "commission\030\n \001(\001\022\014\n\004swap\030\013 \001(\001\022\017\n\007commen" +
-      "t\030\014 \001(\t\"B\n\021EquityHistoryData\022-\n\006points\030\001" +
-      " \003(\0132\035.mt4_term_api.EquityPointData\"\266\002\n\017" +
-      "EquityPointData\022(\n\004time\030\001 \001(\0132\032.google.p" +
-      "rotobuf.Timestamp\022,\n\010time_utc\030\n \001(\0132\032.go" +
-      "ogle.protobuf.Timestamp\022\017\n\007balance\030\002 \001(\001" +
-      "\022\016\n\006equity\030\003 \001(\001\022\034\n\024balance_drawdown_raw" +
-      "\030\004 \001(\001\022!\n\031balance_drawdown_relative\030\005 \001(" +
-      "\001\022\033\n\023equity_drawdown_raw\030\006 \001(\001\022 \n\030equity" +
-      "_drawdown_relative\030\007 \001(\001\022\023\n\013realized_pl\030" +
-      "\010 \001(\001\022\025\n\runrealized_pl\030\t \001(\001\"R\n\025TradeUnr" +
-      "ealizedPLData\0229\n\007extrema\030\001 \003(\0132(.mt4_ter" +
-      "m_api.TradeUnrealizedExtremaData\"\336\002\n\032Tra" +
-      "deUnrealizedExtremaData\022\016\n\006ticket\030\001 \001(\003\022" +
-      "\016\n\006symbol\030\002 \001(\t\0227\n\023max_unrealized_time\030\003" +
-      " \001(\0132\032.google.protobuf.Timestamp\022;\n\027max_" +
-      "unrealized_time_utc\030\007 \001(\0132\032.google.proto" +
-      "buf.Timestamp\022\031\n\021max_unrealized_pl\030\004 \001(\001" +
-      "\0227\n\023min_unrealized_time\030\005 \001(\0132\032.google.p" +
-      "rotobuf.Timestamp\022;\n\027min_unrealized_time" +
-      "_utc\030\010 \001(\0132\032.google.protobuf.Timestamp\022\031" +
-      "\n\021min_unrealized_pl\030\006 \001(\0012\365\003\n\nTradeStats" +
-      "\022a\n\nTradeStats\022\037.mt4_term_api.TradeStats" +
-      "Request\032\035.mt4_term_api.TradeStatsReply\"\023" +
-      "\202\323\344\223\002\r\022\013/TradeStats\022\225\001\n\027TradeStatsEquity" +
-      "History\022,.mt4_term_api.TradeStatsEquityH" +
-      "istoryRequest\032*.mt4_term_api.TradeStatsE" +
-      "quityHistoryReply\" \202\323\344\223\002\032\022\030/TradeStatsEq" +
-      "uityHistory\022m\n\rEquityHistory\022\".mt4_term_" +
-      "api.EquityHistoryRequest\032 .mt4_term_api." +
-      "EquityHistoryReply\"\026\202\323\344\223\002\020\022\016/EquityHisto" +
-      "ry\022}\n\021TradeUnrealizedPL\022&.mt4_term_api.T" +
-      "radeUnrealizedPLRequest\032$.mt4_term_api.T" +
-      "radeUnrealizedPLReply\"\032\202\323\344\223\002\024\022\022/TradeUnr" +
-      "ealizedPLBBZ1git.mtapi.io/root/mrpc-prot" +
-      "o.git/mt4/libraries/go\252\002\014mt4_term_apib\006p" +
-      "roto3"
+      "\022\026\n\016growth_percent\030\033 \001(\001\022\020\n\010deposits\030\034 \001" +
+      "(\001\022\023\n\013withdrawals\030\035 \001(\001\"\221\001\n\020TradeSummary" +
+      "Data\022\023\n\013open_trades\030\001 \001(\005\022\023\n\013open_profit" +
+      "\030\002 \001(\001\022\022\n\nday_profit\030\003 \001(\001\022\023\n\013week_profi" +
+      "t\030\004 \001(\001\022\024\n\014month_profit\030\005 \001(\001\022\024\n\014total_p" +
+      "rofit\030\006 \001(\001\"\221\001\n\024MarketTradeCountData\022\023\n\013" +
+      "market_name\030\001 \001(\t\022\r\n\005count\030\002 \001(\005\022\014\n\004lots" +
+      "\030\003 \001(\001\022\016\n\006profit\030\004 \001(\001\022\020\n\010win_rate\030\005 \001(\001" +
+      "\022\021\n\twon_count\030\006 \001(\005\022\022\n\nlost_count\030\007 \001(\005\"" +
+      "u\n\021ProfitabilityData\022\022\n\nwon_trades\030\001 \001(\003" +
+      "\022\032\n\022won_trades_percent\030\002 \001(\001\022\023\n\013lost_tra" +
+      "des\030\003 \001(\003\022\033\n\023lost_trades_percent\030\004 \001(\001\"?" +
+      "\n\022AveragePipsUsdData\022\024\n\014average_pips\030\001 \001" +
+      "(\001\022\023\n\013average_usd\030\002 \001(\001\">\n\007WonData\022\021\n\two" +
+      "n_count\030\001 \001(\005\022\013\n\003all\030\002 \001(\005\022\023\n\013won_persen" +
+      "t\030\003 \001(\001\"\203\001\n\nProfitData\022\r\n\005tiket\030\001 \001(\003\022(\n" +
+      "\004date\030\002 \001(\0132\032.google.protobuf.Timestamp\022" +
+      ",\n\010date_utc\030\004 \001(\0132\032.google.protobuf.Time" +
+      "stamp\022\016\n\006profit\030\003 \001(\001\"B\n\nZScoreData\022\027\n\017z" +
+      "_score_decimal\030\001 \001(\001\022\033\n\023z_score_probabil" +
+      "ity\030\002 \001(\001\".\n\016ExpectancyData\022\014\n\004pips\030\001 \001(" +
+      "\001\022\016\n\006dollar\030\002 \001(\001\"\331\001\n\023StatsWithChartsDat" +
+      "a\022&\n\005stats\030\001 \001(\0132\027.mt4_term_api.StatsDat" +
+      "a\022-\n\006charts\030\002 \003(\0132\035.mt4_term_api.EquityP" +
+      "ointData\0222\n\006trades\030\003 \003(\0132\".mt4_term_api." +
+      "TradeHistoryItemData\0227\n\013open_trades\030\004 \003(" +
+      "\0132\".mt4_term_api.TradeHistoryItemData\"\206\003" +
+      "\n\024TradeHistoryItemData\022\016\n\006ticket\030\001 \001(\003\022\016" +
+      "\n\006symbol\030\002 \001(\t\022\016\n\006is_buy\030\003 \001(\010\022\014\n\004lots\030\004" +
+      " \001(\001\022\022\n\nopen_price\030\005 \001(\001\022\023\n\013close_price\030" +
+      "\006 \001(\001\022-\n\topen_time\030\007 \001(\0132\032.google.protob" +
+      "uf.Timestamp\0221\n\ropen_time_utc\030\r \001(\0132\032.go" +
+      "ogle.protobuf.Timestamp\022.\n\nclose_time\030\010 " +
+      "\001(\0132\032.google.protobuf.Timestamp\0222\n\016close" +
+      "_time_utc\030\016 \001(\0132\032.google.protobuf.Timest" +
+      "amp\022\016\n\006profit\030\t \001(\001\022\022\n\ncommission\030\n \001(\001\022" +
+      "\014\n\004swap\030\013 \001(\001\022\017\n\007comment\030\014 \001(\t\"B\n\021Equity" +
+      "HistoryData\022-\n\006points\030\001 \003(\0132\035.mt4_term_a" +
+      "pi.EquityPointData\"\311\002\n\017EquityPointData\022(" +
+      "\n\004time\030\001 \001(\0132\032.google.protobuf.Timestamp" +
+      "\022,\n\010time_utc\030\n \001(\0132\032.google.protobuf.Tim" +
+      "estamp\022\017\n\007balance\030\002 \001(\001\022\016\n\006equity\030\003 \001(\001\022" +
+      "\034\n\024balance_drawdown_raw\030\004 \001(\001\022!\n\031balance" +
+      "_drawdown_relative\030\005 \001(\001\022\033\n\023equity_drawd" +
+      "own_raw\030\006 \001(\001\022 \n\030equity_drawdown_relativ" +
+      "e\030\007 \001(\001\022\023\n\013realized_pl\030\010 \001(\001\022\025\n\runrealiz" +
+      "ed_pl\030\t \001(\001\022\021\n\tcash_flow\030\013 \001(\001\"R\n\025TradeU" +
+      "nrealizedPLData\0229\n\007extrema\030\001 \003(\0132(.mt4_t" +
+      "erm_api.TradeUnrealizedExtremaData\"\336\002\n\032T" +
+      "radeUnrealizedExtremaData\022\016\n\006ticket\030\001 \001(" +
+      "\003\022\016\n\006symbol\030\002 \001(\t\0227\n\023max_unrealized_time" +
+      "\030\003 \001(\0132\032.google.protobuf.Timestamp\022;\n\027ma" +
+      "x_unrealized_time_utc\030\007 \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\022\031\n\021max_unrealized_pl\030\004 \001" +
+      "(\001\0227\n\023min_unrealized_time\030\005 \001(\0132\032.google" +
+      ".protobuf.Timestamp\022;\n\027min_unrealized_ti" +
+      "me_utc\030\010 \001(\0132\032.google.protobuf.Timestamp" +
+      "\022\031\n\021min_unrealized_pl\030\006 \001(\0012\365\003\n\nTradeSta" +
+      "ts\022a\n\nTradeStats\022\037.mt4_term_api.TradeSta" +
+      "tsRequest\032\035.mt4_term_api.TradeStatsReply" +
+      "\"\023\202\323\344\223\002\r\022\013/TradeStats\022\225\001\n\027TradeStatsEqui" +
+      "tyHistory\022,.mt4_term_api.TradeStatsEquit" +
+      "yHistoryRequest\032*.mt4_term_api.TradeStat" +
+      "sEquityHistoryReply\" \202\323\344\223\002\032\022\030/TradeStats" +
+      "EquityHistory\022m\n\rEquityHistory\022\".mt4_ter" +
+      "m_api.EquityHistoryRequest\032 .mt4_term_ap" +
+      "i.EquityHistoryReply\"\026\202\323\344\223\002\020\022\016/EquityHis" +
+      "tory\022}\n\021TradeUnrealizedPL\022&.mt4_term_api" +
+      ".TradeUnrealizedPLRequest\032$.mt4_term_api" +
+      ".TradeUnrealizedPLReply\"\032\202\323\344\223\002\024\022\022/TradeU" +
+      "nrealizedPLBBZ1git.mtapi.io/root/mrpc-pr" +
+      "oto.git/mt4/libraries/go\252\002\014mt4_term_apib" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -26796,7 +27186,7 @@ public final class Mt4TermApiTradeStats {
     internal_static_mt4_term_api_StatsData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_StatsData_descriptor,
-        new java.lang.String[] { "Summary", "MaxBalanceDrawdownRaw", "MaxBalanceDrawdownRelative", "MaxEquityDrawdownRaw", "MaxEquityDrawdownRelative", "Markets", "Profitability", "Pips", "Lots", "Comissions", "AverageWin", "AverageLost", "LongsWon", "ShortsWon", "BestTrade", "WorstTrade", "BestTradePips", "WorstTradePips", "AverageTradeLength", "ProfitFactor", "StandardDeviation", "SharpeRatio", "ZScore", "Expectancy", "Ghpr", "Trades", });
+        new java.lang.String[] { "Summary", "MaxBalanceDrawdownRaw", "MaxBalanceDrawdownRelative", "MaxEquityDrawdownRaw", "MaxEquityDrawdownRelative", "Markets", "Profitability", "Pips", "Lots", "Comissions", "AverageWin", "AverageLost", "LongsWon", "ShortsWon", "BestTrade", "WorstTrade", "BestTradePips", "WorstTradePips", "AverageTradeLength", "ProfitFactor", "StandardDeviation", "SharpeRatio", "ZScore", "Expectancy", "Ghpr", "Trades", "GrowthPercent", "Deposits", "Withdrawals", });
     internal_static_mt4_term_api_TradeSummaryData_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_mt4_term_api_TradeSummaryData_fieldAccessorTable = new
@@ -26868,7 +27258,7 @@ public final class Mt4TermApiTradeStats {
     internal_static_mt4_term_api_EquityPointData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_EquityPointData_descriptor,
-        new java.lang.String[] { "Time", "TimeUtc", "Balance", "Equity", "BalanceDrawdownRaw", "BalanceDrawdownRelative", "EquityDrawdownRaw", "EquityDrawdownRelative", "RealizedPl", "UnrealizedPl", });
+        new java.lang.String[] { "Time", "TimeUtc", "Balance", "Equity", "BalanceDrawdownRaw", "BalanceDrawdownRelative", "EquityDrawdownRaw", "EquityDrawdownRelative", "RealizedPl", "UnrealizedPl", "CashFlow", });
     internal_static_mt4_term_api_TradeUnrealizedPLData_descriptor =
       getDescriptor().getMessageTypes().get(21);
     internal_static_mt4_term_api_TradeUnrealizedPLData_fieldAccessorTable = new
