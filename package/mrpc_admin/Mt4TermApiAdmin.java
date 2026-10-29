@@ -28822,6 +28822,73 @@ public final class Mt4TermApiAdmin {
      */
     com.google.protobuf.ByteString
         getStartupTimeBytes();
+
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     * @return Whether the brokerDisconnectedSinceUtc field is set.
+     */
+    boolean hasBrokerDisconnectedSinceUtc();
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     * @return The brokerDisconnectedSinceUtc.
+     */
+    com.google.protobuf.Timestamp getBrokerDisconnectedSinceUtc();
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getBrokerDisconnectedSinceUtcOrBuilder();
+
+    /**
+     * <pre>
+     * trades that failed for the connection/worker reasons within the last 5 minutes
+     * </pre>
+     *
+     * <code>uint32 trade_failures_recent = 17;</code>
+     * @return The tradeFailuresRecent.
+     */
+    int getTradeFailuresRecent();
+
+    /**
+     * <pre>
+     * the same since this copy started
+     * </pre>
+     *
+     * <code>uint64 trade_failures_total = 18;</code>
+     * @return The tradeFailuresTotal.
+     */
+    long getTradeFailuresTotal();
+
+    /**
+     * <pre>
+     * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+     * </pre>
+     *
+     * <code>string last_trade_failure = 19;</code>
+     * @return The lastTradeFailure.
+     */
+    java.lang.String getLastTradeFailure();
+    /**
+     * <pre>
+     * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+     * </pre>
+     *
+     * <code>string last_trade_failure = 19;</code>
+     * @return The bytes for lastTradeFailure.
+     */
+    com.google.protobuf.ByteString
+        getLastTradeFailureBytes();
   }
   /**
    * Protobuf type {@code mrpc_admin.TerminalInfo}
@@ -28845,6 +28912,7 @@ public final class Mt4TermApiAdmin {
       errorMessage_ = "";
       userEmail_ = "";
       startupTime_ = "";
+      lastTradeFailure_ = "";
     }
 
     @java.lang.Override
@@ -28976,6 +29044,35 @@ public final class Mt4TermApiAdmin {
               java.lang.String s = input.readStringRequireUtf8();
               bitField0_ |= 0x00000010;
               startupTime_ = s;
+              break;
+            }
+            case 130: {
+              com.google.protobuf.Timestamp.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) != 0)) {
+                subBuilder = brokerDisconnectedSinceUtc_.toBuilder();
+              }
+              brokerDisconnectedSinceUtc_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(brokerDisconnectedSinceUtc_);
+                brokerDisconnectedSinceUtc_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 136: {
+
+              tradeFailuresRecent_ = input.readUInt32();
+              break;
+            }
+            case 144: {
+
+              tradeFailuresTotal_ = input.readUInt64();
+              break;
+            }
+            case 154: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              lastTradeFailure_ = s;
               break;
             }
             default: {
@@ -29599,6 +29696,120 @@ public final class Mt4TermApiAdmin {
       }
     }
 
+    public static final int BROKER_DISCONNECTED_SINCE_UTC_FIELD_NUMBER = 16;
+    private com.google.protobuf.Timestamp brokerDisconnectedSinceUtc_;
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     * @return Whether the brokerDisconnectedSinceUtc field is set.
+     */
+    @java.lang.Override
+    public boolean hasBrokerDisconnectedSinceUtc() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     * @return The brokerDisconnectedSinceUtc.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getBrokerDisconnectedSinceUtc() {
+      return brokerDisconnectedSinceUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : brokerDisconnectedSinceUtc_;
+    }
+    /**
+     * <pre>
+     * the terminal answers but is not connected to its broker since then
+     * </pre>
+     *
+     * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getBrokerDisconnectedSinceUtcOrBuilder() {
+      return brokerDisconnectedSinceUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : brokerDisconnectedSinceUtc_;
+    }
+
+    public static final int TRADE_FAILURES_RECENT_FIELD_NUMBER = 17;
+    private int tradeFailuresRecent_;
+    /**
+     * <pre>
+     * trades that failed for the connection/worker reasons within the last 5 minutes
+     * </pre>
+     *
+     * <code>uint32 trade_failures_recent = 17;</code>
+     * @return The tradeFailuresRecent.
+     */
+    @java.lang.Override
+    public int getTradeFailuresRecent() {
+      return tradeFailuresRecent_;
+    }
+
+    public static final int TRADE_FAILURES_TOTAL_FIELD_NUMBER = 18;
+    private long tradeFailuresTotal_;
+    /**
+     * <pre>
+     * the same since this copy started
+     * </pre>
+     *
+     * <code>uint64 trade_failures_total = 18;</code>
+     * @return The tradeFailuresTotal.
+     */
+    @java.lang.Override
+    public long getTradeFailuresTotal() {
+      return tradeFailuresTotal_;
+    }
+
+    public static final int LAST_TRADE_FAILURE_FIELD_NUMBER = 19;
+    private volatile java.lang.Object lastTradeFailure_;
+    /**
+     * <pre>
+     * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+     * </pre>
+     *
+     * <code>string last_trade_failure = 19;</code>
+     * @return The lastTradeFailure.
+     */
+    @java.lang.Override
+    public java.lang.String getLastTradeFailure() {
+      java.lang.Object ref = lastTradeFailure_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lastTradeFailure_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+     * </pre>
+     *
+     * <code>string last_trade_failure = 19;</code>
+     * @return The bytes for lastTradeFailure.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLastTradeFailureBytes() {
+      java.lang.Object ref = lastTradeFailure_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lastTradeFailure_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -29657,6 +29868,18 @@ public final class Mt4TermApiAdmin {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 15, startupTime_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeMessage(16, getBrokerDisconnectedSinceUtc());
+      }
+      if (tradeFailuresRecent_ != 0) {
+        output.writeUInt32(17, tradeFailuresRecent_);
+      }
+      if (tradeFailuresTotal_ != 0L) {
+        output.writeUInt64(18, tradeFailuresTotal_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastTradeFailure_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 19, lastTradeFailure_);
       }
       unknownFields.writeTo(output);
     }
@@ -29717,6 +29940,21 @@ public final class Mt4TermApiAdmin {
       }
       if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, startupTime_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, getBrokerDisconnectedSinceUtc());
+      }
+      if (tradeFailuresRecent_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(17, tradeFailuresRecent_);
+      }
+      if (tradeFailuresTotal_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(18, tradeFailuresTotal_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(lastTradeFailure_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, lastTradeFailure_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -29782,6 +30020,17 @@ public final class Mt4TermApiAdmin {
         if (!getStartupTime()
             .equals(other.getStartupTime())) return false;
       }
+      if (hasBrokerDisconnectedSinceUtc() != other.hasBrokerDisconnectedSinceUtc()) return false;
+      if (hasBrokerDisconnectedSinceUtc()) {
+        if (!getBrokerDisconnectedSinceUtc()
+            .equals(other.getBrokerDisconnectedSinceUtc())) return false;
+      }
+      if (getTradeFailuresRecent()
+          != other.getTradeFailuresRecent()) return false;
+      if (getTradeFailuresTotal()
+          != other.getTradeFailuresTotal()) return false;
+      if (!getLastTradeFailure()
+          .equals(other.getLastTradeFailure())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -29837,6 +30086,17 @@ public final class Mt4TermApiAdmin {
         hash = (37 * hash) + STARTUP_TIME_FIELD_NUMBER;
         hash = (53 * hash) + getStartupTime().hashCode();
       }
+      if (hasBrokerDisconnectedSinceUtc()) {
+        hash = (37 * hash) + BROKER_DISCONNECTED_SINCE_UTC_FIELD_NUMBER;
+        hash = (53 * hash) + getBrokerDisconnectedSinceUtc().hashCode();
+      }
+      hash = (37 * hash) + TRADE_FAILURES_RECENT_FIELD_NUMBER;
+      hash = (53 * hash) + getTradeFailuresRecent();
+      hash = (37 * hash) + TRADE_FAILURES_TOTAL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTradeFailuresTotal());
+      hash = (37 * hash) + LAST_TRADE_FAILURE_FIELD_NUMBER;
+      hash = (53 * hash) + getLastTradeFailure().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -29966,6 +30226,7 @@ public final class Mt4TermApiAdmin {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getConnectedAtFieldBuilder();
+          getBrokerDisconnectedSinceUtcFieldBuilder();
         }
       }
       @java.lang.Override
@@ -30009,6 +30270,18 @@ public final class Mt4TermApiAdmin {
         bitField0_ = (bitField0_ & ~0x00000008);
         startupTime_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          brokerDisconnectedSinceUtc_ = null;
+        } else {
+          brokerDisconnectedSinceUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        tradeFailuresRecent_ = 0;
+
+        tradeFailuresTotal_ = 0L;
+
+        lastTradeFailure_ = "";
+
         return this;
       }
 
@@ -30075,6 +30348,17 @@ public final class Mt4TermApiAdmin {
           to_bitField0_ |= 0x00000010;
         }
         result.startupTime_ = startupTime_;
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          if (brokerDisconnectedSinceUtcBuilder_ == null) {
+            result.brokerDisconnectedSinceUtc_ = brokerDisconnectedSinceUtc_;
+          } else {
+            result.brokerDisconnectedSinceUtc_ = brokerDisconnectedSinceUtcBuilder_.build();
+          }
+          to_bitField0_ |= 0x00000020;
+        }
+        result.tradeFailuresRecent_ = tradeFailuresRecent_;
+        result.tradeFailuresTotal_ = tradeFailuresTotal_;
+        result.lastTradeFailure_ = lastTradeFailure_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -30179,6 +30463,19 @@ public final class Mt4TermApiAdmin {
         if (other.hasStartupTime()) {
           bitField0_ |= 0x00000010;
           startupTime_ = other.startupTime_;
+          onChanged();
+        }
+        if (other.hasBrokerDisconnectedSinceUtc()) {
+          mergeBrokerDisconnectedSinceUtc(other.getBrokerDisconnectedSinceUtc());
+        }
+        if (other.getTradeFailuresRecent() != 0) {
+          setTradeFailuresRecent(other.getTradeFailuresRecent());
+        }
+        if (other.getTradeFailuresTotal() != 0L) {
+          setTradeFailuresTotal(other.getTradeFailuresTotal());
+        }
+        if (!other.getLastTradeFailure().isEmpty()) {
+          lastTradeFailure_ = other.lastTradeFailure_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -31563,6 +31860,344 @@ public final class Mt4TermApiAdmin {
   checkByteStringIsUtf8(value);
         bitField0_ |= 0x00000010;
         startupTime_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp brokerDisconnectedSinceUtc_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> brokerDisconnectedSinceUtcBuilder_;
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       * @return Whether the brokerDisconnectedSinceUtc field is set.
+       */
+      public boolean hasBrokerDisconnectedSinceUtc() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       * @return The brokerDisconnectedSinceUtc.
+       */
+      public com.google.protobuf.Timestamp getBrokerDisconnectedSinceUtc() {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          return brokerDisconnectedSinceUtc_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : brokerDisconnectedSinceUtc_;
+        } else {
+          return brokerDisconnectedSinceUtcBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public Builder setBrokerDisconnectedSinceUtc(com.google.protobuf.Timestamp value) {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          brokerDisconnectedSinceUtc_ = value;
+          onChanged();
+        } else {
+          brokerDisconnectedSinceUtcBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public Builder setBrokerDisconnectedSinceUtc(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          brokerDisconnectedSinceUtc_ = builderForValue.build();
+          onChanged();
+        } else {
+          brokerDisconnectedSinceUtcBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public Builder mergeBrokerDisconnectedSinceUtc(com.google.protobuf.Timestamp value) {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+              brokerDisconnectedSinceUtc_ != null &&
+              brokerDisconnectedSinceUtc_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            brokerDisconnectedSinceUtc_ =
+              com.google.protobuf.Timestamp.newBuilder(brokerDisconnectedSinceUtc_).mergeFrom(value).buildPartial();
+          } else {
+            brokerDisconnectedSinceUtc_ = value;
+          }
+          onChanged();
+        } else {
+          brokerDisconnectedSinceUtcBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public Builder clearBrokerDisconnectedSinceUtc() {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          brokerDisconnectedSinceUtc_ = null;
+          onChanged();
+        } else {
+          brokerDisconnectedSinceUtcBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getBrokerDisconnectedSinceUtcBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getBrokerDisconnectedSinceUtcFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getBrokerDisconnectedSinceUtcOrBuilder() {
+        if (brokerDisconnectedSinceUtcBuilder_ != null) {
+          return brokerDisconnectedSinceUtcBuilder_.getMessageOrBuilder();
+        } else {
+          return brokerDisconnectedSinceUtc_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : brokerDisconnectedSinceUtc_;
+        }
+      }
+      /**
+       * <pre>
+       * the terminal answers but is not connected to its broker since then
+       * </pre>
+       *
+       * <code>optional .google.protobuf.Timestamp broker_disconnected_since_utc = 16;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          getBrokerDisconnectedSinceUtcFieldBuilder() {
+        if (brokerDisconnectedSinceUtcBuilder_ == null) {
+          brokerDisconnectedSinceUtcBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getBrokerDisconnectedSinceUtc(),
+                  getParentForChildren(),
+                  isClean());
+          brokerDisconnectedSinceUtc_ = null;
+        }
+        return brokerDisconnectedSinceUtcBuilder_;
+      }
+
+      private int tradeFailuresRecent_ ;
+      /**
+       * <pre>
+       * trades that failed for the connection/worker reasons within the last 5 minutes
+       * </pre>
+       *
+       * <code>uint32 trade_failures_recent = 17;</code>
+       * @return The tradeFailuresRecent.
+       */
+      @java.lang.Override
+      public int getTradeFailuresRecent() {
+        return tradeFailuresRecent_;
+      }
+      /**
+       * <pre>
+       * trades that failed for the connection/worker reasons within the last 5 minutes
+       * </pre>
+       *
+       * <code>uint32 trade_failures_recent = 17;</code>
+       * @param value The tradeFailuresRecent to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTradeFailuresRecent(int value) {
+        
+        tradeFailuresRecent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * trades that failed for the connection/worker reasons within the last 5 minutes
+       * </pre>
+       *
+       * <code>uint32 trade_failures_recent = 17;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTradeFailuresRecent() {
+        
+        tradeFailuresRecent_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long tradeFailuresTotal_ ;
+      /**
+       * <pre>
+       * the same since this copy started
+       * </pre>
+       *
+       * <code>uint64 trade_failures_total = 18;</code>
+       * @return The tradeFailuresTotal.
+       */
+      @java.lang.Override
+      public long getTradeFailuresTotal() {
+        return tradeFailuresTotal_;
+      }
+      /**
+       * <pre>
+       * the same since this copy started
+       * </pre>
+       *
+       * <code>uint64 trade_failures_total = 18;</code>
+       * @param value The tradeFailuresTotal to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTradeFailuresTotal(long value) {
+        
+        tradeFailuresTotal_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * the same since this copy started
+       * </pre>
+       *
+       * <code>uint64 trade_failures_total = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTradeFailuresTotal() {
+        
+        tradeFailuresTotal_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object lastTradeFailure_ = "";
+      /**
+       * <pre>
+       * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+       * </pre>
+       *
+       * <code>string last_trade_failure = 19;</code>
+       * @return The lastTradeFailure.
+       */
+      public java.lang.String getLastTradeFailure() {
+        java.lang.Object ref = lastTradeFailure_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          lastTradeFailure_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+       * </pre>
+       *
+       * <code>string last_trade_failure = 19;</code>
+       * @return The bytes for lastTradeFailure.
+       */
+      public com.google.protobuf.ByteString
+          getLastTradeFailureBytes() {
+        java.lang.Object ref = lastTradeFailure_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          lastTradeFailure_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+       * </pre>
+       *
+       * <code>string last_trade_failure = 19;</code>
+       * @param value The lastTradeFailure to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastTradeFailure(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        lastTradeFailure_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+       * </pre>
+       *
+       * <code>string last_trade_failure = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLastTradeFailure() {
+        
+        lastTradeFailure_ = getDefaultInstance().getLastTradeFailure();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * the last one: "&lt;code&gt; &lt;method&gt; &lt;utc&gt;"
+       * </pre>
+       *
+       * <code>string last_trade_failure = 19;</code>
+       * @param value The bytes for lastTradeFailure to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastTradeFailureBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        lastTradeFailure_ = value;
         onChanged();
         return this;
       }
@@ -37676,7 +38311,7 @@ public final class Mt4TermApiAdmin {
       "am_total_mb\030\003 \001(\004\022(\n\007history\030\004 \003(\0132\027.mrp" +
       "c_admin.UsageSample\022\r\n\005error\030\005 \001(\t\"+\n\026Ac" +
       "tiveTerminalsRequest\022\021\n\tadmin_key\030\001 \001(\t\"" +
-      "\340\003\n\014TerminalInfo\022\n\n\002id\030\001 \001(\t\022\023\n\013user_num" +
+      "\243\005\n\014TerminalInfo\022\n\n\002id\030\001 \001(\t\022\023\n\013user_num" +
       "ber\030\002 \001(\r\022\024\n\014windows_user\030\003 \001(\t\022\017\n\007accou" +
       "nt\030\004 \001(\004\022\016\n\006server\030\005 \001(\t\022\014\n\004port\030\006 \001(\r\022." +
       "\n\ncreated_at\030\007 \001(\0132\032.google.protobuf.Tim" +
@@ -37685,82 +38320,87 @@ public final class Mt4TermApiAdmin {
       "age\030\013 \001(\t\022\027\n\nuser_email\030\014 \001(\tH\001\210\001\001\022%\n\030st" +
       "artup_duration_seconds\030\r \001(\001H\002\210\001\001\0225\n\014con" +
       "nected_at\030\016 \001(\0132\032.google.protobuf.Timest" +
-      "ampH\003\210\001\001\022\031\n\014startup_time\030\017 \001(\tH\004\210\001\001B\007\n\005_" +
-      "nameB\r\n\013_user_emailB\033\n\031_startup_duration" +
-      "_secondsB\017\n\r_connected_atB\017\n\r_startup_ti" +
-      "me\"\256\002\n\024ActiveTerminalsReply\022\013\n\003pod\030\001 \001(\t" +
-      "\022\014\n\004node\030\002 \001(\t\022\016\n\006pod_ip\030\003 \001(\t\022+\n\ttermin" +
-      "als\030\004 \003(\0132\030.mrpc_admin.TerminalInfo\022\r\n\005e" +
-      "rror\030\005 \001(\t\022\023\n\013cpu_percent\030\006 \001(\001\022\023\n\013ram_u" +
-      "sed_mb\030\007 \001(\004\022\024\n\014ram_total_mb\030\010 \001(\004\022.\n\rus" +
-      "age_history\030\t \003(\0132\027.mrpc_admin.UsageSamp" +
-      "le\022?\n\016restore_status\030\n \001(\0132\'.mrpc_admin." +
-      "SessionRestoreWatcherStatus\"\312\002\n\014PodTermi" +
-      "nals\022\013\n\003pod\030\001 \001(\t\022\014\n\004node\030\002 \001(\t\022\016\n\006pod_i" +
-      "p\030\003 \001(\t\022\021\n\tnovnc_url\030\004 \001(\t\022+\n\tterminals\030" +
-      "\005 \003(\0132\030.mrpc_admin.TerminalInfo\022\r\n\005error" +
-      "\030\006 \001(\t\022\017\n\007host_ip\030\007 \001(\t\022\023\n\013cpu_percent\030\010" +
-      " \001(\001\022\023\n\013ram_used_mb\030\t \001(\004\022\024\n\014ram_total_m" +
-      "b\030\n \001(\004\022.\n\rusage_history\030\013 \003(\0132\027.mrpc_ad" +
-      "min.UsageSample\022?\n\016restore_status\030\014 \001(\0132" +
-      "\'.mrpc_admin.SessionRestoreWatcherStatus" +
-      "\"E\n\033ActiveTerminalsClusterReply\022&\n\004pods\030" +
-      "\001 \003(\0132\030.mrpc_admin.PodTerminals2\322\020\n\010Admi" +
-      "nApi\022q\n\017ActiveTerminals\022\".mrpc_admin.Act" +
-      "iveTerminalsRequest\032 .mrpc_admin.ActiveT" +
-      "erminalsReply\"\030\202\323\344\223\002\022\022\020/ActiveTerminals\022" +
-      "\206\001\n\026ActiveTerminalsCluster\022\".mrpc_admin." +
-      "ActiveTerminalsRequest\032\'.mrpc_admin.Acti" +
-      "veTerminalsClusterReply\"\037\202\323\344\223\002\031\022\027/Active" +
-      "TerminalsCluster\022e\n\013SystemUsage\022\".mrpc_a" +
-      "dmin.ActiveTerminalsRequest\032\034.mrpc_admin" +
-      ".SystemUsageReply\"\024\202\323\344\223\002\016\022\014/SystemUsage\022" +
-      "h\n\014ListLogFiles\022\".mrpc_admin.ActiveTermi" +
-      "nalsRequest\032\035.mrpc_admin.ListLogFilesRep" +
-      "ly\"\025\202\323\344\223\002\017\022\r/ListLogFiles\022]\n\nGetLogFile\022" +
-      "\035.mrpc_admin.GetLogFileRequest\032\033.mrpc_ad" +
-      "min.GetLogFileReply\"\023\202\323\344\223\002\r\022\013/GetLogFile" +
-      "\022}\n\022GetEventLogEntries\022%.mrpc_admin.GetE" +
-      "ventLogEntriesRequest\032#.mrpc_admin.GetEv" +
-      "entLogEntriesReply\"\033\202\323\344\223\002\025\022\023/GetEventLog" +
-      "Entries\022\225\001\n\030CaptureSessionScreenshot\022+.m" +
-      "rpc_admin.CaptureSessionScreenshotReques" +
-      "t\032).mrpc_admin.CaptureSessionScreenshotR" +
-      "eply\"!\202\323\344\223\002\033\022\031/CaptureSessionScreenshot\022" +
-      "\244\001\n\035CaptureSessionScreenshotOnPod\0220.mrpc" +
-      "_admin.CaptureSessionScreenshotOnPodRequ" +
-      "est\032).mrpc_admin.CaptureSessionScreensho" +
-      "tReply\"&\202\323\344\223\002 \022\036/CaptureSessionScreensho" +
-      "tOnPod\022q\n\017RefreshMrpcRest\022\".mrpc_admin.A" +
-      "ctiveTerminalsRequest\032 .mrpc_admin.Refre" +
-      "shMrpcRestReply\"\030\202\323\344\223\002\022\022\020/RefreshMrpcRes" +
-      "t\022W\n\nGetVersion\022\032.mrpc_admin.VersionRequ" +
-      "est\032\030.mrpc_admin.VersionReply\"\023\202\323\344\223\002\r\022\013/" +
-      "version-tm\022]\n\nGetAllLogs\022\035.mrpc_admin.Ge" +
-      "tAllLogsRequest\032\033.mrpc_admin.GetAllLogsR" +
-      "eply\"\023\202\323\344\223\002\r\022\013/GetAllLogs\022\211\001\n\025GetSession" +
-      "RestoreLogs\022(.mrpc_admin.GetSessionResto" +
-      "reLogsRequest\032&.mrpc_admin.GetSessionRes" +
-      "toreLogsReply\"\036\202\323\344\223\002\030\022\026/GetSessionRestor" +
-      "eLogs\022\211\001\n\027GetSessionRestoreStatus\022\".mrpc" +
-      "_admin.ActiveTerminalsRequest\032(.mrpc_adm" +
-      "in.GetSessionRestoreStatusReply\" \202\323\344\223\002\032\022" +
-      "\030/GetSessionRestoreStatus\022\235\001\n\025KillAllTri" +
-      "alTerminals\022\".mrpc_admin.ActiveTerminals" +
+      "ampH\003\210\001\001\022\031\n\014startup_time\030\017 \001(\tH\004\210\001\001\022F\n\035b" +
+      "roker_disconnected_since_utc\030\020 \001(\0132\032.goo" +
+      "gle.protobuf.TimestampH\005\210\001\001\022\035\n\025trade_fai" +
+      "lures_recent\030\021 \001(\r\022\034\n\024trade_failures_tot" +
+      "al\030\022 \001(\004\022\032\n\022last_trade_failure\030\023 \001(\tB\007\n\005" +
+      "_nameB\r\n\013_user_emailB\033\n\031_startup_duratio" +
+      "n_secondsB\017\n\r_connected_atB\017\n\r_startup_t" +
+      "imeB \n\036_broker_disconnected_since_utc\"\256\002" +
+      "\n\024ActiveTerminalsReply\022\013\n\003pod\030\001 \001(\t\022\014\n\004n" +
+      "ode\030\002 \001(\t\022\016\n\006pod_ip\030\003 \001(\t\022+\n\tterminals\030\004" +
+      " \003(\0132\030.mrpc_admin.TerminalInfo\022\r\n\005error\030" +
+      "\005 \001(\t\022\023\n\013cpu_percent\030\006 \001(\001\022\023\n\013ram_used_m" +
+      "b\030\007 \001(\004\022\024\n\014ram_total_mb\030\010 \001(\004\022.\n\rusage_h" +
+      "istory\030\t \003(\0132\027.mrpc_admin.UsageSample\022?\n" +
+      "\016restore_status\030\n \001(\0132\'.mrpc_admin.Sessi" +
+      "onRestoreWatcherStatus\"\312\002\n\014PodTerminals\022" +
+      "\013\n\003pod\030\001 \001(\t\022\014\n\004node\030\002 \001(\t\022\016\n\006pod_ip\030\003 \001" +
+      "(\t\022\021\n\tnovnc_url\030\004 \001(\t\022+\n\tterminals\030\005 \003(\013" +
+      "2\030.mrpc_admin.TerminalInfo\022\r\n\005error\030\006 \001(" +
+      "\t\022\017\n\007host_ip\030\007 \001(\t\022\023\n\013cpu_percent\030\010 \001(\001\022" +
+      "\023\n\013ram_used_mb\030\t \001(\004\022\024\n\014ram_total_mb\030\n \001" +
+      "(\004\022.\n\rusage_history\030\013 \003(\0132\027.mrpc_admin.U" +
+      "sageSample\022?\n\016restore_status\030\014 \001(\0132\'.mrp" +
+      "c_admin.SessionRestoreWatcherStatus\"E\n\033A" +
+      "ctiveTerminalsClusterReply\022&\n\004pods\030\001 \003(\013" +
+      "2\030.mrpc_admin.PodTerminals2\322\020\n\010AdminApi\022" +
+      "q\n\017ActiveTerminals\022\".mrpc_admin.ActiveTe" +
+      "rminalsRequest\032 .mrpc_admin.ActiveTermin" +
+      "alsReply\"\030\202\323\344\223\002\022\022\020/ActiveTerminals\022\206\001\n\026A" +
+      "ctiveTerminalsCluster\022\".mrpc_admin.Activ" +
+      "eTerminalsRequest\032\'.mrpc_admin.ActiveTer" +
+      "minalsClusterReply\"\037\202\323\344\223\002\031\022\027/ActiveTermi" +
+      "nalsCluster\022e\n\013SystemUsage\022\".mrpc_admin." +
+      "ActiveTerminalsRequest\032\034.mrpc_admin.Syst" +
+      "emUsageReply\"\024\202\323\344\223\002\016\022\014/SystemUsage\022h\n\014Li" +
+      "stLogFiles\022\".mrpc_admin.ActiveTerminalsR" +
+      "equest\032\035.mrpc_admin.ListLogFilesReply\"\025\202" +
+      "\323\344\223\002\017\022\r/ListLogFiles\022]\n\nGetLogFile\022\035.mrp" +
+      "c_admin.GetLogFileRequest\032\033.mrpc_admin.G" +
+      "etLogFileReply\"\023\202\323\344\223\002\r\022\013/GetLogFile\022}\n\022G" +
+      "etEventLogEntries\022%.mrpc_admin.GetEventL" +
+      "ogEntriesRequest\032#.mrpc_admin.GetEventLo" +
+      "gEntriesReply\"\033\202\323\344\223\002\025\022\023/GetEventLogEntri" +
+      "es\022\225\001\n\030CaptureSessionScreenshot\022+.mrpc_a" +
+      "dmin.CaptureSessionScreenshotRequest\032).m" +
+      "rpc_admin.CaptureSessionScreenshotReply\"" +
+      "!\202\323\344\223\002\033\022\031/CaptureSessionScreenshot\022\244\001\n\035C" +
+      "aptureSessionScreenshotOnPod\0220.mrpc_admi" +
+      "n.CaptureSessionScreenshotOnPodRequest\032)" +
+      ".mrpc_admin.CaptureSessionScreenshotRepl" +
+      "y\"&\202\323\344\223\002 \022\036/CaptureSessionScreenshotOnPo" +
+      "d\022q\n\017RefreshMrpcRest\022\".mrpc_admin.Active" +
+      "TerminalsRequest\032 .mrpc_admin.RefreshMrp" +
+      "cRestReply\"\030\202\323\344\223\002\022\022\020/RefreshMrpcRest\022W\n\n" +
+      "GetVersion\022\032.mrpc_admin.VersionRequest\032\030" +
+      ".mrpc_admin.VersionReply\"\023\202\323\344\223\002\r\022\013/versi" +
+      "on-tm\022]\n\nGetAllLogs\022\035.mrpc_admin.GetAllL" +
+      "ogsRequest\032\033.mrpc_admin.GetAllLogsReply\"" +
+      "\023\202\323\344\223\002\r\022\013/GetAllLogs\022\211\001\n\025GetSessionResto" +
+      "reLogs\022(.mrpc_admin.GetSessionRestoreLog" +
+      "sRequest\032&.mrpc_admin.GetSessionRestoreL" +
+      "ogsReply\"\036\202\323\344\223\002\030\022\026/GetSessionRestoreLogs" +
+      "\022\211\001\n\027GetSessionRestoreStatus\022\".mrpc_admi" +
+      "n.ActiveTerminalsRequest\032(.mrpc_admin.Ge" +
+      "tSessionRestoreStatusReply\" \202\323\344\223\002\032\022\030/Get" +
+      "SessionRestoreStatus\022\235\001\n\025KillAllTrialTer" +
+      "minals\022\".mrpc_admin.ActiveTerminalsReque" +
+      "st\032&.mrpc_admin.KillAllTrialTerminalsRep" +
+      "ly\"8\202\323\344\223\0022\022\026/KillAllTrialTerminalsZ\030\"\026/K" +
+      "illAllTrialTerminals\022\254\001\n\032KillAllTrialTer" +
+      "minalsLocal\022\".mrpc_admin.ActiveTerminals" +
       "Request\032&.mrpc_admin.KillAllTrialTermina" +
-      "lsReply\"8\202\323\344\223\0022\022\026/KillAllTrialTerminalsZ" +
-      "\030\"\026/KillAllTrialTerminals\022\254\001\n\032KillAllTri" +
-      "alTerminalsLocal\022\".mrpc_admin.ActiveTerm" +
-      "inalsRequest\032&.mrpc_admin.KillAllTrialTe" +
-      "rminalsReply\"B\202\323\344\223\002<\022\033/KillAllTrialTermi" +
-      "nalsLocalZ\035\"\033/KillAllTrialTerminalsLocal" +
-      "\022L\n\005Drain\022\030.mrpc_admin.DrainRequest\032\026.mr" +
-      "pc_admin.DrainReply\"\021\202\323\344\223\002\013\"\006/Drain:\001*\022|" +
-      "\n\021StopTerminalLocal\022$.mrpc_admin.StopTer" +
-      "minalLocalRequest\032\".mrpc_admin.StopTermi" +
-      "nalLocalReply\"\035\202\323\344\223\002\027\"\022/StopTerminalLoca" +
-      "l:\001*B@Z1git.mtapi.io/root/mrpc-proto.git" +
-      "/mt4/libraries/go\252\002\nmrpc_adminb\006proto3"
+      "lsReply\"B\202\323\344\223\002<\022\033/KillAllTrialTerminalsL" +
+      "ocalZ\035\"\033/KillAllTrialTerminalsLocal\022L\n\005D" +
+      "rain\022\030.mrpc_admin.DrainRequest\032\026.mrpc_ad" +
+      "min.DrainReply\"\021\202\323\344\223\002\013\"\006/Drain:\001*\022|\n\021Sto" +
+      "pTerminalLocal\022$.mrpc_admin.StopTerminal" +
+      "LocalRequest\032\".mrpc_admin.StopTerminalLo" +
+      "calReply\"\035\202\323\344\223\002\027\"\022/StopTerminalLocal:\001*B" +
+      "@Z1git.mtapi.io/root/mrpc-proto.git/mt4/" +
+      "libraries/go\252\002\nmrpc_adminb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -37941,7 +38581,7 @@ public final class Mt4TermApiAdmin {
     internal_static_mrpc_admin_TerminalInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mrpc_admin_TerminalInfo_descriptor,
-        new java.lang.String[] { "Id", "UserNumber", "WindowsUser", "Account", "Server", "Port", "CreatedAt", "WindowsPassword", "Name", "State", "ErrorMessage", "UserEmail", "StartupDurationSeconds", "ConnectedAt", "StartupTime", "Name", "UserEmail", "StartupDurationSeconds", "ConnectedAt", "StartupTime", });
+        new java.lang.String[] { "Id", "UserNumber", "WindowsUser", "Account", "Server", "Port", "CreatedAt", "WindowsPassword", "Name", "State", "ErrorMessage", "UserEmail", "StartupDurationSeconds", "ConnectedAt", "StartupTime", "BrokerDisconnectedSinceUtc", "TradeFailuresRecent", "TradeFailuresTotal", "LastTradeFailure", "Name", "UserEmail", "StartupDurationSeconds", "ConnectedAt", "StartupTime", "BrokerDisconnectedSinceUtc", });
     internal_static_mrpc_admin_ActiveTerminalsReply_descriptor =
       getDescriptor().getMessageTypes().get(29);
     internal_static_mrpc_admin_ActiveTerminalsReply_fieldAccessorTable = new

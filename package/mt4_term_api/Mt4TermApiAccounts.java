@@ -3415,6 +3415,28 @@ public final class Mt4TermApiAccounts {
      * <code>.google.protobuf.Timestamp expires_utc = 13;</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpiresUtcOrBuilder();
+
+    /**
+     * <pre>
+     * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+     * empty when the terminal has no dedicated IP.
+     * </pre>
+     *
+     * <code>string dedicated_ip = 14;</code>
+     * @return The dedicatedIp.
+     */
+    java.lang.String getDedicatedIp();
+    /**
+     * <pre>
+     * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+     * empty when the terminal has no dedicated IP.
+     * </pre>
+     *
+     * <code>string dedicated_ip = 14;</code>
+     * @return The bytes for dedicatedIp.
+     */
+    com.google.protobuf.ByteString
+        getDedicatedIpBytes();
   }
   /**
    * Protobuf type {@code mt4_term_api.AccountsListItem}
@@ -3437,6 +3459,7 @@ public final class Mt4TermApiAccounts {
       state_ = "";
       stopReason_ = "";
       errorMessage_ = "";
+      dedicatedIp_ = "";
     }
 
     @java.lang.Override
@@ -3564,6 +3587,12 @@ public final class Mt4TermApiAccounts {
                 expiresUtc_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 114: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              dedicatedIp_ = s;
               break;
             }
             default: {
@@ -4130,6 +4159,54 @@ public final class Mt4TermApiAccounts {
       return getExpiresUtc();
     }
 
+    public static final int DEDICATED_IP_FIELD_NUMBER = 14;
+    private volatile java.lang.Object dedicatedIp_;
+    /**
+     * <pre>
+     * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+     * empty when the terminal has no dedicated IP.
+     * </pre>
+     *
+     * <code>string dedicated_ip = 14;</code>
+     * @return The dedicatedIp.
+     */
+    @java.lang.Override
+    public java.lang.String getDedicatedIp() {
+      java.lang.Object ref = dedicatedIp_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dedicatedIp_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+     * empty when the terminal has no dedicated IP.
+     * </pre>
+     *
+     * <code>string dedicated_ip = 14;</code>
+     * @return The bytes for dedicatedIp.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDedicatedIpBytes() {
+      java.lang.Object ref = dedicatedIp_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dedicatedIp_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4182,6 +4259,9 @@ public final class Mt4TermApiAccounts {
       }
       if (expiresUtc_ != null) {
         output.writeMessage(13, getExpiresUtc());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dedicatedIp_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 14, dedicatedIp_);
       }
       unknownFields.writeTo(output);
     }
@@ -4236,6 +4316,9 @@ public final class Mt4TermApiAccounts {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, getExpiresUtc());
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dedicatedIp_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, dedicatedIp_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -4286,6 +4369,8 @@ public final class Mt4TermApiAccounts {
         if (!getExpiresUtc()
             .equals(other.getExpiresUtc())) return false;
       }
+      if (!getDedicatedIp()
+          .equals(other.getDedicatedIp())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4331,6 +4416,8 @@ public final class Mt4TermApiAccounts {
         hash = (37 * hash) + EXPIRES_UTC_FIELD_NUMBER;
         hash = (53 * hash) + getExpiresUtc().hashCode();
       }
+      hash = (37 * hash) + DEDICATED_IP_FIELD_NUMBER;
+      hash = (53 * hash) + getDedicatedIp().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4502,6 +4589,8 @@ public final class Mt4TermApiAccounts {
           expiresUtc_ = null;
           expiresUtcBuilder_ = null;
         }
+        dedicatedIp_ = "";
+
         return this;
       }
 
@@ -4553,6 +4642,7 @@ public final class Mt4TermApiAccounts {
         } else {
           result.expiresUtc_ = expiresUtcBuilder_.build();
         }
+        result.dedicatedIp_ = dedicatedIp_;
         onBuilt();
         return result;
       }
@@ -4647,6 +4737,10 @@ public final class Mt4TermApiAccounts {
         }
         if (other.hasExpiresUtc()) {
           mergeExpiresUtc(other.getExpiresUtc());
+        }
+        if (!other.getDedicatedIp().isEmpty()) {
+          dedicatedIp_ = other.dedicatedIp_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6043,6 +6137,107 @@ public final class Mt4TermApiAccounts {
         }
         return expiresUtcBuilder_;
       }
+
+      private java.lang.Object dedicatedIp_ = "";
+      /**
+       * <pre>
+       * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+       * empty when the terminal has no dedicated IP.
+       * </pre>
+       *
+       * <code>string dedicated_ip = 14;</code>
+       * @return The dedicatedIp.
+       */
+      public java.lang.String getDedicatedIp() {
+        java.lang.Object ref = dedicatedIp_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          dedicatedIp_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+       * empty when the terminal has no dedicated IP.
+       * </pre>
+       *
+       * <code>string dedicated_ip = 14;</code>
+       * @return The bytes for dedicatedIp.
+       */
+      public com.google.protobuf.ByteString
+          getDedicatedIpBytes() {
+        java.lang.Object ref = dedicatedIp_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          dedicatedIp_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+       * empty when the terminal has no dedicated IP.
+       * </pre>
+       *
+       * <code>string dedicated_ip = 14;</code>
+       * @param value The dedicatedIp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDedicatedIp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        dedicatedIp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+       * empty when the terminal has no dedicated IP.
+       * </pre>
+       *
+       * <code>string dedicated_ip = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDedicatedIp() {
+        
+        dedicatedIp_ = getDefaultInstance().getDedicatedIp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The dedicated (reserved) egress IP assigned to this terminal (the dedicated-IP add-on), to whitelist with the broker;
+       * empty when the terminal has no dedicated IP.
+       * </pre>
+       *
+       * <code>string dedicated_ip = 14;</code>
+       * @param value The bytes for dedicatedIp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDedicatedIpBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        dedicatedIp_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6137,7 +6332,7 @@ public final class Mt4TermApiAccounts {
       "onse\"r\n\020AccountsListData\0220\n\010accounts\030\001 \003" +
       "(\0132\036.mt4_term_api.AccountsListItem\022\027\n\017ne" +
       "xt_page_token\030\002 \001(\t\022\023\n\013total_count\030\003 \001(\005" +
-      "\"\341\002\n\020AccountsListItem\022\023\n\013terminal_id\030\001 \001" +
+      "\"\367\002\n\020AccountsListItem\022\023\n\013terminal_id\030\001 \001" +
       "(\t\022\025\n\rterminal_guid\030\002 \001(\t\022\020\n\010platform\030\003 " +
       "\001(\t\022\r\n\005login\030\004 \001(\004\022\016\n\006server\030\005 \001(\t\022\014\n\004na" +
       "me\030\006 \001(\t\022\r\n\005state\030\007 \001(\t\022\024\n\014is_connected\030" +
@@ -6145,12 +6340,13 @@ public final class Mt4TermApiAccounts {
       "obuf.Timestamp\022/\n\013stopped_utc\030\n \001(\0132\032.go" +
       "ogle.protobuf.Timestamp\022\023\n\013stop_reason\030\013" +
       " \001(\t\022\025\n\rerror_message\030\014 \001(\t\022/\n\013expires_u" +
-      "tc\030\r \001(\0132\032.google.protobuf.Timestamp2i\n\010" +
-      "Accounts\022]\n\004List\022!.mt4_term_api.Accounts" +
-      "ListRequest\032\037.mt4_term_api.AccountsListR" +
-      "eply\"\021\202\323\344\223\002\013\022\t/AccountsBBZ1git.mtapi.io/" +
-      "root/mrpc-proto.git/mt4/libraries/go\252\002\014m" +
-      "t4_term_apib\006proto3"
+      "tc\030\r \001(\0132\032.google.protobuf.Timestamp\022\024\n\014" +
+      "dedicated_ip\030\016 \001(\t2i\n\010Accounts\022]\n\004List\022!" +
+      ".mt4_term_api.AccountsListRequest\032\037.mt4_" +
+      "term_api.AccountsListReply\"\021\202\323\344\223\002\013\022\t/Acc" +
+      "ountsBBZ1git.mtapi.io/root/mrpc-proto.gi" +
+      "t/mt4/libraries/go\252\002\014mt4_term_apib\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6182,7 +6378,7 @@ public final class Mt4TermApiAccounts {
     internal_static_mt4_term_api_AccountsListItem_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mt4_term_api_AccountsListItem_descriptor,
-        new java.lang.String[] { "TerminalId", "TerminalGuid", "Platform", "Login", "Server", "Name", "State", "IsConnected", "StartedUtc", "StoppedUtc", "StopReason", "ErrorMessage", "ExpiresUtc", });
+        new java.lang.String[] { "TerminalId", "TerminalGuid", "Platform", "Login", "Server", "Name", "State", "IsConnected", "StartedUtc", "StoppedUtc", "StopReason", "ErrorMessage", "ExpiresUtc", "DedicatedIp", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.api.AnnotationsProto.http);
