@@ -554,6 +554,37 @@ public final class AdminApiGrpc {
     return getStopTerminalLocalMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest,
+      mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> getSetDedicatedIpEntitlementMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SetDedicatedIpEntitlement",
+      requestType = mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest.class,
+      responseType = mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest,
+      mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> getSetDedicatedIpEntitlementMethod() {
+    io.grpc.MethodDescriptor<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest, mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> getSetDedicatedIpEntitlementMethod;
+    if ((getSetDedicatedIpEntitlementMethod = AdminApiGrpc.getSetDedicatedIpEntitlementMethod) == null) {
+      synchronized (AdminApiGrpc.class) {
+        if ((getSetDedicatedIpEntitlementMethod = AdminApiGrpc.getSetDedicatedIpEntitlementMethod) == null) {
+          AdminApiGrpc.getSetDedicatedIpEntitlementMethod = getSetDedicatedIpEntitlementMethod =
+              io.grpc.MethodDescriptor.<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest, mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SetDedicatedIpEntitlement"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminApiMethodDescriptorSupplier("SetDedicatedIpEntitlement"))
+              .build();
+        }
+      }
+    }
+    return getSetDedicatedIpEntitlementMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -811,6 +842,17 @@ public final class AdminApiGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getStopTerminalLocalMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * Grants or revokes the dedicated-IP add-on entitlement for ONE terminal (see the mt5 admin proto for the canonical
+     * definition; this copy exists for the mt4 client libs). ADMIN_KEY required.
+     * </pre>
+     */
+    public void setDedicatedIpEntitlement(mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSetDedicatedIpEntitlementMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -932,6 +974,13 @@ public final class AdminApiGrpc {
                 mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest,
                 mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply>(
                   this, METHODID_STOP_TERMINAL_LOCAL)))
+          .addMethod(
+            getSetDedicatedIpEntitlementMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest,
+                mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply>(
+                  this, METHODID_SET_DEDICATED_IP_ENTITLEMENT)))
           .build();
     }
   }
@@ -1175,6 +1224,18 @@ public final class AdminApiGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getStopTerminalLocalMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Grants or revokes the dedicated-IP add-on entitlement for ONE terminal (see the mt5 admin proto for the canonical
+     * definition; this copy exists for the mt4 client libs). ADMIN_KEY required.
+     * </pre>
+     */
+    public void setDedicatedIpEntitlement(mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest request,
+        io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSetDedicatedIpEntitlementMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1398,6 +1459,17 @@ public final class AdminApiGrpc {
     public mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply stopTerminalLocal(mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getStopTerminalLocalMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Grants or revokes the dedicated-IP add-on entitlement for ONE terminal (see the mt5 admin proto for the canonical
+     * definition; this copy exists for the mt4 client libs). ADMIN_KEY required.
+     * </pre>
+     */
+    public mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply setDedicatedIpEntitlement(mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSetDedicatedIpEntitlementMethod(), getCallOptions(), request);
     }
   }
 
@@ -1640,6 +1712,18 @@ public final class AdminApiGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getStopTerminalLocalMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Grants or revokes the dedicated-IP add-on entitlement for ONE terminal (see the mt5 admin proto for the canonical
+     * definition; this copy exists for the mt4 client libs). ADMIN_KEY required.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply> setDedicatedIpEntitlement(
+        mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSetDedicatedIpEntitlementMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ACTIVE_TERMINALS = 0;
@@ -1659,6 +1743,7 @@ public final class AdminApiGrpc {
   private static final int METHODID_KILL_ALL_TRIAL_TERMINALS_LOCAL = 14;
   private static final int METHODID_DRAIN = 15;
   private static final int METHODID_STOP_TERMINAL_LOCAL = 16;
+  private static final int METHODID_SET_DEDICATED_IP_ENTITLEMENT = 17;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1745,6 +1830,10 @@ public final class AdminApiGrpc {
           serviceImpl.stopTerminalLocal((mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalRequest) request,
               (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.StopTerminalLocalReply>) responseObserver);
           break;
+        case METHODID_SET_DEDICATED_IP_ENTITLEMENT:
+          serviceImpl.setDedicatedIpEntitlement((mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementRequest) request,
+              (io.grpc.stub.StreamObserver<mrpc_admin.Mt4TermApiAdmin.SetDedicatedIpEntitlementReply>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1823,6 +1912,7 @@ public final class AdminApiGrpc {
               .addMethod(getKillAllTrialTerminalsLocalMethod())
               .addMethod(getDrainMethod())
               .addMethod(getStopTerminalLocalMethod())
+              .addMethod(getSetDedicatedIpEntitlementMethod())
               .build();
         }
       }
