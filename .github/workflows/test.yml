@@ -48,7 +48,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install MkDocs Material
-        run: pip install mkdocs-material
+        run: pip install mkdocs==1.6.1 mkdocs-material==9.8.0 pymdown-extensions==12.3
 
       - name: Verify Documentation Build
         run: mkdocs build
