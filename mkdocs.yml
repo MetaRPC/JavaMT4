@@ -69,6 +69,12 @@ markdown_extensions:
 plugins:
   - search
 
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn
+
 copyright: >
   Copyright © 2024–2025 MetaRPC. MT4 is a trademark of MetaQuotes Software Corp.
   This documentation is community-maintained and not affiliated with MetaQuotes.
@@ -79,15 +85,75 @@ nav:
   - Guides:
     - Getting Started: All_Guides/GETTING_STARTED.md
     - Your First Project: All_Guides/Your_First_Project.md
-    - Connection: connection.md
-    - Account: account.md
-    - Trading: trading.md
-    - Quotes: quotes.md
+    - Project Map: All_Guides/PROJECT_MAP.md
     - Streams: All_Guides/STREAMS.md
     - Errors: All_Guides/ERRORS.md
+    - Return Codes Reference: All_Guides/RETURN_CODES_REFERENCE.md
+    - ENUMs Usage Reference: All_Guides/ENUMS_USAGE_REFERENCE.md
+    - Glossary: All_Guides/GLOSSARY.md
 
-  - API Reference:
-    - MT4Account: api.md
-    - API methods: API_Reference/methods.md
-    - Messages: API_Reference/messages.md
-    - Enums: API_Reference/enums.md
+  - MT4Account:
+    - Master Overview: MT4Account/MT4Account.Master.Overview.md
+    - 1. Account Information:
+      - Overview: MT4Account/1. Account_Information/Account_Information.Overview.md
+      - account_summary: MT4Account/1. Account_Information/account_summary.md
+      - trade_stats: MT4Account/1. Account_Information/trade_stats.md
+      - trade_unrealized_pl: MT4Account/1. Account_Information/trade_unrealized_pl.md
+      - equity_history: MT4Account/1. Account_Information/equity_history.md
+      - trade_stats_equity_history: MT4Account/1. Account_Information/trade_stats_equity_history.md
+    - 2. Orders & History:
+      - Overview: MT4Account/2. Orders_History/Orders_History.Overview.md
+      - opened_orders: MT4Account/2. Orders_History/opened_orders.md
+      - opened_orders_tickets: MT4Account/2. Orders_History/opened_orders_tickets.md
+      - orders_history: MT4Account/2. Orders_History/orders_history.md
+    - 3. Symbols & Quotes:
+      - Overview: MT4Account/3. Symbols_Quotes/Symbols_Quotes.Overview.md
+      - symbols: MT4Account/3. Symbols_Quotes/symbols.md
+      - quote: MT4Account/3. Symbols_Quotes/quote.md
+      - quote_many: MT4Account/3. Symbols_Quotes/quote_many.md
+      - quote_history: MT4Account/3. Symbols_Quotes/quote_history.md
+      - symbol_params_many: MT4Account/3. Symbols_Quotes/symbol_params_many.md
+      - tick_value_with_size: MT4Account/3. Symbols_Quotes/tick_value_with_size.md
+      - symbol_select: MT4Account/3. Symbols_Quotes/symbol_select.md
+      - server_timezone: MT4Account/3. Symbols_Quotes/server_timezone.md
+    - 4. Trading Operations:
+      - Overview: MT4Account/4. Trading_Operations/Trading_Operations.Overview.md
+      - order_send: MT4Account/4. Trading_Operations/order_send.md
+      - order_modify: MT4Account/4. Trading_Operations/order_modify.md
+      - order_close_delete: MT4Account/4. Trading_Operations/order_close_delete.md
+      - order_close_by: MT4Account/4. Trading_Operations/order_close_by.md
+    - 5. Streaming Methods:
+      - Overview: MT4Account/5. Streaming_Methods/Streaming_Methods.Overview.md
+      - on_symbol_tick: MT4Account/5. Streaming_Methods/on_symbol_tick.md
+      - on_trade: MT4Account/5. Streaming_Methods/on_trade.md
+      - on_opened_orders_tickets: MT4Account/5. Streaming_Methods/on_opened_orders_tickets.md
+      - on_opened_orders_profit: MT4Account/5. Streaming_Methods/on_opened_orders_profit.md
+      - on_connect_state: MT4Account/5. Streaming_Methods/on_connect_state.md
+
+  - MT4Service:
+    - Overview: MT4Service/MT4Service.Overview.md
+    - 1. Account Information: MT4Service/1. Account_Information.md
+    - 2. Orders & History: MT4Service/2. Orders_History.md
+    - 3. Symbols & Quotes: MT4Service/3. Symbols_Quotes.md
+    - 4. Trading Operations: MT4Service/4. Trading_Operations.md
+    - 5. Streaming Methods: MT4Service/5. Streaming_Methods.md
+
+  - MT4Sugar:
+    - Master Overview: MT4Sugar/MT4Sugar.Master.Overview.md
+    - 1. Connection & Defaults: MT4Sugar/1. Connection_Defaults.md
+    - 2. Prices & Quotes: MT4Sugar/2. Prices_Quotes.md
+    - 3. Symbol Math: MT4Sugar/3. Symbol_Math.md
+    - 4. Risk Sizing: MT4Sugar/4. Risk_Sizing.md
+    - 5. Order Entry: MT4Sugar/5. Order_Entry.md
+    - 6. Order Management: MT4Sugar/6. Order_Management.md
+    - 7. Trailing & Breakeven: MT4Sugar/7. Trailing_Breakeven.md
+    - 8. Watchers & Waiters: MT4Sugar/8. Watchers_Waiters.md
+    - 9. Order Info & Exposure: MT4Sugar/9. Order_Info.md
+
+  - Strategies:
+    - Master Overview: Strategies/Strategies.Master.Overview.md
+    - Orchestrators:
+      - Market One-Shot: Strategies/Orchestrators/MarketOneShot.md
+      - Bracket + Trailing: Strategies/Orchestrators/BracketTrailing.md
+      - Pending Bracket: Strategies/Orchestrators/PendingBracket.md
+    - Presets: Strategies/Presets/Presets.md

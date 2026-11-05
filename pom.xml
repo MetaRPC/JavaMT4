@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Maven build for the vendored JavaMT4 SDK (mirror of build.gradle).
-  Added for the fleet: the VPS has Maven but no Gradle, and the Gradle wrapper would download
-  ~140 MB. Produces pro.mrpc:mt4:1.0.0 in the local repository:
+  Maven build for the JavaMT4 SDK. Produces pro.mrpc:mt4:1.0.0 in the local repository:
 
-      mvn -q -DskipTests -f lib/JavaMT4/pom.xml install
+      mvn -q -DskipTests install
 
-  Source sets: src/main/java (raw MT4 wire-protocol client + examples) and package/ (pre-generated
-  MetaRPC gRPC stubs, mt4_term_api.* / mrpc_admin.*, protobuf 3.x gencode synced by the MetaRPC CI).
+  Run an example without installing:  run.bat   (mvn compile exec:java)
+
+  Source sets: src/main/java (the gRPC MT4Account/Service/Sugar client + examples) and package/
+  (pre-generated MetaRPC gRPC stubs, mt4_term_api.* / mrpc_admin.*, protobuf 3.x gencode synced by
+  the MetaRPC CI).
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -130,6 +131,18 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.4.2</version>
+            </plugin>
+            <!-- Runs an example/launcher via run.bat: mvn compile exec:java -Dexec.args="..." -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.2</version>
+                <configuration>
+                    <mainClass>Program</mainClass>
+                    <includeProjectDependencies>true</includeProjectDependencies>
+                    <includePluginDependencies>false</includePluginDependencies>
+                    <cleanupDaemonThreads>false</cleanupDaemonThreads>
+                </configuration>
             </plugin>
         </plugins>
     </build>

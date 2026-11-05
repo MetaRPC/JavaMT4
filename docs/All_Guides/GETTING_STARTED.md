@@ -1,42 +1,40 @@
 # Getting Started with JavaMT4
 
-> **Quick Setup & Overview** - Connect to MetaTrader 4 from Java in a few minutes.
+> **Quick setup & overview** — connect to MetaTrader 4 from Java and make your first calls.
 
 ---
 
 ## What is JavaMT4?
 
-**JavaMT4** is the Java client of the MRPC MT4 API (`mt4.mrpc.pro:443`, gRPC over TLS):
+**JavaMT4** is the Java SDK for the MRPC MetaTrader 4 gateway (`mt4.mrpc.pro:443`, gRPC over TLS). It has three layers, each building on the one below:
 
-- **`MT4Account`**: connect, account, quotes, orders, tick stream, disconnect (see [API Reference](../api.md)).
-- **The generated gRPC stubs** of the whole API (`mt4_term_api.*Grpc`), for everything else, with
-  `account.authorized(stub)` adding the API key and terminal id.
+| Layer | Class | What it gives you |
+|-------|-------|-------------------|
+| 1 — low-level | [`MT4Account`](../MT4Account/MT4Account.Master.Overview.md) | raw gRPC calls, auto-reconnect, typed `…Data` returns |
+| 2 — facade | [`MT4Service`](../MT4Service/MT4Service.Overview.md) | friendly args (string timeframe/sort, `side`/`type`), trade shortcuts |
+| 3 — high-level | [`MT4Sugar`](../MT4Sugar/MT4Sugar.Master.Overview.md) | pip math, risk sizing, trailing/breakeven, watchers |
 
-The package also has `MT4Client`, a client of the MT4 server protocol that connects straight to a broker's MT4 server
-(no MRPC). The other pages of these guides describe the API itself (methods, enums, return codes, streams); some of their
-code samples are in Python, the calls and messages are the same from Java.
+The generated gRPC stubs live under `mt4_term_api.*` and are compiled with the project; the three layers above wrap them so you rarely touch the stubs directly.
 
 ---
 
-## Installation
+## Prerequisites
 
-Gradle, from [JitPack](https://jitpack.io/#MetaRPC/JavaMT4) (built from this repository on request):
+* **Java 17+** (the project targets `maven.compiler.release = 17`).
+* **Maven** (`mvn`) or the Maven Daemon (`mvnd`) — the bundled `run.bat` auto-detects either.
 
-```groovy
-repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-}
-dependencies {
-    implementation 'com.github.MetaRPC:JavaMT4:fa9acfb453'   // a commit of this repository; main-SNAPSHOT = the latest
-}
+The project builds the gRPC stubs from `package/mt4_term_api/*.java` together with the source; there is no separate SDK artifact to install — you run from the cloned repository.
+
+---
+
+## Get the code
+
+```bash
+git clone https://github.com/MetaRPC/JavaMT4.git
+cd JavaMT4
 ```
 
-Maven: add the repository `https://jitpack.io` and the dependency `com.github.MetaRPC` / `JavaMT4` / `fa9acfb453`.
-The jar brings gRPC and the generated `mt4_term_api` stubs along; Java 17+. It is not on Maven Central.
-
-Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd JavaMT4 && ./gradlew publishToMavenLocal` installs
-`pro.mrpc:mt4:1.0.0` into your local Maven repository (`mavenLocal()`).
+Maven coordinates (if you build/install it locally): `pro.mrpc:mt4:1.0.0`.
 
 ---
 
@@ -44,48 +42,86 @@ Or build it yourself: `git clone https://github.com/MetaRPC/JavaMT4.git && cd Ja
 
 1. **Sign up** free at [https://mrpc.pro/signup](https://mrpc.pro/signup).
 2. **Create a key** at [https://mrpc.pro/my](https://mrpc.pro/my) under **API Keys**.
-3. Pass it to `new MT4Account(apiKey)` or set `MRPC_API_KEY`.
+3. Put it in `appsettings.json` (below). `"TRIAL"` works for demo accounts.
 
 ---
 
-## API key and terminal id
+## Configure — `appsettings.json`
 
-- **API key**: from [https://mrpc.pro/my](https://mrpc.pro/my) (sign up free at [https://mrpc.pro/signup](https://mrpc.pro/signup)).
-  Pass it to `new MT4Account(apiKey)` or set `MRPC_API_KEY`; without one the client sends `TRIAL`.
-- **Terminal id**: `connect()` receives it from the server, keeps it (`getTerminalId()`) and sends it with every later call
-  and stream. `attach(id)` uses a terminal that is already connected.
+The examples read a flat config file at the project root:
 
-## Minimal example
+```json
+{
+  "user": 500123456,
+  "password": "your_password",
+  "serverName": "MetaQuotes-Demo",
+  "baseSymbol": "EURUSD",
+  "apiKey": "TRIAL"
+}
+```
+
+| Key | Meaning |
+|-----|---------|
+| `user` | MT4 account login |
+| `password` | account password |
+| `serverName` | broker server name (connect-by-name) |
+| `baseSymbol` | default symbol the examples trade |
+| `apiKey` | MRPC API key (`"TRIAL"` for demo); `MRPC_API_KEY` env var overrides it |
+
+An optional `grpcServer` (`host:port`) overrides the default gateway `mt4.mrpc.pro:443`.
+
+---
+
+## Run an example
+
+`run.bat` compiles and runs the example launcher (`Program`), passing the menu number:
+
+```bat
+run.bat 1          REM low-level market data
+run.bat 4          REM MT4Service demo
+run.bat 6          REM MT4Sugar basics
+run.bat stop       REM stop the Maven daemon
+```
+
+Run `run.bat` with no argument to see the full menu.
+
+---
+
+## Minimal code
+
+Connecting directly through the low-level layer:
 
 ```java
 import mt4_term_api.Mt4TermApiAccountHelper.AccountSummaryData;
-import mt4_term_api.Mt4TermApiTradingHelper.OrderSendData;
 import mt4_term_api.Mt4TermApiTradingHelper.OrderSendOperationType;
 import pro.mrpc.mt4.MT4Account;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        try (MT4Account account = new MT4Account(System.getenv("MRPC_API_KEY"))) {      // mt4.mrpc.pro:443
-            account.connect(Long.parseLong(System.getenv("MT4_LOGIN")), System.getenv("MT4_PASSWORD"), "TeleTrade-Demo", 120);
-            try {
-                AccountSummaryData summary = account.accountSummary();
-                System.out.println("Balance: " + summary.getAccountBalance() + " " + summary.getAccountCurrency());
+        // user, password, grpcServer (null -> mt4.mrpc.pro:443), id (null on first connect), apiKey
+        try (MT4Account account = new MT4Account(500123456L, "your_password", null, null, "TRIAL")) {
+            account.connectByServerName("MetaQuotes-Demo", 30);
 
-                OrderSendData order = account.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.01);
-                System.out.println("Ticket #" + order.getTicket() + " at " + order.getPrice());
-            } finally {
-                account.disconnect(false);   // true also deletes the terminal
-            }
-        }
+            AccountSummaryData s = account.accountSummary();
+            System.out.println("Balance: " + s.getAccountBalance() + " " + s.getAccountCurrency());
+
+            var order = account.orderSend("EURUSD", OrderSendOperationType.OC_OP_BUY, 0.01);
+            System.out.println("Ticket #" + order.getTicket() + " @ " + order.getPrice());
+
+            account.disconnect(false);   // true also deletes the terminal instance
+        }   // close() shuts the gRPC channel down
     }
 }
 ```
+
+For friendlier arguments wrap it in [`MT4Service`](../MT4Service/MT4Service.Overview.md); for one-liners, risk sizing and automation use [`MT4Sugar`](../MT4Sugar/MT4Sugar.Master.Overview.md).
 
 ---
 
 ## Reading order
 
-1. **[Your First Project](Your_First_Project.md)** - a working project in 10 minutes.
-2. **[API Reference](../api.md)** - what `MT4Account` does, and how to call the rest of the API.
-3. **[Streams](STREAMS.md)** - ticks, trades, profit and the other streams.
-4. **[Errors](ERRORS.md)** - what a refused call looks like, and its codes.
+1. **[Your First Project](Your_First_Project.md)** — a working program, start to finish.
+2. **[MT4Account — Master Overview](../MT4Account/MT4Account.Master.Overview.md)** — the full low-level surface.
+3. **[MT4Service](../MT4Service/MT4Service.Overview.md)** · **[MT4Sugar](../MT4Sugar/MT4Sugar.Master.Overview.md)** — the higher layers.
+4. **[Streams](STREAMS.md)** — ticks, trades, profit and connection-state streams.
+5. **[Errors](ERRORS.md)** — what a refused call looks like, and its codes.

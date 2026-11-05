@@ -1,75 +1,60 @@
 # Streams
 
-The API pushes data over gRPC server streams. Ticks have their own method in the client: [`account.onSymbolTick(symbols, onTick, onError)`](../quotes.md). Every other stream is a
-method of `SubscriptionServiceGrpc`:
+The gateway pushes real-time data over gRPC server streams. In JavaMT4 every stream is a **callback subscription**: you pass a `Consumer<…Data> onData` (and an optional `Consumer<Throwable> onError`), and the call returns a `MT4Account.Subscription` — an `AutoCloseable` you close to stop.
 
-| Stream | What it sends |
-|---|---|
-| [`OnSymbolTick`](../API_Reference/methods.md#subscriptionserviceonsymboltick) | ticks of the symbols |
-| [`OnTrade`](../API_Reference/methods.md#subscriptionserviceontrade) | every change of orders, with the account values |
-| [`OnOpenedOrdersProfit`](../API_Reference/methods.md#subscriptionserviceonopenedordersprofit) | the profit of the open orders and the account values (with margin), every `timer_period_milliseconds` |
-| [`OnOpenedOrdersTickets`](../API_Reference/methods.md#subscriptionserviceonopenedorderstickets) | the tickets of the open orders, every `pull_interval_milliseconds` |
-| [`OnConnectState`](../API_Reference/methods.md#connectiononconnectstate) | the state of your terminals (`Connected`, `Unreachable`, `Stopped`, ...) |
-| [`OnJournal`](../API_Reference/methods.md#logsonjournal), [`OnExperts`](../API_Reference/methods.md#logsonexperts) | the terminal's journal and Experts log (a new stream starts with what is already written) |
+| Method (`MT4Account` / `MT4Service`) | What it delivers |
+|--------------------------------------|------------------|
+| [`onSymbolTick`](../MT4Account/5.%20Streaming_Methods/on_symbol_tick.md) | bid/ask ticks for the given symbols |
+| [`onTrade`](../MT4Account/5.%20Streaming_Methods/on_trade.md) | trade events — new / updated / removed orders |
+| [`onOpenedOrdersProfit`](../MT4Account/5.%20Streaming_Methods/on_opened_orders_profit.md) | floating P/L of open orders, on a timer |
+| [`onOpenedOrdersTickets`](../MT4Account/5.%20Streaming_Methods/on_opened_orders_tickets.md) | open position & pending ticket lists, sampled |
+| [`onConnectState`](../MT4Account/5.%20Streaming_Methods/on_connect_state.md) | terminal connection-state changes |
 
-Their requests and messages: [API methods](../API_Reference/methods.md#subscriptionservice).
+---
 
 ## Using a stream
 
-OnOpenedOrdersProfit, the account's equity, margin and profit every second:
+Close the subscription to stop it — try-with-resources is the clean way:
 
 ```java
-import io.grpc.Context;
-import io.grpc.Status;
-import io.grpc.stub.StreamObserver;
-import mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitReply;
-import mt4_term_api.Mt4TermApiSubscriptions.OnOpenedOrdersProfitRequest;
-import mt4_term_api.SubscriptionServiceGrpc;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import pro.mrpc.mt4.MT4Account;
 
 // account: a connected MT4Account
-var subscriptions = account.authorized(SubscriptionServiceGrpc.newStub(account.getChannel()));
-var request = OnOpenedOrdersProfitRequest.newBuilder().setTimerPeriodMilliseconds(1000).build();
+try (MT4Account.Subscription s = account.onOpenedOrdersProfit(1000, ev -> {
+        double total = ev.getOpenedOrdersWithProfitUpdatedList().stream()
+                .mapToDouble(o -> o.getOrderProfit()).sum();
+        System.out.printf("floating P/L: %+.2f%n", total);
+    }, err -> System.err.println("stream error: " + err.getMessage()))) {
 
-Context.CancellableContext stream = Context.current().withCancellation();
-stream.run(() -> subscriptions.onOpenedOrdersProfit(request, new StreamObserver<OnOpenedOrdersProfitReply>() {
-    @Override
-    public void onNext(OnOpenedOrdersProfitReply reply) {
-        if (reply.hasError()) {                                   // the API answered with an error
-            System.err.println("stream error: " + reply.getError().getErrorCode());
-            return;
-        }
-        if (!reply.hasData()) return;                             // a heartbeat (after 30 s without data)
-        var info = reply.getData().getAccountInfo();
-        System.out.println("equity " + info.getEquity() + ", margin " + info.getMargin() + ", profit " + info.getProfit());
-    }
-
-    @Override
-    public void onError(Throwable t) {
-        if (Status.fromThrowable(t).getCode() == Status.Code.CANCELLED) return;   // stream.cancel()
-        System.err.println("stream failed: " + t.getMessage());                    // open it again
-    }
-
-    @Override
-    public void onCompleted() {
-    }
-}));
-
-// ... when done
-stream.cancel(null);
+    TimeUnit.SECONDS.sleep(10);   // consume for 10 s
+}   // close() cancels the stream
 ```
 
-- Every message has `data` or `error`. A message with **neither** is a heartbeat: after 30 seconds without data the
-  server sends one so that proxies keep the connection open. Skip it.
-- An `error` message reports a problem with the stream's request (for example `NO_CHARTS_OPENED_FOR_SYMBOLS` for a
-  symbol the terminal does not have); the stream may end after it.
-- `stream.cancel(null)` ends it (`onError` then gets `CANCELLED`, which is not a failure).
-- A stream does not resume by itself. When it fails or ends while you still need it, open it again; when calls answer
-  `TERMINAL_INSTANCE_NOT_FOUND`, the terminal is gone: connect first.
-- Opening a stream counts as a call toward the per-terminal limits, the messages it delivers do not; the number of tick
-  streams per terminal is limited too: [Errors & Limits](https://mrpc.pro/docs-legacy/mt4-client-api#errors-limits).
+If you don't use try-with-resources, keep the returned `Subscription` and call `close()` when done.
 
-## In a browser
+---
 
-Browsers cannot speak gRPC to the API (no gRPC-Web is served). Every stream is also a WebSocket on its REST path, with the
-terminal id and key in the query: `wss://mt4.mrpc.pro/OnOpenedOrdersProfit?id=<terminal id>&apikey=<key>&timerPeriodMilliseconds=1000`.
-See the [client guide](https://mrpc.pro/docs-legacy/mt4-client-api#step-7-real-time-streams-websocket).
+## How subscriptions behave
+
+* **One callback per message.** `onData` is invoked on a background thread for each update; keep per-message work light (offload heavy processing to a queue/executor).
+* **Auto-reconnect is built in.** A transient gRPC drop reopens the stream under the hood and keeps delivering to your callback — you don't re-subscribe.
+* **`onError`** is invoked for a terminal stream error; it may be `null` (errors are then swallowed after reconnect attempts).
+* **Close to stop.** Nothing stops a stream except closing its `Subscription` (or closing the owning `MT4Account`). An unclosed subscription keeps its reconnect loop alive.
+* **Quiet markets deliver nothing.** Tick/trade streams are silent on a closed market; the ticket/profit/connect-state streams are timer- or state-driven and still fire.
+
+---
+
+## Through the higher layers
+
+* [`MT4Service`](../MT4Service/5.%20Streaming_Methods.md) exposes the same five methods with the same `Consumer`/`Subscription` shape.
+* [`MT4Sugar`](../MT4Sugar/8.%20Watchers_Waiters.md) wraps them as **watchers** (`watchTicks`, `watchProfit`, …) that return a `String` id and are stopped with `unwatch(id)` — handy when you want the SDK to track the subscription for you.
+
+---
+
+## See also
+
+* [MT4Account — Streaming Methods](../MT4Account/5.%20Streaming_Methods/Streaming_Methods.Overview.md)
+* [MT4Sugar — Watchers & Waiters](../MT4Sugar/8.%20Watchers_Waiters.md)
+* [Errors](ERRORS.md)
