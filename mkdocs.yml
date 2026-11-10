@@ -90,6 +90,7 @@ nav:
     - Errors: All_Guides/ERRORS.md
     - Return Codes Reference: All_Guides/RETURN_CODES_REFERENCE.md
     - ENUMs Usage Reference: All_Guides/ENUMS_USAGE_REFERENCE.md
+    - Protobuf Inspector: All_Guides/PROTOBUF_INSPECTOR_GUIDE.md
     - Glossary: All_Guides/GLOSSARY.md
 
   - MT4Account:

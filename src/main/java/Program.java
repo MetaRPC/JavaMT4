@@ -21,6 +21,15 @@ public class Program {
         }
         String cmd = args[0].toLowerCase();
 
+        // Offline tools — no terminal connection needed. Handle before connecting.
+        switch (cmd) {
+            case "9": case "inspect": case "protobuf":
+                examples.tools.ProtobufInspector.run();
+                return;
+            default:
+                // fall through to the connected examples below
+        }
+
         Common.Config cfg = Common.load();
         MT4Account account = new MT4Account(cfg.user, cfg.password, cfg.grpcServer, null, cfg.apiKey);
         System.out.println("Connecting user=" + cfg.user + " server=" + cfg.serverName + " ...");
@@ -76,6 +85,7 @@ public class Program {
         System.out.println("  run.bat 12  ORCHESTRATOR BracketTrailing  (bracket + trailing activation)");
         System.out.println("  run.bat 15  ORCHESTRATOR PendingBracket   (limit order + bracket)");
         System.out.println("  run.bat 16  PRESETS      Presets          (strategy & risk presets)");
+        System.out.println("  run.bat 9   TOOL       ProtobufInspector  (explore proto types/fields/enums — offline)");
         System.out.println("  run.bat 0   SANDBOX    UserCode           (your own code)");
         System.out.println();
     }

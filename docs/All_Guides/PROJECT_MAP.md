@@ -38,6 +38,7 @@ Your code  →  MT4Sugar  →  MT4Service  →  MT4Account  →  gRPC  →  MRPC
     - **`services/`** — `ServiceDemo` → [MT4Service overview](../MT4Service/MT4Service.Overview.md)
     - **`sugar/`** — `SugarBasics`, `SugarTrading`, `SugarPositions` → [MT4Sugar overview](../MT4Sugar/MT4Sugar.Master.Overview.md)
     - **`usercode/`** — `UserCode` (your sandbox entry)
+    - **`tools/`** — `ProtobufInspector` (offline proto type/field/enum explorer, `run.bat 9`) → [Protobuf Inspector](PROTOBUF_INSPECTOR_GUIDE.md)
   - **`src/main/java/strategies/`** — preset-driven strategy runners
     - `MarketOneShot`, `BracketTrailing`, `PendingBracket` — orchestrators
     - `StrategyPreset`, `RiskPreset`, `Presets` — fluent presets + catalog
