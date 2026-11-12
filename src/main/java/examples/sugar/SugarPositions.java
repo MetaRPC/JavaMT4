@@ -1,3 +1,43 @@
+/*══════════════════════════════════════════════════════════════════════════════
+ FILE: examples/sugar/SugarPositions.java - HIGH-LEVEL (MT4Sugar) POSITIONS DEMO
+ PURPOSE:
+   The MT4Sugar query surface (find / exposure / positions-value / diagnostics)
+   plus all five live watchers (ticks, trades, opened orders, profit, tickets).
+   Opens one small position so the queries and streams have data to show.
+
+ 🎯 WHO SHOULD USE THIS:
+   • Developers building position dashboards / monitors
+   • Learning how to query exposure and subscribe to live updates
+   • Seeing the watch* / unwatch background-subscription pattern
+
+ 📚 WHAT THIS DEMO COVERS (3 sections):
+
+   1. SETUP
+      • buyMarket()            - open one test position for the demo
+
+   2. QUERIES
+      • findOrders()           - open orders, optionally filtered
+      • ordersForSymbol()      - all orders for a symbol (shortcut)
+      • exposureSummary()      - account totals + net/long/short/P&L
+      • positionsValue()       - aggregated long/short/net for a symbol
+      • diagSnapshot()         - compact account+exposure+spreads blob
+
+   3. WATCHERS (background subscriptions)
+      • watchTicks() / watchTrades() / watchOpenedOrders()
+      • watchProfit() / watchTickets()
+      • unwatch()              - stop a watcher by id
+
+ 🔄 API LEVELS:
+   HIGH-LEVEL (MT4Sugar)   - THIS FILE: queries + one-call watchers
+   MID-LEVEL  (MT4Service) - typed wrappers
+   LOW-LEVEL  (MT4Account) - raw streams / order reads
+
+ ⚠️  WARNING: opens and closes one REAL 0.01 position on your account - DEMO
+   accounts only. The position is flattened (closeAll) before the demo returns.
+
+ USAGE:
+   run.bat 8      (or: java -cp ... Program 8)
+══════════════════════════════════════════════════════════════════════════════*/
 package examples.sugar;
 
 import mt4_term_api.Mt4TermApiAccountHelper;
@@ -16,13 +56,31 @@ public final class SugarPositions {
     public static void run(MT4Sugar sugar, String symbol) throws Exception {
         sugar.setDefaults(symbol, 4001, null, null, null);
 
-        // Open one position so the queries and watchers have something to show.
+        //region 1. SETUP
+        // ══════════════════════════════════════════════════════════════
+        // 1. SETUP
+        // ══════════════════════════════════════════════════════════════
+
+        // ────────────────────────────────────────────────────────────
+        // buyMarket()
+        //   Open one position so the queries and watchers have something to
+        //   show. Returns: ticket (long).
+        // ────────────────────────────────────────────────────────────
         long t = sugar.buyMarket(symbol, 0.01, null, null, null, null, "pos", null, null);
         System.out.println("opened #" + t);
         Thread.sleep(800);
+        //endregion
 
-        // ── Queries ──────────────────────────────────────────────
-        // findOrders(): open orders, optionally filtered by symbol/magic/side/state/min-profit.
+        //region 2. QUERIES
+        // ══════════════════════════════════════════════════════════════
+        // 2. QUERIES
+        // ══════════════════════════════════════════════════════════════
+
+        // ────────────────────────────────────────────────────────────
+        // findOrders()
+        //   Open orders, optionally filtered by symbol/magic/side/state/
+        //   min-profit. Returns: List<OpenedOrderInfo>.
+        // ────────────────────────────────────────────────────────────
         List<Mt4TermApiAccountHelper.OpenedOrderInfo> all = sugar.findOrders(null, null, null, null, null);
         System.out.println("findOrders(all)  : " + all.size());
         for (Mt4TermApiAccountHelper.OpenedOrderInfo o : all) {
@@ -32,23 +90,50 @@ public final class SugarPositions {
         // Same call with filters: only BUY, only market (state="open"), only this symbol.
         System.out.println("findOrders(buy/open, " + symbol + "): "
                 + sugar.findOrders(symbol, null, "buy", "open", null).size());
-        // ordersForSymbol(): a quick "all orders for this symbol" shortcut.
+
+        // ────────────────────────────────────────────────────────────
+        // ordersForSymbol()
+        //   A quick "all orders for this symbol" shortcut.
+        //   Returns: List<OpenedOrderInfo>.
+        // ────────────────────────────────────────────────────────────
         System.out.println("ordersForSymbol  : " + sugar.ordersForSymbol(symbol).size());
 
-        // exposureSummary(): account totals + net/long/short lots and P/L (per symbol and overall).
+        // ────────────────────────────────────────────────────────────
+        // exposureSummary()
+        //   Account totals + net/long/short lots and P/L (per symbol & overall).
+        //   Returns: ExposureSummary.
+        // ────────────────────────────────────────────────────────────
         MT4Sugar.ExposureSummary e = sugar.exposureSummary();
         System.out.printf(Locale.ROOT, "exposureSummary  : balance %.2f equity %.2f positions %d net %.2f lot pnl %.2f%n",
                 e.balance, e.equity, e.openPositions, e.total.lotsNet, e.total.pnl);
 
-        // positionsValue(): aggregated long/short/net lots and P/L for one symbol (market positions only).
+        // ────────────────────────────────────────────────────────────
+        // positionsValue()
+        //   Aggregated long/short/net lots and P/L for one symbol (market
+        //   positions only). Returns: ExposureBucket.
+        // ────────────────────────────────────────────────────────────
         MT4Sugar.ExposureBucket pv = sugar.positionsValue(symbol, null);
         System.out.printf(Locale.ROOT, "positionsValue   : %s long %.2f short %.2f net %.2f pnl %.2f%n",
                 symbol, pv.lotsLong, pv.lotsShort, pv.lotsNet, pv.pnl);
-        // diagSnapshot(): a compact account+exposure+spreads blob (good for dashboards/logging).
-        System.out.println("diagSnapshot     : " + sugar.diagSnapshot().keySet());
 
-        // ── Watchers (background subscriptions) ──────────────────
-        // Each watch* returns an id; the callback fires on every update; unwatch(id) stops it.
+        // ────────────────────────────────────────────────────────────
+        // diagSnapshot()
+        //   A compact account+exposure+spreads blob (good for dashboards/logs).
+        //   Returns: Map of diagnostics.
+        // ────────────────────────────────────────────────────────────
+        System.out.println("diagSnapshot     : " + sugar.diagSnapshot().keySet());
+        //endregion
+
+        //region 3. WATCHERS (background subscriptions)
+        // ══════════════════════════════════════════════════════════════
+        // 3. WATCHERS (background subscriptions)
+        // ══════════════════════════════════════════════════════════════
+
+        // ────────────────────────────────────────────────────────────
+        // watchTicks/Trades/OpenedOrders/Profit/Tickets() + unwatch()
+        //   Each watch* returns an id; the callback fires on every update;
+        //   unwatch(id) stops it.
+        // ────────────────────────────────────────────────────────────
         String w1 = sugar.watchTicks(symbol, d -> { }, null);         // price ticks
         String w2 = sugar.watchTrades(d -> { }, null);                // trade events
         String w3 = sugar.watchOpenedOrders(d -> { }, null);          // open-order changes
@@ -62,6 +147,7 @@ public final class SugarPositions {
         // Flatten everything we opened.
         sugar.closeAll(symbol, null, null);
         System.out.println("closeAll         : flat");
+        //endregion
     }
 
     private SugarPositions() {

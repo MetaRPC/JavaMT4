@@ -1,3 +1,32 @@
+/*══════════════════════════════════════════════════════════════════════════════
+ FILE: examples/tools/ProtobufInspector.java - INTERACTIVE PROTOBUF INSPECTOR (OFFLINE)
+ PURPOSE:
+   Explore the mt4_term_api protobuf messages, fields and enums straight from the
+   generated descriptors - no terminal connection required. Answers "what is the
+   exact field name?", "what type is it?", "which enum value do I pass?" without
+   grepping the generated code.
+
+ 🎯 WHO SHOULD USE THIS:
+   • Developers wiring up requests who need the real protobuf field/enum names
+   • Anyone debugging a type mismatch against the API
+   • Learning the shape of the MT4 gRPC message set
+
+ 📚 WHAT THIS DEMO COVERS:
+   Interactive REPL commands:
+      • list / ls          - list all message types
+      • <TypeName>         - inspect a message (its fields and their types)
+      • search <text>      - find types whose name contains text (alias: find)
+      • field <name>       - find messages that contain a matching field
+      • enum <name>        - show every value of an enum
+      • enums              - list all enum types
+      • help / ?           - command reference
+      • exit / quit / q    - leave the inspector
+
+ ℹ️  SAFE: offline, no connection - reads generated descriptors only, never trades.
+
+ USAGE:
+   run.bat inspect      (or: run.bat 9)
+══════════════════════════════════════════════════════════════════════════════*/
 package examples.tools;
 
 import com.google.protobuf.Descriptors.Descriptor;
@@ -45,6 +74,16 @@ public final class ProtobufInspector {
 
     private ProtobufInspector() {}
 
+    //region INDEXING
+    // ══════════════════════════════════════════════════════════════════
+    // INDEXING - build the name -> descriptor maps once from the proto files
+    // ══════════════════════════════════════════════════════════════════
+
+    // ──────────────────────────────────────────────────────────────────
+    // files()
+    //   One generated outer class per proto file; each exposes its file
+    //   descriptor, which is where every message/enum is enumerated.
+    // ──────────────────────────────────────────────────────────────────
     /** One generated outer class per proto file; each exposes the file descriptor. */
     private static List<FileDescriptor> files() {
         return List.of(
@@ -87,10 +126,18 @@ public final class ProtobufInspector {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────────
-    // Entry point
-    // ──────────────────────────────────────────────────────────────────
+    //endregion
 
+    //region ENTRY POINT (REPL)
+    // ══════════════════════════════════════════════════════════════════
+    // ENTRY POINT - the read-eval-print loop that dispatches commands
+    // ══════════════════════════════════════════════════════════════════
+
+    // ──────────────────────────────────────────────────────────────────
+    // run()
+    //   Index the types, print the banner, then loop: read a line, parse
+    //   the command + argument, and dispatch to the matching handler.
+    // ──────────────────────────────────────────────────────────────────
     public static void run() {
         index();
         printHeader();
@@ -144,10 +191,18 @@ public final class ProtobufInspector {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────────
-    // Commands
-    // ──────────────────────────────────────────────────────────────────
+    //endregion
 
+    //region COMMANDS
+    // ══════════════════════════════════════════════════════════════════
+    // COMMANDS - one handler per REPL command
+    // ══════════════════════════════════════════════════════════════════
+
+    // ──────────────────────────────────────────────────────────────────
+    // listTypes() / listEnums()
+    //   Print every indexed message type (tagged Data/Request/Reply) or
+    //   every enum type with its value count.
+    // ──────────────────────────────────────────────────────────────────
     private static void listTypes() {
         System.out.println("\n📦 " + MESSAGES.size() + " message types:\n");
         for (Descriptor m : sortedMessages(MESSAGES.values())) {
@@ -167,6 +222,10 @@ public final class ProtobufInspector {
         System.out.println("\n💡 'enum <Name>' shows every value.");
     }
 
+    // ──────────────────────────────────────────────────────────────────
+    // searchTypes(term)
+    //   Find every message/enum whose name contains the search text.
+    // ──────────────────────────────────────────────────────────────────
     private static void searchTypes(String term) {
         System.out.println("\n🔍 Types containing '" + term + "':\n");
         int found = 0;
@@ -186,6 +245,11 @@ public final class ProtobufInspector {
         else System.out.println("\n✅ " + found + " match(es). Type a name to inspect it.");
     }
 
+    // ──────────────────────────────────────────────────────────────────
+    // findField(fieldName)
+    //   Find every message that declares a field matching the name, and
+    //   print that field's proto type.
+    // ──────────────────────────────────────────────────────────────────
     private static void findField(String fieldName) {
         System.out.println("\n🔍 Messages with a field matching '" + fieldName + "':\n");
         int found = 0;
@@ -206,6 +270,10 @@ public final class ProtobufInspector {
         else System.out.println("\n✅ Found in " + found + " type(s).");
     }
 
+    // ──────────────────────────────────────────────────────────────────
+    // inspectEnum(name)
+    //   Show every value of an enum, sorted by its numeric tag.
+    // ──────────────────────────────────────────────────────────────────
     private static void inspectEnum(String name) {
         EnumDescriptor e = ENUMS.get(name);
         if (e == null) {
@@ -220,6 +288,11 @@ public final class ProtobufInspector {
         }
     }
 
+    // ──────────────────────────────────────────────────────────────────
+    // inspectType(name)
+    //   Show a message's fields with their proto number and type (falls
+    //   back to inspectEnum if the name is actually an enum).
+    // ──────────────────────────────────────────────────────────────────
     private static void inspectType(String name) {
         Descriptor m = MESSAGES.get(name);
         if (m == null) {
@@ -243,10 +316,18 @@ public final class ProtobufInspector {
         System.out.println("\n💡 For an enum field, run: enum <EnumName>");
     }
 
-    // ──────────────────────────────────────────────────────────────────
-    // Helpers
-    // ──────────────────────────────────────────────────────────────────
+    //endregion
 
+    //region HELPERS
+    // ══════════════════════════════════════════════════════════════════
+    // HELPERS - type formatting, case-insensitive search, stable sorting
+    // ══════════════════════════════════════════════════════════════════
+
+    // ──────────────────────────────────────────────────────────────────
+    // typeName(f) / scalarOrName(f)
+    //   Render a field's proto type: scalar name, message/enum name, with
+    //   repeated/map<> decoration.
+    // ──────────────────────────────────────────────────────────────────
     /** A readable proto type for a field: scalar name, message/enum name, repeated/map decorated. */
     private static String typeName(FieldDescriptor f) {
         if (f.isMapField()) {
@@ -287,10 +368,18 @@ public final class ProtobufInspector {
         return out;
     }
 
-    // ──────────────────────────────────────────────────────────────────
-    // UI text
-    // ──────────────────────────────────────────────────────────────────
+    //endregion
 
+    //region UI TEXT
+    // ══════════════════════════════════════════════════════════════════
+    // UI TEXT - the banner, quick-start box and full command reference
+    // ══════════════════════════════════════════════════════════════════
+
+    // ──────────────────────────────────────────────────────────────────
+    // printHeader() / printQuickStart() / printHelp()
+    //   Static console output: the title banner, the quick-start hints and
+    //   the full command reference.
+    // ──────────────────────────────────────────────────────────────────
     private static void printHeader() {
         System.out.println("╔══════════════════════════════════════════════════════╗");
         System.out.println("║        🔍 PROTOBUF INSPECTOR — mt4_term_api           ║");
@@ -330,4 +419,5 @@ public final class ProtobufInspector {
         System.out.println("  > field Ticket");
         System.out.println("  > enum OrderSendOperationType");
     }
+    //endregion
 }
