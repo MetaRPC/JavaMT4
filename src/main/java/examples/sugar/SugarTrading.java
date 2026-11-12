@@ -97,8 +97,15 @@ public final class SugarTrading {
         //   closeByBreakeven(): move SL to entry (+2 pips) to make the trade
         //   risk-free. Then flatten the position and confirm it's gone.
         // ────────────────────────────────────────────────────────────
-        sugar.closeByBreakeven((int) t1, 2.0);
-        System.out.println("closeByBreakeven : SL -> entry +2p");
+        try {
+            sugar.closeByBreakeven((int) t1, 2.0);
+            System.out.println("closeByBreakeven : SL -> entry +2p");
+        } catch (Exception e) {
+            // Rejected when the position is not yet ~2 pips in profit: moving the SL
+            // to entry+2p would put it on the wrong side / inside the broker's stop
+            // level (ErrInvalidStops 130). Expected on a fresh entry — skip and go on.
+            System.out.println("closeByBreakeven : skipped (not yet at break-even): " + e.getMessage());
+        }
         Thread.sleep(500);
         sugar.close((int) t1);
         System.out.println("waitClosed       : " + sugar.waitClosed((int) t1, 10_000L).get("status"));
