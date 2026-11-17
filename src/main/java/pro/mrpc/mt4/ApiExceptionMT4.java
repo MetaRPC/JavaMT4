@@ -24,6 +24,12 @@ public class ApiExceptionMT4 extends RuntimeException {
         this.error = null;
     }
 
+    /** A server/SDK error that keeps the underlying cause (e.g. the gRPC {@link io.grpc.StatusRuntimeException}). */
+    public ApiExceptionMT4(MrpcMt4Error.Error error, Throwable cause) {
+        super(describe(error), cause);
+        this.error = error;
+    }
+
     /** The server error, or {@code null} when this wraps a transport/other failure. */
     public MrpcMt4Error.Error getError() {
         return error;

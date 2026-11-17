@@ -336,7 +336,7 @@ public class MT4Account implements AutoCloseable {
 
     public Mt4TermApiTradingHelper.OrderSendData orderSend(Mt4TermApiTradingHelper.OrderSendRequest request) {
         ensureConnected();
-        Mt4TermApiTradingHelper.OrderSendReply reply = callWithReconnect(() -> trade().orderSend(request));
+        Mt4TermApiTradingHelper.OrderSendReply reply = callWithReconnect("OrderSend", () -> trade().orderSend(request));
         return dataOf(reply);
     }
 
@@ -355,7 +355,7 @@ public class MT4Account implements AutoCloseable {
         if (newTakeProfit != null) b.setNewTakeProfit(newTakeProfit);
         if (newExpiration != null) b.setNewExpiration(ts(newExpiration));
         Mt4TermApiTradingHelper.OrderModifyRequest request = b.build();
-        Mt4TermApiTradingHelper.OrderModifyReply reply = callWithReconnect(() -> trade().orderModify(request));
+        Mt4TermApiTradingHelper.OrderModifyReply reply = callWithReconnect("OrderModify", () -> trade().orderModify(request));
         return dataOf(reply);
     }
 
@@ -366,7 +366,7 @@ public class MT4Account implements AutoCloseable {
         if (closingPrice != null) b.setClosingPrice(closingPrice);
         if (slippage != null) b.setSlippage(slippage);
         Mt4TermApiTradingHelper.OrderCloseDeleteRequest request = b.build();
-        Mt4TermApiTradingHelper.OrderCloseDeleteReply reply = callWithReconnect(() -> trade().orderCloseDelete(request));
+        Mt4TermApiTradingHelper.OrderCloseDeleteReply reply = callWithReconnect("OrderCloseDelete", () -> trade().orderCloseDelete(request));
         return dataOf(reply);
     }
 
@@ -374,7 +374,7 @@ public class MT4Account implements AutoCloseable {
         ensureConnected();
         Mt4TermApiTradingHelper.OrderCloseByRequest request = Mt4TermApiTradingHelper.OrderCloseByRequest.newBuilder()
                 .setTicketToClose(ticketToClose).setOppositeTicketClosingBy(oppositeTicketClosingBy).build();
-        Mt4TermApiTradingHelper.OrderCloseByReply reply = callWithReconnect(() -> trade().orderCloseBy(request));
+        Mt4TermApiTradingHelper.OrderCloseByReply reply = callWithReconnect("OrderCloseBy", () -> trade().orderCloseBy(request));
         return dataOf(reply);
     }
 
@@ -546,16 +546,68 @@ public class MT4Account implements AutoCloseable {
         return "TERMINAL_INSTANCE_NOT_FOUND".equals(code) || "TERMINAL_REGISTRY_TERMINAL_NOT_FOUND".equals(code);
     }
 
+    /** API_KEY_INVALID / API_KEY_REQUIRED if {@code text} names one of them, else null. */
+    private static String apiKeyErrorCode(String text) {
+        if (text == null) return null;
+        String upper = text.toUpperCase();
+        if (upper.contains("API_KEY_INVALID")) return "API_KEY_INVALID";
+        if (upper.contains("API_KEY_REQUIRED")) return "API_KEY_REQUIRED";
+        return null;
+    }
+
+    /** Transport failures after which a trade request may already have reached the terminal. */
+    private static boolean isTradeOutcomeUnknownStatus(Status.Code code) {
+        return code == Status.Code.UNAVAILABLE || code == Status.Code.DEADLINE_EXCEEDED
+                || code == Status.Code.UNKNOWN || code == Status.Code.INTERNAL;
+    }
+
+    /** A gRPC failure naming a refused API key, as an {@link ApiExceptionMT4} with that code; null otherwise. */
+    private static ApiExceptionMT4 apiKeyRefused(StatusRuntimeException e) {
+        String code = apiKeyErrorCode(e.getStatus().getDescription());
+        if (code == null) return null;
+        return new ApiExceptionMT4(MrpcMt4Error.Error.newBuilder()
+                .setErrorCode(code)
+                .setErrorMessage(e.getStatus().getCode().name() + ": " + e.getStatus().getDescription())
+                .build(), e);
+    }
+
+    /** Reconnect for a retry; a refused API key surfaces as an {@link ApiExceptionMT4} carrying its code. */
+    private void reconnectForRetry() {
+        sleep(RECONNECT_BACKOFF_MS);
+        try {
+            reconnect();
+        } catch (StatusRuntimeException e) {
+            ApiExceptionMT4 refused = apiKeyRefused(e);
+            if (refused != null) throw refused;
+            throw e;
+        }
+    }
+
     /** Runs a unary call, reconnecting on UNAVAILABLE or a missing-terminal error; throws {@link ApiExceptionMT4} on any other server error. */
     private <R extends Message> R callWithReconnect(Supplier<R> rpc) {
+        return callWithReconnect(null, rpc);
+    }
+
+    /**
+     * Same as {@link #callWithReconnect(Supplier)}; a non-null {@code tradeOperation} marks a trade call that is
+     * never re-sent after a transport failure that may have reached the terminal (UNAVAILABLE, DEADLINE_EXCEEDED,
+     * UNKNOWN, INTERNAL): it throws {@link TradeOutcomeUnknownExceptionMT4} instead. A trade answered in-band with
+     * TERMINAL_INSTANCE_NOT_FOUND (the gateway answers before any terminal) is still reconnected and re-sent.
+     * A refused API key (API_KEY_INVALID / API_KEY_REQUIRED) is never retried.
+     */
+    private <R extends Message> R callWithReconnect(String tradeOperation, Supplier<R> rpc) {
         while (true) {
             R res;
             try {
                 res = rpc.get();
             } catch (StatusRuntimeException e) {
+                ApiExceptionMT4 refused = apiKeyRefused(e);
+                if (refused != null) throw refused;
+                if (tradeOperation != null && isTradeOutcomeUnknownStatus(e.getStatus().getCode())) {
+                    throw new TradeOutcomeUnknownExceptionMT4(tradeOperation, e);
+                }
                 if (e.getStatus().getCode() == Status.Code.UNAVAILABLE) {
-                    sleep(RECONNECT_BACKOFF_MS);
-                    reconnect();
+                    reconnectForRetry();
                     continue;
                 }
                 throw new ApiExceptionMT4(e.getStatus().getCode().name() + ": " + e.getStatus().getDescription(), e);
@@ -564,8 +616,7 @@ public class MT4Account implements AutoCloseable {
             if (error != null) {
                 String code = error.getErrorCode();
                 if (isReconnectTrigger(code)) {
-                    sleep(RECONNECT_BACKOFF_MS);
-                    reconnect();
+                    reconnectForRetry();
                     continue;
                 }
                 if ((error.getErrorMessage() != null && !error.getErrorMessage().isEmpty()) || (code != null && !code.isEmpty())) {
@@ -584,7 +635,8 @@ public class MT4Account implements AutoCloseable {
 
     private static void throwIfError(Message reply) {
         MrpcMt4Error.Error error = errorOf(reply);
-        if (error != null && error.getErrorMessage() != null && !error.getErrorMessage().isEmpty()) {
+        if (error != null && ((error.getErrorMessage() != null && !error.getErrorMessage().isEmpty())
+                || apiKeyErrorCode(error.getErrorCode()) != null)) {
             throw new ApiExceptionMT4(error);
         }
     }

@@ -7,6 +7,7 @@ import mt4_term_api.Mt4TermApiTradingHelper;
 import pro.mrpc.mt4.error.ModifyRejected;
 import pro.mrpc.mt4.error.MT4Error;
 import pro.mrpc.mt4.error.OrderRejected;
+import pro.mrpc.mt4.error.TradeOutcomeUnknown;
 import pro.mrpc.mt4.util.HookBus;
 import pro.mrpc.mt4.util.RateLimiter;
 
@@ -390,6 +391,8 @@ public class MT4Sugar {
         long ticket;
         try {
             ticket = svc.orderSend(b.build()).getTicket();
+        } catch (TradeOutcomeUnknownExceptionMT4 e) {
+            throw new TradeOutcomeUnknown("order_send: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new OrderRejected("order_send: " + e.getMessage(), null, null, e);
         }
@@ -453,6 +456,8 @@ public class MT4Sugar {
     public void close(int ticket) {
         try {
             svc.orderCloseDelete(ticket, null, null, null);
+        } catch (TradeOutcomeUnknownExceptionMT4 e) {
+            throw new TradeOutcomeUnknown("order_close_delete: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new ModifyRejected("order_close_delete: " + e.getMessage(), null, null, e);
         }
@@ -468,6 +473,8 @@ public class MT4Sugar {
     public void closeBy(int ticketA, int ticketB) {
         try {
             svc.orderCloseBy(ticketA, ticketB);
+        } catch (TradeOutcomeUnknownExceptionMT4 e) {
+            throw new TradeOutcomeUnknown("order_close_by: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new ModifyRejected("order_close_by: " + e.getMessage(), null, null, e);
         }
@@ -478,6 +485,8 @@ public class MT4Sugar {
     public void closeByTickets(int ticketA, int ticketB) {
         try {
             svc.orderCloseBy(ticketA, ticketB);
+        } catch (TradeOutcomeUnknownExceptionMT4 e) {
+            throw new TradeOutcomeUnknown("order_close_by: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new ModifyRejected("order_close_by: " + e.getMessage(), null, null, e);
         }
@@ -770,6 +779,8 @@ public class MT4Sugar {
     private void doModify(int ticket, Double slAbs, Double tpAbs) {
         try {
             svc.orderModify(ticket, null, slAbs, tpAbs, null);
+        } catch (TradeOutcomeUnknownExceptionMT4 e) {
+            throw new TradeOutcomeUnknown("order_modify: " + e.getMessage(), e);
         } catch (Exception e) {
             throw new ModifyRejected("order_modify: " + e.getMessage(), null, null, e);
         }
