@@ -1,12 +1,25 @@
 ---
+title: "MetaTrader 4 API — Java SDK"
 hide:
   - navigation
   - toc
 ---
 
-# JavaMT4 SDK Documentation
+# MetaTrader 4 API — Java SDK
 
 > ℹ️ **Terminal session id**: when you connect via `connectByServerName` / `connectByHostPort`, the MRPC gateway assigns a terminal session id and returns it (also available as `account.getId()`). It is sent automatically with every later call and stream — you don't supply an `id` yourself before connecting.
+
+!!! info "Use the MT4 SDK with MetaRPC"
+
+    MetaRPC provides APIs and hosted terminal infrastructure for developers. Build your client on Windows, macOS or Linux; you control your broker accounts and trading decisions.
+
+    Start with the API setup guide, try the browser playground, or connect a trade-copying workflow.
+
+    [API setup and pricing](https://mrpc.pro/start/api?lang=en&utm_source=github&utm_medium=referral&utm_campaign=api_sdk_discovery&utm_content=javamt4_setup)
+
+    [Try the API playground](https://mrpc.pro/api?lang=en&utm_source=github&utm_medium=referral&utm_campaign=api_sdk_discovery&utm_content=javamt4_playground#live-code)
+
+    [Explore trade copying](https://mrpc.pro/start/copier?lang=en&utm_source=github&utm_medium=referral&utm_campaign=api_sdk_discovery&utm_content=javamt4_copier)
 
 <div class="hx-wrap" markdown="0">
 
